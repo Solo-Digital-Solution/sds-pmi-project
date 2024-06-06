@@ -44,7 +44,6 @@
                                         <option value="1">Bencana alam</option>
                                         <option value="2">Bencana non alam</option>
                                     </select>
-									<!-- <input type="text" class="form-control" id="inputName" placeholder="Enter full name"> -->
 								</div>
 							</div>
 							<div class="col-sm-6 col-12">
@@ -55,15 +54,8 @@
                                         <option value="1">Gempa bumi</option>
                                         <option value="2">Angin Puting Beliung</option>
                                     </select>
-									<!-- <input type="email" class="form-control" id="inputEmail" placeholder="Enter email"> -->
 								</div>
 							</div>
-							<!-- <div class="col-sm-4 col-12">
-								<div class="form-group">
-									<label for="inputPwd">Password</label>
-									<input type="password" class="form-control" id="inputPwd" placeholder="Password">
-								</div>
-							</div> -->
                             <div class="col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="inputDate">Tanggal</label>
@@ -168,12 +160,6 @@
 									<label for="inputReadOnly">Petugas Assessment</label>
                                     <input class="form-control" id="inputName" type="text" placeholder="Masukkan nama lengkap">								</div>
 							</div>
-							<!-- <div class="col-sm-6 col-12">
-								<div class="form-group">
-									<label for="disabledInput">Disabled Input</label>
-									<input type="text" id="disabledInput" class="form-control" placeholder="Disabled input" disabled>
-								</div>
-							</div> -->
 						</div>
 					</div>
 				</div>
@@ -214,7 +200,6 @@
                                 <div class="form-group">
                                     <label for="Pengungsi">Pengungsi / IDP's</label>
                                     <select class="custom-select" id="Pengungsi">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Mojosongo">Ada</option>
                                         <option value="Jebres">Tidak ada</option>
                                     </select>
@@ -266,7 +251,6 @@
                                 <div class="form-group">
                                     <label for="Jalan">Jalan</label>
                                     <select class="custom-select" id="Jalan">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -276,7 +260,6 @@
                                 <div class="form-group">
                                     <label for="Jembatan">Jembatan</label>
                                     <select class="custom-select" id="Jembatan">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -286,7 +269,6 @@
                                 <div class="form-group">
                                     <label for="KendaraanUmum">Kendaraan Umum</label>
                                     <select class="custom-select" id="KendaraanUmum">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -322,7 +304,6 @@
                                 <div class="form-group">
                                     <label for="Faskes">RS/Fasilitas Kesehatan</label>
                                     <select class="custom-select" id="Faskes">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -332,7 +313,6 @@
                                 <div class="form-group">
                                     <label for="Listrik">Listrik</label>
                                     <select class="custom-select" id="Listrik">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -342,7 +322,6 @@
                                 <div class="form-group">
                                     <label for="Air">Air</label>
                                     <select class="custom-select" id="Air">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -352,7 +331,6 @@
                                 <div class="form-group">
                                     <label for="Sekolah">Sekolah</label>
                                     <select class="custom-select" id="Sekolah">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
@@ -362,7 +340,6 @@
                                 <div class="form-group">
                                     <label for="TempatIbadah">Tempat Ibadah</label>
                                     <select class="custom-select" id="TempatIbadah">
-                                        <!-- <option selected>Pilih Kelurahan</option> -->
                                         <option value="Berfungsi">Berfungsi</option>
                                         <option value="Tidak berfungsi">Tidak berfungsi</option>
                                     </select>
