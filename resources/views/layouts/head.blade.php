@@ -22,10 +22,16 @@
     <!-- Common CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('fonts/icomoon/icomoon.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/main.min.css') }}" />
+    <!-- <link rel="stylesheet" href="{{ asset('css/main.min.css') }}" /> -->
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+    
 
     <!-- Other CSS includes plugins - Cleanedup unnecessary CSS -->
     <!-- Chartist css -->
     <link href="{{ asset('vendor/chartist/css/chartist.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/chartist/css/chartist-custom.css') }}" rel="stylesheet" />
+
+    <!-- input lokasi dengan peta -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
