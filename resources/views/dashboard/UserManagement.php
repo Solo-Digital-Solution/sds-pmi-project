@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manajemen Akun</title>
+@extends('layouts.app')
+
+@section('content')
     <style>
         /* Reset CSS */
         * {
@@ -112,8 +109,7 @@
             margin-right: 10px;
         }
     </style>
-</head>
-<body>
+
     <header>
         <h1>Manajemen Akun</h1>
         <img src="palang_merah.png" alt="Palang Merah" class="logo">
@@ -170,8 +166,7 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Manajemen Akun - Kontak: email@domain.com</p>
+    <footer class="main-footer fixed-btm">
+        © Solo Digital Solution 2024
     </footer>
-</body>
-</html>
+@endsection
