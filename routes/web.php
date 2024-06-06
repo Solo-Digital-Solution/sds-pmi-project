@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/form', function () {
     return view('forms.form');
 });
+
+Route::get('/user-management', function () {
+    return view('dashboard.UserManagement');
+});
