@@ -11,8 +11,8 @@
                 </a>
             </div>
             <div class="col-sm-2 col">
-                <a href="index.html" class="logo">
-                    <img src="img/logo.svg" alt="Best Admin Dashboards" />
+                <a href="{{ asset('/') }}" class="logo">
+                    <img src="img/logo-pmi.png" alt="Logo PMI" />
                 </a>
             </div>
             <div class="col-sm-5 col">
@@ -25,21 +25,21 @@
                         <div class="dropdown-menu dropdown-menu-right lg" aria-labelledby="notifications">
                             <ul class="imp-notify">
                                 <li>
-                                    <div class="icon">W</div>
+                                    <div class="icon">A</div>
                                     <div class="details">
-                                        <p><span>Wilson</span> The best Dashboard design I have seen ever.</p>
+                                        <p><span>Assessment</span>Assessment kejadian A sudah selesai. Segera validasi!</p>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="icon">J</div>
+                                    <div class="icon">A</div>
                                     <div class="details">
-                                        <p><span>John Smith</span> Jhonny sent you a message. Read now!</p>
+                                        <p><span>Assessment</span>Assessment kejadian B sudah selesai. Segera validasi!</p>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="icon secondary">R</div>
+                                    <div class="icon secondary">K</div>
                                     <div class="details">
-                                        <p><span>Justin Mezzell</span> Stella, Added you as a Friend. Accept it!</p>
+                                        <p><span>Kejadian</span>Kejadian C sudah selesai.</p>
                                     </div>
                                 </li>
                             </ul>

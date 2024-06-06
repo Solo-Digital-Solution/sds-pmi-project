@@ -1,4 +1,4 @@
-@extends('forms.layouts.layout')
+@extends('layouts.layout')
 
 @section('heading')
 <div class="container-fluid">
@@ -8,13 +8,13 @@
                 <i class="icon-center_focus_strong"></i>
             </div>
             <div class="page-title">
-                <h5>Form Inputs</h5>
-                <h6 class="sub-heading">Welcome to Cherry Admin Template</h6>
+                <h5>Form Kejadian</h5>
+                <h6 class="sub-heading">Lengkapi formulir berikut untuk menambahkan kejadian baru.</h6>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="right-actions">
-                <span class="last-login">Last Login: 2 hours ago</span>
+                <span class="last-login">Last Login: 5 minutes ago</span>
             </div>
         </div>
     </div>
