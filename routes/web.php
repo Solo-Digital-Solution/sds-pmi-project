@@ -9,3 +9,8 @@ Route::get('/', function () {
 Route::get('/form', function () {
     return view('forms.form');
 });
+
+// executive summary
+Route::get('/executive-summary', function () {
+    return view('dashboard.exsum');
+});
