@@ -20,3 +20,11 @@
 
 <!-- Common JS -->
 <script src="{{ asset('js/common.js') }}"></script>
+
+<!-- Data Tables -->
+<script src="{{ asset('vendor/datatables/dataTables.min.js') }}"></script>
+<script src="{{ asset('vendor/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+<!-- Custom Data tables -->
+<script src="{{ asset('vendor/datatables/custom/custom-datatables.js') }}"></script>
+<script src="{{ asset('vendor/datatables/custom/fixedHeader.js') }}"></script>

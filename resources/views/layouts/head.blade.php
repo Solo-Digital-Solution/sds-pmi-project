@@ -28,4 +28,8 @@
     <!-- Chartist css -->
     <link href="{{ asset('vendor/chartist/css/chartist.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/chartist/css/chartist-custom.css') }}" rel="stylesheet" />
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="{{ asset('vendor/datatables/dataTables.bs4.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/datatables/dataTables.bs4-custom.css') }}" />
 </head>
