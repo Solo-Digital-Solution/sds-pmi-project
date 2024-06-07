@@ -13,3 +13,7 @@ Route::get('/form', function () {
 Route::get('/form-assessment', function () {
     return view('form-assessment');
 });
+
+Route::get('/flash-report', function(){
+    return view('flash-report.flash-report');
+});
