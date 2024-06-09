@@ -76,6 +76,25 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="icon-assignment_turned_in"></i>
+                            
+                        </span>
+                        <span class="nav-title">Assessment</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href='{{ url('/form-assessment') }}'>Form Assessment</a>
+                        </li>
+                    </ul>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href='{{ url('/')  }}'>History Assessment</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <!-- END: side-nav-content -->
         </nav>
