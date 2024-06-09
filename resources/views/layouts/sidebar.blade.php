@@ -69,6 +69,9 @@
                     </a>
                     <ul aria-expanded="false">
                         <li>
+                            <a href='{{ url('/laporan-situasi')  }}'>Laporan Situasi</a>
+                        </li>
+                        <li>
                             <a href='{{ url('/')  }}'>Kejadian</a>
                         </li>
                     </ul>
