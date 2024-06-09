@@ -47,7 +47,7 @@
                             <td>1</td>
                             <td>10.02.2022 18:38</td>
                             <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="{{ url('/detail-lapsit-1')  }}" style="color: blue;">Lihat Detail</a></td>
+                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
                         </tr>
                         <tr>
                             <td>2</td>

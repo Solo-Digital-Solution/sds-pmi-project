@@ -5,7 +5,7 @@
 
     <div class="app-wrap">
         @include('layouts.header')
-        <div class="app-container">
+s        <div class="app-container">
             @include('layouts.sidebar')
             <div class="app-main">
                 <main>

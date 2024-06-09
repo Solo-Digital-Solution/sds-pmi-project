@@ -27,4 +27,5 @@
 
 <!-- Custom Data tables -->
 <script src="{{ asset('vendor/datatables/custom/custom-datatables.js') }}"></script>
+
 <script src="{{ asset('vendor/datatables/custom/fixedHeader.js') }}"></script>
