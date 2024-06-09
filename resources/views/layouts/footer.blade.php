@@ -1,5 +1,5 @@
 <!-- BEGIN .main-footer -->
 <footer class="main-footer fixed-btm">
-    © Bootstrap Gallery 2023
+    © Solo Digital Solution 2024
 </footer>
 <!-- END: .main-footer -->

@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.layout')
+@extends('layouts.layout')
 
 @section('heading')
 <div class="container-fluid">
@@ -9,12 +9,12 @@
             </div>
             <div class="page-title">
                 <h5>Dashboard</h5>
-                <h6 class="sub-heading">Welcome to Cherry Admin Template</h6>
+                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="right-actions">
-                <span class="last-login">Last Login: 2 hours ago</span>
+                <span class="last-login">Last Login: 5 minutes ago</span>
             </div>
         </div>
     </div>
