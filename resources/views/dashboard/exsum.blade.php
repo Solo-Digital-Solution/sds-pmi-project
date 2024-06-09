@@ -24,12 +24,11 @@
 @section('content')
 <!-- BEGIN .main-content -->
 <div class="main-content">
-
     <!-- Row start -->
     <div class="row gutters">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header">Basic Datatable</div>
+                <div class="card-header">Laporan Triwulan</div>
                 <div class="card-body">
                     <table id="basicExample" class="table table-striped table-bordered">
                         <thead>
@@ -106,4 +105,4 @@
         </div>
     </div>
     <!-- Row ends -->
-    @endsection
+@endsection

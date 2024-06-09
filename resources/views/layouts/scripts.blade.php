@@ -21,20 +21,10 @@
 <!-- Common JS -->
 <script src="{{ asset('js/common.js') }}"></script>
 
-<!-- jQuery first, then Tether, then other JS. -->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="vendor/unifyMenu/unifyMenu.js"></script>
-<script src="vendor/onoffcanvas/onoffcanvas.js"></script>
-<script src="js/moment.js"></script>
-
 <!-- Data Tables -->
-<script src="vendor/datatables/dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap.min.js"></script>
+<script src="{{ asset('vendor/datatables/dataTables.min.js') }}"></script>
+<script src="{{ asset('vendor/datatables/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- Custom Data tables -->
-<script src="vendor/datatables/custom/custom-datatables.js"></script>
-<script src="vendor/datatables/custom/fixedHeader.js"></script>
-
-<!-- Common JS -->
-<script src="js/common.js"></script>
+<script src="{{ asset('vendor/datatables/custom/custom-datatables.js') }}"></script>
+<script src="{{ asset('vendor/datatables/custom/fixedHeader.js') }}"></script>
