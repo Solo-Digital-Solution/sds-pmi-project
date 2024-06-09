@@ -17,3 +17,7 @@ Route::get('/form-assessment', function () {
 Route::get('/flash-report', function(){
     return view('flash-report.flash-report');
 });
+
+Route::get('/user-management', function(){
+    return view('dashboard.UserManagement');
+});
