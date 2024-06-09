@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama_kejadian');
             $table->text('lokasi');
             $table->dateTime('waktu_kejadian');
-            $table->dateTime('update');
             $table->boolean('dukungan_inter');
             $table->text('gambaran_situasi');
             $table->text('akses_lokasi');

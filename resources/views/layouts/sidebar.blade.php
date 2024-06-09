@@ -53,7 +53,7 @@
                             <a href='{{ url('/')  }}'>Dashboard</a>
                         </li>
                         <li>
-                            <a href='{{ url('/')  }}'>Executive Summary</a>
+                            <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
                         </li>
                         <li>
                             <a href='{{ url('/')  }}'>Manajemen Akun</a>
@@ -68,6 +68,9 @@
                         <span class="nav-title">Laporan</span>
                     </a>
                     <ul aria-expanded="false">
+                        <li>
+                            <a href='{{ url('/laporan-situasi')  }}'>Laporan Situasi</a>
+                        </li>
                         <li>
                             <a href='{{ url('/')  }}'>Kejadian</a>
                         </li>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('jumlah_perempuan');
             $table->integer('dibawah_lima');
             $table->integer('antara_lima_dan_delapanbelas');
+            $table->integer('lebih_delapanbelas');
             $table->timestamps();
         });
     }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('mobilisasi', function (Blueprint $table) {
             $table->id('id_mobilisasi');
             $table->foreignId('id_personil')->references('id_personil')->on('personil');
-            $table->foreignId('id_tsr')->references('id_tsr')->on('tsr');
-            $table->foreignId('id_tdb')->references('id_tdb')->on('tdb');
+            $table->foreignId('id_tsr')->references('id_tsr')->on('tsr')->onDelete('cascade');
+            $table->foreignId('id_tdb')->references('id_tdb')->on('tdb')->onDelete('cascade');
             $table->timestamps();
         });
     }
