@@ -24,7 +24,8 @@
 <!-- UBAH UBAH DI BAGIAN SINI AJAA-->
 @section('content')
 <div class="content-section">
-    <button class="btn btn-primary add-account-button">Add Account</button>
+    <a href="{{ url('/user-management/create') }}" class="btn btn-primary add-account-button" style="margin-bottom: 10px;">Tambah Akun</a>
+    <!-- <button class="btn btn-primary add-account-button" style="margin-bottom: 10px;">Add Account</button> -->
     <table class="table table-bordered">
         <thead>
             <tr>
