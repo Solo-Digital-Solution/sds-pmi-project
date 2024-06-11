@@ -22,8 +22,8 @@
     <!-- Common CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('fonts/icomoon/icomoon.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/main.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+    <!-- <link rel="stylesheet" href="{{ asset('css/main.min.css') }}" /> -->
 
 
     <!-- Other CSS includes plugins - Cleanedup unnecessary CSS -->

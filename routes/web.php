@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+// ROUTES UNTUK AUTH
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
 // ROUTES UNTUK DASHBOARD
 Route::get('/', function () {
     return view('dashboard.dashboard');
