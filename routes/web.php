@@ -17,6 +17,11 @@ Route::get('/user-management', function(){
     return view('user.user-management');
 });
 
+// ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
+Route::get('/user-management/create', function () {
+    return view('user.create');
+});
+
 // ROUTES UNTUK KEJADIAN
 
 
