@@ -17,7 +17,7 @@
             </div>
             <div class="col-sm-5 col">
                 <ul class="header-actions">
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#" id="notifications" data-toggle="dropdown" aria-haspopup="true">
                             <i class="icon-notifications_none"></i>
                             <span class="count-label"></span>
@@ -44,8 +44,8 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="#" id="todos" data-toggle="dropdown" aria-haspopup="true">
                             <i class="icon-person_outline"></i>
                             <span class="count-label red"></span>
@@ -81,7 +81,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="dropdown">
                         <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
                             <img class="avatar" src="img/user.png" alt="Admin Dashboards" />
@@ -97,7 +97,7 @@
                                         <p>Profile</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="profile.html">
                                         <div class="icon red">
                                             <i class="icon-cog3"></i>
@@ -112,7 +112,7 @@
                                         </div>
                                         <p>Activity</p>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="logout-btn">
                                 <a href="login.html" class="btn btn-primary">Logout</a>

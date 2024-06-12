@@ -3582,8 +3582,8 @@ a.blog-sm p.blog-date:after {
 .loading-wrapper .img {
   width: 180px;
   height: 50px;
-  background: url("../img/unify.png") no-repeat;
-  background-size: 100%;
+  background: url("../img/logo-pmi.png") no-repeat;
+  background-size: 62%;
 }
 
 /************************************************

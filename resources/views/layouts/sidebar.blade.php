@@ -3,7 +3,7 @@
     <!-- BEGIN .side-content -->
     <div class="side-content ">
         <!-- BEGIN .user-actions -->
-        <ul class="user-actions">
+        <!-- <ul class="user-actions">
             <li>
                 <a href="#">
                     <i class="icon-event_note"></i>
@@ -35,7 +35,7 @@
                     <i class="icon-verified_user"></i>
                 </a>
             </li>
-        </ul>
+        </ul> -->
         <!-- END .user-actions -->
         <!-- BEGIN .side-nav -->
         <nav class="side-nav">
