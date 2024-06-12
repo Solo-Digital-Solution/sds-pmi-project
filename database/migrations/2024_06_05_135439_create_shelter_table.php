@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id('id_lokasi_shelter');
             $table->text('lokasi_shelter');
             $table->integer('jumlah_kk');
-            $table->integer('jumlah');
+            $table->integer('jumlah_jiwa');
             $table->integer('jumlah_laki');
             $table->integer('jumlah_perempuan');
             $table->integer('dibawah_lima');
             $table->integer('antara_lima_dan_delapanbelas');
             $table->integer('lebih_delapanbelas');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
