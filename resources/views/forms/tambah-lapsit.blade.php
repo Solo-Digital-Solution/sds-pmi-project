@@ -30,6 +30,13 @@
             <div class="card-body">
 
                 <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Lapsit ke-</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="colFormLabel" class="col-sm-3 col-form-label">
                         Tanggal Update Kejadian <span style="color: red;">*</span>
                     </label>
@@ -699,8 +706,6 @@
     <div class="col-sm-12">
         <div class="">
             <div class="">
-
-                <img src="{{ url('img/reCAPTCHA.png') }}" alt="My Image">
 
                 <div class="d-flex justify-content-center w-100 py-3">
                     <a href="#">

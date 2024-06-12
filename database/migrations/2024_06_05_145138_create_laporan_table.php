@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('kebutuhan');
             $table->string('hambatan');
             $table->string('nama_laporan');
+            $table->dateTime('update');
             $table->timestamps();
         });
     }
