@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExsumController;
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -41,9 +42,9 @@ Route::get('/tambah-lapsit', function () {
 });
 
 // ROUTES UNTUK EXECUTIVE SUMMARY
-Route::get('/executive-summary', function () {
-    return view('executive-summary.exsum');
-});
+Route::get('/executive-summary', [ExsumController::class, 'index']);
+Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('search');
+
 
 
 // ROUTES UNTUK FLASH REPORT
