@@ -22,14 +22,30 @@
 @endsection
 
 @section('content')
-<!-- BEGIN .main-content -->
-<div class="main-content">
-    <!-- Row start -->
-    <div class="row gutters">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">Laporan Triwulan</div>
-                <div class="card-body">
+<!-- Row start -->
+<div class="row gutters">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">Laporan Triwulan</div>
+            <div class="clearfix m-3">
+                <div class="btn-group float-left" role="group">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="date" class="form-control" id="startDate" placeholder="Masukkan Tanggal Awal">
+                            <input type="date" class="form-control" id="endDate" placeholder="Tanggal Akhir">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">Generate Laporan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group custom-btn-group float-right" role="group">
+                    <button type="button" class="btn btn-primary btn-sm">Export PDF</button>
+                    <button type="button" class="btn btn-primary btn-sm">Export Excel</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
                     <table id="basicExample" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -57,14 +73,16 @@
                                 <td>Laweyan</td>
                                 <td>2023/01/05</td>
                                 <td>2023/01/10</td>
-                                <td>Selesai</td>
+                                <td>
+                                    <span class="badge badge-pill badge-success">Selesai</span>
+                                </td>
                                 <td>150</td>
                                 <td>5</td>
                                 <td>20</td>
                                 <td>3</td>
                                 <td>200000</td>
                                 <td>9000</td>
-                                <td><a href="#">Lihat Laporan Situasi</a></td>
+                                <td><a href="#" style="color: blue;">Lihat Laporan Situasi</a></td>
                             </tr>
                             <tr>
                                 <td>Februari</td>
@@ -73,14 +91,16 @@
                                 <td>Banjarsari</td>
                                 <td>2023/02/12</td>
                                 <td>2023/02/15</td>
-                                <td>Selesai</td>
+                                <td>
+                                    <span class="badge badge-pill badge-success">Selesai</span>
+                                </td>
                                 <td>200</td>
                                 <td>15</td>
                                 <td>50</td>
                                 <td>2</td>
                                 <td>200000</td>
                                 <td>9000</td>
-                                <td><a href="#">Lihat Laporan Situasi</a></td>
+                                <td><a href="#" style="color: blue;">Lihat Laporan Situasi</a></td>
                             </tr>
                             <tr>
                                 <td>Maret</td>
@@ -89,14 +109,16 @@
                                 <td>Jebres</td>
                                 <td>2024/06/06</td>
                                 <td>2024/06/07</td>
-                                <td>Aktif</td>
+                                <td>
+                                    <span class="badge badge-pill badge-primary">Aktif</span>
+                                </td>
                                 <td>0</td>
                                 <td>1</td>
                                 <td>2</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td><a href="#">Lihat Laporan Situasi</a></td>
+                                <td><a href="#" style="color: blue;">Lihat Laporan Situasi</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -104,5 +126,6 @@
             </div>
         </div>
     </div>
-    <!-- Row ends -->
+</div>
+<!-- Row ends -->
 @endsection

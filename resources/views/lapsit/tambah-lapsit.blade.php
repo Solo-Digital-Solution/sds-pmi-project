@@ -34,7 +34,7 @@
                         Tanggal Update Kejadian <span style="color: red;">*</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control" id="colFormLabel" required>
+                        <input type="datetime-local" class="form-control" id="colFormLabel" required>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                     </label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-                
+
 
             </div>
         </div>
@@ -692,9 +692,9 @@
                     </div>
                 </div>
 
-            </div>        
+            </div>
         </div>
-    </div>       
+    </div>
 
     <div class="col-sm-12">
         <div class="">
@@ -708,7 +708,7 @@
                     </a>
                 </div>
 
-                
+
 
             </div>
         </div>

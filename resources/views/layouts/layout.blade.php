@@ -4,8 +4,8 @@
     @include('layouts.page-loading')
 
     <div class="app-wrap">
-        @include('layouts.header')
-s        <div class="app-container">
+        <div class="app-container">
+            @include('layouts.header')
             @include('layouts.sidebar')
             <div class="app-main">
                 <main>

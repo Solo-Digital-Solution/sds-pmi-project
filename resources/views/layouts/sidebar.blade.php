@@ -56,7 +56,7 @@
                             <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
                         </li>
                         <li>
-                            <a href='{{ url('/')  }}'>Manajemen Akun</a>
+                            <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
                     </ul>
                 </li>
@@ -80,7 +80,7 @@
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
                             <i class="icon-assignment_turned_in"></i>
-                            
+
                         </span>
                         <span class="nav-title">Assessment</span>
                     </a>
