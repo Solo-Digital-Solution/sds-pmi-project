@@ -29,7 +29,7 @@ Route::get('/user-management/create', function () {
 
 // ROUTES UNTUK ASSESSMENT
 Route::get('/form-assessment', function () {
-    return view('form-assessment');
+    return view('assessment.form-assessment');
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
