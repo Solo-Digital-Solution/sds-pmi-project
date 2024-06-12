@@ -24,7 +24,13 @@ Route::get('/user-management/create', function () {
 });
 
 // ROUTES UNTUK KEJADIAN
+Route::get('/kejadian', function () {
+    return view('kejadian.kejadian');
+});
 
+Route::get('/tambah-kejadian', function () {
+    return view('kejadian.tambah-kejadian');
+});
 
 
 // ROUTES UNTUK ASSESSMENT

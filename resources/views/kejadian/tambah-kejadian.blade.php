@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="colFormLabel" class="col-sm-3 col-form-label">Kelurahan <span style="color: red;">*</span> </label>
+                    <label for="colFormLabel" class="col-sm-3 col-form-label">Status <span style="color: red;">*</span> </label>
                     <div class="input-group col-sm-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Options</label>
