@@ -113,98 +113,98 @@
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-warning btn-rounded">Sedang berlangsung</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-warning btn-rounded">Sedang berlangsung</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
                         <tr>
 							<td>Lorem Ipsum</td>
 							<td>12.06.2024 17:08</td>
 							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
 							<td>Jebres</td>
-							<td><a href="" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -219,13 +219,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="detailModalLabel">Informasi Lengkap</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <p>lorem ipsum dolores myawmyawmyaw</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Save changes</button>
