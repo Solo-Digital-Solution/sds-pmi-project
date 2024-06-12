@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('layanan_korban', function (Blueprint $table) {
-            $table->foreignId('id_giat_pmi')->references('id_giat_pmi')->on('giat_pmi');
-            $table->foreignId('id_distribusi_layanan')->references('id_distribusi_layanan')->on('distribusi_layanan');
+            $table->foreignId('id_giat_pmi')->references('id_giat_pmi')->on('giat_pmi')->onDelete('cascade');
+            $table->foreignId('id_distribusi_layanan')->references('id_distribusi_layanan')->on('distribusi_layanan')->onDelete('cascade');
             $table->timestamps();
         });
     }

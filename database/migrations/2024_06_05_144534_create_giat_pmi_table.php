@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('giat_pmi', function (Blueprint $table) {
             $table->id('id_giat_pmi');
-            $table->foreignId('id_evakuasi_korban')->references('id_evakuasi_korban')->on('evakuasi_korban');
+            $table->foreignId('id_evakuasi_korban')->references('id_evakuasi_korban')->on('evakuasi_korban')->onDelete('cascade');
             $table->timestamps();
         });
     }

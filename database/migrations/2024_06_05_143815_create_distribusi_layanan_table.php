@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_distribusi_layanan');
             $table->enum('jenis_distribusi_layanan', ['Food Item', 'Non-Food Item', 'Layanan Kesehatan', 'Layanan Air Bersih']);
             $table->string('lokasi');
-            $table->enum('unit', ['KK', 'Orang']);
+            $table->enum('unit', ['KK', 'Orang', 'Liter']);
             $table->integer('jumlah');
             $table->timestamps();
         });
