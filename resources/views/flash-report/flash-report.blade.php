@@ -42,7 +42,6 @@
     /* Gaya untuk kontainer grafik lingkaran */
     .chart-container {
             text-align: center;
-            margin-top: 20px;
         }
 
         /* Gaya untuk grafik lingkaran */
@@ -52,7 +51,8 @@
         }
         .graph-container {
         margin-top: 20px;
-        width: 500px;
+        justify-content: center;
+        width: 400px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -70,7 +70,7 @@
         color: #000000;
     }
     .bar-wrapper {
-        width: 400px;
+        width: 300px;
         display: flex;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -111,26 +111,29 @@
 
 @section('content')
 <div class="content-section">
-	<table border="5" width="600px" cellpadding="10px" cellspacing="0px">
+	<table border="0" width="500px" cellpadding="10px" cellspacing="0px">
 		<thead>
             <tr>
                 <th style="background-color: #860200; width: 2px"></th>
-                <th style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
+                <th colspan=2 style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
                 <th style="background-color: #860200;"></th>
-                <th rowspan="2" colspan="6" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; padding-top: 0; padding-bottom: 0;line-height: 1; vertical-align: bottom;">
+
+
+                <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; padding-top: 0; padding-bottom: 0; align-items: center; line-height: 1; vertical-align: bottom;">
                     KEJADIAN KEBAKARAN<br>
-                    <span style="font-size: 54px; color: #000000;">SURAKARTA </span>
-                    <span style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px; background-color: #1E1E1C; color: white; padding: 5px 10px; display: inline-block;">JAWA TENGAH</span></th>
+                    <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>                    
+                </th>
+                    
                 <th rowspan="2" colspan="2" style="background-color: #EBF1F1;"><img src="https://www.starjogja.com/assets/2016/10/PMI.png" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
             </tr>
             <tr>
                 <th style="background-color: #860200;"></th>
-                <th colspan="2" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; padding-left: 2">LAPORAN SITUASI</th>
+                <th colspan="3" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; padding-left: 2">LAPORAN SITUASI</th>
             </tr>
         </thead>                           
  
 		<tfoot>
-			<td colspan="10" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">Posko PMI Jawa Tengah</td>
+			<td colspan="11" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">Posko PMI Jawa Tengah</td>
 		</tfoot>
  
 		<tbody>
@@ -198,28 +201,28 @@
 
             <tr>
 				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center">PELAYANAN PMI</td>
-				<td><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
+				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
 				<td style="white-space: nowrap; font-size: 12px">DISTRIBUSI AIR BERSIH<br>482.000 Lt</td>
-                <td><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
+                <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
                 <td style="font-size: 12px">DAPUR UMUM</td>
 				<td colspan="4"><span style="background-color: #E91A20; color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
 			</tr>
 
             <tr>
-				<td> <i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
+				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
 				<td style="font-size: 12px">RELAWAN</td>
-				<td><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
+				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
                 <td style="font-size: 12px">TENAGA KESEHATAN</td>
                 <td colspan="4" rowspan="2"><div class="chart-container">
-                    <canvas id="genderChart" width="200" height="200"></canvas>
+                    <canvas id="genderChart" width="150" height="150"></canvas>
                 </div></td>
 				<td colspan="2" rowspan="2"><img src="{{asset('img/image 12.png')}}" style="width: 100%"></td>
 			</tr>
 
             <tr>
-				<td><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
+				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
 				<td style="font-size: 12px">PERTOLONGAN PERTAMA DARURAT DAN EVAKUASI BENCANA</td>
-				<td><i class="fa-solid fa-tents icon" style="color: #bc202d;"></i></td>
+				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-tents icon" style="color: #bc202d;"></i></td>
                 <td style="font-size: 12px">HUNIAN DARURAT</td>
 			</tr>
 		</tbody>
@@ -325,8 +328,8 @@
             barWrapper.classList.add('bar-wrapper');
 
             // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
-            const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 400;
-            const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 400;
+            const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 300;
+            const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
 
             const bar1 = document.createElement('div');
             bar1.classList.add('bar', 'bar1');
