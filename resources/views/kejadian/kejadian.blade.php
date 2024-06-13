@@ -44,27 +44,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($kejadians as $kejadian )
                         <tr>
-                            <td>Kebakaran</td>
-                            <td>10.02.2022 18:38</td>
-                            <th>Aktif</th>
-                            <th>Jebres</th>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
+                            <td>{{ $kejadian['nama_kejadian'] }}</td>
+                            <td>{{ $kejadian['waktu_kejadian'] }}</td>
+                            <td>{{ $kejadian['status'] }}</td>
+                            <td>{{ $kejadian['lokasi'] }}</td>
+                            <td><a href="{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a></td>
                         </tr>
-                        <tr>
-                            <td>Banjir</td>
-                            <td>10.02.2022 18:38</td>
-                            <th>Selesai</th>
-                            <th>Manahan</th>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>Banjir</td>
-                            <td>10.02.2022 18:38</td>
-                            <th>Selesai</th>
-                            <th>Jebres</th>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

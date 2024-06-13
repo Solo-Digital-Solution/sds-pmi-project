@@ -45,6 +45,12 @@
                     </div>
                 </div>
 
+                <script>
+                    $(function () {
+                      $('#datetime').datetimepicker();
+                    });
+                </script>
+
                 <div class="form-group row">
                     <label for="colFormLabel" class="col-sm-3 col-form-label">Kecamatan <span style="color: red;">*</span> </label>
                     <div class="input-group col-sm-3">
@@ -131,8 +137,9 @@
                             <label class="input-group-text" for="inputGroupSelect01">Options</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">Aktif</option>
+                            <option selected>Menunggu Validasi</option>
+                            <option value="1">Invalid</option>
+                            <option value="2">Aktif</option>
                             <option value="2">Selesai</option>
                         </select>
                     </div>
