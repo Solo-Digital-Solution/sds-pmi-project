@@ -52,9 +52,9 @@
                         <li>
                             <a href='{{ url('/')  }}'>Dashboard</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
@@ -72,11 +72,14 @@
                             <a href='{{ url('/laporan-situasi')  }}'>Laporan Situasi</a>
                         </li>
                         <li>
-                            <a href='{{ url('/')  }}'>Kejadian</a>
+                            <a href='{{ url('/kejadian')  }}'>Kejadian</a>
+                        </li>
+                        <li>
+                            <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
                             <i class="icon-assignment_turned_in"></i>
@@ -94,7 +97,7 @@
                             <a href='{{ url('/')  }}'>History Assessment</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <!-- END: side-nav-content -->
         </nav>

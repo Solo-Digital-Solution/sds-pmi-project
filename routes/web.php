@@ -15,10 +15,10 @@ Route::get('/', function () {
 });
 
 // ROUTES UNTUK USER MANAGEMENT
-Route::get('/user-management', [UserController::class, 'index']); 
+Route::get('/user-management', [UserController::class, 'index']);
 
 // ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
-Route::get('/user-management/create', [UserController::class, 'create']); 
+Route::get('/user-management/create', [UserController::class, 'create']);
 Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
 
 // ROUTES UNTUK KEJADIAN
@@ -48,8 +48,6 @@ Route::get('/tambah-lapsit', function () {
 // ROUTES UNTUK EXECUTIVE SUMMARY
 Route::get('/executive-summary', [ExsumController::class, 'index']);
 Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('search');
-
-
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report', function(){
