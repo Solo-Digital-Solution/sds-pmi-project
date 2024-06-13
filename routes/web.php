@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
+use App\Http\Controllers\KejadianController;
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -24,13 +25,15 @@ Route::get('/user-management/create', function () {
 });
 
 // ROUTES UNTUK KEJADIAN
-Route::get('/kejadian', function () {
+/*Route::get('/kejadian', function () {
     return view('kejadian.kejadian');
-});
-
+});*/
+Route::get('/kejadian', [KejadianController::class, 'index']);
 Route::get('/tambah-kejadian', function () {
     return view('kejadian.tambah-kejadian');
+    Route::post('/', [KejadianController::class,'add'])->name('addkejadian');
 });
+
 
 
 // ROUTES UNTUK ASSESSMENT
