@@ -50,6 +50,42 @@
             max-width: 300px;
             margin: auto;
         }
+        .graph-container {
+        margin-top: 20px;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bar-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .label {
+        width: 100px;
+        text-align: left;
+        margin-right: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #000000;
+    }
+    .bar-wrapper {
+        width: 400px;
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .bar {
+        height: 20px;
+    }
+    .bar1 {
+        background: linear-gradient(90deg, #bc202d, #73020E); /* Gradasi warna untuk data diterjunkan */
+    }
+    .bar2 {
+        background: linear-gradient(90deg, #FD5B6D, #A20415); /* Gradasi warna untuk data dimiliki */
+    }
 </style>
 
 @section('heading')
@@ -75,7 +111,7 @@
 
 @section('content')
 <div class="content-section">
-	<table border="1" width="600px" cellpadding="10px" cellspacing="0px">
+	<table border="5" width="600px" cellpadding="10px" cellspacing="0px">
 		<thead>
             <tr>
                 <th style="background-color: #860200; width: 2px"></th>
@@ -113,7 +149,7 @@
 
             <tr>
 				<td colspan="2" rowspan="4">
-                    <img src="{{asset('img/Screenshot 2024-06-07 064621.png')}}" style="width: 100%">
+                <div class="graph-container" id="graph-container">
                 </td>
 			</tr>
  
@@ -258,6 +294,55 @@
         data: data,
         options: options
     });
+
+
+
+    // Data kecamatan
+    const dataKecamatan = [
+            { nama: 'Banjarsari', diterjunkan: 82, dimiliki: 105 },
+            { nama: 'Jebres', diterjunkan: 42, dimiliki: 120 },
+            { nama: 'Laweyan', diterjunkan: 0, dimiliki: 60 },
+            { nama: 'Pasar Kliwon', diterjunkan: 30, dimiliki: 70 },
+            { nama: 'Serengan', diterjunkan: 50, dimiliki: 90 }
+        ];
+
+        // Container untuk grafik
+        const graphContainer = document.getElementById('graph-container');
+
+        // Mencari nilai terbesar dari dimiliki
+        const maxDimiliki = Math.max(...dataKecamatan.map(kecamatan => kecamatan.dimiliki));
+
+        // Membuat dan menambahkan bar untuk setiap kecamatan
+        dataKecamatan.forEach(kecamatan => {
+            const barContainer = document.createElement('div');
+            barContainer.classList.add('bar-container');
+
+            const label = document.createElement('div');
+            label.classList.add('label');
+            label.textContent = kecamatan.nama;
+
+            const barWrapper = document.createElement('div');
+            barWrapper.classList.add('bar-wrapper');
+
+            // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
+            const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 400;
+            const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 400;
+
+            const bar1 = document.createElement('div');
+            bar1.classList.add('bar', 'bar1');
+            bar1.style.width = `${bar1Width}px`;
+
+            const bar2 = document.createElement('div');
+            bar2.classList.add('bar', 'bar2');
+            bar2.style.width = `${bar2Width}px`;
+
+            barWrapper.appendChild(bar1);
+            barWrapper.appendChild(bar2);
+            barContainer.appendChild(label);
+            barContainer.appendChild(barWrapper);
+
+            graphContainer.appendChild(barContainer);
+        });
 </script>
 
 @endsection
