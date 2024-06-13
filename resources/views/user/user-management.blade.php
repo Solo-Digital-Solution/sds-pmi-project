@@ -23,43 +23,46 @@
 
 <!-- UBAH UBAH DI BAGIAN SINI AJAA-->
 @section('content')
-<div class="content-section">
-    <a href="{{ url('/user-management/create') }}" class="btn btn-primary add-account-button" style="margin-bottom: 10px;">Tambah Akun</a>
-    <!-- <button class="btn btn-primary add-account-button" style="margin-bottom: 10px;">Add Account</button> -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>ID Pegawai</th>
-                <th>Role</th>
-                <th>Nomor Telepon</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data dari database akan dimasukkan di sini -->
-            <tr>
-                <td>John Doe</td>
-                <td>john.doe@example.com</td>
-                <td>12345</td>
-                <td>Admin</td>
-                <td>08123456789</td>
-            </tr>
-            <tr>
-                <td>Jane Smith</td>
-                <td>jane.smith@example.com</td>
-                <td>67890</td>
-                <td>Petugas PMI</td>
-                <td>08198765432</td>
-            </tr>
-            <tr>
-                <td>Robert Brown</td>
-                <td>robert.brown@example.com</td>
-                <td>11223</td>
-                <td>HRD</td>
-                <td>08122334455</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row gutters">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">Manajemen Akun</div>
+            <div class="card-body">
+                <div class="d-flex justify-content-start w-100">
+                    <a href="{{ url('/user-management/create')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Akun</button></a> 
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="basicExample" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>ID Pegawai</th>
+                            <th>Role</th>
+                            <th>Telepon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($users as $us)
+                        <tr>
+                            <td>{{ $us->name }}</td>
+                            <td>{{ $us->email }}</td>
+                            <td>{{ $us->user_id }}</td>
+                            <td>{{ $us->role_name}}</td>
+                            <td>{{ $us->no_telp }}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4">Tidak ada data kejadian.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 @endsection

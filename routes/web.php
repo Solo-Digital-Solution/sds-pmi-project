@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
+use App\Http\Controllers\UserController;
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -14,14 +15,11 @@ Route::get('/', function () {
 });
 
 // ROUTES UNTUK USER MANAGEMENT
-Route::get('/user-management', function(){
-    return view('user.user-management');
-});
+Route::get('/user-management', [UserController::class, 'index']); 
 
 // ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
-Route::get('/user-management/create', function () {
-    return view('user.create');
-});
+Route::get('/user-management/create', [UserController::class, 'create']); 
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
 
 // ROUTES UNTUK KEJADIAN
 Route::get('/kejadian', function () {
