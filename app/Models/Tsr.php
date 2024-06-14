@@ -9,6 +9,8 @@ class Tsr extends Model
 {
     use HasFactory;
 
+    protected $table = 'tsr';
+    protected $primaryKey = 'id_tsr';
     protected $fillable = [
         'medis',
         'paramedis',

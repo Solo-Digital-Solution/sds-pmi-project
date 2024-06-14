@@ -9,6 +9,8 @@ class Korban_terdampak extends Model
 {
     use HasFactory;
 
+    protected $table = 'korban_terdampak';
+    protected $primaryKey = 'id_korban_terdampak';
     protected $fillable = [
         'jumlah_kk',
         'jumlah_jiwa',
