@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
+use App\Http\Controllers\KejadianController;
+use App\Http\Controllers\LaporanController;
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -28,6 +30,9 @@ Route::get('/user-management/create', function () {
 
 
 // ROUTES UNTUK ASSESSMENT
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
+Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
     return view('assessment.form-assessment');
 });
