@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kecamatan', function (Blueprint $table) {
-            $table->id('id_kecamatan');
-            $table->string('nama_kecamatan');
-            $table->timestamps();
+        Schema::table('kelurahan', function (Blueprint $table) {            
+            $table->foreignId('id_kecamatan')->references('id_kecamatan')->on('kecamatan')->onDelete('cascade');
         });
     }
 
@@ -23,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kecamatan');
+        //
     }
 };

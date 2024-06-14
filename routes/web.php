@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\KejadianController;
 use App\Http\Controllers\LaporanController;
 
@@ -16,16 +17,21 @@ Route::get('/', function () {
 });
 
 // ROUTES UNTUK USER MANAGEMENT
-Route::get('/user-management', function(){
-    return view('user.user-management');
-});
+Route::get('/user-management', [UserController::class, 'index']);
 
 // ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
-Route::get('/user-management/create', function () {
-    return view('user.create');
-});
+Route::get('/user-management/create', [UserController::class, 'create']);
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
 
 // ROUTES UNTUK KEJADIAN
+/*Route::get('/kejadian', function () {
+    return view('kejadian.kejadian');
+});*/
+Route::get('/kejadian', [KejadianController::class, 'index']);
+Route::get('/tambah-kejadian', function () {
+    return view('kejadian.tambah-kejadian');
+    Route::post('/', [KejadianController::class,'add'])->name('addkejadian');
+});
 
 
 
@@ -49,8 +55,6 @@ Route::get('/tambah-lapsit', function () {
 // ROUTES UNTUK EXECUTIVE SUMMARY
 Route::get('/executive-summary', [ExsumController::class, 'index']);
 Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('search');
-
-
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report', function(){
