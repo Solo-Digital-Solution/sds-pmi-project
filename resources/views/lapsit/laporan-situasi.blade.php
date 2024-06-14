@@ -30,6 +30,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
                     <a href="{{ url('/tambah-lapsit')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Lapsit</button></a> 
+                    <a href="{{ url('/form-assessment')  }}"><button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Assessment</button></a> 
                 </div>
             </div>
             <div class="card-body">

@@ -3,7 +3,7 @@
     <!-- BEGIN .side-content -->
     <div class="side-content ">
         <!-- BEGIN .user-actions -->
-        <ul class="user-actions">
+        <!-- <ul class="user-actions">
             <li>
                 <a href="#">
                     <i class="icon-event_note"></i>
@@ -35,7 +35,7 @@
                     <i class="icon-verified_user"></i>
                 </a>
             </li>
-        </ul>
+        </ul> -->
         <!-- END .user-actions -->
         <!-- BEGIN .side-nav -->
         <nav class="side-nav">
@@ -52,9 +52,9 @@
                         <li>
                             <a href='{{ url('/')  }}'>Dashboard</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
@@ -72,26 +72,10 @@
                             <a href='{{ url('/laporan-situasi')  }}'>Laporan Situasi</a>
                         </li>
                         <li>
-                            <a href='{{ url('/')  }}'>Kejadian</a>
+                            <a href='{{ url('/kejadian')  }}'>Kejadian</a>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="has-arrow" aria-expanded="false">
-                        <span class="has-icon">
-                            <i class="icon-assignment_turned_in"></i>
-
-                        </span>
-                        <span class="nav-title">Assessment</span>
-                    </a>
-                    <ul aria-expanded="false">
                         <li>
-                            <a href='{{ url('/form-assessment') }}'>Form Assessment</a>
-                        </li>
-                    </ul>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a href='{{ url('/')  }}'>History Assessment</a>
+                            <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
                         </li>
                     </ul>
                 </li>

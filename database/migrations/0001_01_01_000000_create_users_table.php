@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('user_id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('no_telp');
             $table->string('username');
             $table->enum('gender', ['Laki-Laki', 'Perempuan']);
             $table->text('profilePhoto');

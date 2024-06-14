@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExsumController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KejadianController;
+use App\Http\Controllers\LaporanController;
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -13,22 +17,30 @@ Route::get('/', function () {
 });
 
 // ROUTES UNTUK USER MANAGEMENT
-Route::get('/user-management', function(){
-    return view('user.user-management');
-});
+Route::get('/user-management', [UserController::class, 'index']);
 
 // ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
-Route::get('/user-management/create', function () {
-    return view('user.create');
-});
+Route::get('/user-management/create', [UserController::class, 'create']);
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
 
 // ROUTES UNTUK KEJADIAN
+/*Route::get('/kejadian', function () {
+    return view('kejadian.kejadian');
+});*/
+Route::get('/kejadian', [KejadianController::class, 'index']);
+Route::get('/tambah-kejadian', function () {
+    return view('kejadian.tambah-kejadian');
+    Route::post('/', [KejadianController::class,'add'])->name('addkejadian');
+});
 
 
 
 // ROUTES UNTUK ASSESSMENT
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
+Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
-    return view('form-assessment');
+    return view('assessment.form-assessment');
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
@@ -41,10 +53,8 @@ Route::get('/tambah-lapsit', function () {
 });
 
 // ROUTES UNTUK EXECUTIVE SUMMARY
-Route::get('/executive-summary', function () {
-    return view('executive-summary.exsum');
-});
-
+Route::get('/executive-summary', [ExsumController::class, 'index']);
+Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('search');
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report', function(){

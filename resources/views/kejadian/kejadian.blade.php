@@ -8,7 +8,7 @@
                 <i class="icon-laptop_windows"></i>
             </div>
             <div class="page-title">
-                <h5>Manajemen Akun</h5>
+                <h5>Kejadian</h5>
                 <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
             </div>
         </div>
@@ -21,48 +21,45 @@
 </div>
 @endsection
 
-<!-- UBAH UBAH DI BAGIAN SINI AJAA-->
 @section('content')
+<!-- Row start -->
 <div class="row gutters">
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header">Manajemen Akun</div>
+            <div class="card-header">Kejadian</div>
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
-                    <a href="{{ url('/user-management/create')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Akun</button></a> 
+                    <a href="{{ url('/tambah-kejadian')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Kejadian</button></a>
                 </div>
             </div>
             <div class="card-body">
                 <table id="basicExample" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>ID Pegawai</th>
-                            <th>Role</th>
-                            <th>Telepon</th>
+                            <th>Kejadian</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th>Lokasi</th>
+                            <th>Detail</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($users as $us)
+                        @foreach ($kejadians as $kejadian )
                         <tr>
-                            <td>{{ $us->name }}</td>
-                            <td>{{ $us->email }}</td>
-                            <td>{{ $us->user_id }}</td>
-                            <td>{{ $us->role_name}}</td>
-                            <td>{{ $us->no_telp }}</td>
+                            <td>{{ $kejadian['nama_kejadian'] }}</td>
+                            <td>{{ $kejadian['waktu_kejadian'] }}</td>
+                            <td>{{ $kejadian['status'] }}</td>
+                            <td>{{ $kejadian['lokasi'] }}</td>
+                            <td><a href="{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a></td>
                         </tr>
-                        @empty
-                        <tr>
-                            <td colspan="4">Tidak ada data kejadian.</td>
-                        </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+<!-- Row ends -->
 
-
+</div>
 @endsection
