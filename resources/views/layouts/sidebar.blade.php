@@ -72,7 +72,7 @@
                             <a href='{{ url('/laporan-situasi')  }}'>Laporan Situasi</a>
                         </li>
                         <li>
-                            <a href='{{ url('/')  }}'>Kejadian</a>
+                            <a href='{{ url('/kejadian')  }}'>Kejadian</a>
                         </li>
                     </ul>
                 </li>

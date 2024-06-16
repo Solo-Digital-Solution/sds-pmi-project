@@ -14,8 +14,11 @@ class Kejadian extends Model
     protected $fillable = [
         'nama_kejadian',
         'lokasi',
+        'kecamatan',
+        'kelurahan',
+        'latitude',
+        'longitude',
         'waktu_kejadian',
-        'update',
         'dukungan_inter',
         'gambaran_situasi',
         'akses_lokasi',

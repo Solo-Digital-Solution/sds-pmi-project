@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KejadianController;
+use App\Http\Controllers\DropdownController;
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -23,15 +24,11 @@ Route::get('/user-management/create', [UserController::class, 'create']);
 Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
 
 // ROUTES UNTUK KEJADIAN
-/*Route::get('/kejadian', function () {
-    return view('kejadian.kejadian');
-});*/
+Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKejadian');
+//Route::post('/tambah-kejadian/addKejadian', [KejadianController::class,'add']);
 Route::get('/kejadian', [KejadianController::class, 'index']);
-Route::get('/tambah-kejadian', function () {
-    return view('kejadian.tambah-kejadian');
-    Route::post('/', [KejadianController::class,'add'])->name('addkejadian');
-});
-
+Route::get('tambah-kejadian', [DropdownController::class, 'indexKecamatan']);
+Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 
 
 // ROUTES UNTUK ASSESSMENT
