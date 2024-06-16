@@ -10,10 +10,12 @@ class Kejadian extends Model
     use HasFactory;
 
     protected $table = 'kejadian';
-
+    protected $primaryKey = 'id_kejadian';
     protected $fillable = [
         'nama_kejadian',
         'lokasi',
+        'latitude',
+        'longitude',
         'kecamatan',
         'kelurahan',
         'latitude',

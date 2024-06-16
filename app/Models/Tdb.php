@@ -9,6 +9,8 @@ class Tdb extends Model
 {
     use HasFactory;
 
+    protected $table = 'tdb';
+    protected $primaryKey = 'id_tdb';
     protected $fillable = [
         'kend_ops',
         'truk_angkatan',

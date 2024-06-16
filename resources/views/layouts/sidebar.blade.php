@@ -52,9 +52,9 @@
                         <li>
                             <a href='{{ url('/')  }}'>Dashboard</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
@@ -74,24 +74,8 @@
                         <li>
                             <a href='{{ url('/kejadian')  }}'>Kejadian</a>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="has-arrow" aria-expanded="false">
-                        <span class="has-icon">
-                            <i class="icon-assignment_turned_in"></i>
-
-                        </span>
-                        <span class="nav-title">Assessment</span>
-                    </a>
-                    <ul aria-expanded="false">
                         <li>
-                            <a href='{{ url('/form-assessment') }}'>Form Assessment</a>
-                        </li>
-                    </ul>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a href='{{ url('/')  }}'>History Assessment</a>
+                            <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
                         </li>
                     </ul>
                 </li>

@@ -9,6 +9,8 @@ class Korban_jiwa extends Model
 {
     use HasFactory;
 
+    protected $table = 'korban_jiwa';
+    protected $primaryKey = 'id_korban_jiwa';
     protected $fillable = [
         'luka_berat',
         'luka_ringan',

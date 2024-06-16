@@ -25,391 +25,529 @@
 <!-- BEGIN .app-main -->
 <!-- Row start -->
 <div class="row gutters">
-    <div class="col-sm-12">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Nomor Laporan</div>
+			<div class="card-body">
+				<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan nomor">
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="d-flex justify-content-center">
+			<h5 class="m-0 mb-2">DAMPAK</h5>
+		</div>
+		<form action="{{ route('laporan.store') }}" method="POST">
+        @csrf
         <div class="card">
-            <div class="card-header">Umum</div>
+            <div class="card-header">Korban Terdampak</div>
             <div class="card-body">
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputName">Jenis Kejadian</label>
-                            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                <option selected>Pilih jenis Kejadian</option>
-                                <option value="1">Bencana alam</option>
-                                <option value="2">Bencana non alam</option>
-                            </select>
+                            <label for="jumlah_kk">Jumlah KK</label>
+                            <input class="form-control" id="jumlah_kk" name="jumlah_kk" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputEmail">Bencana alam / non alam</label>
-                            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                <option selected>Pilih bencana Alam</option>
-                                <option value="1">Gempa bumi</option>
-                                <option value="2">Angin Puting Beliung</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputDate">Tanggal</label>
-                            <input class="form-control" id="inputDate" type="date" placeholder="Pilih tanggal">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputTime">Waktu</label>
-                            <input class="form-control" id="inputTime" type="time" placeholder="Pilih waktu">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputProvinsi">Provinsi</label>
-                            <select class="custom-select" id="inputProvinsi">
-                                <option selected>Pilih Provinsi</option>
-                                <option value="Aceh">Aceh</option>
-                                <option value="Bali">Bali</option>
-                                <option value="Banten">Banten</option>
-                                <option value="Bengkulu">Bengkulu</option>
-                                <option value="DI Yogyakarta">DI Yogyakarta</option>
-                                <option value="DKI Jakarta">DKI Jakarta</option>
-                                <option value="Gorontalo">Gorontalo</option>
-                                <option value="Jambi">Jambi</option>
-                                <option value="Jawa Barat">Jawa Barat</option>
-                                <option value="Jawa Tengah">Jawa Tengah</option>
-                                <option value="Jawa Timur">Jawa Timur</option>
-                                <option value="Kalimantan Barat">Kalimantan Barat</option>
-                                <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                                <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                                <option value="Kalimantan Timur">Kalimantan Timur</option>
-                                <option value="Kalimantan Utara">Kalimantan Utara</option>
-                                <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
-                                <option value="Kepulauan Riau">Kepulauan Riau</option>
-                                <option value="Lampung">Lampung</option>
-                                <option value="Maluku">Maluku</option>
-                                <option value="Maluku Utara">Maluku Utara</option>
-                                <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
-                                <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
-                                <option value="Papua">Papua</option>
-                                <option value="Papua Barat">Papua Barat</option>
-                                <option value="Riau">Riau</option>
-                                <option value="Sulawesi Barat">Sulawesi Barat</option>
-                                <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                                <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                                <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                                <option value="Sulawesi Utara">Sulawesi Utara</option>
-                                <option value="Sumatera Barat">Sumatera Barat</option>
-                                <option value="Sumatera Selatan">Sumatera Selatan</option>
-                                <option value="Sumatera Utara">Sumatera Utara</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputKota">Kabupaten/Kota</label>
-                            <select class="custom-select" id="inputKota">
-                                <option selected>Pilih Kabupaten/Kota</option>
-                                <option value="Surakarta">Surakarta</option>
-                                <option value="Sukoharjo">Sukoharjo</option>
-                                <option value="Karanganyar">Karanganyar</option>
-                                <option value="Solo Baru">Solo Baru</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputKecamatan">Kecamatan</label>
-                            <select class="custom-select" id="inputKecamatan">
-                                <option selected>Pilih Kecamatan</option>
-                                <option value="Banjarsari">Banjarsari</option>
-                                <option value="Jebres">Jebres</option>
-                                <option value="Laweyan">Laweyan</option>
-                                <option value="PasarKliwon">Pasar Kliwon</option>
-                                <option value="Serengan">Serengan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputKelurahan">Kelurahan</label>
-                            <select class="custom-select" id="inputKelurahan">
-                                <option selected>Pilih Kelurahan</option>
-                                <option value="Mojosongo">Mojosongo</option>
-                                <option value="Jebres">Jebres</option>
-                                <option value="Tegalharjo">Tegalharjo</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-12">
-                        <div class="form-group">
-                            <label for="location">Lokasi</label>
-                            <input type="text" id="location" class="form-control" placeholder="Klik pada peta untuk memilih lokasi" readonly>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-12">
-                        <div id="map"></div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="inputReadOnly">Petugas Assessment</label>
-                            <input class="form-control" id="inputName" type="text" placeholder="Masukkan nama lengkap">
+                            <label for="jumlah_jiwa">Jumlah Jiwa</label>
+                            <input class="form-control" id="jumlah_jiwa" name="jumlah_jiwa" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">Informasi Umum</div>
-            <div class="card-body">
-                <div class="row gutters">
-                    <div class="col-12">
-                        <h5>Jumlah Korban</h5>
-                    </div>
-                    <div class="col-sm-3 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Meninggal Dunia</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Luka Berat</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Luka Ringan</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Hilang</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="Pengungsi">Pengungsi / IDP's</label>
-                            <select class="custom-select" id="Pengungsi">
-                                <option value="Mojosongo">Ada</option>
-                                <option value="Jebres">Tidak ada</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="Pengungsi">Jumlah Pengungsi / IDP's</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-12">
-                        <div class="form-group">
-                            <label for="Pengungsi">Lokasi Pengungsian</label>
-                            <textarea class="form-control" id="textareaAddress" placeholder="Masukkan alamat lengkap" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">Dampak Sarana dan Prasarana</div>
-            <div class="card-body">
-                <div class="row gutters">
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Rumah Tinggal</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Rusak Berat</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="inputNumber">Rusak Ringan</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <h5>Akses Transportasi</h5>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="Jalan">Jalan</label>
-                            <select class="custom-select" id="Jalan">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="Jembatan">Jembatan</label>
-                            <select class="custom-select" id="Jembatan">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="KendaraanUmum">Kendaraan Umum</label>
-                            <select class="custom-select" id="KendaraanUmum">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="accessCommunication">
-                                <h5>Akses Komunikasi</h5>
-                            </label>
-                            <div class="checkbox-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="telecom">
-                                    <label class="custom-control-label" for="telecom">Telepon/Fax/Telex/Telegram</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="mobilePhone">
-                                    <label class="custom-control-label" for="mobilePhone">Telepon Seluler</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="postOffice">
-                                    <label class="custom-control-label" for="postOffice">Kantor Pos</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="internet">
-                                    <label class="custom-control-label" for="internet">Internet</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <h5>Sarana Umum</h5>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="Faskes">RS/Fasilitas Kesehatan</label>
-                            <select class="custom-select" id="Faskes">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="Listrik">Listrik</label>
-                            <select class="custom-select" id="Listrik">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="Air">Air</label>
-                            <select class="custom-select" id="Air">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="Sekolah">Sekolah</label>
-                            <select class="custom-select" id="Sekolah">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                            <label for="TempatIbadah">Tempat Ibadah</label>
-                            <select class="custom-select" id="TempatIbadah">
-                                <option value="Berfungsi">Berfungsi</option>
-                                <option value="Tidak berfungsi">Tidak berfungsi</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">Situasi Keamanan</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">Tindakan yang sudah dilakukan</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">Kebutuhan Mendesak</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">PMI</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Korban</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">OPROL / ORMAS</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">Contact Person</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Masukkan nomor telepon">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row gutters">
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-body">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Kirim</button>
-            </div>
-        </div>
-    </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Korban Jiwa</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Luka Berat</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Luka ringan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Meninggal</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Hilang</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Mengungsi</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Kerusakan Rumah</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Rusak Berat</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Rusak Sedang</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Rusak Ringan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Kerusakan Fasilitas</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Sekolah</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Tempat Ibadah</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Rumah Sakit</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Pasar</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Gedung Pemerintah</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Lain-lain</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Kerusakan infrastruktur</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-12 col-12">
+						<div class="form-group">
+							<label for="deskripsiKerusakan">Deskripsi Kerusakan</label>
+							<textarea class="form-control" id="deskripsiKerusakan" placeholder="Masukkan deskripsi kerusakan" name="deskripsi_kerusakan" rows="3"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Shelter</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-12 col-12">
+						<div class="form-group">
+							<label for="deskripsiKerusakan">Lokasi Shelter</label>
+							<textarea class="form-control" id="deskripsiKerusakan" placeholder="Masukkan lokasi shelter" name="deskripsi_kerusakan" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Jumlah KK</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Jumlah laki-laki</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Jumlah perempuan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Balita</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">5 tahun - 18 tahun</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Lebih dari 18 tahun</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="d-flex justify-content-center">
+			<h5 class="m-0 mb-2">MOBILISASI</h5>
+		</div>
+		<div class="card">
+			<div class="card-header">Personil</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Pengurus</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Staff Markas</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Relawan PMI</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Sukarelawan Spesialis</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Medis</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Paramedis</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Relief</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Logistik</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Watsan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">IT Telekom</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Sheltering</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Alat Utama Sistim TDB</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Kendaraan Operasional</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Truk angkutan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Truk tangki</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Double Cabin</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Alat DU</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Ambulans</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Alat Watsan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">RS Lapangan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Alat PKDD</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Gudang lapangan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Posko Aju</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Alat IT/Tel Lapangan</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Laporan Dokumentasi</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-12 col-12">
+						<div class="form-group">
+							<label for="dokumentasi">Unggah Dokumentasi</label>
+							<input type="file" class="form-control-file" id="dokumentasi" name="dokumentasi[]" accept=".jpg,.jpeg,.png" multiple>
+							<small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="d-flex justify-content-center">
+			<h5 class="m-0 mb-2">GIAT PMI</h5>
+		</div>
+		<div class="card">
+			<div class="card-header">Evakuasi Korban</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Luka Ringan Berat</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Meninggal</label>
+							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Distribusi Layanan</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-sm-12 col-12">
+						<button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
+					</div>
+				</div>
+				<div id="formContainer" class="mt-3">
+					<!-- Form will be appended here -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Personil Dihubungi</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<!-- Inputan Nama Lengkap -->
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="namaLengkap">Nama Lengkap</label>
+							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
+						</div>
+					</div>
+					<!-- Inputan Posisi -->
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="posisi">Posisi</label>
+							<input class="form-control" id="posisi" type="text" placeholder="Masukkan posisi" name="posisi[]">
+						</div>
+					</div>
+					<!-- Inputan Kontak -->
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="kontak">Kontak</label>
+							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak[]">
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div id="personilContainer">
+					<!-- Form personil dihubungi akan ditambahkan di sini -->
+				</div>
+				<button type="button" id="addPersonil" class="btn btn-primary btn-lg mt-3">+ Tambah personil dihubungi</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Petugas Posko</div>
+			<div class="card-body">
+				<div class="row gutters">
+					<!-- Inputan Nama Lengkap -->
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="namaLengkap">Nama Lengkap</label>
+							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
+						</div>
+					</div>
+					<!-- Inputan Kontak -->
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="kontak">Kontak</label>
+							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak[]">
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div id="petugasContainer">
+					<!-- Form petugas posko akan ditambahkan di sini -->
+				</div>
+				<button type="button" id="addPetugas" class="btn btn-primary btn-lg mt-3">+ Tambah petugas posko</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Giat Pemerintah</div>
+			<div class="card-body">
+				<textarea class="form-control" id="giatPemerintah" placeholder="Masukkan giat pemerintah" name="giat_pemerintah" rows="3"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Kebutuhan</div>
+			<div class="card-body">
+				<textarea class="form-control" id="kebutuhan" placeholder="Masukkan kebutuhan" name="kebutuhan" rows="3"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">Hambatan</div>
+			<div class="card-body">
+				<textarea class="form-control" id="hambatan" placeholder="Masukkan hambatan" name="hambatan" rows="3"></textarea>
+			</div>
+		</div>
+	</div>
 </div>
 </div>
 <!-- Row end -->
@@ -446,4 +584,116 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- END: .app-main -->
+
+<!-- Modal distribusi layanan start -->
+<script>
+    $(document).ready(function(){
+        $('#addForm').click(function(){
+            var form = `
+            <div class="form-group-wrapper">
+                <div class="row gutters">
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="jenisDistribusiLayanan">Jenis Distribusi Layanan</label>
+                            <select class="form-control" name="jenis_distribusi_layanan[]">
+                                <option value="Distribusi Food Item">Distribusi Food Item</option>
+                                <option value="Distribusi Non-food item">Distribusi Non-food item</option>
+                                <option value="Layanan Yankes">Layanan Yankes</option>
+                                <option value="Layanan air bersih">Layanan air bersih</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="lokasi">Lokasi</label>
+                            <input class="form-control" type="text" placeholder="Masukkan lokasi" name="lokasi[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="unit">Unit</label>
+                            <select class="form-control" name="unit[]">
+                                <option value="KK">KK</option>
+                                <option value="orang">Orang</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="jumlah">Jumlah</label>
+                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="jumlah[]">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            `;
+            $('#formContainer').append(form);
+        });
+    });
+</script>
+<!-- Modal distribusi layanan end -->
+
+<!-- Modal personil dihubungi start -->
+<script>
+    $(document).ready(function(){
+        $('#addPersonil').click(function(){
+            var form = `
+            <div class="personil-form">
+                <div class="row gutters">
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="namaLengkap">Nama Lengkap</label>
+                            <input class="form-control" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="posisi">Posisi</label>
+                            <input class="form-control" type="text" placeholder="Masukkan posisi" name="posisi[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="kontak">Kontak</label>
+                            <input class="form-control" type="text" placeholder="Masukkan kontak" name="kontak[]">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            `;
+            $('#personilContainer').append(form);
+        });
+    });
+</script>
+<!-- Modal personil dihubungi start -->
+<!-- Modal petugas Posko start -->
+<script>
+    $(document).ready(function(){
+        $('#addPetugas').click(function(){
+            var form = `
+            <div class="petugas-form">
+                <div class="row gutters">
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="namaLengkap">Nama Lengkap</label>
+                            <input class="form-control" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="kontak">Kontak</label>
+                            <input class="form-control" type="text" placeholder="Masukkan kontak" name="kontak[]">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            `;
+            $('#petugasContainer').append(form);
+        });
+    });
+</script>
+<!-- Modal petugas Posko start -->
 @endsection

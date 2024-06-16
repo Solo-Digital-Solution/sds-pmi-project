@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KejadianController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DropdownController;
 
 // ROUTES UNTUK AUTH
@@ -32,6 +33,9 @@ Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan'
 
 
 // ROUTES UNTUK ASSESSMENT
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
+Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
     return view('assessment.form-assessment');
 });
@@ -48,8 +52,6 @@ Route::get('/tambah-lapsit', function () {
 // ROUTES UNTUK EXECUTIVE SUMMARY
 Route::get('/executive-summary', [ExsumController::class, 'index']);
 Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('search');
-
-
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report', function(){
