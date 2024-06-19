@@ -38,67 +38,66 @@
 			<h5 class="m-0 mb-2">DAMPAK</h5>
 		</div>
 		<form action="{{ route('laporan.store') }}" method="POST">
-        @csrf
-        <div class="card">
-            <div class="card-header">Korban Terdampak</div>
-            <div class="card-body">
-                <div class="row gutters">
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="jumlah_kk">Jumlah KK</label>
-                            <input class="form-control" id="jumlah_kk" name="jumlah_kk" type="number" placeholder="Masukkan jumlah" required>
-                        </div>
+    @csrf
+    <div class="card">
+        <div class="card-header">Korban Terdampak</div>
+        <div class="card-body">
+            <div class="row gutters">
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="jumlah_kk">Jumlah KK</label>
+                        <input class="form-control" id="jumlah_kk" name="jumlah_kk" type="number" placeholder="Masukkan jumlah" required>
                     </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="jumlah_jiwa">Jumlah Jiwa</label>
-                            <input class="form-control" id="jumlah_jiwa" name="jumlah_jiwa" type="number" placeholder="Masukkan jumlah" required>
-                        </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="jumlah_jiwa">Jumlah Jiwa</label>
+                        <input class="form-control" id="jumlah_jiwa" name="jumlah_jiwa" type="number" placeholder="Masukkan jumlah" required>
                     </div>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
-    </form>
-	</div>
-	<div class="col-sm-12">
-		<div class="card">
-			<div class="card-header">Korban Jiwa</div>
-			<div class="card-body">
-				<div class="row gutters">
-					<div class="col-sm-6 col-12">
-						<div class="form-group">
-							<label for="inputNumber">Luka Berat</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-						</div>
-					</div>
-					<div class="col-sm-6 col-12">
-						<div class="form-group">
-							<label for="inputNumber">Luka ringan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-						</div>
-					</div>
-					<div class="col-sm-6 col-12">
-						<div class="form-group">
-							<label for="inputNumber">Meninggal</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-						</div>
-					</div>
-					<div class="col-sm-6 col-12">
-						<div class="form-group">
-							<label for="inputNumber">Hilang</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-						</div>
-					</div>
-					<div class="col-sm-6 col-12">
-						<div class="form-group">
-							<label for="inputNumber">Mengungsi</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Korban Jiwa</div>
+        <div class="card-body">
+            <div class="row gutters">
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="luka_berat">Luka Berat</label>
+                        <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" required>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="luka_ringan">Luka Ringan</label>
+                        <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" required>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="meninggal">Meninggal</label>
+                        <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah" required>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="hilang">Hilang</label>
+                        <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah" required>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="mengungsi">Mengungsi</label>
+                        <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+
 	</div>
 	<div class="col-sm-12">
 		<div class="card">
