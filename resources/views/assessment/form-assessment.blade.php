@@ -95,9 +95,6 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
-
 	</div>
 	<div class="col-sm-12">
 		<div class="card">
@@ -107,19 +104,19 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Rusak Berat</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="rusak_berat" name="rusak_berat" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Rusak Sedang</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="rusak_sedang" name="rusak_sedang" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Rusak Ringan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="rusak_ringan" name="rusak_ringan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
@@ -134,37 +131,37 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Sekolah</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="sekolah" name="sekolah" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Tempat Ibadah</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="tempat_ibadah" name="tempat_ibadah" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Rumah Sakit</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="rumah_sakit" name="rumah_sakit" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Pasar</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="pasar" name="pasar" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Gedung Pemerintah</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="gedung_pemerintah" name="gedung_pemerintah" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Lain-lain</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="lain_lain" name="lain_lain" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
@@ -179,7 +176,7 @@
 					<div class="col-sm-12 col-12">
 						<div class="form-group">
 							<label for="deskripsiKerusakan">Deskripsi Kerusakan</label>
-							<textarea class="form-control" id="deskripsiKerusakan" placeholder="Masukkan deskripsi kerusakan" name="deskripsi_kerusakan" rows="3"></textarea>
+							<textarea class="form-control" id="deskripsi_kerusakan" name="deskripsi_kerusakan" placeholder="Masukkan deskripsi kerusakan" rows="3"></textarea>
 						</div>
 					</div>
 				</div>
@@ -194,43 +191,55 @@
 					<div class="col-sm-12 col-12">
 						<div class="form-group">
 							<label for="deskripsiKerusakan">Lokasi Shelter</label>
-							<textarea class="form-control" id="deskripsiKerusakan" placeholder="Masukkan lokasi shelter" name="deskripsi_kerusakan" rows="3"></textarea>
+							<textarea class="form-control" id="lokasi_shelter" name="lokasi_shelter" placeholder="Masukkan lokasi shelter" rows="3"></textarea>
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Jumlah KK</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="jumlah_kk" name="jumlah_kk" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Jumlah Jiwa</label>
+							<input class="form-control" id="jumlah_jiwa" name="jumlah_jiwa" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Jumlah laki-laki</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="jumlah_laki" name="jumlah_laki" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Jumlah perempuan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="jumlah_perempuan" name="jumlah_perempuan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Balita</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="dibawah_lima" name="dibawah_lima" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">5 tahun - 18 tahun</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="antara_lima_dan_delapanbelas" name="antara_lima_dan_delapanbelas" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Lebih dari 18 tahun</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="lebih_delapanbelas" name="lebih_delapanbelas" type="number" placeholder="Masukkan jumlah">
+						</div>
+					</div>
+					<div class="col-sm-6 col-12">
+						<div class="form-group">
+							<label for="inputNumber">Jumlah</label>
+							<input class="form-control" id="jumlah" name="jumlah" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
@@ -248,25 +257,25 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Pengurus</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="pengurus" name="pengurus" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Staff Markas</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="staf_markas" name="staf_markas" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Relawan PMI</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="relawan_pmi" name="relawan_pmi" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Sukarelawan Spesialis</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="sukarelawan_spesialis" name="sukarelawan_spesialis" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
@@ -281,43 +290,43 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Medis</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="medis" name="medis" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Paramedis</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="paramedis" name="paramedis" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Relief</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="relief" name="relief" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Logistik</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="logistics" name="logistics" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Watsan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="watsan" name="watsan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">IT Telekom</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="it_telekom" name="it_telekom" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Sheltering</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="sheltering" name="sheltering" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
@@ -332,73 +341,73 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Kendaraan Operasional</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="kend_ops" name="kend_ops" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Truk angkutan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="truk_angkutan" name="truk_angkutan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Truk tangki</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="truk_tangki" name="truk_tangki" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Double Cabin</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="double_cabin" name="double_cabin" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Alat DU</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="alat_du" name="alat_du" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Ambulans</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="ambulans" name="ambulans" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Alat Watsan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="alat_watsan" name="alat_watsan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">RS Lapangan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="rs_lapangan" name="rs_lapangan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Alat PKDD</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="alat_pkdd" name="alat_pkdd" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Gudang lapangan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="gudang_lapangan" name="gudang_lapangan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Posko Aju</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="posko_aju" name="posko_aju" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="inputNumber">Alat IT/Tel Lapangan</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<input class="form-control" id="alat_it_lapangan" name="alat_it_lapangan" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
@@ -421,6 +430,8 @@
 			</div>
 		</div>
 	</div>
+	<button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
 	<div class="col-sm-12">
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">GIAT PMI</h5>
