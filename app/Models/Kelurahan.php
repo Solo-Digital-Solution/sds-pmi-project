@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kerusakan_infrastruktur extends Model
+class Kelurahan extends Model
 {
     use HasFactory;
 
-    protected $table = 'kerusakan_infrastruktur';
-    protected $primaryKey = 'id_kerusakan_infrastruktur';
+    protected $table = 'kelurahan';
+
     protected $fillable = [
-        'deskripsi_kerusakan',
+        'nama_kelurahan',
+        'id_kelurahan'
     ];
 }
- 

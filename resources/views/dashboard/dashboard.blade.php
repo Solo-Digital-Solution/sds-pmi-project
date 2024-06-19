@@ -72,7 +72,6 @@
         <div class="card">
             <div class="card-body">
                 <div class="stats-widget">
-                    <!-- <a href="#" class="stats-label" data-toggle="tooltip" data-placement="top" title="New Followers">47</a> -->
                     <div class="stats-widget-header">
                         <i class="icon-stats-bars"></i>
                     </div>

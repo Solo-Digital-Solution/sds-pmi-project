@@ -9,6 +9,8 @@ class Personil extends Model
 {
     use HasFactory;
 
+    protected $table = 'personil';
+    protected $primaryKey = 'id_personil';
     protected $fillable = [
         'pengurus',
         'staf_markas',

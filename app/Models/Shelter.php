@@ -9,13 +9,18 @@ class Shelter extends Model
 {
     use HasFactory;
 
+    protected $table = 'shelter';
+    protected $primaryKey = 'id_lokasi_shelter';
     protected $fillable = [
         'lokasi_shelter',
         'jumlah_kk',
-        'jumlah',
+        'jumlah_jiwa',
         'jumlah_laki',
         'jumlah_perempuan',
         'dibawah_lima',
-        'antara_lima_dan_delapanbelas'
+        'antara_lima_dan_delapanbelas',
+        'lebih_delapanbelas',
+        'jumlah'
     ];
 }
+ 

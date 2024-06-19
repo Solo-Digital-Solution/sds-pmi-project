@@ -9,6 +9,8 @@ class Petugas_posko extends Model
 {
     use HasFactory;
 
+    protected $table = 'petugas_posko';
+    protected $primaryKey = 'id_petugas_posko';
     protected $fillable = [
         'nama_lengkap',
         'kontak',
