@@ -425,25 +425,28 @@
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">GIAT PMI</h5>
 		</div>
+		<form action="{{ route('laporan.store') }}" method="POST">
+    	@csrf
 		<div class="card">
 			<div class="card-header">Evakuasi Korban</div>
 			<div class="card-body">
 				<div class="row gutters">
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
-							<label for="inputNumber">Luka Ringan Berat</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<label for="luka_ringan_berat">Luka Ringan Berat</label>
+							<input class="form-control" id="luka_ringan_berat" name="luka_ringan_berat" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
-							<label for="inputNumber">Meninggal</label>
-							<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+							<label for="meninggal">Meninggal</label>
+							<input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 	<div class="col-sm-12">
 		<div class="card">
