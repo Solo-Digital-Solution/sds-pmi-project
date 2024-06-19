@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('kend_ops');
             $table->integer('truk_angkutan');
             $table->integer('truk_tangki');
-            $table->integer('double_chain');
+            $table->integer('double_cabin');
             $table->integer('alat_du');
             $table->integer('ambulans');
             $table->integer('alat_watsan');
