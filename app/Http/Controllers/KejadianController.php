@@ -21,9 +21,10 @@ class KejadianController extends Controller
         return view('kejadian.kejadian', ['kejadians' => $kejadians]);
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         //Test Input Form
-      /*  $data = Request::createFromGlobals()->all();
+        /*  $data = Request::createFromGlobals()->all();
         print_r($data);*/
         $validated = $request->validate([
             'nama_kejadian' => ['required'],
@@ -46,10 +47,10 @@ class KejadianController extends Controller
         $validated = Kejadian::create($request->except('_token'));
 
         // Pesan : Sukses
-        $request->session()->flash('success','Kejadian Berhasil Ditambahkan');
+        $request->session()->flash('success', 'Kejadian Berhasil Ditambahkan');
         return redirect('kejadian');
 
-         // Pesan : Gagal
+        // Pesan : Gagal
 
     }
 }
