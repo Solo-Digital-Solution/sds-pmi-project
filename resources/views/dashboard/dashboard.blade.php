@@ -80,7 +80,7 @@
                         <!-- Row start -->
                         <ul class="row no-gutters">
                             <li class="col-sm-6 col">
-                                <h4 class="title">Ngikut Figma</h4>
+                                <h4 class="title"><a href="{{ url('/kejadian') }}">Buat Kejadian</a></h4>
                             </li>
                             <li class="col-sm-6 col">
                                 <h4 class="total">2</h4>
@@ -93,124 +93,124 @@
     </div>
 </div>
 <div class="row gutters">
-	<div class="col-sm-12">
-		<div class="card">
-			<div class="card-header">Daftar Kejadian Aktif</div>
-			<div class="card-body">
-				<table id="basicExample" class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>Kejadian</th>
-							<th>Tanggal</th>
-							<th>Status</th>
-							<th>Lokasi</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-warning btn-rounded">Sedang berlangsung</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">Daftar Kejadian Aktif</div>
+            <div class="card-body">
+                <table id="basicExample" class="table table-striped table-bordered">
+                    <thead>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-warning btn-rounded">Sedang berlangsung</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <th>Kejadian</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th>Lokasi</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-warning btn-rounded">Sedang berlangsung</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-warning btn-rounded">Sedang berlangsung</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
                         <tr>
-							<td>Lorem Ipsum</td>
-							<td>12.06.2024 17:08</td>
-							<td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
-							<td>Jebres</td>
-							<td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum</td>
+                            <td>12.06.2024 17:08</td>
+                            <td><button type="button" class="btn btn-success btn-rounded">Selesai</button></td>
+                            <td>Jebres</td>
+                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Row end -->
 

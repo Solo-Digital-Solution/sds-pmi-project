@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Kejadian;
@@ -14,10 +15,11 @@ class KejadianController extends Controller
         $dataPerPage = max(min($totalData, 10), 1);
         $kejadians = Kejadian::latest()->paginate($dataPerPage);
 
-        return view('kejadian.kejadian', ['kejadians'=>$kejadians]);
+        return view('kejadian.kejadian', ['kejadians' => $kejadians]);
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $validated = $request->validate([
             'nama_kejadian' => ['required', 'string'],
             'lokasi' => ['required', 'text'],
@@ -33,13 +35,12 @@ class KejadianController extends Controller
         Kejadian::create($validated);
 
         // Pesan : Sukses
-        $request->session()->flash('success','Kejadian Berhasil Ditambahkan');
+        $request->session()->flash('success', 'Kejadian Berhasil Ditambahkan');
         return redirect('kejadian.kejadian');
 
-         // Pesan : Gagal
-         if (!$validated) {
+        // Pesan : Gagal
+        if (!$validated) {
             return redirect()->back()->with('error', 'Validasi data gagal!');
         }
     }
-
 }
