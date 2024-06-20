@@ -51,6 +51,5 @@ class KejadianController extends Controller
         return redirect('kejadian');
 
         // Pesan : Gagal
-
     }
 }

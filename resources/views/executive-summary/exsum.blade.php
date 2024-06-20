@@ -28,25 +28,20 @@
         <div class="card">
             <div class="card-header">Laporan Triwulan</div>
             <div class="clearfix m-3">
-                <div class="btn-group float-left" role="group">
+                <div class="btn-group float-left form-group" role="group">
                     <form action="{{ route('search') }}" method="GET" class="mb-3">
-                        <div class="row">
-                            <div class="col">
-                                <input type="date" class="form-control" name="tanggal_awal" placeholder="Tanggal Awal">
-                            </div>
-                            <div class="col">
-                                <input type="date" class="form-control" name="tanggal_akhir" placeholder="Tanggal Akhir">
-                            </div>
-                            <div class="col">
+                        <div class="input-group">
+                            <input type="date" class="form-control" id="startDate" name="tanggal_awal" placeholder="Tanggal Awal">
+                            <input type="date" class="form-control" id="endDate" name="tanggal_akhir" placeholder="Tanggal Akhir">
+                            <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <!--<div class="btn-group custom-btn-group float-right" role="group">
+                <div class="btn-group custom-btn-group float-right" role="group">
                     <button type="button" class="btn btn-primary btn-sm">Export PDF</button>
-                    <button type="button" class="btn btn-primary btn-sm">Export Excel</button>
-                </div>-->
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

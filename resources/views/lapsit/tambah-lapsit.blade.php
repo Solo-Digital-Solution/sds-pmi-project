@@ -652,15 +652,11 @@
     <div class="col-sm-12">
         <div class="">
             <div class="">
-
                 <div class="d-flex justify-content-center w-100 py-3">
                     <a href="#">
                         <button type="button" class="btn btn-primary btn-lg"><i class="icon-location-arrow"></i> Kirim Laporan</button>
                     </a>
                 </div>
-
-
-
             </div>
         </div>
     </div>
@@ -757,7 +753,7 @@
                 </div>
 
                 <hr>
-                
+
             </div>
             `;
             $('#pengungsianContainer').append(form);

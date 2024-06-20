@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.padding-table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.deskripsi-umum,
+.dampak-table {
+    border: 1px solid black;
+}
+
+.deskripsi-umum td,
+.dampak-table th,
+.dampak-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.dukung-internasional,
+.situasi,
+.akses-lokasi {
+    margin-top: 20px;
+}
+
+.situasi p,
+.akses-lokasi p {
+    margin: 0;
+}
+
+.dampak-table th {
+    background-color: yellow;
+}
+
+.dampak-table tr:nth-child(odd) td {
+    background-color: white;
+}
+
+.dampak-table th,
+.dampak-table td {
+    font-size: 12px;
+}
+
+.situasi h3,
+.akses-lokasi h3 {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    margin: 0;
+}
+
+.table-2-col {
+    display: flex;
+    border: 1px solid black;
+}
+
+.label {
+    background-color: red;
+    color: white;
+    padding: 20px;
+    width: 25%;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    padding: 20px;
+    width: 80%;
+    font-size: 12px;
+    border-left: 1px solid black;
+    text-align: justify;
+}
+
+.deskripsi-umum td {
+    font-size: 12px;
+    width: 2%;
+}
+
+.deskripsi-umum td:nth-child(2) {
+    background-color:  #f8d7da;
+    font-size: 12px;
+    text-align: justify;
+}
+
+.deskripsi-umum tr:last-child td {
+    border-top: solid #000;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.gradient-bar {
+    display: flex;
+    height: 50px;
+    flex: 1;
+}
+
+.color {
+    height: 100%;
+}
+
+.color1 { background-color: #ff0000; width: 25%; }
+.color2 { background-color: #ff4d4d; width: 25%; }
+.color3 { background-color: #ff9999; width: 25%; }
+.color4 { background-color: #ffcccc; width: 25%; }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.logo-container img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-container span {
+    font-size: 16px;
+    font-weight: bold;
+}

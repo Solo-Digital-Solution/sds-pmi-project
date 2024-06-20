@@ -6,6 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KejadianController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\PDFController;
+
+// ROUTES UNTUK GENERATE PDF
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -61,4 +65,9 @@ Route::get('/flash-report', function(){
 // CONTOH
 Route::get('/form', function () {
     return view('forms.form');
+});
+
+
+Route::get('/coba', function () {
+    return view('lapsit.lapsit-pdf-2');
 });
