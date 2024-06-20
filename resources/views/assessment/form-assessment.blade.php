@@ -37,7 +37,7 @@
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">DAMPAK</h5>
 		</div>
-		<form action="{{ route('laporan.store') }}" method="POST">
+		<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="card">
         <div class="card-header">Korban Terdampak</div>
@@ -46,13 +46,13 @@
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="jumlah_kk">Jumlah KK</label>
-                        <input class="form-control" id="jumlah_kk" name="jumlah_kk" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="jumlah_kk" name="jumlah_kk" type="number" placeholder="Masukkan jumlah">
                     </div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="jumlah_jiwa">Jumlah Jiwa</label>
-                        <input class="form-control" id="jumlah_jiwa" name="jumlah_jiwa" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="jumlah_jiwa" name="jumlah_jiwa" type="number" placeholder="Masukkan jumlah">
                     </div>
                 </div>
             </div>
@@ -65,31 +65,31 @@
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="luka_berat">Luka Berat</label>
-                        <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" >
                     </div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="luka_ringan">Luka Ringan</label>
-                        <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" >
                     </div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="meninggal">Meninggal</label>
-                        <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah">
                     </div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="hilang">Hilang</label>
-                        <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah">
                     </div>
                 </div>
                 <div class="col-sm-6 col-12">
                     <div class="form-group">
                         <label for="mengungsi">Mengungsi</label>
-                        <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah" required>
+                        <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah">
                     </div>
                 </div>
             </div>
@@ -422,7 +422,7 @@
 					<div class="col-sm-12 col-12">
 						<div class="form-group">
 							<label for="dokumentasi">Unggah Dokumentasi</label>
-							<input type="file" class="form-control-file" id="dokumentasi" name="dokumentasi[]" accept=".jpg,.jpeg,.png" multiple>
+							<input type="file" class="form-control-file" id="dokumentasi" name="dokumentasi" accept=".jpg,.jpeg,.png" multiple>
 							<small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
 						</div>
 					</div>
@@ -454,10 +454,8 @@
 				</div>
 			</div>
 		</div>
-		</form>
 	</div>
-	<button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+	
 
 	<div class="col-sm-12">
 		<div class="card">
@@ -483,21 +481,21 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="namaLengkap">Nama Lengkap</label>
-							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
+							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap">
 						</div>
 					</div>
 					<!-- Inputan Posisi -->
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="posisi">Posisi</label>
-							<input class="form-control" id="posisi" type="text" placeholder="Masukkan posisi" name="posisi[]">
+							<input class="form-control" id="posisi" type="text" placeholder="Masukkan posisi" name="posisi">
 						</div>
 					</div>
 					<!-- Inputan Kontak -->
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="kontak">Kontak</label>
-							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak[]">
+							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak">
 						</div>
 					</div>
 				</div>
@@ -509,6 +507,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Petugas Posko</div>
@@ -518,14 +517,14 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="namaLengkap">Nama Lengkap</label>
-							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
+							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap">
 						</div>
 					</div>
 					<!-- Inputan Kontak -->
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="kontak">Kontak</label>
-							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak[]">
+							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak">
 						</div>
 					</div>
 				</div>
@@ -537,6 +536,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Giat Pemerintah</div>
@@ -545,6 +545,8 @@
 			</div>
 		</div>
 	</div>
+	<button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Kebutuhan</div>
