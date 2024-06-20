@@ -32,7 +32,7 @@ class LaporanController extends Controller
         ]);
 
 
-        $personil = DB::table('personil')->insertGetId([
+        $personil = DB::table('personil')->insertGetId([]);
 
         $kerusakan_rumah = DB::table('kerusakan_rumah')->insertGetId([
             'id_kerusakan_rumah' => $request->id_kerusakan_rumah,
@@ -115,13 +115,13 @@ class LaporanController extends Controller
         ]);
 
         $evakuasi_korban = DB::table('evakuasi_korban')->insertGetId([
-            'id_evakuasi_korban' => $id_evakuasi_korban,
+            'id_evakuasi_korban' => $request->id_evakuasi_korban,
             'luka_ringan_berat' => $request->luka_ringan_berat,
             'meninggal' => $request->meninggal
         ]);
 
         $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
-            'id_distribusi_layanan' => $id_distribusi_layanan,
+            'id_distribusi_layanan' => $request->id_distribusi_layanan,
             'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
             'lokasi' => $request->lokasi,
             'unit' => $request->unit,
@@ -138,14 +138,14 @@ class LaporanController extends Controller
         ]);
 
         $personil_dihubungi = DB::table('personil_dihubungi')->insertGetId([
-            'id_personil_dihubungi' => $id_personil_dihubungi,
+            'id_personil_dihubungi' => $request->id_personil_dihubungi,
             'nama_lengkap' => $request->nama_lengkap,
             'posisi' => $request->posisi,
             'kontak' => $request->kontak
         ]);
 
         $petugas_posko = DB::table('petugas_posko')->insertGetId([
-            'id_petugas_posko' => $id_petugas_posko,
+            'id_petugas_posko' => $request->id_petugas_posko,
             'nama_lengkap' => $request->nama_lengkap,
             'kontak' => $request->kontak
         ]);
