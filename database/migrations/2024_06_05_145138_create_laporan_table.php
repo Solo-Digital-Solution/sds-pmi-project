@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('laporan', function (Blueprint $table) {
             $table->id('id_laporan');
-            $table->foreignId('id_kejadian')->references('id_kejadian')->on('kejadian')->onDelete('cascade');
+            // $table->foreignId('id_kejadian')->references('id_kejadian')->on('kejadian')->onDelete('cascade');
             $table->foreignId('id_dampak')->references('id_dampak')->on('dampak')->onDelete('cascade');
             $table->foreignId('id_mobilisasi')->references('id_mobilisasi')->on('mobilisasi')->onDelete('cascade');
             $table->foreignId('id_giat_pmi')->references('id_giat_pmi')->on('giat_pmi')->onDelete('cascade');
