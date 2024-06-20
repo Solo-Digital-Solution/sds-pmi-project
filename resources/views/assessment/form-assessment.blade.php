@@ -430,14 +430,11 @@
 			</div>
 		</div>
 	</div>
-	<button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+	
 	<div class="col-sm-12">
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">GIAT PMI</h5>
 		</div>
-		<form action="{{ route('laporan.store') }}" method="POST">
-    	@csrf
 		<div class="card">
 			<div class="card-header">Evakuasi Korban</div>
 			<div class="card-body">
@@ -459,6 +456,9 @@
 		</div>
 		</form>
 	</div>
+	<button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Distribusi Layanan</div>

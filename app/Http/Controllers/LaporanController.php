@@ -31,9 +31,6 @@ class LaporanController extends Controller
             'mengungsi' => $request->mengungsi
         ]);
 
-
-        $personil = DB::table('personil')->insertGetId([
-
         $kerusakan_rumah = DB::table('kerusakan_rumah')->insertGetId([
             'id_kerusakan_rumah' => $request->id_kerusakan_rumah,
             'rusak_berat' => $request->rusak_berat,
@@ -93,7 +90,6 @@ class LaporanController extends Controller
             'relief' => $request->relief,
             'logistics' => $request->logistics,
             'watsan' => $request->watsan,
-            'it_telkom' => $request->it_telkom,
             'it_telekom' => $request->it_telekom,
             'sheltering' => $request->sheltering
         ]);
@@ -114,48 +110,50 @@ class LaporanController extends Controller
             'alat_it_lapangan' => $request->alat_it_lapangan
         ]);
 
-        $evakuasi_korban = DB::table('evakuasi_korban')->insertGetId([
-            'id_evakuasi_korban' => $id_evakuasi_korban,
-            'luka_ringan_berat' => $request->luka_ringan_berat,
-            'meninggal' => $request->meninggal
-        ]);
-
-        $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
-            'id_distribusi_layanan' => $id_distribusi_layanan,
-            'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
-            'lokasi' => $request->lokasi,
-            'unit' => $request->unit,
-            'jumlah' => $request->jumlah
-        ]);
-
-        $giat_pmi = DB::table('giat_pmi')->insert([
-            'id_evakuasi_korban' => $evakuasi_korban
-        ]);
-
-        $layanan_korban = DB::table('layanan_korban')->insert([
-            'id_giat_pmi' => $giat_pmi,
-            'id_distribusi_layanan' => $distribusi_layanan
-        ]);
-
-        $personil_dihubungi = DB::table('personil_dihubungi')->insertGetId([
-            'id_personil_dihubungi' => $id_personil_dihubungi,
-            'nama_lengkap' => $request->nama_lengkap,
-            'posisi' => $request->posisi,
-            'kontak' => $request->kontak
-        ]);
-
-        $petugas_posko = DB::table('petugas_posko')->insertGetId([
-            'id_petugas_posko' => $id_petugas_posko,
-            'nama_lengkap' => $request->nama_lengkap,
-            'kontak' => $request->kontak
-        ]);
-
-
         DB::table('mobilisasi')->insert([
             'id_personil' => $personil,
             'id_tsr' => $tsr,
-            'id_tdb' => $tdb,
+            'id_tdb' => $tdb
         ]);
+
+        // $evakuasi_korban = DB::table('evakuasi_korban')->insertGetId([
+        //     'id_evakuasi_korban' => $request->id_evakuasi_korban,
+        //     'luka_ringan_berat' => $request->luka_ringan_berat,
+        //     'meninggal' => $request->meninggal
+        // ]);
+
+        // $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
+        //     'id_distribusi_layanan' => $request->id_distribusi_layanan,
+        //     'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
+        //     'lokasi' => $request->lokasi,
+        //     'unit' => $request->unit,
+        //     'jumlah' => $request->jumlah
+        // ]);
+
+        // DB::table('giat_pmi')->insert([
+        //     'id_evakuasi_korban' => $evakuasi_korban
+        // ]);
+
+        // DB::table('layanan_korban')->insert([
+        //     'id_giat_pmi' => $giat_pmi,
+        //     'id_distribusi_layanan' => $distribusi_layanan
+        // ]);
+
+        // $personil_dihubungi = DB::table('personil_dihubungi')->insertGetId([
+        //     'id_personil_dihubungi' => $request->id_personil_dihubungi,
+        //     'nama_lengkap' => $request->nama_lengkap,
+        //     'posisi' => $request->posisi,
+        //     'kontak' => $request->kontak
+        // ]);
+
+        // $petugas_posko = DB::table('petugas_posko')->insertGetId([
+        //     'id_petugas_posko' => $request->id_petugas_posko,
+        //     'nama_lengkap' => $request->nama_lengkap,
+        //     'kontak' => $request->kontak
+        // ]);
+
+
+        
 
         
 

@@ -45,21 +45,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">
-                        Gambaran Umum Situasi <span style="color: red;">*</span>
-                    </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">
-                        Keterangan Akses Menuju Lokasi <span style="color: red;">*</span>
-                    </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-
             </div>
         </div>
     </div>
