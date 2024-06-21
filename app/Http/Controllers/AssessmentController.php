@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Korban_terdampak;
-use Illuminate\Support\Facades\DB;
 
-class LaporanController extends Controller
+class AssessmentController extends Controller
 {
     public function index()
     {
         // Menampilkan form assessment
-        return view('lapsit.tambah-lapsit');
+        return view('assessment.form-assessment');
     }
 
     public function store(Request $request)
@@ -172,7 +170,7 @@ class LaporanController extends Controller
             'kebutuhan' => $request->kebutuhan,
             'hambatan' => $request->hambatan,
             'nama_laporan' => $request->nama_laporan,
-            'update' => $request->update, // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
+            // 'update' => $request->update, // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
         ]);
 
 

@@ -26,6 +26,8 @@
 <div class="row gutters">
 
     <div class="col-sm-12">
+    <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
         <div class="card">
             <div class="card-body">
 
@@ -85,31 +87,31 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Luka Berat</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+                            <input class="form-control" name="luka_berat" id="luka_berat" type="number" placeholder="Masukkan jumlah">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Luka ringan</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+                            <input class="form-control" name="luka_ringan" id="luka_ringan" type="number" placeholder="Masukkan jumlah">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Meninggal</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+                            <input class="form-control" name="meninggal id="meninggal" type="number" placeholder="Masukkan jumlah">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Hilang</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+                            <input class="form-control" name="hilang" id="hilang" type="number" placeholder="Masukkan jumlah">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Mengungsi</label>
-                            <input class="form-control" id="inputNumber" type="number" placeholder="Masukkan jumlah">
+                            <input class="form-control" name="mengungsi" id="mengungsi" type="number" placeholder="Masukkan jumlah">
                         </div>
                     </div>
                 </div>
@@ -483,22 +485,55 @@
     </div>
 
     <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header" style="font-weight: bold;">Distribusi Layanan</div>
-            <div class="card-body">
-
-                <div id="formContainer">
-                    <!-- Form petugas posko akan ditambahkan di sini -->
-                </div>
-                <div class="row gutters">
-                    <div class="col-sm-12 col-12">
-                        <button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
+	<div class="card">
+			<div class="card-header" style="font-weight: bold;">Distribusi Layanan</div>
+			<div class="card-body">
+				<div class="row gutters">
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Jenis Distribusi Layanan</label>
+                            <select class="form-control" name="jenis_distribusi_layanan" id="jenis_distribusi_layanan">
+                            	<option selected>-- Pilih Jenis Distribusi Layanan --</option>
+                                <option value="Food Item">Food Item</option>
+                                <option value="Non-Food Item">Non-Food Item</option>
+                                <option value="Layanan Kesehatan">Layanan Kesehatan</option>
+                                <option value="Layanan Air Bersih">Layanan Air Bersih</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="lokasi">Lokasi</label>
+                            <input class="form-control" type="text" placeholder="Masukkan lokasi" name="lokasi">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Unit</label>
+                            <select class="form-control" name="unit" id="unit">
+                            	<option selected>-- Pilih Unit --</option>
+                                <option value="KK">KK</option>
+                                <option value="orang">Orang</option>
+                                <option value="orang">Liter</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="jumlah">Jumlah</label>
+                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="jumlah">
+                        </div>
+                    </div>
+					<div class="col-sm-12 col-12">
+						<button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
+					</div>
+				</div>
+				<div id="formContainer" class="mt-3">
+					<!-- Form will be appended here -->
+				</div>
+			</div>
+		</div>
+	</div>
 
     <div class="col-sm-12">
         <div class="card">
@@ -645,7 +680,9 @@
             </div>
         </div>
     </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
 
+</form>
 </div>
 <!-- Row end -->
 
