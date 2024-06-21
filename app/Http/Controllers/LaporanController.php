@@ -35,14 +35,12 @@ class LaporanController extends Controller
         ]);
 
         $kerusakan_rumah = DB::table('kerusakan_rumah')->insertGetId([
-            'id_kerusakan_rumah' => $request->id_kerusakan_rumah,
             'rusak_berat' => $request->rusak_berat,
             'rusak_sedang' => $request->rusak_sedang,
             'rusak_ringan' => $request->rusak_ringan
         ]);
 
         $kerusakan_fasilitas = DB::table('kerusakan_fasilitas')->insertGetId([
-            'id_kerusakan_fasilitas' => $request->id_kerusakan_fasilitas,
             'sekolah' => $request->sekolah,
             'tempat_ibadah' => $request->tempat_ibadah,
             'rumah_sakit' => $request->rumah_sakit,
@@ -79,7 +77,6 @@ class LaporanController extends Controller
         // ================================= MOBILISASI =================================
 
         $personil = DB::table('personil')->insertGetId([
-            'id_personil' => $request->id_personil,
             'pengurus' => $request->pengurus,
             'staf_markas' => $request->staf_markas,
             'relawan_pmi' => $request->relawan_pmi,
@@ -87,7 +84,6 @@ class LaporanController extends Controller
         ]);
 
         $tsr = DB::table('tsr')->insertGetId([
-            'id_tsr' => $request->id_tsr,
             'medis' => $request->medis,
             'paramedis' => $request->paramedis,
             'relief' => $request->relief,
@@ -98,7 +94,6 @@ class LaporanController extends Controller
         ]);
 
         $tdb = DB::table('tdb')->insertGetId([
-            'id_tdb' => $request->id_tdb,
             'kend_ops' => $request->kend_ops,
             'truk_angkutan' => $request->truk_angkutan,
             'truk_tangki' => $request->truk_tangki,
