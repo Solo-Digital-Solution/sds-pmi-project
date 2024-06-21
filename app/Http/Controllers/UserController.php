@@ -43,6 +43,14 @@ class UserController extends Controller
             'profilePhoto' => ''
         ]);
 
+        $file = $request->file('profilePhoto');
+        $nama_dokumen = $users . '.' . $request->file('profilePhoto')->getClientOriginalExtension();
+        $file->move('profilePhoto/', $nama_dokumen);
+
+        $photo = DB::table('users')->where('user_id', '=', $user_id)->update([
+            'profilePhoto' => $nama_dokumen
+        ]);
+
         $role_id = $request->role_name;
 
         $roles = DB::table('users_has_role')->insert([

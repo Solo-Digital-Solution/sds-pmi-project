@@ -22,8 +22,29 @@
 @endsection
 
 @section('content')
+<<<<<<< HEAD
 <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+=======
+<!-- BEGIN .app-main -->
+<!-- Row start -->
+<div class="row gutters">
+	<div class="col-sm-12">
+	<form action="{{ route('assessment.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+		<div class="card">
+			<div class="card-header">Nomor Laporan</div>
+			<div class="card-body">
+				<input name="nama_laporan" class="form-control" id="nama_laporan" type="number" placeholder="Masukkan nomor laporan">
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="d-flex justify-content-center">
+			<h5 class="m-0 mb-2">DAMPAK</h5>
+		</div>
+
+>>>>>>> origin/main
     <div class="card">
         <div class="card-header">Korban Terdampak</div>
         <div class="card-body">
@@ -414,7 +435,12 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
     <div class="col-sm-12">
+=======
+
+	<div class="col-sm-12">
+>>>>>>> origin/main
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">GIAT PMI</h5>
 		</div>
@@ -438,7 +464,13 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
     <div class="col-sm-12">
+=======
+
+
+	<div class="col-sm-12">
+>>>>>>> origin/main
 	<div class="card">
 			<div class="card-header">Distribusi Layanan</div>
 			<div class="card-body">
@@ -446,7 +478,11 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Jenis Distribusi Layanan</label>
+<<<<<<< HEAD
                             <select class="form-control" name="inpu[0][jenis_distribusi_layanan]" id="jenis_distribusi_layanan">
+=======
+                            <select class="form-control" name="jenis_distribusi_layanan" id="jenis_distribusi_layanan">
+>>>>>>> origin/main
                             	<option selected>-- Pilih Jenis Distribusi Layanan --</option>
                                 <option value="Food Item">Food Item</option>
                                 <option value="Non-Food Item">Non-Food Item</option>
@@ -458,13 +494,21 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="lokasi">Lokasi</label>
+<<<<<<< HEAD
                             <input class="form-control" type="text" placeholder="Masukkan lokasi" name="inpu[0][lokasi]">
+=======
+                            <input class="form-control" type="text" placeholder="Masukkan lokasi" name="lokasi">
+>>>>>>> origin/main
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Unit</label>
+<<<<<<< HEAD
                             <select class="form-control" name="inpu[0][unit]" id="unit">
+=======
+                            <select class="form-control" name="unit" id="unit">
+>>>>>>> origin/main
                             	<option selected>-- Pilih Unit --</option>
                                 <option value="KK">KK</option>
                                 <option value="orang">Orang</option>
@@ -475,6 +519,7 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="jumlah">Jumlah</label>
+<<<<<<< HEAD
                             <input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[0][jumlah]">
                         </div>
                     </div>
@@ -483,11 +528,27 @@
                         <!-- Form personil dihubungi akan ditambahkan di sini -->
                     </div>
                     <button type="button" name="addDistribusi" id="addDistribusi" class="btn btn-primary btn-lg mt-3">+ Tambah distribusi layanan</button>
+=======
+                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="jumlah">
+                        </div>
+                    </div>
+					<div class="col-sm-12 col-12">
+						<button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
+					</div>
+				</div>
+				<div id="formContainer" class="mt-3">
+					<!-- Form will be appended here -->
+				</div>
+>>>>>>> origin/main
 			</div>
 		</div>
 	</div>
 	</div>
+<<<<<<< HEAD
 <div class="col-sm-12">
+=======
+	<div class="col-sm-12">
+>>>>>>> origin/main
 		<div class="card">
 			<div class="card-header">Personil Dihubungi</div>
 			<div class="card-body">
@@ -522,7 +583,12 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
     <div class="col-sm-12">
+=======
+
+	<div class="col-sm-12">
+>>>>>>> origin/main
 		<div class="card">
 			<div class="card-header">Petugas Posko</div>
 			<div class="card-body">
@@ -550,7 +616,12 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
     <div class="col-sm-12">
+=======
+
+	<div class="col-sm-12">
+>>>>>>> origin/main
 		<div class="card">
 			<div class="card-header">Giat Pemerintah</div>
 			<div class="card-body">
@@ -558,7 +629,13 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
     <div class="col-sm-12">
+=======
+	<!-- <button type="submit" class="btn btn-primary mt-3">Submit</button> -->
+
+	<div class="col-sm-12">
+>>>>>>> origin/main
 		<div class="card">
 			<div class="card-header">Kebutuhan</div>
 			<div class="card-body">
@@ -574,8 +651,45 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
+=======
+	<button type="submit" class="btn btn-primary mt-3">Submit</button>
+
+	</form>
+</div>
+</div>
+<!-- Row end -->
+</div>
+<!-- END: .main-content -->
+</div>
+<!-- Google Maps API -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    // Inisialisasi peta
+    var map = L.map('map').setView([-6.200000, 106.816666], 8);
+
+    // Tambahkan tile layer dari OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var marker;
+
+    // Fungsi untuk menambahkan marker dan mengisi input lokasi
+    function onMapClick(e) {
+        if (marker) {
+            map.removeLayer(marker);
+        }
+        marker = L.marker(e.latlng).addTo(map);
+        document.getElementById('location').value = `Lat: ${e.latlng.lat}, Lng: ${e.latlng.lng}`;
+    }
+
+    // Tambahkan event listener untuk klik pada peta
+    map.on('click', onMapClick);
+</script>
+>>>>>>> origin/main
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

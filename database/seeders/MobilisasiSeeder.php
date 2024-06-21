@@ -13,7 +13,7 @@ class MobilisasiSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('tdb')->insert([
+        $tdbId = DB::table('tdb')->insertGetId([
             [
                 'kend_ops' => 5,
                 'truk_angkutan' => 3,
@@ -30,7 +30,7 @@ class MobilisasiSeeder extends Seeder
             ],
         ]);
 
-        DB::table('tsr')->insert([
+        $tsrId = DB::table('tsr')->insertGetId([
             [
                 'medis' => 5,
                 'paramedis' => 4,
@@ -42,7 +42,7 @@ class MobilisasiSeeder extends Seeder
             ],
         ]);
 
-        DB::table('personil')->insert([
+        $personilId =DB::table('personil')->insertGetId([
             [
                 'pengurus' => 1,
                 'staf_markas' => 5,
@@ -53,9 +53,9 @@ class MobilisasiSeeder extends Seeder
 
         DB::table('mobilisasi')->insert([
             [
-                'id_personil' => 1,
-                'id_tsr' => 1,
-                'id_tdb' => 1,
+                'id_personil' => $personilId,
+                'id_tsr' => $tsrId,
+                'id_tdb' => $tsrId,
             ],
         ]);
     }

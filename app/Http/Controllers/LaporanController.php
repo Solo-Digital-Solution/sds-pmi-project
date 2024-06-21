@@ -5,14 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Korban_terdampak;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use App\Models\Personil_dihubungi; // Pastikan untuk mengimpor model Personil_dihubungi
+=======
+use App\Models\Laporan;
+use App\Models\Dampak;
+use App\Models\Distribusi_layanan;
+use App\Models\Dokumentasi;
+use App\Models\Evakuasi_korban;
+use App\Models\Giat_pmi;
+use App\Models\Kejadian;
+use App\Models\Kerusakan_fasilitas;
+use App\Models\Kerusakan_infrastruktur;
+use App\Models\Kerusakan_rumah;
+use App\Models\Korban_jiwa;
+// use App\Models\Korban_terdampak;
+use App\Models\Layanan_korban;
+use App\Models\Mobilisasi;
+use App\Models\Personil;
+use App\Models\Personil_dihubungi;
+use App\Models\Petugas_posko;
+use App\Models\Shelter;
+use App\Models\Tdb;
+use App\Models\Tsr;
+>>>>>>> origin/main
 
 class LaporanController extends Controller
 {
     public function index()
     {
-        // Menampilkan form assessment
-        return view('assessment.form-assessment');
+        $totalData = laporan::count();
+        $dataPerPage = max(min($totalData, 10), 1);
+        $laporans = Laporan::latest()->paginate($dataPerPage);
+
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
     }
 
     public function store(Request $request)
@@ -123,10 +149,22 @@ class LaporanController extends Controller
             'meninggal' => $request->meninggal
         ]);
 
+<<<<<<< HEAD
+=======
+        $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
+            'id_distribusi_layanan' => $request->id_distribusi_layanan,
+            'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
+            'lokasi' => $request->lokasi,
+            'unit' => $request->unit,
+            'jumlah' => $request->jumlah
+        ]);
+
+>>>>>>> origin/main
         $giat_pmi = DB::table('giat_pmi')->insert([
             'id_evakuasi_korban' => $evakuasi_korban
         ]);
 
+<<<<<<< HEAD
         foreach ($request->inpu as $input) {
             $distribusi_layanan[] = DB::table('distribusi_layanan')->insertGetId([
                 'jenis_distribusi_layanan' => $input['jenis_distribusi_layanan'],
@@ -135,6 +173,12 @@ class LaporanController extends Controller
                 'jumlah' => $input['jumlah']
             ]);
         }
+=======
+        $layanan_korban = DB::table('layanan_korban')->insert([
+            'id_giat_pmi' => $giat_pmi,
+            'id_distribusi_layanan' => $distribusi_layanan
+        ]);
+>>>>>>> origin/main
 
         // dd($distribusi_layanan);
 
@@ -181,7 +225,24 @@ class LaporanController extends Controller
             'file_path' => $nama_dokumen
         ]);
 
+<<<<<<< HEAD
         //dd($request->all());
+=======
+        $laporan = DB::table('laporan')->insertGetId([
+            'id_dampak' => $dampak,
+            'id_kejadian' => 1,
+            'id_mobilisasi' => $mobilisasi,
+            'id_giat_pmi' => $giat_pmi,
+            'id_personil_dihubungi' => $personil_dihubungi,
+            'id_petugas_posko' => $petugas_posko,
+            'id_dokumentasi' => $dokumentasi,
+            'giat_pemerintah' => $request->giat_pemerintah,
+            'kebutuhan' => $request->kebutuhan,
+            'hambatan' => $request->hambatan,
+            'nama_laporan' => $request->nama_laporan,
+            'update' => $request->update ?? null // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
+        ]);
+>>>>>>> origin/main
 
 
         // DB::table('mobilisasi')->insert([
@@ -196,6 +257,7 @@ class LaporanController extends Controller
         //     'meninggal' => $request->meninggal
         // ]);
 
+<<<<<<< HEAD
         
 
         // foreach ($request->inputs as $input) {
@@ -219,6 +281,15 @@ class LaporanController extends Controller
         //dd($request->all());
 
         
+=======
+        // $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
+        //     // 'id_distribusi_layanan' => $request->id_distribusi_layanan,
+        //     'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
+        //     'lokasi' => $request->lokasi,
+        //     'unit' => $request->unit,
+        //     'jumlah' => $request->jumlah
+        // ]);
+>>>>>>> origin/main
 
         // DB::table('giat_pmi')->insert([
         //     'id_evakuasi_korban' => $evakuasi_korban
@@ -260,16 +331,16 @@ class LaporanController extends Controller
         // ]);
 
 
-        
 
-        
+
+
 
         // $tdb = DB::table('dokumentasi')->insertGetId([
         //     'id_dokumentasi' => $request->id_dokumentasi,
         //     'file_path' => $request->file_path
         // ]);
 
-        
+
 
         // $folder = 'public/dokumentasi';
 
