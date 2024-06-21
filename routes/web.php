@@ -71,3 +71,7 @@ Route::get('/form', function () {
 Route::get('/coba', function () {
     return view('lapsit.lapsit-pdf-2');
 });
+
+Route::get('/coba2', function () {
+    return view('assessment.2form-assessment');
+});
