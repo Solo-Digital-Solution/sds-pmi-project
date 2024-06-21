@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExsumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KejadianController;
-use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
@@ -41,9 +40,9 @@ Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
 
 
 // ROUTES UNTUK ASSESSMENT
-Route::get('/form-assessment', [AssessmentController::class, 'index'])->name('assessment.index');
-Route::post('/form-assessment', [AssessmentController::class, 'store'])->name('assessment.store');
-Route::post('/submit-assessment', [AssessmentController::class, 'store'])->name('submit-assessment');
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('assessment.index');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('assessment.store');
+Route::post('/submit-assessment', [LaporanController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
     return view('assessment.form-assessment');
 });
