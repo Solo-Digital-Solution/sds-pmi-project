@@ -9,7 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('pdf', [PDFController::class, 'generatePDF']);
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -38,7 +38,6 @@ Route::get('edit-kejadian', [DropdownController::class, 'indexKecamatanEdit']);
 Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
 
-
 // ROUTES UNTUK ASSESSMENT
 Route::get('/form-assessment', [LaporanController::class, 'index'])->name('assessment.index');
 Route::post('/form-assessment', [LaporanController::class, 'store'])->name('assessment.store');
@@ -48,7 +47,6 @@ Route::get('/form-assessment', function () {
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-// ROUTES UNTUK ASSESSMENT
 Route::get('/tambah-lapsit', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 
@@ -78,6 +76,7 @@ Route::get('/form', function () {
 Route::get('/coba', function () {
     return view('lapsit.lapsit-pdf-2');
 });
+
 
 Route::get('/coba2', function () {
     return view('assessment.2form-assessment');

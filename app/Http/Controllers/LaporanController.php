@@ -172,7 +172,7 @@ class LaporanController extends Controller
             'kebutuhan' => $request->kebutuhan,
             'hambatan' => $request->hambatan,
             'nama_laporan' => $request->nama_laporan,
-            'update' => $request->update, // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
+            'update' => $request->update ?? null, // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
         ]);
 
 
