@@ -52,7 +52,6 @@ class KejadianController extends Controller
         return redirect('kejadian');
 
         // Pesan : Gagal
-
     }
 
     public function edit(Kejadian $kejadian)

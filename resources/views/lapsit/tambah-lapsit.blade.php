@@ -45,21 +45,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">
-                        Gambaran Umum Situasi <span style="color: red;">*</span>
-                    </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">
-                        Keterangan Akses Menuju Lokasi <span style="color: red;">*</span>
-                    </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-
             </div>
         </div>
     </div>
@@ -652,15 +637,11 @@
     <div class="col-sm-12">
         <div class="">
             <div class="">
-
                 <div class="d-flex justify-content-center w-100 py-3">
                     <a href="#">
                         <button type="button" class="btn btn-primary btn-lg"><i class="icon-location-arrow"></i> Kirim Laporan</button>
                     </a>
                 </div>
-
-
-
             </div>
         </div>
     </div>
@@ -757,7 +738,7 @@
                 </div>
 
                 <hr>
-                
+
             </div>
             `;
             $('#pengungsianContainer').append(form);
