@@ -48,12 +48,12 @@ class KejadianController extends Controller
         $request = Kejadian::create($request->except('_token'));
 
         // Pesan : Sukses
-        $request->session()->flash('success', 'Kejadian Berhasil Ditambahkan');
+        //$request->session()->flash('success', 'Kejadian Berhasil Ditambahkan');
         return redirect('kejadian');
 
         // Pesan : Gagal
     }
-
+/*
     public function edit(Kejadian $kejadian)
     {
         return view('kejadian.edit-kejadian', compact('kejadian'));
@@ -80,4 +80,5 @@ class KejadianController extends Controller
         //redirect to index
         return redirect()->route('kejadian.kejadian')->with(['success' => 'Data Berhasil Diubah!']);
     }
+        */
 }
