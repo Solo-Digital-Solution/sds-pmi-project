@@ -50,7 +50,10 @@
                             <td>{{ $kejadian['waktu_kejadian'] }}</td>
                             <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['lokasi'] }}</td>
-                            <td><a href="{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a></td>
+                            <td>
+                                <a href="{{ route('kejadian.edit', $kejadian['id_kejadian']) }}" style="color: green;">Edit</a>
+                                <a href="{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
