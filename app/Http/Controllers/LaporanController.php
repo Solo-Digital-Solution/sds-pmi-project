@@ -5,13 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Korban_terdampak;
 use Illuminate\Support\Facades\DB;
+use App\Models\Laporan;
+use App\Models\Dampak;
+use App\Models\Distribusi_layanan;
+use App\Models\Dokumentasi;
+use App\Models\Evakuasi_korban;
+use App\Models\Giat_pmi;
+use App\Models\Kejadian;
+use App\Models\Kerusakan_fasilitas;
+use App\Models\Kerusakan_infrastruktur;
+use App\Models\Kerusakan_rumah;
+use App\Models\Korban_jiwa;
+// use App\Models\Korban_terdampak;
+use App\Models\Layanan_korban;
+use App\Models\Mobilisasi;
+use App\Models\Personil;
+use App\Models\Personil_dihubungi;
+use App\Models\Petugas_posko;
+use App\Models\Shelter;
+use App\Models\Tdb;
+use App\Models\Tsr;
 
 class LaporanController extends Controller
 {
     public function index()
     {
-        // Menampilkan form assessment
-        return view('lapsit.tambah-lapsit');
+        $totalData = laporan::count();
+        $dataPerPage = max(min($totalData, 10), 1);
+        $laporans = Laporan::latest()->paginate($dataPerPage);
+
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
     }
 
     public function store(Request $request)
@@ -38,142 +61,142 @@ class LaporanController extends Controller
             'rusak_ringan' => $request->rusak_ringan
         ]);
 
-        // $kerusakan_fasilitas = DB::table('kerusakan_fasilitas')->insertGetId([
-        //     'id_kerusakan_fasilitas' => $request->id_kerusakan_fasilitas,
-        //     'sekolah' => $request->sekolah,
-        //     'tempat_ibadah' => $request->tempat_ibadah,
-        //     'rumah_sakit' => $request->rumah_sakit,
-        //     'pasar' => $request->pasar,
-        //     'gedung_pemerintah' => $request->gedung_pemerintah,
-        //     'lain-lain' => $request->lain_lain
-        // ]);
+        $kerusakan_fasilitas = DB::table('kerusakan_fasilitas')->insertGetId([
+            'id_kerusakan_fasilitas' => $request->id_kerusakan_fasilitas,
+            'sekolah' => $request->sekolah,
+            'tempat_ibadah' => $request->tempat_ibadah,
+            'rumah_sakit' => $request->rumah_sakit,
+            'pasar' => $request->pasar,
+            'gedung_pemerintah' => $request->gedung_pemerintah,
+            'lain-lain' => $request->lain_lain
+        ]);
 
-        // $kerusakan_infrastruktur = DB::table('kerusakan_infrastruktur')->insertGetId([
-        //     'id_kerusakan_infrastruktur' => $request->id_kerusakan_infrastruktur,
-        //     'deskripsi_kerusakan' => $request->deskripsi_kerusakan
-        // ]);
+        $kerusakan_infrastruktur = DB::table('kerusakan_infrastruktur')->insertGetId([
+            'id_kerusakan_infrastruktur' => $request->id_kerusakan_infrastruktur,
+            'deskripsi_kerusakan' => $request->deskripsi_kerusakan
+        ]);
 
-        // $shelter = DB::table('shelter')->insertGetId([
-        //     'id_lokasi_shelter' => $request->id_lokasi_shelter,
-        //     'lokasi_shelter' => $request->lokasi_shelter,
-        //     'jumlah_kk' => $request->jumlah_kk,
-        //     'jumlah_jiwa' => $request->jumlah_jiwa,
-        //     'jumlah_laki' => $request->jumlah_laki,
-        //     'jumlah_perempuan' => $request->jumlah_perempuan,
-        //     'dibawah_lima' => $request->dibawah_lima,
-        //     'antara_lima_dan_delapanbelas' => $request->antara_lima_dan_delapanbelas,
-        //     'lebih_delapanbelas' => $request->lebih_delapanbelas,
-        //     'jumlah' => $request->jumlah
-        // ]);
+        $shelter = DB::table('shelter')->insertGetId([
+            'id_lokasi_shelter' => $request->id_lokasi_shelter,
+            'lokasi_shelter' => $request->lokasi_shelter,
+            'jumlah_kk' => $request->jumlah_kk,
+            'jumlah_jiwa' => $request->jumlah_jiwa,
+            'jumlah_laki' => $request->jumlah_laki,
+            'jumlah_perempuan' => $request->jumlah_perempuan,
+            'dibawah_lima' => $request->dibawah_lima,
+            'antara_lima_dan_delapanbelas' => $request->antara_lima_dan_delapanbelas,
+            'lebih_delapanbelas' => $request->lebih_delapanbelas,
+            'jumlah' => $request->jumlah
+        ]);
 
-        // $dampak = DB::table('dampak')->insert([
-        //     'id_korban_terdampak' => $korban_terdampak,
-        //     'id_korban_jiwa' => $korban_jiwa,
-        //     'id_kerusakan_rumah' => $kerusakan_rumah,
-        //     'id_kerusakan_fasilitas' => $kerusakan_fasilitas,
-        //     'id_kerusakan_infrastruktur' => $kerusakan_infrastruktur,
-        //     'id_lokasi_shelter' => $shelter
-        // ]);
+        $dampak = DB::table('dampak')->insert([
+            'id_korban_terdampak' => $korban_terdampak,
+            'id_korban_jiwa' => $korban_jiwa,
+            'id_kerusakan_rumah' => $kerusakan_rumah,
+            'id_kerusakan_fasilitas' => $kerusakan_fasilitas,
+            'id_kerusakan_infrastruktur' => $kerusakan_infrastruktur,
+            'id_lokasi_shelter' => $shelter
+        ]);
 
-        // $personil = DB::table('personil')->insertGetId([
-        //     'id_personil' => $request->id_personil,
-        //     'pengurus' => $request->pengurus,
-        //     'staf_markas' => $request->staf_markas,
-        //     'relawan_pmi' => $request->relawan_pmi,
-        //     'sukarelawan_spesialis' => $request->sukarelawan_spesialis
-        // ]);
+        $personil = DB::table('personil')->insertGetId([
+            'id_personil' => $request->id_personil,
+            'pengurus' => $request->pengurus,
+            'staf_markas' => $request->staf_markas,
+            'relawan_pmi' => $request->relawan_pmi,
+            'sukarelawan_spesialis' => $request->sukarelawan_spesialis
+        ]);
 
-        // $tsr = DB::table('tsr')->insertGetId([
-        //     'id_tsr' => $request->id_tsr,
-        //     'medis' => $request->medis,
-        //     'paramedis' => $request->paramedis,
-        //     'relief' => $request->relief,
-        //     'logistics' => $request->logistics,
-        //     'watsan' => $request->watsan,
-        //     'it_telekom' => $request->it_telekom,
-        //     'sheltering' => $request->sheltering
-        // ]);
+        $tsr = DB::table('tsr')->insertGetId([
+            'id_tsr' => $request->id_tsr,
+            'medis' => $request->medis,
+            'paramedis' => $request->paramedis,
+            'relief' => $request->relief,
+            'logistics' => $request->logistics,
+            'watsan' => $request->watsan,
+            'it_telekom' => $request->it_telekom,
+            'sheltering' => $request->sheltering
+        ]);
 
-        // $tdb = DB::table('tdb')->insertGetId([
-        //     'id_tdb' => $request->id_tdb,
-        //     'kend_ops' => $request->kend_ops,
-        //     'truk_angkutan' => $request->truk_angkutan,
-        //     'truk_tangki' => $request->truk_tangki,
-        //     'double_cabin' => $request->double_cabin,
-        //     'alat_du' => $request->alat_du,
-        //     'ambulans' => $request->ambulans,
-        //     'alat_watsan' => $request->alat_watsan,
-        //     'rs_lapangan' => $request->rs_lapangan,
-        //     'alat_pkdd' => $request->alat_pkdd,
-        //     'gudang_lapangan' => $request->gudang_lapangan,
-        //     'posko_aju' => $request->posko_aju,
-        //     'alat_it_lapangan' => $request->alat_it_lapangan
-        // ]);
+        $tdb = DB::table('tdb')->insertGetId([
+            'id_tdb' => $request->id_tdb,
+            'kend_ops' => $request->kend_ops,
+            'truk_angkutan' => $request->truk_angkutan,
+            'truk_tangki' => $request->truk_tangki,
+            'double_cabin' => $request->double_cabin,
+            'alat_du' => $request->alat_du,
+            'ambulans' => $request->ambulans,
+            'alat_watsan' => $request->alat_watsan,
+            'rs_lapangan' => $request->rs_lapangan,
+            'alat_pkdd' => $request->alat_pkdd,
+            'gudang_lapangan' => $request->gudang_lapangan,
+            'posko_aju' => $request->posko_aju,
+            'alat_it_lapangan' => $request->alat_it_lapangan
+        ]);
 
-        // $mobilisasi = DB::table('mobilisasi')->insert([
-        //     'id_personil' => $personil,
-        //     'id_tsr' => $tsr,
-        //     'id_tdb' => $tdb
-        // ]);
+        $mobilisasi = DB::table('mobilisasi')->insert([
+            'id_personil' => $personil,
+            'id_tsr' => $tsr,
+            'id_tdb' => $tdb
+        ]);
 
-        // $evakuasi_korban = DB::table('evakuasi_korban')->insertGetId([
-        //     'id_evakuasi_korban' => $request->id_evakuasi_korban,
-        //     'luka_ringan_berat' => $request->luka_ringan_berat,
-        //     'meninggal' => $request->meninggal
-        // ]);
+        $evakuasi_korban = DB::table('evakuasi_korban')->insertGetId([
+            'id_evakuasi_korban' => $request->id_evakuasi_korban,
+            'luka_ringan_berat' => $request->luka_ringan_berat,
+            'meninggal' => $request->meninggal
+        ]);
 
-        // $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
-        //     'id_distribusi_layanan' => $request->id_distribusi_layanan,
-        //     'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
-        //     'lokasi' => $request->lokasi,
-        //     'unit' => $request->unit,
-        //     'jumlah' => $request->jumlah
-        // ]);
+        $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
+            'id_distribusi_layanan' => $request->id_distribusi_layanan,
+            'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
+            'lokasi' => $request->lokasi,
+            'unit' => $request->unit,
+            'jumlah' => $request->jumlah
+        ]);
 
-        // $giat_pmi = DB::table('giat_pmi')->insert([
-        //     'id_evakuasi_korban' => $evakuasi_korban
-        // ]);
+        $giat_pmi = DB::table('giat_pmi')->insert([
+            'id_evakuasi_korban' => $evakuasi_korban
+        ]);
 
-        // $layanan_korban = DB::table('layanan_korban')->insert([
-        //     'id_giat_pmi' => $giat_pmi,
-        //     'id_distribusi_layanan' => $distribusi_layanan
-        // ]);
+        $layanan_korban = DB::table('layanan_korban')->insert([
+            'id_giat_pmi' => $giat_pmi,
+            'id_distribusi_layanan' => $distribusi_layanan
+        ]);
 
-        // $personil_dihubungi = DB::table('personil_dihubungi')->insertGetId([
-        //     'id_personil_dihubungi' => $request->id_personil_dihubungi,
-        //     'nama_lengkap' => $request->nama_lengkap,
-        //     'posisi' => $request->posisi,
-        //     'kontak' => $request->kontak
-        // ]);
+        $personil_dihubungi = DB::table('personil_dihubungi')->insertGetId([
+            'id_personil_dihubungi' => $request->id_personil_dihubungi,
+            'nama_lengkap' => $request->nama_lengkap,
+            'posisi' => $request->posisi,
+            'kontak' => $request->kontak
+        ]);
 
-        // $petugas_posko = DB::table('petugas_posko')->insertGetId([
-        //     'id_petugas_posko' => $request->id_petugas_posko,
-        //     'nama_lengkap' => $request->nama_lengkap,
-        //     'kontak' => $request->kontak
-        // ]);
+        $petugas_posko = DB::table('petugas_posko')->insertGetId([
+            'id_petugas_posko' => $request->id_petugas_posko,
+            'nama_lengkap' => $request->nama_lengkap,
+            'kontak' => $request->kontak
+        ]);
 
-        // $file = $request->file('dokumentasi');
-        // $nama_dokumen = $request->file('dokumentasi')->getClientOriginalName() . '.' . $request->file('dokumentasi')->getClientOriginalExtension();
-        // $file->move('dokuemntasi/', $nama_dokumen);
+        $file = $request->file('dokumentasi');
+        $nama_dokumen = $request->file('dokumentasi')->getClientOriginalName() . '.' . $request->file('dokumentasi')->getClientOriginalExtension();
+        $file->move('dokuemntasi/', $nama_dokumen);
 
-        // $dokumentasi = DB::table('dokumentasi')->insert([
-        //     'file_path' => $nama_dokumen
-        // ]);
+        $dokumentasi = DB::table('dokumentasi')->insert([
+            'file_path' => $nama_dokumen
+        ]);
 
-        // $laporan = DB::table('laporan')->insertGetId([
-        //     'id_dampak' => $dampak,
-        //     'id_kejadian' => 1,
-        //     'id_mobilisasi' => $mobilisasi,
-        //     'id_giat_pmi' => $giat_pmi,
-        //     'id_personil_dihubungi' => $personil_dihubungi,
-        //     'id_petugas_posko' => $petugas_posko,
-        //     'id_dokumentasi' => $dokumentasi,
-        //     'giat_pemerintah' => $request->giat_pemerintah,
-        //     'kebutuhan' => $request->kebutuhan,
-        //     'hambatan' => $request->hambatan,
-        //     'nama_laporan' => $request->nama_laporan,
-        //     'update' => $request->update, // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
-        // ]);
+        $laporan = DB::table('laporan')->insertGetId([
+            'id_dampak' => $dampak,
+            'id_kejadian' => 1,
+            'id_mobilisasi' => $mobilisasi,
+            'id_giat_pmi' => $giat_pmi,
+            'id_personil_dihubungi' => $personil_dihubungi,
+            'id_petugas_posko' => $petugas_posko,
+            'id_dokumentasi' => $dokumentasi,
+            'giat_pemerintah' => $request->giat_pemerintah,
+            'kebutuhan' => $request->kebutuhan,
+            'hambatan' => $request->hambatan,
+            'nama_laporan' => $request->nama_laporan,
+            'update' => $request->update ?? null // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
+        ]);
 
 
         // DB::table('mobilisasi')->insert([

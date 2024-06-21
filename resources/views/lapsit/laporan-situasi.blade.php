@@ -44,72 +44,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($laporans as $laporan )
                         <tr>
-                            <td>1</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
+                            <td>{{ $laporan['nama_laporan'] }}</td>
+                            <td>{{ $laporan['update'] }}</td>
+                            <td>
+                                <a href=# style="color: green;">Download</a>
+                            </td>
+                            <td>
+                                <a href=# style="color: blue;">Lihat Detail</a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
-                            <td><a href="" style="color: blue;">Lihat Detail</a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

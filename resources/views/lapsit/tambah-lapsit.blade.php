@@ -119,18 +119,6 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12">
-        <div class="">
-            <div class="">
-                <div class="d-flex justify-content-center w-100 py-3">
-                    <button type="submit" class="btn btn-primary btn-lg"><i class="icon-location-arrow"></i> Kirim Laporan Situasi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-</form>
 
     <div class="col-sm-12">
         <div class="card">
@@ -201,7 +189,7 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="lain-lain">Lain-lain</label>
-                            <input class="form-control" id="lain-lain" name="lain-lain" type="number" placeholder="Masukkan jumlah">
+                            <input class="form-control" id="lain-lain" name="lain_lain" type="number" placeholder="Masukkan jumlah">
                         </div>
                     </div>
                 </div>
@@ -294,6 +282,7 @@
             </div>
         </div>
     </div>
+    
 
     <div class="col-sm-12">
         <div class="d-flex justify-content-center">
@@ -678,7 +667,7 @@
         </div>
     </div>
 
-    <!-- <div class="col-sm-12">
+    <div class="col-sm-12">
         <div class="">
             <div class="">
                 <div class="d-flex justify-content-center w-100 py-3">
@@ -689,7 +678,7 @@
     </div>
     
 
-</form> -->
+</form>
 </div>
 <!-- Row end -->
 
