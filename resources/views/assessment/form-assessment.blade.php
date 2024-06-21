@@ -26,10 +26,12 @@
 <!-- Row start -->
 <div class="row gutters">
 	<div class="col-sm-12">
+	<form action="{{ route('assessment.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
 		<div class="card">
 			<div class="card-header">Nomor Laporan</div>
 			<div class="card-body">
-				<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan nomor">
+				<input name="nama_laporan" class="form-control" id="nama_laporan" type="number" placeholder="Masukkan nomor laporan">
 			</div>
 		</div>
 	</div>
@@ -37,8 +39,7 @@
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">DAMPAK</h5>
 		</div>
-		<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
+
     <div class="card">
         <div class="card-header">Korban Terdampak</div>
         <div class="card-body">
@@ -430,7 +431,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-sm-12">
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">GIAT PMI</h5>
@@ -455,7 +456,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div class="col-sm-12">
 	<div class="card">
@@ -543,7 +544,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Petugas Posko</div>
@@ -572,7 +573,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Giat Pemerintah</div>
@@ -581,8 +582,8 @@
 			</div>
 		</div>
 	</div>
-	<button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+	<!-- <button type="submit" class="btn btn-primary mt-3">Submit</button> -->
+
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Kebutuhan</div>
@@ -599,6 +600,9 @@
 			</div>
 		</div>
 	</div>
+	<button type="submit" class="btn btn-primary mt-3">Submit</button>
+
+	</form>
 </div>
 </div>
 <!-- Row end -->

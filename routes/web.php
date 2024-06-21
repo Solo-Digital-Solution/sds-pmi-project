@@ -33,10 +33,12 @@ Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKeja
 //Route::post('/tambah-kejadian/addKejadian', [KejadianController::class,'add']);
 Route::get('/kejadian', [KejadianController::class, 'index']);
 Route::get('tambah-kejadian', [DropdownController::class, 'indexKecamatan']);
-Route::get('{kejadian}/edit', [DropdownController::class, 'indexKecamatanEdit']);
+//Route::get('{kejadian}/edit', [DropdownController::class, 'indexKecamatanEdit']);
+Route::get('/kejadian/edit/{id}',[KejadianController::class,'edit']);
+Route::post('/kejadian/update',[KejadianController::class,'update']);
 Route::get('edit-kejadian', [DropdownController::class, 'indexKecamatanEdit']);
 Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
-Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
+//Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
 
 
 // ROUTES UNTUK ASSESSMENT

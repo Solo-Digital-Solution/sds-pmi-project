@@ -32,13 +32,14 @@
             <div class="card">
                 <div class="card-header" style="font-weight: bold;">Kejadian Bencana</div>
                 <div class="card-body">
-                    <form action="{{ route('kejadian.update', $kejadian->id_kejadian) }}" method="POST" enctype="multipart/form-data">
+                    @foreach ($kejadian as $k)
+                    <form action="/kejadian/update" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
                         <label for="nama_kejadian" class="col-sm-3 col-form-label">Nama Kejadian <span style="color: red;">*</span> </label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="nama_kejadian" name="nama_kejadian" value="{{ old('nama_kejadian', $kejadian->nama_kejadian) }}" placeholder="">
+                            <input type="text" class="form-control" id="nama_kejadian" name="nama_kejadian" value="{{ $k->nama_kejadian }}" placeholder="">
                         </div>
                     </div>
 
@@ -47,7 +48,7 @@
                             Tanggal Kejadian <span style="color: red;">*</span>
                         </label>
                         <div class="col-sm-3">
-                            <input type="datetime-local" class="form-control"  id="waktu_kejadian" name="waktu_kejadian" value="{{ old('waktu_kejadian', $kejadian->waktu_kejadian) }}">
+                            <input type="datetime-local" class="form-control"  id="waktu_kejadian" name="waktu_kejadian" value="{{ $k->nama_kejadian }}">
                         </div>
                     </div>
 
@@ -58,7 +59,7 @@
                                 <label class="input-group-text" for="kecamatan-dd">Options</label>
                             </div>
                             <select class="form-control" id="kecamatan-dd" name="kecamatan">
-                                <option selected value="{{ old('kecamatan', $kejadian->kecamatan) }}">Choose...</option>
+                                <option selected value="{{ $k->kecamatan }}">Choose...</option>
                                 @foreach ($kecamatans as $data)
                                 <option value="{{ $data->id_kecamatan }}">{{ $data->nama_kecamatan }}</option>
                                 @endforeach
@@ -80,20 +81,20 @@
                         <label for="lokasi">
                             Lokasi Kejadian <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3" value="{{ old('lokasi', $kejadian->lokasi) }}"></textarea>
+                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3" value="{{ $k->lokasi }}"></textarea>
                     </div>
 
                     <div class="form-group row">
                         <label for="latitude" class="col-sm-3 col-form-label">Latitude <span style="color: red;">*</span></label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"  id="latitude" name="latitude" placeholder="" value="{{ old('latitude', $kejadian->latitude) }}">
+                            <input type="text" class="form-control"  id="latitude" name="latitude" placeholder="" value="{{ $k->latitude }}">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="longitude" class="col-sm-3 col-form-label">Longitude <span style="color: red;">*</span></label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"  id="longitude" name="longitude" placeholder="" value="{{ old('longitude', $kejadian->longitude) }}">
+                            <input type="text" class="form-control"  id="longitude" name="longitude" placeholder="" value="{{ $k->longitude }}">
                         </div>
                     </div>
 
@@ -103,7 +104,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="dukungan_inter">Options</label>
                             </div>
-                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter" value="{{ old('dukungan_inter', $kejadian->dukungan_inter) }}">
+                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter" value="{{ $k->dukungan_inter }}">
                                 <option value="">Choose...</option>
                                 <option value="1">Ya</option>
                                 <option value="0">Tidak</option>
@@ -115,14 +116,14 @@
                         <label for="gambaran_situasi">
                             Gambaran Umum Situasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3" value="{{ old('gambaran_situasi', $kejadian->gambaran_situasi) }}"></textarea>
+                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3" value="{{ $k->gambaran_situasi }}"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="akses_lokasi">
                             Gambaran Umum Akses Lokasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3" value="{{ old('akses_lokasi', $kejadian->akses_lokasi) }}"></textarea>
+                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3" value="{{ $k->akses_lokasi }}"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -131,7 +132,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="status">Options</label>
                             </div>
-                            <select class="custom-select" id="status" name="status" value="{{ old('status', $kejadian->status) }}">
+                            <select class="custom-select" id="status" name="status" value="{{ $k->status }}">
                                 <option value="Menunggu Validasi">Menunggu Validasi</option>
                                 <option value="Invalid">Invalid</option>
                                 <option value="Aktif">Aktif</option>
@@ -173,6 +174,7 @@
 
                     </script>
                 </form>
+                @endforeach
                 </div> <!-- card-body close -->
             </div> <!-- card-close -->
         </div> <!-- col 12  close -->

@@ -11,32 +11,32 @@ class LaporanController extends Controller
     public function index()
     {
         // Menampilkan form assessment
-        return view('assessment.form-assessment');
+        return view('lapsit.tambah-lapsit');
     }
 
     public function store(Request $request)
     {
-        // $korban_terdampak = DB::table('korban_terdampak')->insertGetId([
-        //     'id_korban_terdampak' => $request->id_korban_terdampak,
-        //     'jumlah_kk' => $request->jumlah_kk,
-        //     'jumlah_jiwa' => $request->jumlah_jiwa
-        // ]);
+        $korban_terdampak = DB::table('korban_terdampak')->insertGetId([
+            'id_korban_terdampak' => $request->id_korban_terdampak,
+            'jumlah_kk' => $request->jumlah_kk,
+            'jumlah_jiwa' => $request->jumlah_jiwa
+        ]);
 
-        // $korban_jiwa = DB::table('korban_jiwa')->insertGetId([
-        //     'id_korban_jiwa' => $request->id_korban_jiwa,
-        //     'luka_berat' => $request->luka_berat,
-        //     'luka_ringan' => $request->luka_ringan,
-        //     'meninggal' => $request->meninggal,
-        //     'hilang' => $request->hilang,
-        //     'mengungsi' => $request->mengungsi
-        // ]);
+        $korban_jiwa = DB::table('korban_jiwa')->insertGetId([
+            'id_korban_jiwa' => $request->id_korban_jiwa,
+            'luka_berat' => $request->luka_berat,
+            'luka_ringan' => $request->luka_ringan,
+            'meninggal' => $request->meninggal,
+            'hilang' => $request->hilang,
+            'mengungsi' => $request->mengungsi
+        ]);
 
-        // $kerusakan_rumah = DB::table('kerusakan_rumah')->insertGetId([
-        //     'id_kerusakan_rumah' => $request->id_kerusakan_rumah,
-        //     'rusak_berat' => $request->rusak_berat,
-        //     'rusak_sedang' => $request->rusak_sedang,
-        //     'rusak_ringan' => $request->rusak_ringan
-        // ]);
+        $kerusakan_rumah = DB::table('kerusakan_rumah')->insertGetId([
+            'id_kerusakan_rumah' => $request->id_kerusakan_rumah,
+            'rusak_berat' => $request->rusak_berat,
+            'rusak_sedang' => $request->rusak_sedang,
+            'rusak_ringan' => $request->rusak_ringan
+        ]);
 
         // $kerusakan_fasilitas = DB::table('kerusakan_fasilitas')->insertGetId([
         //     'id_kerusakan_fasilitas' => $request->id_kerusakan_fasilitas,
@@ -160,19 +160,20 @@ class LaporanController extends Controller
         //     'file_path' => $nama_dokumen
         // ]);
 
-        // $laporan = DB::table('laporan')->insertGetId([
-        //     'id_dampak' => $dampak,
-        //     'id_mobilisasi' => $mobilisasi,
-        //     'id_giat_pmi' => $giat_pmi,
-        //     'id_personil_dihubungi' => $personil_dihubungi,
-        //     'id_petugas_posko' => $petugas_posko,
-        //     'id_dokumentasi' => $dokumentasi,
-        //     'giat_pemerintah' => $request->giat_pemerintah,
-        //     'kebutuhan' => $request->kebutuhan ?? '',
-        //     'hambatan' => $request->hambatan ?? '',
-        //     'nama_laporan' => $request->nama_laporan ?? '',
-        //     'update' => $request->update ?? null // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
-        // ]);
+        $laporan = DB::table('laporan')->insertGetId([
+            'id_dampak' => $dampak,
+            'id_kejadian' => 1,
+            'id_mobilisasi' => $mobilisasi,
+            'id_giat_pmi' => $giat_pmi,
+            'id_personil_dihubungi' => $personil_dihubungi,
+            'id_petugas_posko' => $petugas_posko,
+            'id_dokumentasi' => $dokumentasi,
+            'giat_pemerintah' => $request->giat_pemerintah,
+            'kebutuhan' => $request->kebutuhan,
+            'hambatan' => $request->hambatan,
+            'nama_laporan' => $request->nama_laporan,
+            'update' => $request->update ?? null, // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
+        ]);
 
 
         // DB::table('mobilisasi')->insert([
@@ -187,13 +188,13 @@ class LaporanController extends Controller
         //     'meninggal' => $request->meninggal
         // ]);
 
-        $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
-            // 'id_distribusi_layanan' => $request->id_distribusi_layanan,
-            'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
-            'lokasi' => $request->lokasi,
-            'unit' => $request->unit,
-            'jumlah' => $request->jumlah
-        ]);
+        // $distribusi_layanan = DB::table('distribusi_layanan')->insertGetId([
+        //     // 'id_distribusi_layanan' => $request->id_distribusi_layanan,
+        //     'jenis_distribusi_layanan' => $request->jenis_distribusi_layanan,
+        //     'lokasi' => $request->lokasi,
+        //     'unit' => $request->unit,
+        //     'jumlah' => $request->jumlah
+        // ]);
 
         // DB::table('giat_pmi')->insert([
         //     'id_evakuasi_korban' => $evakuasi_korban
@@ -218,16 +219,16 @@ class LaporanController extends Controller
         // ]);
 
 
-        
 
-        
+
+
 
         // $tdb = DB::table('dokumentasi')->insertGetId([
         //     'id_dokumentasi' => $request->id_dokumentasi,
         //     'file_path' => $request->file_path
         // ]);
 
-        
+
 
         // $folder = 'public/dokumentasi';
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Kejadian;
 use App\Models\Kecamatan;
@@ -53,10 +54,14 @@ class KejadianController extends Controller
 
         // Pesan : Gagal
     }
-/*
-    public function edit(Kejadian $kejadian)
+
+    public function edit($id_kejadian)
     {
-        return view('kejadian.edit-kejadian', compact('kejadian'));
+        // mengambil data pegawai berdasarkan id yang dipilih
+        $kejadian = DB::table('kejadian')->where('id_kejadian',$id_kejadian)->get();
+        // passing data pegawai yang didapat ke view edit.blade.php
+        return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
+        //return view('kejadian.edit-kejadian', compact('kejadian'));
     }
 
     public function update(Request $request, Kejadian $kejadian)
@@ -80,5 +85,5 @@ class KejadianController extends Controller
         //redirect to index
         return redirect()->route('kejadian.kejadian')->with(['success' => 'Data Berhasil Diubah!']);
     }
-        */
+
 }
