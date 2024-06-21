@@ -22,22 +22,7 @@
 @endsection
 
 @section('content')
-<!-- BEGIN .app-main -->
-<!-- Row start -->
-<div class="row gutters">
-	<div class="col-sm-12">
-		<div class="card">
-			<div class="card-header">Nomor Laporan</div>
-			<div class="card-body">
-				<input class="form-control" id="inputNumber" type="number" placeholder="Masukkan nomor">
-			</div>
-		</div>
-	</div>
-	<div class="col-sm-12">
-		<div class="d-flex justify-content-center">
-			<h5 class="m-0 mb-2">DAMPAK</h5>
-		</div>
-		<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="card">
         <div class="card-header">Korban Terdampak</div>
@@ -95,8 +80,7 @@
             </div>
         </div>
     </div>
-	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Kerusakan Rumah</div>
 			<div class="card-body">
@@ -123,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Kerusakan Fasilitas</div>
 			<div class="card-body">
@@ -168,7 +152,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Kerusakan infrastruktur</div>
 			<div class="card-body">
@@ -183,7 +167,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Shelter</div>
 			<div class="card-body">
@@ -246,7 +230,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">MOBILISASI</h5>
 		</div>
@@ -281,8 +265,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-sm-12">
+	</div>    
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</div>
 			<div class="card-body">
@@ -333,7 +317,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Alat Utama Sistim TDB</div>
 			<div class="card-body">
@@ -414,7 +398,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Laporan Dokumentasi</div>
 			<div class="card-body">
@@ -430,8 +414,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="d-flex justify-content-center">
 			<h5 class="m-0 mb-2">GIAT PMI</h5>
 		</div>
@@ -455,24 +438,56 @@
 			</div>
 		</div>
 	</div>
-	
-
-	<div class="col-sm-12">
-		<div class="card">
+    <div class="col-sm-12">
+	<div class="card">
 			<div class="card-header">Distribusi Layanan</div>
 			<div class="card-body">
 				<div class="row gutters">
-					<div class="col-sm-12 col-12">
-						<button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
-					</div>
-				</div>
-				<div id="formContainer" class="mt-3">
-					<!-- Form will be appended here -->
-				</div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Jenis Distribusi Layanan</label>
+                            <select class="form-control" name="inpu[0][jenis_distribusi_layanan]" id="jenis_distribusi_layanan">
+                            	<option selected>-- Pilih Jenis Distribusi Layanan --</option>
+                                <option value="Food Item">Food Item</option>
+                                <option value="Non-Food Item">Non-Food Item</option>
+                                <option value="Layanan Kesehatan">Layanan Kesehatan</option>
+                                <option value="Layanan Air Bersih">Layanan Air Bersih</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="lokasi">Lokasi</label>
+                            <input class="form-control" type="text" placeholder="Masukkan lokasi" name="inpu[0][lokasi]">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Unit</label>
+                            <select class="form-control" name="inpu[0][unit]" id="unit">
+                            	<option selected>-- Pilih Unit --</option>
+                                <option value="KK">KK</option>
+                                <option value="orang">Orang</option>
+                                <option value="orang">Liter</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="jumlah">Jumlah</label>
+                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[0][jumlah]">
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="distribusiContainer">
+                        <!-- Form personil dihubungi akan ditambahkan di sini -->
+                    </div>
+                    <button type="button" name="addDistribusi" id="addDistribusi" class="btn btn-primary btn-lg mt-3">+ Tambah distribusi layanan</button>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+	</div>
+<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Personil Dihubungi</div>
 			<div class="card-body">
@@ -481,34 +496,33 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="namaLengkap">Nama Lengkap</label>
-							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap">
+							<input class="form-control" id="nama_lengkap" name="inputs[0][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap">
 						</div>
 					</div>
 					<!-- Inputan Posisi -->
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="posisi">Posisi</label>
-							<input class="form-control" id="posisi" type="text" placeholder="Masukkan posisi" name="posisi">
+							<input class="form-control" id="posisi" name="inputs[0][posisi]" type="text" placeholder="Masukkan posisi">
 						</div>
 					</div>
 					<!-- Inputan Kontak -->
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="kontak">Kontak</label>
-							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak">
+							<input class="form-control" id="kontak" name="inputs[0][kontak]" type="text" placeholder="Masukkan kontak">
 						</div>
 					</div>
-				</div>
+			div>
 				<hr>
 				<div id="personilContainer">
 					<!-- Form personil dihubungi akan ditambahkan di sini -->
 				</div>
-				<button type="button" id="addPersonil" class="btn btn-primary btn-lg mt-3">+ Tambah personil dihubungi</button>
+				<button type="button" name="addPersonil" id="addPersonil" class="btn btn-primary btn-lg mt-3">+ Tambah personil dihubungi</button>
 			</div>
 		</div>
 	</div>
-	
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Petugas Posko</div>
 			<div class="card-body">
@@ -517,14 +531,14 @@
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="namaLengkap">Nama Lengkap</label>
-							<input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap">
+							<input class="form-control" id="namaLengkap" name="input[0][nm]" type="text" placeholder="Masukkan nama lengkap">
 						</div>
 					</div>
 					<!-- Inputan Kontak -->
 					<div class="col-sm-6 col-12">
 						<div class="form-group">
 							<label for="kontak">Kontak</label>
-							<input class="form-control" id="kontak" type="text" placeholder="Masukkan kontak" name="kontak">
+							<input class="form-control" id="kontak" name="input[0][ktk]" type="text" placeholder="Masukkan kontak">
 						</div>
 					</div>
 				</div>
@@ -536,8 +550,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Giat Pemerintah</div>
 			<div class="card-body">
@@ -545,9 +558,7 @@
 			</div>
 		</div>
 	</div>
-	<button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Kebutuhan</div>
 			<div class="card-body">
@@ -555,7 +566,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
+    <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Hambatan</div>
 			<div class="card-body">
@@ -563,152 +574,138 @@
 			</div>
 		</div>
 	</div>
-</div>
-</div>
-<!-- Row end -->
-</div>
-<!-- END: .main-content -->
-</div>
-<!-- Google Maps API -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script>
-    // Inisialisasi peta
-    var map = L.map('map').setView([-6.200000, 106.816666], 8);
-
-    // Tambahkan tile layer dari OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    var marker;
-
-    // Fungsi untuk menambahkan marker dan mengisi input lokasi
-    function onMapClick(e) {
-        if (marker) {
-            map.removeLayer(marker);
-        }
-        marker = L.marker(e.latlng).addTo(map);
-        document.getElementById('location').value = `Lat: ${e.latlng.lat}, Lng: ${e.latlng.lng}`;
-    }
-
-    // Tambahkan event listener untuk klik pada peta
-    map.on('click', onMapClick);
-</script>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- END: .app-main -->
+<!-- start modal personil dihubungi -->
+<!-- <script>
+    var i = 0;
+    $('#addPersonil').click(function(){
+        ++i;
+        var newRow = 
+            '<div class="personil-form">' +
+                '<div class="row gutters">' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="namaLengkap">Nama Lengkap</label>' +
+                            '<input class="form-control" name="inputs[' + i + '][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="posisi">Posisi</label>' +
+                            '<input class="form-control" name="inputs[' + i + '][posisi]" type="text" placeholder="Masukkan posisi">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="kontak">Kontak</label>' +
+                            '<input class="form-control" name="inputs[' + i + '][kontak]" type="text" placeholder="Masukkan kontak">' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<button type="button" class="btn btn-danger remove-personil">Hapus</button>' +
+                '<hr>' +
+            '</div>';
 
-<!-- Modal distribusi layanan start -->
-<script>
-    $(document).ready(function(){
-        $('#addForm').click(function(){
-            var form = `
-            <div class="form-group-wrapper">
-                <div class="row gutters">
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="jenisDistribusiLayanan">Jenis Distribusi Layanan</label>
-                            <select class="form-control" name="jenis_distribusi_layanan[]">
-                                <option value="Distribusi Food Item">Distribusi Food Item</option>
-                                <option value="Distribusi Non-food item">Distribusi Non-food item</option>
-                                <option value="Layanan Yankes">Layanan Yankes</option>
-                                <option value="Layanan air bersih">Layanan air bersih</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="lokasi">Lokasi</label>
-                            <input class="form-control" type="text" placeholder="Masukkan lokasi" name="lokasi[]">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="unit">Unit</label>
-                            <select class="form-control" name="unit[]">
-                                <option value="KK">KK</option>
-                                <option value="orang">Orang</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="jumlah">Jumlah</label>
-                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="jumlah[]">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            `;
-            $('#formContainer').append(form);
-        });
+        $('#personilContainer').append(newRow);
     });
-</script>
-<!-- Modal distribusi layanan end -->
 
-<!-- Modal personil dihubungi start -->
+    $(document).on('click', '.remove-personil', function(){
+        $(this).closest('.personil-form').remove();
+    });
+</script> -->
+<!-- end modal personil dihubungi -->
+<!-- start modal petugas posko -->
 <script>
-    $(document).ready(function(){
-        $('#addPersonil').click(function(){
-            var form = `
-            <div class="personil-form">
-                <div class="row gutters">
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="namaLengkap">Nama Lengkap</label>
-                            <input class="form-control" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="posisi">Posisi</label>
-                            <input class="form-control" type="text" placeholder="Masukkan posisi" name="posisi[]">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="kontak">Kontak</label>
-                            <input class="form-control" type="text" placeholder="Masukkan kontak" name="kontak[]">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            `;
-            $('#personilContainer').append(form);
-        });
+    var i = 0;
+    $('#addPetugas').click(function(){
+        ++i;
+        var newRow = 
+            '<div class="petugas-form">' +
+                '<div class="row gutters">' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="namaLengkap">Nama Lengkap</label>' +
+                            '<input class="form-control" name="input[' + i + '][nm]" type="text" placeholder="Masukkan nama lengkap">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="kontak">Kontak</label>' +
+                            '<input class="form-control" name="input[' + i + '][ktk]" type="text" placeholder="Masukkan kontak">' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<button type="button" class="btn btn-danger remove-petugas">Hapus</button>' +
+                '<hr>' +
+            '</div>';
+
+        $('#petugasContainer').append(newRow);
+    });
+
+    $(document).on('click', '.remove-petugas', function(){
+        $(this).closest('.petugas-form').remove();
     });
 </script>
-<!-- Modal personil dihubungi start -->
-<!-- Modal petugas Posko start -->
+<!-- end modal petugas posko -->
+<!-- start modal distribusi layanan -->
 <script>
-    $(document).ready(function(){
-        $('#addPetugas').click(function(){
-            var form = `
-            <div class="petugas-form">
-                <div class="row gutters">
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="namaLengkap">Nama Lengkap</label>
-                            <input class="form-control" type="text" placeholder="Masukkan nama lengkap" name="nama_lengkap[]">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="kontak">Kontak</label>
-                            <input class="form-control" type="text" placeholder="Masukkan kontak" name="kontak[]">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            `;
-            $('#petugasContainer').append(form);
-        });
+    var i = 0;
+    $('#addDistribusi').click(function(){
+        ++i;
+        var newRow = 
+            '<div class="distribusi-form">' +
+                '<div class="row gutters">' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="jenis_distribusi_layanan">Jenis Distribusi Layanan</label>' +
+                            '<select class="form-control" name="inpu[' + i + '][jenis_distribusi_layanan]">' +
+                                '<option selected>-- Pilih Jenis Distribusi Layanan --</option>' +
+                                '<option value="Food Item">Food Item</option>' +
+                                '<option value="Non-Food Item">Non-Food Item</option>' +
+                                '<option value="Layanan Kesehatan">Layanan Kesehatan</option>' +
+                                '<option value="Layanan Air Bersih">Layanan Air Bersih</option>' +
+                            '</select>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="lokasi">Lokasi</label>' +
+                            '<input class="form-control" type="text" placeholder="Masukkan lokasi" name="inpu[' + i + '][lokasi]">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="unit">Unit</label>' +
+                            '<select class="form-control" name="inpu[' + i + '][unit]">' +
+                                '<option selected>-- Pilih Unit --</option>' +
+                                '<option value="KK">KK</option>' +
+                                '<option value="orang">Orang</option>' +
+                                '<option value="liter">Liter</option>' +
+                            '</select>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="jumlah">Jumlah</label>' +
+                            '<input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[' + i + '][jumlah]">' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<button type="button" class="btn btn-danger remove-petugas">Hapus</button>' +
+                '<hr>' +
+            '</div>';
+
+        $('#distribusiContainer').append(newRow);
+    });
+
+    $(document).on('click', '.remove-distribusi', function(){
+        $(this).closest('.distribusi-form').remove();
     });
 </script>
-<!-- Modal petugas Posko start -->
+<!-- end modal distribusi layanan -->
 @endsection
