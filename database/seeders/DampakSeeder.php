@@ -13,7 +13,7 @@ class DampakSeeder extends Seeder
     public function run(): void
     {
         // Seeder untuk tabel korban_terdampak
-        DB::table('korban_terdampak')->insert([
+        $korbanTerdampakId = DB::table('korban_terdampak')->insertGetId([
             [
                 'jumlah_kk' => 50,
                 'jumlah_jiwa' => 200
@@ -21,7 +21,7 @@ class DampakSeeder extends Seeder
         ]);
 
         // Seeder untuk tabel korban_jiwa
-        DB::table('korban_jiwa')->insert([
+        $korbanJiwaId = DB::table('korban_jiwa')->insertGetId([
             [
                 'luka_berat' => 5,
                 'luka_ringan' => 20,
@@ -32,7 +32,7 @@ class DampakSeeder extends Seeder
         ]);
 
         // Seeder untuk tabel kerusakan_rumah
-        DB::table('kerusakan_rumah')->insert([
+        $kerusakanRumahId = DB::table('kerusakan_rumah')->insertGetId([
             [
                 'rusak_berat' => 10,
                 'rusak_sedang' => 20,
@@ -41,7 +41,7 @@ class DampakSeeder extends Seeder
         ]);
 
         // Seeder untuk tabel kerusakan_fasilitas
-        DB::table('kerusakan_fasilitas')->insert([
+        $korbanFasilitasId = DB::table('kerusakan_fasilitas')->insertGetId([
             [
                 'sekolah' => 2,
                 'tempat_ibadah' => 1,
@@ -53,14 +53,14 @@ class DampakSeeder extends Seeder
         ]);
 
         // Seeder untuk tabel kerusakan_infrastruktur
-        DB::table('kerusakan_infrastruktur')->insert([
+        $kerusakanInfrastrukturId = DB::table('kerusakan_infrastruktur')->insertGetId([
             [
                 'deskripsi_kerusakan' => 'Jembatan utama runtuh dan jalan raya rusak parah',
             ],
         ]);
 
         // Seeder untuk tabel shelter
-        DB::table('shelter')->insert([
+        $shelterId = DB::table('shelter')->insertGetId([
             [
                 'lokasi_shelter' => 'Lapangan sepak bola desa',
                 'jumlah_kk' => 20,
@@ -77,12 +77,12 @@ class DampakSeeder extends Seeder
         // Seeder untuk tabel dampak
         DB::table('dampak')->insert([
             [
-                'id_korban_terdampak' => 1,
-                'id_korban_jiwa' => 1,
-                'id_kerusakan_rumah' => 1,
-                'id_kerusakan_fasilitas' => 1,
-                'id_kerusakan_infrastruktur' => 1,
-                'id_lokasi_shelter' => 1,
+                'id_korban_terdampak' => $korbanTerdampakId,
+                'id_korban_jiwa' => $korbanJiwaId,
+                'id_kerusakan_rumah' => $kerusakanRumahId,
+                'id_kerusakan_fasilitas' => $korbanFasilitasId,
+                'id_kerusakan_infrastruktur' => $kerusakanInfrastrukturId,
+                'id_lokasi_shelter' => $shelterId,
             ],
         ]);
     }
