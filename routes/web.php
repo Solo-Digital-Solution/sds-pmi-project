@@ -9,7 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-Route::get('pdf', [PDFController::class, 'generatePDF']);
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -33,30 +33,30 @@ Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKeja
 //Route::post('/tambah-kejadian/addKejadian', [KejadianController::class,'add']);
 Route::get('/kejadian', [KejadianController::class, 'index']);
 Route::get('tambah-kejadian', [DropdownController::class, 'indexKecamatan']);
-Route::get('{kejadian}/edit', [DropdownController::class, 'indexKecamatanEdit']);
+//Route::get('{kejadian}/edit', [DropdownController::class, 'indexKecamatanEdit']);
+Route::get('/kejadian/edit/{id}',[KejadianController::class,'edit']);
+Route::post('/kejadian/update',[KejadianController::class,'update']);
 Route::get('edit-kejadian', [DropdownController::class, 'indexKecamatanEdit']);
 Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
-Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
+//Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
+
 
 // ROUTES UNTUK ASSESSMENT
-Route::get('/form-assessment', [LaporanController::class, 'index'])->name('assessment.index');
-Route::post('/form-assessment', [LaporanController::class, 'store'])->name('assessment.store');
-Route::post('/submit-assessment', [LaporanController::class, 'store'])->name('submit-assessment');
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
+Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
     return view('assessment.form-assessment');
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-Route::get('/tambah-lapsit', [LaporanController::class, 'index'])->name('laporan.index');
-Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
-
 Route::get('/laporan-situasi', function () {
     return view('lapsit.laporan-situasi');
 });
 
-// Route::get('/tambah-lapsit', function () {
-//     return view('lapsit.tambah-lapsit');
-// });
+Route::get('/tambah-lapsit', function () {
+    return view('lapsit.tambah-lapsit');
+});
 
 // ROUTES UNTUK EXECUTIVE SUMMARY
 Route::get('/executive-summary', [ExsumController::class, 'index']);
@@ -76,7 +76,6 @@ Route::get('/form', function () {
 Route::get('/coba', function () {
     return view('lapsit.lapsit-pdf-2');
 });
-
 
 Route::get('/coba2', function () {
     return view('assessment.2form-assessment');
