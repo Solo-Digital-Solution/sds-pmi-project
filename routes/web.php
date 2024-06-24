@@ -9,11 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-<<<<<<< HEAD
 Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('generateLapsit');
-=======
-Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
->>>>>>> f18dcf7924ab3b8ab549ffc2c3ff5d6346c2f9fb
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
