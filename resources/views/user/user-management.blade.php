@@ -22,7 +22,7 @@
 @endsection
 
 <!-- UBAH UBAH DI BAGIAN SINI AJAA-->
-@section('content')
+{{-- @section('content')
 <div class="row gutters">
     <div class="col-sm-12">
         <div class="card">
@@ -65,4 +65,60 @@
 </div>
 
 
+@endsection --}}
+
+@section('content')
+<div class="row gutters">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">Manajemen Akun</div>
+            <div class="card-body">
+                <div class="d-flex justify-content-start w-100">
+                    <a href="{{ url('/user-management/create') }}">
+                        <button type="button" class="btn btn-primary btn-lg mr-auto">
+                            <i class="icon-plus2"></i> Tambah Akun
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="basicExample" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>ID Pegawai</th>
+                            <th>Role</th>
+                            <th>Telepon</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($users as $us)
+                        <tr>
+                            <td>{{ $us->name }}</td>
+                            <td>{{ $us->email }}</td>
+                            <td>{{ $us->user_id }}</td>
+                            <td>{{ $us->role_name }}</td>
+                            <td>{{ $us->no_telp }}</td>
+                            <td>
+                                <a href="{{ url('/user-management/' . $us->user_id . '/edit') }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ url('/user-management/' . $us->user_id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="6">Tidak ada data kejadian.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

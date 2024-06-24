@@ -30,6 +30,11 @@ Route::get('/tambah-akun', [UserController::class, 'create']);
 Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
 
 
+// ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
+Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
+Route::get('/user-management/{id}/edit', [UserController::class, 'edit']);
+Route::put('/user-management/{id}', [UserController::class, 'update']);
+
 // ROUTES UNTUK KEJADIAN
 Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKejadian');
 //Route::post('/tambah-kejadian/addKejadian', [KejadianController::class,'add']);
