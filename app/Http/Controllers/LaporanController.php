@@ -37,6 +37,12 @@ class LaporanController extends Controller
         return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
     }
 
+    public function create()
+    {
+        // Logika untuk menampilkan form tambah laporan
+        return view('lapsit.tambah-lapsit'); // Pastikan Anda memiliki view ini
+    }
+
     public function store(Request $request)
     {
         $korban_terdampak = DB::table('korban_terdampak')->insertGetId([
@@ -176,7 +182,7 @@ class LaporanController extends Controller
         ]);
 
         $file = $request->file('dokumentasi');
-        $nama_dokumen = $request->file('dokumentasi')->getClientOriginalName() . '.' . $request->file('dokumentasi')->getClientOriginalExtension();
+        $nama_dokumen = $request->file('dokumentasi')->getClientOriginalName();
         $file->move('dokuemntasi/', $nama_dokumen);
 
         $dokumentasi = DB::table('dokumentasi')->insert([

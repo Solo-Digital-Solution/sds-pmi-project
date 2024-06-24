@@ -26,7 +26,7 @@
 <!-- Row start -->
 <div class="row gutters">
 	<div class="col-sm-12">
-	<form action="{{ route('assessment.store') }}" method="POST" enctype="multipart/form-data">
+	<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 		<div class="card">
 			<div class="card-header">Nomor Laporan</div>

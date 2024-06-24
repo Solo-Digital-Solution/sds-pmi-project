@@ -50,22 +50,13 @@ Route::get('/form-assessment', function () {
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-// ROUTES UNTUK ASSESSMENT
 Route::get('/laporan-situasi', [LaporanController::class, 'index']);
+Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
-Route::resource('/laporan-situasi', \App\Http\Controllers\LaporanController::class);
 
 // Route::get('/laporan-situasi', function () {
 //     return view('lapsit.laporan-situasi');
 // });
-
-Route::get('/laporan-situasi', function () {
-    return view('lapsit.laporan-situasi');
-});
-
-Route::get('/tambah-lapsit', function () {
-    return view('lapsit.tambah-lapsit');
-});
 
 // ROUTES UNTUK EXECUTIVE SUMMARY
 Route::get('/executive-summary', [ExsumController::class, 'index']);
