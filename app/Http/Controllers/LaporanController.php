@@ -5,14 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Korban_terdampak;
 use Illuminate\Support\Facades\DB;
-use App\Models\Personil_dihubungi; // Pastikan untuk mengimpor model Personil_dihubungi
+use App\Models\Laporan;
+use App\Models\Dampak;
+use App\Models\Distribusi_layanan;
+use App\Models\Dokumentasi;
+use App\Models\Evakuasi_korban;
+use App\Models\Giat_pmi;
+use App\Models\Kejadian;
+use App\Models\Kerusakan_fasilitas;
+use App\Models\Kerusakan_infrastruktur;
+use App\Models\Kerusakan_rumah;
+use App\Models\Korban_jiwa;
+use App\Models\Layanan_korban;
+use App\Models\Mobilisasi;
+use App\Models\Personil;
+use App\Models\Personil_dihubungi;
+use App\Models\Petugas_posko;
+use App\Models\Shelter;
+use App\Models\Tdb;
+use App\Models\Tsr;
+
+// Pastikan untuk mengimpor model Personil_dihubungi
 
 class LaporanController extends Controller
 {
     public function index()
     {
         // Menampilkan form assessment
-        return view('assessment.form-assessment');
+        $totalData = laporan::count();
+        $dataPerPage = max(min($totalData, 10), 1);
+        $laporans = Laporan::latest()->paginate($dataPerPage);
+
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
     }
 
     public function checkReportNumber(Request $request)
