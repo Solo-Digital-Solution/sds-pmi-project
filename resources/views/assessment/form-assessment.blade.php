@@ -22,15 +22,11 @@
 @endsection
 
 @section('content')
-<<<<<<< HEAD
 <!-- BEGIN .app-main -->
 <!-- Row start -->
 <div class="row gutters">
 	<div class="col-sm-12">
 	<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
-=======
-<form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
->>>>>>> f18dcf7924ab3b8ab549ffc2c3ff5d6346c2f9fb
     @csrf
     <div class="d-flex justify-content-center">
 		<h5 class="m-0 mb-2">DAMPAK</h5>
@@ -280,7 +276,7 @@
 				</div>
 			</div>
 		</div>
-	</div>    
+	</div>
     <div class="col-sm-12">
 		<div class="card">
 			<div class="card-header">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</div>
@@ -600,7 +596,7 @@
     var i = 0;
     $('#addPersonil').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
             '<div class="personil-form">' +
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
@@ -639,7 +635,7 @@
     var i = 0;
     $('#addPetugas').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
             '<div class="petugas-form">' +
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
@@ -672,7 +668,7 @@
     var i = 0;
     $('#addDistribusi').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
             '<div class="distribusi-form">' +
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
