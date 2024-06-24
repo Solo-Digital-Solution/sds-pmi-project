@@ -44,7 +44,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($laporans as $laporan )
                         <tr>
+<<<<<<< HEAD
                             <td>1</td>
                             <td>10.02.2022 18:38</td>
                             <td><a href="{{ route('generateLapsit') }}" target="_blank" style="color: blue;">Download</a></td>
@@ -109,7 +111,18 @@
                             <td>10.02.2022 18:38</td>
                             <td><a href="" style="color: blue;">Download</a></td>
                             <td><a href="" style="color: blue;">Lihat Detail</a></td>
+=======
+                            <td>{{ $laporan['nama_laporan'] }}</td>
+                            <td>{{ $laporan['update'] }}</td>
+                            <td>
+                                <a href=# style="color: green;">Download</a>
+                            </td>
+                            <td>
+                                <a href=# style="color: blue;">Lihat Detail</a>
+                            </td>
+>>>>>>> f18dcf7924ab3b8ab549ffc2c3ff5d6346c2f9fb
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

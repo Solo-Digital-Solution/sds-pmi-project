@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('korban_terdampak', function (Blueprint $table) {
-            $table->id('id_korban_terdampak');
-            $table->integer('jmlh_kk');
-            $table->integer('jmlh_jiwa');
+        Schema::create('transaction_petugas_posko', function (Blueprint $table) {
+            $table->foreignId('id_laporan')->references('id_laporan')->on('laporan')->onDelete('cascade');
+            $table->foreignId('id_petugas_posko')->references('id_petugas_posko')->on('petugas_posko')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('korban_terdampak');
+        Schema::dropIfExists('transaction_petugas_posko');
     }
 };
