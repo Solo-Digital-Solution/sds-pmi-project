@@ -26,9 +26,10 @@ Route::get('/user-management', [UserController::class, 'index']);
 Route::get('/tambah-akun', function () {
     return view('user.tambah-akun');
 });
-Route::get('/tambah-akun', [UserController::class, 'create']);
-Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
 
+//ROUTES UNTUK TAMBAH AKUN
+Route::get('/user-management/create', [UserController::class, 'create']);
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
 
 // ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
 Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
