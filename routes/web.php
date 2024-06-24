@@ -46,23 +46,14 @@ Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan'
 // ROUTES UNTUK ASSESSMENT
 Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
-<<<<<<< HEAD
-Route::post('/submit-assessment', [LaporanController::class, 'store'])->name('submit-assessment');
-=======
 Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
->>>>>>> f18dcf7924ab3b8ab549ffc2c3ff5d6346c2f9fb
 Route::get('/form-assessment', function () {
     return view('assessment.form-assessment');
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-<<<<<<< HEAD
-Route::post('/check-report-number', [LaporanController::class, 'checkReportNumber']);
-Route::get('/tambah-lapsit', [LaporanController::class, 'index'])->name('laporan.index');
-=======
 // ROUTES UNTUK ASSESSMENT
-Route::get('/laporan-situasi', [LaporanController::class, 'index']);
->>>>>>> f18dcf7924ab3b8ab549ffc2c3ff5d6346c2f9fb
+Route::get('/laporan-situasi', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 Route::resource('/laporan-situasi', \App\Http\Controllers\LaporanController::class);
 
