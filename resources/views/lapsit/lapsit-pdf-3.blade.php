@@ -6,6 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            font-size: 10pt;
         }
 
         .container {
@@ -24,14 +25,14 @@
             border: 1px solid #000;
             padding: 4px;
             text-align: left;
-            font-size: 10px; /* Sesuaikan ukuran font */
-            word-wrap: break-word; /* Tambahkan ini untuk word wrapping */
-            page-break-inside: avoid;
+            font-size: 10px;
+            /* Sesuaikan ukuran font */
+            word-wrap: break-word;
         }
 
         .padding-table {
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 25px;
+            margin-bottom: 25px;
         }
 
         .deskripsi-umum,
@@ -137,7 +138,7 @@
         }
 
         .color {
-            height: 100%;
+            height: 40px;
         }
 
         .color1 {
@@ -147,17 +148,22 @@
 
         .color2 {
             background-color: #ff4d4d;
-            width: 25%;
+            width: 20%;
         }
 
         .color3 {
             background-color: #ff9999;
-            width: 25%;
+            width: 15%;
         }
 
         .color4 {
             background-color: #ffcccc;
-            width: 25%;
+            width: 10%;
+        }
+
+        .logo {
+            width: 20%;
+            text-align: center;
         }
 
         .logo-container {
@@ -181,23 +187,24 @@
 
 <body>
     <div class="container">
-        <p>Tanggal generate laporan: </p>
+        <p>Generated on {{ $currentDay }}, {{ $currentDate }} at {{ $currentTime }} </p>
 
-        <div class="header">
-            <div class="gradient-bar">
-                <div class="color color1"></div>
-                <div class="color color2"></div>
-                <div class="color color3"></div>
-                <div class="color color4"></div>
-            </div>
-            <div class="logo-container">
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td class="color color1"></td>
+                <td class="color color2"></td>
+                <td class="color color3"></td>
+                <td class="color color4"></td>
+                <td class="logo">
+                    <img src="{{ public_path('img/logo-pmi-min.png') }}" height="50px" alt="">
+                </td>
+            </tr>
+        </table>
 
-        <h3 style="text-align: center;">LAPORAN SITUASI</h3>
+        <h3 style="padding-top:15px; text-align: center;">LAPORAN SITUASI</h3>
 
         <div>
-            <table class="deskripsi-umum padding-table">
+            <table class="deskripsi-umum" style="padding-top:10px;">
                 <tr>
                     <td style="font-weight: bold;">Kejadian Bencana</td>
                     <td style="font-weight: bold; background-color:  white;">: Banjir</td>
@@ -215,41 +222,44 @@
                     <td>: 06.30</td>
                 </tr>
                 <tr>
-                    <td style="background-color:  #f8d7da;">Pemerintah membutuhkan dukungan internasional</td>
+                    <td style="background-color: #f8d7da;">Pemerintah membutuhkan dukungan internasional</td>
                     <td>: TIDAK</td>
                 </tr>
             </table>
         </div>
 
-        <div class="table-2-col padding-table">
-            <div class="label">
-                <h3>Gambaran Umum Situasi</h3>
-            </div>
-            <div class="content">
-                <p>Hujan yang mengguyur kota Surakarta dan sekitarnya pada hari Kamis, 16 Februari 2023 sejak pukul 14.15 hingga pukul 16.00 WIB mengakibatkan debit air di sungai-sungai yang ada di Kota Surakarta meningkat cukup cepat. Ketinggian genangan antara 15-70 cm. hingga saat ini cuaca masih hujan ringan merata di wilayah Kota Surakarta. Terdapat beberapa genangan banjir di beberapa wilayah kota Surakarta antara lain: Jagalan, Gandekan, Sudiroprajan, Pucangsawit, Semanggi, Joyosuran, Mojo, sangkrah, dan Joyontakan. Terdapat beberapa tempat pengungsian yaitu di Pendopo kelurahan Gandekan kelurahan kedung lumbu masjid al anshor, Jagalan RW 14.</p>
-            </div>
+        <div class="padding-table">
+            <table class="dampak-table">
+                <tr>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">GAMBARAN UMUM SITUASI</th>
+                </tr>
+                <tr>
+                    <td style="text-align: justify;" colspan="10">Hujan yang mengguyur kota Surakarta dan sekitarnya pada hari Kamis, 16 Februari 2023 sejak pukul 14.15 hingga pukul 16.00 WIB mengakibatkan debit air di sungai-sungai yang ada di Kota Surakarta meningkat cukup cepat. Ketinggian genangan antara 15-70 cm. hingga saat ini cuaca masih hujan ringan merata di wilayah Kota Surakarta. Terdapat beberapa genangan banjir di beberapa wilayah kota Surakarta antara lain: Jagalan, Gandekan, Sudiroprajan, Pucangsawit, Semanggi, Joyosuran, Mojo, sangkrah, dan Joyontakan. Terdapat beberapa tempat pengungsian yaitu di Pendopo kelurahan Gandekan kelurahan kedung lumbu masjid al anshor, Jagalan RW 14.</td>
+                </tr>
+            </table>
         </div>
 
-        <div class="table-2-col padding-table">
-            <div class="label">
-                <h3>Keterangan Akses menuju Lokasi</h3>
-            </div>
-            <div class="content">
-                <p>Beberapa jalan kampung di kelurahan Semanggi, Joyosuran, Joyontakan di tutup karena tergenang antara 50-70 cm.</p>
-            </div>
+        <div class="padding-table">
+            <table class="dampak-table">
+                <tr>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">KETERANGAN AKSES MENUJU LOKASI</th>
+                </tr>
+                <tr>
+                    <td style="text-align: justify;" colspan="10">Beberapa jalan kampung di kelurahan Semanggi, Joyosuran, Joyontakan di tutup karena tergenang antara 50-70 cm.</td>
+                </tr>
+            </table>
         </div>
 
         <div class="padding-table">
             <table class="table dampak-table">
                 <tr>
-                    <th style="background-color: red; color: white; width: 100px; page-break-before: avoid;" rowspan="29">DAMPAK</th>
-                    <th style="background-color: red; color: white;" colspan="9">DAMPAK</th>
+                    <th style="background-color: red; color: white;" colspan="10">DAMPAK</th>
                 </tr>
                 <tr>
-                    <th colspan="9">Korban Terdampak</th>
+                    <th colspan="10">Korban Terdampak</th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th colspan="2"></th>
                     <th>Lapsit-awal</th>
                     <th>Lapsit-1</th>
                     <th>Lapsit-2</th>
@@ -260,7 +270,7 @@
                     <th>Lapsit-7</th>
                 </tr>
                 <tr>
-                    <td>KK</td>
+                    <td colspan="2">KK</td>
                     <td>650</td>
                     <td></td>
                     <td></td>
@@ -271,7 +281,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Jiwa</td>
+                    <td colspan="2">Jiwa</td>
                     <td>2614</td>
                     <td></td>
                     <td></td>
@@ -282,10 +292,10 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <th colspan="9">Korban Jiwa/Luka/Mengungsi</th>
+                    <th colspan="10">Korban Jiwa/Luka/Mengungsi</th>
                 </tr>
                 <tr>
-                    <td>Luka berat</td>
+                    <td colspan="2">Luka berat</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -296,7 +306,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Luka ringan</td>
+                    <td colspan="2">Luka ringan</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -307,7 +317,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Meninggal</td>
+                    <td colspan="2">Meninggal</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -318,7 +328,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Hilang</td>
+                    <td colspan="2">Hilang</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -329,7 +339,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Mengungsi</td>
+                    <td colspan="2">Mengungsi</td>
                     <td>2614</td>
                     <td></td>
                     <td></td>
@@ -339,11 +349,13 @@
                     <td></td>
                     <td></td>
                 </tr>
+            </table>
+            <table class="table dampak-table">
                 <tr>
-                    <th colspan="9">Kerusakan Rumah</th>
+                    <th colspan="10">Kerusakan Rumah</th>
                 </tr>
                 <tr>
-                    <td>Rusak Berat</td>
+                    <td colspan="2">Rusak Berat</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -354,7 +366,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Rusak Sedang</td>
+                    <td colspan="2">Rusak Sedang</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -365,7 +377,23 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Rusak Ringan</td>
+                    <td colspan="2">Rusak Ringan</td>
+                    <td>0</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <table class="table dampak-table">
+                <tr>
+                    <th colspan="10">Kerusakan Fasilitas Sosial/Umum</th>
+                </tr>
+                <tr>
+                    <td colspan="2">Sekolah</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -376,10 +404,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <th colspan="9">Kerusakan Fasilitas Sosial/Umum</th>
-                </tr>
-                <tr>
-                    <td>Sekolah</td>
+                    <td colspan="2">Tempat Ibadah</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -390,7 +415,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Tempat Ibadah</td>
+                    <td colspan="2">Rumah Sakit</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -401,7 +426,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Rumah Sakit</td>
+                    <td colspan="2">Pasar</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -412,7 +437,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Pasar</td>
+                    <td colspan="2">Gedung Pemerintah</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -423,7 +448,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Gedung Pemerintah</td>
+                    <td colspan="2">Lain-lain</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -433,45 +458,38 @@
                     <td></td>
                     <td></td>
                 </tr>
+            </table>
+            <table class="table dampak-table">
                 <tr>
-                    <td>Lain-lain</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <th colspan="10">Kerusakan Infrastruktur</th>
                 </tr>
                 <tr>
-                    <th colspan="9">Kerusakan Infrastruktur</th>
+                    <td style="text-align: justify;" colspan="10">Lorem ipsum dolor sit amet</td>
+                </tr>
+            </table>
+            <table class="table dampak-table">
+                <tr>
+                    <th colspan="10">Pengungsian</th>
                 </tr>
                 <tr>
-                    <td colspan="9"></td>
-                </tr>
-                <tr>
-                    <th colspan="9">Pengungsian</th>
-                </tr>
-                <tr>
-                    <td>Nama, Lokasi, Kel, Kec</td>
-                    <td>KK</td>
-                    <td>Jiwa</td>
-                    <td>L</td>
-                    <td>P</td>
-                    <td>
+                    <th colspan="2">Nama, Lokasi, Kelurahan, Kecamatan</th>
+                    <th>KK</th>
+                    <th>Jiwa</th>
+                    <th>L</th>
+                    <th>P</th>
+                    <th>
                         <p>&#60;5</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>&#62;5&ge;18</p>
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <p>&#60;18</p>
-                    </td>
-                    <td>Jumlah</td>
+                        </t>
+                    <th>Jumlah</th>
                 </tr>
                 <tr>
-                    <td>Pendopo Kelurahan Gandekan</td>
+                    <td colspan="2">Pendopo Kelurahan Gandekan</td>
                     <td>25</td>
                     <td></td>
                     <td></td>
@@ -482,7 +500,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Masjid Al-Anshor, Jagalan, RW 14</td>
+                    <td colspan="2">Masjid Al-Anshor, Jagalan, RW 14</td>
                     <td>190</td>
                     <td></td>
                     <td></td>
@@ -493,7 +511,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Kelurahan Kedung Lumbu</td>
+                    <td colspan="2">Kelurahan Kedung Lumbu</td>
                     <td>200</td>
                     <td></td>
                     <td></td>
@@ -509,11 +527,13 @@
         <div class="padding-table">
             <table class="dampak-table">
                 <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">MOBILISASI SUMBER DAYA PMI</th>
-                    <th colspan="9">PERSONIL</th>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">MOBILISASI SUMBER DAYA PMI</th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th colspan="10">PERSONIL</th>
+                </tr>
+                <tr>
+                    <th colspan="2"></th>
                     <th>Lapsit-awal</th>
                     <th>Lapsit-1</th>
                     <th>Lapsit-2</th>
@@ -524,7 +544,7 @@
                     <th>Lapsit-7</th>
                 </tr>
                 <tr>
-                    <td>Pengurus</td>
+                    <td colspan="2">Pengurus</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -535,7 +555,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Staf Markas Kab/Kota</td>
+                    <td colspan="2">Staf Markas Kab/Kota</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -547,7 +567,7 @@
                 </tr>
                 </tr>
                 <tr>
-                    <td>Staf Markas Provinsi</td>
+                    <td colspan="2">Staf Markas Provinsi</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -558,7 +578,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Staf Markas Pusat</td>
+                    <td colspan="2">Staf Markas Pusat</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -569,7 +589,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Relawan PMI Kab/Kota</td>
+                    <td colspan="2">Relawan PMI Kab/Kota</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -580,7 +600,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Relawan PMI Provinsi</td>
+                    <td colspan="2">Relawan PMI Provinsi</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -591,7 +611,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Relawan Lintas Provinsi</td>
+                    <td colspan="2">Relawan Lintas Provinsi</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -602,7 +622,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Sukarelawan Spesialis</td>
+                    <td colspan="2">Sukarelawan Spesialis</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -612,23 +632,13 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr></tr>
+            </table>
+            <table class="dampak-table">
                 <tr>
-                    <th colspan="9">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</th>
+                    <th colspan="10">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</th>
                 </tr>
                 <tr>
-                    <td>Medis</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Paramedis</td>
+                    <td colspan="2">Medis</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -639,7 +649,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Relief</td>
+                    <td colspan="2">Paramedis</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -650,7 +660,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Logistics</td>
+                    <td colspan="2">Relief</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -661,7 +671,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Watsan</td>
+                    <td colspan="2">Logistics</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -672,7 +682,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>IT-Telekom</td>
+                    <td colspan="2">Watsan</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -683,7 +693,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Sheltering</td>
+                    <td colspan="2">IT-Telekom</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -694,10 +704,23 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <th colspan="9">Alat Utama Sistem TDB</th>
+                    <td colspan="2">Sheltering</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <table class="dampak-table">
+                <tr>
+                    <th colspan="10">Alat Utama Sistem TDB</th>
                 </tr>
                 <tr>
-                    <td>Kend. Ops</td>
+                    <td colspan="2">Kend. Ops</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -708,7 +731,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Truk Angkutan</td>
+                    <td colspan="2">Truk Angkutan</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -719,7 +742,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Truk Tangki</td>
+                    <td colspan="2">Truk Tangki</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -730,7 +753,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Double Cabin</td>
+                    <td colspan="2">Double Cabin</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -741,7 +764,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Alat DU</td>
+                    <td colspan="2">Alat DU</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -752,7 +775,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Ambulans</td>
+                    <td colspan="2">Ambulans</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -763,7 +786,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Alat Watsan</td>
+                    <td colspan="2">Alat Watsan</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -774,7 +797,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>RS Lapangan</td>
+                    <td colspan="2">RS Lapangan</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -785,7 +808,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Alat PKDD</td>
+                    <td colspan="2">Alat PKDD</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -796,7 +819,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Gudang Lapangan</td>
+                    <td colspan="2">Gudang Lapangan</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -807,7 +830,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Posko Aju</td>
+                    <td colspan="2">Posko Aju</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -818,7 +841,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Alat IT/Tel Lapangan</td>
+                    <td colspan="2">Alat IT/Tel Lapangan</td>
                     <td>0</td>
                     <td></td>
                     <td></td>
@@ -827,19 +850,20 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                </tr>
             </table>
         </div>
 
         <div class="padding-table">
             <table class="dampak-table">
                 <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">GIAT PMI</th>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">GIAT PMI</th>
                 </tr>
                 <tr>
-                    <th colspan="9">Evakuasi Korban Luka-Luka</th>
+                    <th colspan="10">Evakuasi Korban Luka-Luka</th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th colspan="2"></th>
                     <th>Lapsit-awal</th>
                     <th>Lapsit-1</th>
                     <th>Lapsit-2</th>
@@ -850,7 +874,7 @@
                     <th>Lapsit-7</th>
                 </tr>
                 <tr>
-                    <td>Luka Ringan/Berat</td>
+                    <td colspan="2">Luka Ringan/Berat</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -861,7 +885,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Meninggal</td>
+                    <td colspan="2">Meninggal</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -871,41 +895,44 @@
                     <td></td>
                     <td></td>
                 </tr>
+            </table>
+
+            <table class="dampak-table">
                 <tr>
-                    <th colspan="9">Layanan Korban Bencana - Lapsit #</th>
+                    <th colspan="10">Layanan Korban Bencana - Lapsit #</th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th colspan="2"></th>
                     <th colspan="4">Tempat/Lokasi</th>
                     <th colspan="2">KK/Orang</th>
                     <th colspan="2">Jumlah</th>
                 </tr>
                 <tr>
-                    <td>Distribusi Food Item</td>
+                    <td colspan="2">Distribusi Food Item</td>
                     <td colspan="4"></td>
                     <td colspan="2"></td>
                     <td colspan="2"></td>
                 </tr>
                 <tr>
-                    <td>Distribusi Non-Food Item</td>
+                    <td colspan="2">Distribusi Non-Food Item</td>
                     <td colspan="4"></td>
                     <td colspan="2"></td>
                     <td colspan="2"></td>
                 </tr>
                 <tr>
-                    <td>Layanan Kesehatan</td>
+                    <td colspan="2">Layanan Kesehatan</td>
                     <td colspan="4"></td>
                     <td colspan="2"></td>
                     <td colspan="2"></td>
                 </tr>
                 <tr>
-                    <td>Layanan Air Bersih</td>
+                    <td colspan="2">Layanan Air Bersih</td>
                     <td colspan="4"></td>
                     <td colspan="2"></td>
                     <td colspan="2"></td>
                 </tr>
                 <tr>
-                    <td>Lain-lain</td>
+                    <td colspan="2">Lain-lain</td>
                     <td colspan="4"></td>
                     <td colspan="2"></td>
                     <td colspan="2"></td>
@@ -916,21 +943,10 @@
         <div class="padding-table">
             <table class="dampak-table">
                 <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">GIAT PEMERINTAH</th>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">GIAT PEMERINTAH</th>
                 </tr>
                 <tr>
-                    <td colspan="9"></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="padding-table">
-            <table class="dampak-table">
-                <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">KEBUTUHAN</th>
-                </tr>
-                <tr>
-                    <td colspan="9"></td>
+                    <td colspan="10"></td>
                 </tr>
             </table>
         </div>
@@ -938,38 +954,10 @@
         <div class="padding-table">
             <table class="dampak-table">
                 <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">HAMBATAN</th>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">KEBUTUHAN</th>
                 </tr>
                 <tr>
-                    <td colspan="9"></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="padding-table">
-            <table class="dampak-table">
-                <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">PERSONIL YANG BISA DIHUBUNGI</th>
-                </tr>
-                <tr>
-                    <th style="font-weight:bold;">Nama Lengkap</th>
-                    <th>Posisi</th>
-                    <th>Kontak</th>
-                </tr>
-                <tr>
-                    <td>Wanto</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Jumadi</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Indro SW</td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="10"></td>
                 </tr>
             </table>
         </div>
@@ -977,23 +965,60 @@
         <div class="padding-table">
             <table class="dampak-table">
                 <tr>
-                    <th style="background-color: red; color: white; width: 100px;" rowspan="32">PETUGAS POSKO</th>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">HAMBATAN</th>
                 </tr>
                 <tr>
-                    <th style="font-weight:bold;">Nama Lengkap</th>
-                    <th>Kontak</th>
+                    <td colspan="10"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="padding-table">
+            <table class="dampak-table">
+                <tr>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">PERSONIL YANG BISA DIHUBUNGI</th>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
+                    <th colspan="4">Nama Lengkap</th>
+                    <th colspan="3">Posisi</th>
+                    <th colspan="3">Kontak</th>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
+                    <td colspan="4">Jumadi</td>
+                    <td colspan="3">Kepala Sie. PB PMI Solo</td>
+                    <td colspan="3">081234583328</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="padding-table">
+            <table class="dampak-table">
+                <tr>
+                    <th style="background-color: red; color: white; width: 100px;" colspan="10">PETUGAS POSKO</th>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
+                    <th colspan="5">Nama Lengkap</th>
+                    <th colspan="5">Kontak</th>
+                </tr>
+                <tr>
+                    <td colspan="5">Bambang</td>
+                    <td colspan="5">081234562178</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="padding-table">
+            <table class="dampak-table">
+                <tr>
+                    <th style="background-color: white; color: black; width: 100px;" colspan="10">LAMPIRAN DOKUMENTASI</th>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
+                    </td>
+                    <td colspan="5">
+                        <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
+                    </td>
                 </tr>
             </table>
         </div>

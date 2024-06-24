@@ -9,7 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('generateLapsit');
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -23,10 +23,17 @@ Route::get('/', function () {
 
 // ROUTES UNTUK USER MANAGEMENT
 Route::get('/user-management', [UserController::class, 'index']);
+Route::get('/tambah-akun', function () {
+    return view('user.tambah-akun');
+});
+Route::get('/tambah-akun', [UserController::class, 'create']);
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
 
-// ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
-Route::get('/user-management/create', [UserController::class, 'create']);
-Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
+
+// ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
+Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
+Route::get('/user-management/{id}/edit', [UserController::class, 'edit']);
+Route::put('/user-management/{id}', [UserController::class, 'update']);
 
 // ROUTES UNTUK KEJADIAN
 Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKejadian');
@@ -52,6 +59,9 @@ Route::get('/form-assessment', function () {
 // ROUTES UNTUK LAPORAN SITUASI
 Route::get('/laporan-situasi', [LaporanController::class, 'index']);
 Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
+
+// ROUTES UNTUK ASSESSMENT
+Route::get('/laporan-situasi', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 
 // Route::get('/laporan-situasi', function () {
@@ -74,7 +84,7 @@ Route::get('/form', function () {
 
 
 Route::get('/coba', function () {
-    return view('lapsit.lapsit-pdf-2');
+    return view('lapsit.lapsit-pdf-3');
 });
 
 Route::get('/coba2', function () {

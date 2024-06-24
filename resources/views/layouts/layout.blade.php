@@ -1,8 +1,6 @@
 @include('layouts.head')
 
 <body>
-    @include('layouts.page-loading')
-
     <div class="app-wrap">
         <div class="app-container">
             @include('layouts.header')
