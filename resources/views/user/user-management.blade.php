@@ -74,7 +74,7 @@
             <div class="card-header">Manajemen Akun</div>
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
-                    <a href="{{ url('/user-management/create') }}">
+                    <a href="{{ url('/tambah-akun') }}">
                         <button type="button" class="btn btn-primary btn-lg mr-auto">
                             <i class="icon-plus2"></i> Tambah Akun
                         </button>

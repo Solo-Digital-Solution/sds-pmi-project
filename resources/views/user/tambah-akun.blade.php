@@ -23,7 +23,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
-@section('content')
+{{-- @section('content')
 <!-- Row start -->
 
 <div class="row gutters">
@@ -121,4 +121,112 @@
     </div> <!-- col 12  close -->
 </div> <!-- row gutters close -->
 <!-- Row end -->
+@endsection --}}
+
+@section('content')
+<div class="row gutters">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header" style="font-weight: bold;">Tambah Akun</div>
+            <div class="card-body">
+                <form action="{{ route('addAkun') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Nama Lengkap<span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">Email <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-3 col-form-label">Password <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="user_id" class="col-sm-3 col-form-label">ID Pegawai <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Masukkan ID pegawai" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-3 col-form-label">Username <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="gender" class="col-sm-3 col-form-label">Jenis Kelamin <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="">-- Pilih jenis kelamin --</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{-- <div class="form-group row">
+                        <label for="role_name" class="col-sm-3 col-form-label">Jabatan <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="role_name" name="role_name" required>
+                                <option value="">-- Pilih jabatan --</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
+
+                    <div class="form-group row">
+                        <label for="role_name" class="col-sm-3 col-form-label">Role <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="role_name" name="role_name" required>
+                                <option value="">-- Pilih jabatan --</option>
+                                @if(isset($roles))
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group row">
+                        <label for="no_telp" class="col-sm-3 col-form-label">Nomor Telepon <span style="color: red;">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukkan nomor telepon" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="profilePhoto" class="col-sm-3 col-form-label">Unggah Foto Profil</label>
+                        <div class="col-sm-6">
+                            <input type="file" class="form-control-file" id="profilePhoto" name="profilePhoto" accept=".jpg,.jpeg,.png">
+                            <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-9 offset-sm-3">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+            </div> <!-- card-body close -->
+        </div> <!-- card-close -->
+    </div> <!-- col 12 close -->
+</div> <!-- row gutters close -->
 @endsection
