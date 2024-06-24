@@ -84,17 +84,17 @@
                     </li> -->
                     <li class="dropdown">
                         <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
-                            <img class="avatar" src="img/user.png" alt="Admin Dashboards" />
+                            <img class="avatar" src="img/user.png" alt="Dashboards" />
                             <i class="icon-chevron-small-down"></i>
                         </a>
                         <div class="dropdown-menu lg dropdown-menu-right" aria-labelledby="userSettings">
                             <ul class="user-settings-list">
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="{{ url('/') }}">
                                         <div class="icon">
-                                            <i class="icon-account_circle"></i>
+                                            <img src="{{ asset('img/taehyung.jpg') }}" class="rounded-image" alt="Foto Profile">
                                         </div>
-                                        <p>Profile</p>
+                                        <p>Profil Anda</p>
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -115,7 +115,7 @@
                                 </li> -->
                             </ul>
                             <div class="logout-btn">
-                                <a href="login.html" class="btn btn-primary">Logout</a>
+                                <a href="{{ url('/') }}" class="btn btn-primary">Logout</a>
                             </div>
                         </div>
                     </li>

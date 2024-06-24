@@ -21,9 +21,8 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = DB::table('roles')->get();
-
-        return view('user.create', compact('roles'));
+        $data['roles'] = Roles::get(["role_id", "role_name"]);
+        return view('user.tambah-akun', $data);
     }
 
     public function simpanAkun(Request $request)

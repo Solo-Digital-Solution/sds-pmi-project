@@ -14,16 +14,20 @@ class PDFController extends Controller
         $kejadians = DB::table('kejadian')->get();
         $laporans = DB::table('laporan')->get();
 
+        $currentDate = date('m/d/Y');
+        $currentDay = date('l');
+        $currentTime = date('h:i:s A');
+
         $data = [
-            'title' => 'Laporan Situasi',
-            'date' => date('m/d/Y'),
+            'currentDate' => $currentDate,
+            'currentDay' => $currentDay,
+            'currentTime' => $currentTime,
             'kejadians' => $kejadians,
             'laporans' => $laporans
         ];
 
-        $pdf = PDF::loadView('lapsit.lapsit-pdf', $data);
-        // $pdf = PDF::loadView('lapsit.lapsit-pdf-2');
+        $pdf = PDF::loadView('lapsit.lapsit-pdf-3', $data);
 
-        return $pdf->download('Laporan Situasi.pdf');
+        return $pdf->stream('Laporan Situasi.pdf');
     }
 }

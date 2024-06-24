@@ -1,15 +1,30 @@
 body {
     font-family: Arial, sans-serif;
+    font-size: 12px;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 100%;
+    margin: 0 auto;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+    page-break-inside: avoid;
+}
+
+.table th,
+.table td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: left;
+    font-size: 10px;
+    /* Sesuaikan ukuran font */
+    word-wrap: break-word;
+    /* Tambahkan ini untuk word wrapping */
+    page-break-inside: avoid;
 }
 
 .padding-table {
@@ -63,7 +78,8 @@ table {
 }
 
 .table-2-col {
-    display: flex;
+    display: table;
+    width: 100%;
     border: 1px solid black;
 }
 
@@ -94,7 +110,7 @@ table {
 }
 
 .deskripsi-umum td:nth-child(2) {
-    background-color:  #f8d7da;
+    background-color: #f8d7da;
     font-size: 12px;
     text-align: justify;
 }
@@ -122,13 +138,28 @@ table {
     height: 100%;
 }
 
-.color1 { background-color: #ff0000; width: 25%; }
-.color2 { background-color: #ff4d4d; width: 25%; }
-.color3 { background-color: #ff9999; width: 25%; }
-.color4 { background-color: #ffcccc; width: 25%; }
+.color1 {
+    background-color: #ff0000;
+    width: 25%;
+}
+
+.color2 {
+    background-color: #ff4d4d;
+    width: 25%;
+}
+
+.color3 {
+    background-color: #ff9999;
+    width: 25%;
+}
+
+.color4 {
+    background-color: #ffcccc;
+    width: 25%;
+}
 
 .logo-container {
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
     padding: 0 20px;

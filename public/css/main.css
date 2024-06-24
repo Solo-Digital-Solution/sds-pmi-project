@@ -2603,6 +2603,14 @@ ul#newsticker li:hover {
 }
 
 /*************** Profile Page ***************/
+.rounded-image {
+  width: 32px;
+  height: 32px;
+  margin: 0.5px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .block-140 {
   background: #ffffff;
   display: block;
@@ -3557,7 +3565,7 @@ a.blog-sm p.blog-date:after {
   left: 114px;
   top: 45px;
   background: #3c3c3c;
-  animation: loading 1s infinite alternate;
+  animation: loading s infinite alternate;
 }
 .loading-wrapper .loading span:nth-of-type(1) {
   background: #da1113;

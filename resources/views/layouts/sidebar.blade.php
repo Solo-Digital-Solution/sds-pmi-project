@@ -41,16 +41,16 @@
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
-                <li>
+                <li class="active selected">
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
                             <i class="icon-laptop_windows"></i>
                         </span>
                         <span class="nav-title">Dashboards</span>
                     </a>
-                    <ul aria-expanded="false">
+                    <ul aria-expanded="false" class="collapse in">
                         <li>
-                            <a href='{{ url('/')  }}'>Dashboard</a>
+                            <a href='{{ url('/')  }}' class="current-page">Dashboard</a>
                         </li>
                         <!-- <li>
                             <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>

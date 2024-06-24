@@ -26,29 +26,30 @@
 <div class="row gutters">
 
     <div class="col-sm-12">
-    <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-        <div class="card">
-            <div class="card-body">
+        <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="card">
+                <div class="card-body">
 
-                <div class="form-group row">
-                    <label for="nama_laporan" class="col-sm-3 col-form-label">Lapsit ke-</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="">
+                    <div class="form-group row">
+                        <label for="nama_laporan" class="col-sm-3 col-form-label">Lapsit ke-</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="">
+                            <div id="error-message" style="color: red;"></div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="update" class="col-sm-3 col-form-label">
-                        Tanggal Update Kejadian <span style="color: red;">*</span>
-                    </label>
-                    <div class="col-sm-3">
-                        <input type="datetime-local" class="form-control" id="update" name="update">
+                    <div class="form-group row">
+                        <label for="update" class="col-sm-3 col-form-label">
+                            Tanggal Update Kejadian <span style="color: red;">*</span>
+                        </label>
+                        <div class="col-sm-3">
+                            <input type="datetime-local" class="form-control" id="update" name="update">
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
     </div>
 
     <div class="col-sm-12">
@@ -128,9 +129,9 @@
             </div>
         </div>
     </div>
-    
 
-</form>
+
+    </form>
 
     <div class="col-sm-12">
         <div class="card">
@@ -503,10 +504,10 @@
     </div>
 
     <div class="col-sm-12">
-	<div class="card">
-			<div class="card-header" style="font-weight: bold;">Distribusi Layanan</div>
-			<div class="card-body">
-				<div class="row gutters">
+        <div class="card">
+            <div class="card-header" style="font-weight: bold;">Distribusi Layanan</div>
+            <div class="card-body">
+                <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Jenis Distribusi Layanan</label>
@@ -542,16 +543,16 @@
                             <input class="form-control" type="number" placeholder="Masukkan jumlah" name="jumlah">
                         </div>
                     </div>
-					<div class="col-sm-12 col-12">
-						<button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
-					</div>
-				</div>
-				<div id="formContainer" class="mt-3">
-					<!-- Form will be appended here -->
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="col-sm-12 col-12">
+                        <button type="button" id="addForm" class="btn btn-primary btn-lg">+ Tambah distribusi layanan</button>
+                    </div>
+                </div>
+                <div id="formContainer" class="mt-3">
+                    <!-- Form will be appended here -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="col-sm-12">
         <div class="card">
@@ -687,7 +688,7 @@
             </div>
         </div>
     </div>
-    
+
 
 </form> -->
 </div>
@@ -725,8 +726,8 @@
 
 <!-- Modal pengungsian start -->
 <script>
-    $(document).ready(function(){
-        $('#addPengungsian').click(function(){
+    $(document).ready(function() {
+        $('#addPengungsian').click(function() {
             var form = `
             <div class="pengungsian-form">
 
@@ -792,8 +793,8 @@
 <!-- Modal pengungsian start -->
 <!-- Modal distribusi layanan start -->
 <script>
-    $(document).ready(function(){
-        $('#addForm').click(function(){
+    $(document).ready(function() {
+        $('#addForm').click(function() {
             var form = `
             <div class="form-group-wrapper">
                 <div class="row gutters">
@@ -841,8 +842,8 @@
 
 <!-- Modal personil dihubungi start -->
 <script>
-    $(document).ready(function(){
-        $('#addPersonil').click(function(){
+    $(document).ready(function() {
+        $('#addPersonil').click(function() {
             var form = `
             <div class="personil-form">
                 <div class="row gutters">
@@ -875,8 +876,8 @@
 <!-- Modal personil dihubungi start -->
 <!-- Modal petugas Posko start -->
 <script>
-    $(document).ready(function(){
-        $('#addPetugas').click(function(){
+    $(document).ready(function() {
+        $('#addPetugas').click(function() {
             var form = `
             <div class="petugas-form">
                 <div class="row gutters">
@@ -898,6 +899,52 @@
             `;
             $('#petugasContainer').append(form);
         });
+    });
+
+    document.getElementById('nama_laporan').addEventListener('input', function() {
+        let reportNumber = parseInt(this.value);
+        $.ajax({
+            url: '/check-report-number',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                nama_laporan: reportNumber
+            }),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                if (response.status === 'error') {
+                    // Tampilkan pesan error
+                    document.getElementById('error-message').textContent = response.message;
+                } else {
+                    // Hapus pesan error kalau ada
+                    document.getElementById('error-message').textContent = '';
+                }
+            }
+        });
+    });
+
+    let reportNumber = parseInt(this.value);
+    $.ajax({
+        url: '/check-report-number',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            nama_laporan: reportNumber
+        }),
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            if (response.status === 'error') {
+                // Tampilkan pesan error
+                document.getElementById('error-message').textContent = response.message;
+            } else {
+                // Hapus pesan error kalau ada
+                document.getElementById('error-message').textContent = '';
+            }
+        }
     });
 </script>
 <!-- Modal petugas Posko start -->

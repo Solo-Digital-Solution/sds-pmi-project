@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="page-icon">
-                <i class="icon-laptop_windows"></i>
+                <i class="icon-center_focus_strong"></i>
             </div>
             <div class="page-title">
                 <h5>Tambah Akun</h5>
@@ -26,40 +26,40 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <form action="/simpanAkun" method="post" enctype="multipart/form-data" class="mb-3">
-                    {{ csrf_field() }}
+                <form action="{{ route('addAkun') }}" method="post" enctype="multipart/form-data" class="mb-3">
+                    @csrf
 
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="name">
                             Nama <span style="color: red;">*</span>
                         </label>
                         <input name="name" class="form-control" id="name" rows="1"></input>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="email">
                             Email <span style="color: red;">*</span>
                         </label>
                         <input name="email" class="form-control" id="email" rows="1"></input>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="password">
                             Password <span style="color: red;">*</span>
                         </label>
                         <input name="password" class="form-control" id="password" rows="1"></input>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="user_id">
                             ID Pegawai <span style="color: red;">*</span>
                         </label>
                         <input name="user_id" class="form-control" id="user_id" rows="1"></input>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="username">
                             Username <span style="color: red;">*</span>
                         </label>
                         <input name="username" class="form-control" id="username" rows="1"></input>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="gender">
                             Jenis Kelamin <span style="color: red;">*</span>
                         </label>
@@ -69,18 +69,18 @@
                             <option value="Perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="role_name">
                             Role <span style="color: red;">*</span>
                         </label>
                         <select class="form-control" name="role_name" id="specificSizeSelect" style="width: 100%; margin-bottom: 1.5vh;">
                             <option selected>-- Pilih jenis role --</option>
                             @foreach($roles as $r)
-                                <option value="{{ $r->role_id }}">{{ $r->role_name }}</option>
+                            <option value="{{ $r->role_id }}">{{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="no_telp">
                             Nomor Telepon <span style="color: red;">*</span>
                         </label>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="row gutters">
                         <div class="col-md-6 col-sm-12 col-12">
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <div class="input-group">
                                     <input type="file" class="form-control-file" id="profilePhoto" name="profilePhoto" accept=".jpg,.jpeg,.png" multiple>
                                 </div>

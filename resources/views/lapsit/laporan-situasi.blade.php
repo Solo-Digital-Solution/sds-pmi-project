@@ -29,8 +29,8 @@
             <div class="card-header">Laporan Situasi</div>
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
-                    <a href="{{ url('/tambah-lapsit')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Lapsit</button></a> 
-                    <a href="{{ url('/form-assessment')  }}"><button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Assessment</button></a> 
+                    <a href="{{ url('/tambah-lapsit')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Lapsit</button></a>
+                    <a href="{{ url('/form-assessment')  }}"><button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Assessment</button></a>
                 </div>
             </div>
             <div class="card-body">
@@ -47,7 +47,7 @@
                         <tr>
                             <td>1</td>
                             <td>10.02.2022 18:38</td>
-                            <td><a href="" style="color: blue;">Download</a></td>
+                            <td><a href="{{ route('generateLapsit') }}" target="_blank" style="color: blue;">Download</a></td>
                             <td><a href="" style="color: blue;">Lihat Detail</a></td>
                         </tr>
                         <tr>

@@ -9,7 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-Route::get('pdf', [PDFController::class, 'generatePDF']);
+Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('generateLapsit');
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -23,10 +23,12 @@ Route::get('/', function () {
 
 // ROUTES UNTUK USER MANAGEMENT
 Route::get('/user-management', [UserController::class, 'index']);
+Route::get('/tambah-akun', function () {
+    return view('user.tambah-akun');
+});
+Route::get('/tambah-akun', [UserController::class, 'create']);
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
 
-// ROUTES UNTUK ADD ACCOUNT DI LAMAN USER MANAGEMENT
-Route::get('/user-management/create', [UserController::class, 'create']);
-Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
 
 // ROUTES UNTUK KEJADIAN
 Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKejadian');
@@ -39,14 +41,15 @@ Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan'
 Route::resource('/kejadian', \App\Http\Controllers\KejadianController::class);
 
 // ROUTES UNTUK ASSESSMENT
-Route::get('/form-assessment', [LaporanController::class, 'index'])->name('assessment.index');
-Route::post('/form-assessment', [LaporanController::class, 'store'])->name('assessment.store');
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
 Route::post('/submit-assessment', [LaporanController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
     return view('assessment.form-assessment');
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
+Route::post('/check-report-number', [LaporanController::class, 'checkReportNumber']);
 Route::get('/tambah-lapsit', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 
@@ -74,7 +77,7 @@ Route::get('/form', function () {
 
 
 Route::get('/coba', function () {
-    return view('lapsit.lapsit-pdf-2');
+    return view('lapsit.lapsit-pdf-3');
 });
 
 
