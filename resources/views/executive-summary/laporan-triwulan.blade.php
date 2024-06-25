@@ -147,6 +147,7 @@
 @endsection
 
 @section('content')
+@forelse ($exsum as $kjd)
 <!-- Row start -->
 <div class="row gutters">
     <div class="col-sm-12">
@@ -176,15 +177,15 @@
                                 <th style="background-color: #860200;"></th>
 
                                 <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; padding-top: 0; padding-bottom: 0; align-items: center; line-height: 1; vertical-align: bottom;">
-                                    KEJADIAN<br>
+                                    KEJADIAN BULAN MEI-JULI 2024<br>
                                     <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>
                                 </th>
 
-                                <th rowspan="2" colspan="3" style="background-color: #EBF1F1;align-item: right;padding-left: 100px;"><img src="https://www.starjogja.com/assets/2016/10/PMI.png" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
+                                <th rowspan="2" colspan="3" style="background-color: #EBF1F1; align-item: right;padding-left: 100px;"><img src="https://www.starjogja.com/assets/2016/10/PMI.png" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
                             </tr>
                             <tr>
                                 <th style="background-color: #860200;"></th>
-                                <th colspan="3" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; text-align=center">LAPORAN SITUASI</th>
+                                <th colspan="3" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; text-align:center">LAPORAN TRIWULAN</th>
                             </tr>
                         </thead>
 
@@ -199,10 +200,10 @@
                                 </td>
                                 <td colspan="4" rowspan="2" style="background-color: #650103;">
                                     <div id="informasi">
-                                        Kejadian : <span style="font-weight: 900">Kebakaran</span> <br>
-                                        Lokasi : <span style="font-weight: 900">Surakarta</span> <br>
-                                        Waktu Kejadian : <span style="font-weight: 900">Jumat, 28 Sept 2023 / Pukul 17:02</span> <br><br>
-                                        <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE</span> Senin, 08 Okt 2023 / 19:00 WIB</span><br><br>
+                                        Kejadian : <span style="font-weight: 900">{{ $kjd->nama_kejadian }}</span> <br>
+                                        Lokasi : <span style="font-weight: 900">{{ $kjd->lokasi }}</span> <br>
+                                        Waktu Kejadian : <span style="font-weight: 900">{{ $kjd->waktu_kejadian }}</span> <br><br>
+                                        <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE</span> {{ $kjd->update }}</span><br><br>
                                     </div>
                                 </td>
                                 <td colspan="3" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER KECAMATAN</span></td>
@@ -227,8 +228,8 @@
                             </tr>
 
                             <tr>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">74.444 JIWA</td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">147 TITIK</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $kjd->mengungsi }} ORANG</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;"> TITIK</td>
                             </tr>
 
                             <tr>
@@ -249,13 +250,13 @@
                             </tr>
 
                             <tr>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">10.679 JIWA</td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">5.000</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $kjd->luka_berat + $kjd->luka_ringan }} JIWA</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang }} BANGUNAN</td>
                             </tr>
 
                             <tr>
                                 <td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
-                                        Makanan, Air Bersih, Obat, Family Kit, Hunian Darurat</span>
+                                        {{ $kjd->kebutuhan }}</span>
                                 </td>
                             </tr>
 
@@ -269,17 +270,31 @@
                             <tr>
                                 <td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">PELAYANAN PMI</td>
                                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>482.000 LT</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>
+                                        @if ($kjd->jenis_distribusi_layanan === 'Layanan Air Bersih')
+                                        {{ $kjd->jumlah }} {{ $kjd->unit }}
+                                        @endif
+                                    </span></td>
                                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>482.000 PACK</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>
+                                        @if ($kjd->jenis_distribusi_layanan === 'Food Item')
+                                        {{ $kjd->jumlah }} {{ $kjd->unit }}
+                                        @endif
+                                    </span></td>
                                 <td colspan="4" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
+
+                                <input type="hidden" id="perempuan" value="{{ $kjd->jumlah_perempuan }}">
+                                <input type="hidden" id="laki_laki" value="{{ $kjd->jumlah_laki }}">
+
+                                <input type="hidden" id="latitude" value="{{ $kjd->latitude }}">
+                                <input type="hidden" id="longitude" value="{{ $kjd->longitude }}">
                             </tr>
 
                             <tr>
                                 <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>482.000 ORANG</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>{{ $kjd->relawan_pmi }} ORANG</span></td>
                                 <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>482.000 ORANG</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>{{ $kjd->medis + $kjd->paramedis }} ORANG</span></td>
                                 <td colspan="4" rowspan="2">
                                     <div class="chart-container">
                                         <canvas id="genderChart" width="150" height="150"></canvas>
@@ -315,6 +330,7 @@
                         <thead>
                             <tr>
                                 <th rowspan="2">Tanggal Kejadian</th>
+                                <th rowspan="2">Tanggal Update</th>
                                 <th rowspan="2">Kejadian</th>
                                 <th rowspan="2">Status</th>
                                 <th rowspan="2">Lokasi</th>
@@ -335,13 +351,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($exsum as $kjd)
+
                             <tr>
                                 <td>{{ $kjd->waktu_kejadian }}</td>
+                                <td>{{ $kjd->update }}</td>
                                 <td>{{ $kjd->nama_kejadian }}</td>
                                 <td>
                                     @if ($kjd->status === 'Aktif' || $kjd->status == 'Selesai')
-                                        <button type="button" class="btn btn-{{ $kjd->status == 'Aktif' ? 'primary' : 'dark' }} btn-rounded">{{ $kjd->status }}</button>
+                                    <button type="button" class="btn btn-{{ $kjd->status == 'Aktif' ? 'primary' : 'dark' }} btn-rounded">{{ $kjd->status }}</button>
                                     @endif
                                 </td>
                                 <td>{{ $kjd->lokasi }}</td>
@@ -397,74 +414,82 @@
 </script>
 
 <script>
-    var map = L.map('map', {
-        zoomControl: false // Menonaktifkan kontrol zoom
-    }).setView([-7.535794762805024, 110.85483565143885], 12); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
+    document.addEventListener('DOMContentLoaded', function() {
+        var latitudeValue = document.getElementById('latitude').value;
+        var longitudeValue = document.getElementById('longitude').value;
 
-    // Tambahkan layer peta dari OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        var map = L.map('map', {
+            zoomControl: false // Menonaktifkan kontrol zoom
+        }).setView([latitudeValue, longitudeValue], 12); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
 
-    // Tambahkan marker di Mojosongo dengan tooltip dan pop-up
-    var marker = L.marker([-7.535794762805024, 110.85483565143885]).addTo(map);
-    marker.bindTooltip("Mojosongo").openTooltip();
+        // Tambahkan layer peta dari OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-    // Membuat permintaan geokode untuk mendapatkan informasi jalan
-    var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + marker.getLatLng().lat + "&lon=" + marker.getLatLng().lng;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            var address = data.display_name;
-            marker.bindPopup("<b>Kejadian Kebakaran PLTSA Putri Cempo, Surakarta</b><br>Latitude: " + marker.getLatLng().lat.toFixed(6) + ", Longitude: " + marker.getLatLng().lng.toFixed(6) + "<br>" + address).openPopup();
-        });
+        // Tambahkan marker di Mojosongo dengan tooltip dan pop-up
+        var marker = L.marker([latitudeValue, longitudeValue]).addTo(map);
+        marker.bindTooltip("Mojosongo").openTooltip();
+
+        // Membuat permintaan geokode untuk mendapatkan informasi jalan
+        var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + marker.getLatLng().lat + "&lon=" + marker.getLatLng().lng;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var address = data.display_name;
+                marker.bindPopup("<b>Kejadian Kebakaran PLTSA Putri Cempo, Surakarta</b><br>Latitude: " + marker.getLatLng().lat.toFixed(6) + ", Longitude: " + marker.getLatLng().lng.toFixed(6) + "<br>" + address).openPopup();
+            });``
+    });
 </script>
 
 <script>
-    // Data jumlah pria dan wanita
-    var data = {
-        labels: ['Pria', 'Wanita'],
-        datasets: [{
-            data: [37, 63], // Jumlah pria dan wanita
-            backgroundColor: [
-                '#BC202D', // Warna untuk pria
-                '#FB7E89' // Warna untuk wanita
-            ],
-            borderColor: [
-                '#B31424', // Warna pinggiran untuk pria
-                '#FE9FA9' // Warna pinggiran untuk wanita
-            ],
-            borderWidth: 1
-        }]
-    };
+    document.addEventListener('DOMContentLoaded', function() {
+        var perempuanValue = document.getElementById('perempuan').value;
+        var lakilakiValue = document.getElementById('laki_laki').value;
 
-    // Konfigurasi grafik lingkaran
-    var options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-                fontColor: '#333',
-                fontSize: 12
+        // Data jumlah pria dan wanita
+        var data = {
+            labels: ['Pria', 'Wanita'],
+            datasets: [{
+                data: [lakilakiValue, perempuanValue], // Jumlah pria dan wanita
+                backgroundColor: [
+                    '#BC202D', // Warna untuk pria
+                    '#FB7E89' // Warna untuk wanita
+                ],
+                borderColor: [
+                    '#B31424', // Warna pinggiran untuk pria
+                    '#FE9FA9' // Warna pinggiran untuk wanita
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Konfigurasi grafik lingkaran
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: '#333',
+                    fontSize: 12
+                }
+            },
+            title: {
+                display: true,
+                text: 'Data Gender'
             }
-        },
-        title: {
-            display: true,
-            text: 'Data Gender'
-        }
-    };
+        };
 
-    // Membuat grafik lingkaran
-    var ctx = document.getElementById('genderChart').getContext('2d');
-    var genderChart = new Chart(ctx, {
-        type: 'doughnut', // Jenis grafik lingkaran
-        data: data,
-        options: options
+        // Membuat grafik lingkaran
+        var ctx = document.getElementById('genderChart').getContext('2d');
+        var genderChart = new Chart(ctx, {
+            type: 'doughnut', // Jenis grafik lingkaran
+            data: data,
+            options: options
+        });
     });
-
-
 
     // Data kecamatan
     const dataKecamatan = [{
