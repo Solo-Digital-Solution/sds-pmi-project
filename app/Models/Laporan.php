@@ -49,8 +49,8 @@ class Laporan extends Model
         return $this->belongsTo(Petugas_posko::class, 'id_petugas_posko');
     }
 
-    public function dokumentasi()
+    public function dokumentasis()
     {
-        return $this->belongsTo(Dokumentasi::class, 'id_dokumentasi');
+        return $this->belongsToMany(Dokumentasi::class, 'transaction_dokumentasi', 'id_laporan', 'id_dokumentasi');
     }
 }

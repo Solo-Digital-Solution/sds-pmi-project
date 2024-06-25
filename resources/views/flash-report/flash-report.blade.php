@@ -107,6 +107,11 @@
         border-radius: 5px; /* Rounded corners */
         display: block; /* Make it a block element */
     }
+
+    .button-wrapper {
+        display: flex;
+        justify-content: right;
+    }
 </style>
 
 @section('heading')
@@ -136,38 +141,38 @@
 		<thead>
             <tr>
                 <th style="background-color: #860200; width: 2px"></th>
-                <th colspan=2 style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
+                <th colspan="2" style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
                 <th style="background-color: #860200;"></th>
-
-                <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; padding-top: 0; padding-bottom: 0; align-items: center; line-height: 1; vertical-align: bottom;">
-                    KEJADIAN KEBAKARAN<br>
+                <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; align-items: center; line-height: 1; vertical-align: bottom;">
+                    KEJADIAN {{$laporan->kejadian->nama_kejadian}}<br>
                     <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>                    
                 </th>
                     
-                <th rowspan="2" colspan="3" style="background-color: #EBF1F1;align-item: right;padding-left: 100px;"><img src="https://www.starjogja.com/assets/2016/10/PMI.png" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
+                <th rowspan="2" colspan="3" style="background-color: #EBF1F1;align-item: right;padding-left: 100px;"><img src="{{asset('/img/logoPMI.png')}}" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
             </tr>
             <tr>
-                <th style="background-color: #860200;"></th>
-                <th colspan="3" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; text-align=center">LAPORAN SITUASI</th>
+                <th colspan="4" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; item-align:center;padding-left: 25px;">LAPORAN SITUASI</th>
             </tr>
         </thead>                           
  
 		<tfoot>
-			<td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">Posko PMI Jawa Tengah</td>
+			<td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">&nbsp&nbsp© Posko PMI Jawa Tengah</td>
 		</tfoot>
  
 		<tbody>
 			<tr>
 				<td colspan="5" rowspan="10"><div id="map"></div></td>
-				<td colspan="4" rowspan="2" style="background-color: #650103;">
-                    <div id="informasi">
-                    Kejadian        : <span style="font-weight: 900">Kebakaran</span> <br>
-                    Lokasi          : <span style="font-weight: 900">Surakarta</span> <br>
-                    Waktu Kejadian  : <span style="font-weight: 900">Jumat, 28 Sept 2023 / Pukul 17:02</span> <br><br>
-                    <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE</span> Senin, 08 Okt 2023 / 19:00 WIB</span><br><br>
+				<td colspan="4" rowspan="2"">
+                    <div id="informasi"  style="background-color: #650103;"">
+                    Kejadian        : <span style="font-weight: 900">{{$laporan->kejadian->nama_kejadian}}</span> <br>
+                    Lokasi          : <span style="font-weight: 900">{{$laporan->kejadian->kecamatan}}, {{$laporan->kejadian->kelurahan}}, Surakarta</span> <br>
+                    Waktu Kejadian  : <span id="waktuKejadian" style="font-weight: 900"></span> <br><br>
+                    <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE&nbsp&nbsp&nbsp</span> <span id="waktuKejadianUpdate"></span></span><br><br>
                     </div>
                 </td>
-                <td colspan="3" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER KECAMATAN</span></td>
+                <td colspan="3" style="
+    padding-top: 15px;
+"><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER LOKASI</span></td>
 			</tr>
 
             <tr>
@@ -177,7 +182,7 @@
 			</tr>
  
 			<tr>
-				<td colspan="4" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">DATA KORBAN SEMENTARA</span></td>
+				<td colspan="4"><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">DATA KORBAN SEMENTARA</span></td>
 
 			</tr>
 
@@ -189,8 +194,8 @@
 			</tr>
 
             <tr>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">74.444 JIWA</td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">147 TITIK</td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$laporan->dampak->korbanJiwa->mengungsi}} JIWA</td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$jumlahShelter}} TITIK</td>
 			</tr>
 
             <tr>
@@ -198,27 +203,17 @@
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
 				<td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;"">RUMAH RUSAK</td>
-                <td colspan="3" rowspan="6" style="
-                border-right-width: 0px;
-                padding-right: 0px;
-                border-top-width: 0px;
-                border-left-width: 0px;
-                border-bottom-width: 0px;
-                padding-left: 0px;
-                padding-top: 0px;
-                padding-bottom: 0px;
-                "
-             ><img src="https://tangerangkota.go.id/files/berita/29821siap-hadapi-bencana-pmi-kota-tangerang-gelar-simulasi-kebakaran-29821.jpeg" style="width: 100%"></td>
+                <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="width: 100%"></td>
 			</tr>
 
             <tr>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">10.679 JIWA</td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">5.000</td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$laporan->dampak->korbanJiwa->luka_berat + $laporan->dampak->korbanJiwa->luka_ringan}} JIWA</td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$laporan->dampak->kerusakanRumah->rusak_berat + $laporan->dampak->kerusakanRumah->rusak_ringan + $laporan->dampak->kerusakanRumah->rusak_sedang}} RUMAH</td>
 			</tr>
 
             <tr>
 				<td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
-                Makanan, Air Bersih, Obat, Family Kit, Hunian Darurat</span>
+                {{$laporan->kebutuhan}}</span>
                 </td>
 			</tr>
 
@@ -230,20 +225,22 @@
 			</tr>
 
             <tr>
-				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">PELAYANAN PMI</td>
+				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
 				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>482.000 LT</span></td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->total ?? 0 }} {{ $jumlahLayananAirBersih->satuan ?? '' }}</span></td>
                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>482.000 PACK</span></td>
-				<td colspan="4" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah ?? 0 }} {{ $jumlahFoodItem->unit ?? '' }}</span></td>
+				<td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
 			</tr>
 
             <tr>
 				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>482.000 ORANG</span></td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>{{$laporan->mobilisasi->personil->pengurus + $laporan->mobilisasi->personil->relawan_pmi + $laporan->mobilisasi->personil->staf_markas + $laporan->mobilisasi->personil->sukarelawan_spesialis}} ORANG</span></td>
 				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>482.000 ORANG</span></td>
-                <td colspan="4" rowspan="2"><div class="chart-container">
+                <td colspan="4" rowspan="2" style="
+    padding-bottom: 70px;
+"><div class="chart-container">
                     <canvas id="genderChart" width="150" height="150"></canvas>
                 </div></td>
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank Mandiri<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
@@ -253,17 +250,21 @@
 
             <tr>
 				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">PERTOLONGAN</br>PERTAMA</br>DARURAT DAN</br>EVAKUASI</BR>BENCANA</td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">PERTOLONGAN</br>PERTAMA</br>DARURAT DAN</br>EVAKUASI</BR>BENCANA</td>
 				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-tents icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">HUNIAN DARURAT</td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">
+                    @if ($jumlahShelter != 0)
+                        HUNIAN DARURAT
+                    @endif
+                </td>                
                 <td colspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d;font-size:18px"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <span style="font-weight:800">big opportunity</span> to us</span></td>
 			</tr>
 		</tbody>
 
 	</table>
 </div>
-<div>
-    <button onclick="downloadContentAsImage()">Download as Image</button>
+<div class="button-wrapper">
+    <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" onclick="downloadContentAsImage()">Download as Image</button>
 </div>
 
 <script>
@@ -288,12 +289,62 @@
             document.body.removeChild(downloadLink);
         });
     }
+
+    function formatTanggal(tanggalString) {
+            const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+                            "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+            const tanggal = new Date(tanggalString);
+            const dayName = days[tanggal.getDay()];
+            const date = tanggal.getDate();
+            const month = months[tanggal.getMonth()];
+            const year = tanggal.getFullYear();
+            const hours = String(tanggal.getHours()).padStart(2, '0');
+            const minutes = String(tanggal.getMinutes()).padStart(2, '0');
+
+            return `${dayName}, ${date} ${month} ${year} / Pukul ${hours}:${minutes}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const waktuKejadianString = "{{$laporan->kejadian->waktu_kejadian}}";
+            const waktuKejadianElement = document.getElementById('waktuKejadian');
+            waktuKejadianElement.textContent = formatTanggal(waktuKejadianString);
+        });
+
+        function formatTanggalUpdate(tanggalString) {
+            const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+                            "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+            const tanggal = new Date(tanggalString);
+            const dayName = days[tanggal.getDay()];
+            const date = tanggal.getDate();
+            const month = months[tanggal.getMonth()];
+            const year = tanggal.getFullYear();
+            const hours = String(tanggal.getHours()).padStart(2, '0');
+            const minutes = String(tanggal.getMinutes()).padStart(2, '0');
+
+            return `${dayName}, ${date} ${month} ${year} / ${hours}:${minutes}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const waktuKejadianString = "{{$laporan->update}}";
+            const waktuKejadianElement = document.getElementById('waktuKejadianUpdate');
+            waktuKejadianElement.textContent = formatTanggalUpdate(waktuKejadianString);
+        });
 </script>
 
 <script>
+    var latitude = <?php echo json_encode($laporan->kejadian->latitude); ?>;
+    var longitude = <?php echo json_encode($laporan->kejadian->longitude); ?>;
+    var bencana = <?php echo json_encode($laporan->kejadian->nama_kejadian); ?>;
+    var lokasi = <?php echo json_encode($laporan->kejadian->lokasi); ?>;
+    var kelurahan = <?php echo json_encode($laporan->kejadian->kelurahan); ?>;
+
     var map = L.map('map', {
         zoomControl: false // Menonaktifkan kontrol zoom
-    }).setView([-7.535794762805024, 110.85483565143885], 12); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
+    }).setView([latitude, longitude], 12); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
 
     // Tambahkan layer peta dari OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -301,8 +352,8 @@
     }).addTo(map);
 
     // Tambahkan marker di Mojosongo dengan tooltip dan pop-up
-    var marker = L.marker([-7.535794762805024, 110.85483565143885]).addTo(map);
-    marker.bindTooltip("Mojosongo").openTooltip();
+    var marker = L.marker([latitude, longitude]).addTo(map);
+    marker.bindTooltip(kelurahan).openTooltip();
 
     // Membuat permintaan geokode untuk mendapatkan informasi jalan
     var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + marker.getLatLng().lat + "&lon=" + marker.getLatLng().lng;
@@ -310,7 +361,7 @@
         .then(response => response.json())
         .then(data => {
             var address = data.display_name;
-            marker.bindPopup("<b>Kejadian Kebakaran PLTSA Putri Cempo, Surakarta</b><br>Latitude: " + marker.getLatLng().lat.toFixed(6) + ", Longitude: " + marker.getLatLng().lng.toFixed(6) + "<br>" + address).openPopup();
+            marker.bindPopup("<b>Kejadian " + bencana + " " + lokasi + ", Surakarta</b><br>Latitude: " + marker.getLatLng().lat.toFixed(6) + ", Longitude: " + marker.getLatLng().lng.toFixed(6) + "<br>" + address).openPopup();
         });
 </script>
 
@@ -319,7 +370,7 @@
     var data = {
         labels: ['Pria', 'Wanita'],
         datasets: [{
-            data: [37, 63], // Jumlah pria dan wanita
+            data: [<?php echo $laporan->dampak->shelters->isNotEmpty() ? $laporan->dampak->shelters->first()->jumlah_laki : 0; ?>, <?php echo $laporan->dampak->shelters->isNotEmpty() ? $laporan->dampak->shelters->first()->jumlah_perempuan : 0; ?>], // Jumlah pria dan wanita
             backgroundColor: [
                 '#BC202D', // Warna untuk pria
                 '#FB7E89'  // Warna untuk wanita
