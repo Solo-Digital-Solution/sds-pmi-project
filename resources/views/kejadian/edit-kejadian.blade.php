@@ -33,7 +33,7 @@
                 <div class="card-header" style="font-weight: bold;">Kejadian Bencana</div>
                 <div class="card-body">
                     @foreach ($kejadian as $k)
-                    <form action="/kejadian/update" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('kejadian.update', $k->id_kejadian) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
@@ -43,12 +43,14 @@
                         </div>
                     </div>
 
+                    {{-- <p>{{ dd($k) }}</p> --}}
+
                     <div class="form-group row">
                         <label for="waktu_kejadian" class="col-sm-3 col-form-label">
                             Tanggal Kejadian <span style="color: red;">*</span>
                         </label>
                         <div class="col-sm-3">
-                            <input type="datetime-local" class="form-control"  id="waktu_kejadian" name="waktu_kejadian" value="{{ $k->nama_kejadian }}">
+                            <input type="datetime-local" class="form-control"  id="waktu_kejadian" name="waktu_kejadian" value="{{ $k->waktu_kejadian }}">
                         </div>
                     </div>
 
@@ -59,9 +61,9 @@
                                 <label class="input-group-text" for="kecamatan-dd">Options</label>
                             </div>
                             <select class="form-control" id="kecamatan-dd" name="kecamatan">
-                                <option selected value="{{ $k->kecamatan }}">Choose...</option>
-                                @foreach ($kecamatans as $data)
-                                <option value="{{ $data->id_kecamatan }}">{{ $data->nama_kecamatan }}</option>
+                                <option value="" >Choose...</option>
+                                @foreach ($kecamatans as $kecamatan)
+                                <option value="{{ $kecamatan->id_kecamatan }}" {{ $kecamatan->id_kecamatan == $k->kecamatan ? 'selected' : '' }} > {{ $kecamatan->nama_kecamatan }} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -81,7 +83,7 @@
                         <label for="lokasi">
                             Lokasi Kejadian <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3" value="{{ $k->lokasi }}"></textarea>
+                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3" >{{ $k->lokasi }}</textarea>
                     </div>
 
                     <div class="form-group row">
@@ -104,10 +106,10 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="dukungan_inter">Options</label>
                             </div>
-                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter" value="{{ $k->dukungan_inter }}">
-                                <option value="">Choose...</option>
-                                <option value="1">Ya</option>
-                                <option value="0">Tidak</option>
+                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter" >
+                                <option value="">Choose..</option>
+                                <option value="1" {{ $k->dukungan_inter == 1 ? 'selected' : ''}}>Ya</option>
+                                <option value="0" {{ $k->dukungan_inter == 0 ? 'selected' : ''}}>Tidak</option>
                             </select>
                         </div>
                     </div>
@@ -116,14 +118,14 @@
                         <label for="gambaran_situasi">
                             Gambaran Umum Situasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3" value="{{ $k->gambaran_situasi }}"></textarea>
+                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3" >{{ $k->gambaran_situasi }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="akses_lokasi">
                             Gambaran Umum Akses Lokasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3" value="{{ $k->akses_lokasi }}"></textarea>
+                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3" >{{ $k->akses_lokasi }}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -132,11 +134,11 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="status">Options</label>
                             </div>
-                            <select class="custom-select" id="status" name="status" value="{{ $k->status }}">
-                                <option value="Menunggu Validasi">Menunggu Validasi</option>
-                                <option value="Invalid">Invalid</option>
-                                <option value="Aktif">Aktif</option>
-                                <option value="Selesai">Selesai</option>
+                            <select class="custom-select" id="status" name="status">
+                                <option value="Menunggu Validasi" {{ $k->status == "Menunggu Validasi" ? 'selected' : ''}}>Menunggu Validasi</option>
+                                <option value="Invalid" {{ $k->status == "Invalid" ? 'selected' : '' }}>Invalid</option>
+                                <option value="Aktif" {{ $k->status == "Aktif" ? 'selected' : '' }}>Aktif</option>
+                                <option value="Selesai" {{ $k->status == "Selesai" ? 'selected' : '' }}>Selesai</option>
                             </select>
                         </div>
                     </div>
@@ -162,11 +164,17 @@
                                     },
                                     dataType: 'json',
                                     success: function (result) {
-                                        $('#kelurahan-dd').html('<option value="{{ old('kelurahan', $kejadian->kelurahan) }}">Choose...</option>');
+                                        $('#kelurahan-dd').html('<option value="">Choose...</option>');
                                         $.each(result.kelurahans, function (key, value) {
-                                            $("#kelurahan-dd").append('<option value="' + value
-                                                .nama_kelurahan + '">' + value.nama_kelurahan + '</option>');
+                                            var isSelected = value.nama_kelurahan == "{{ $k->kelurahan }}" ? 'selected' : '';
+                                            $("#kelurahan-dd").append('<option value="' + value.nama_kelurahan + '" ' + isSelected + '>' + value.nama_kelurahan + '</option>');
                                         });
+
+                                        // $.each(result.kelurahans, function (key, value) {
+                                        //     var isSelected = value.nama_kelurahan == "{{ $k->kelurahan }}" ? 'selected' : '';
+                                        //     $("#kelurahan-dd").append('<option value="' + value
+                                        //         .nama_kelurahan + '" >' + value.nama_kelurahan + '</option>');
+                                        // });
                                     }
                                 });
                             });

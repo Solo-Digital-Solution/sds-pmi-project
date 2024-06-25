@@ -59,13 +59,15 @@ class KejadianController extends Controller
     {
         // mengambil data pegawai berdasarkan id yang dipilih
         $kejadian = DB::table('kejadian')->where('id_kejadian',$id_kejadian)->get();
+        $kecamatans = DB::table('kecamatan')->get();
         // passing data pegawai yang didapat ke view edit.blade.php
-        return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
-        //return view('kejadian.edit-kejadian', compact('kejadian'));
+        //return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
+        return view('kejadian.edit-kejadian', compact('kejadian','kecamatans'));
     }
 
-    public function update(Request $request, Kejadian $kejadian)
+    public function update(Request $request, $id_kejadian)
     {
+        $kejadian = Kejadian::findOrFail($id_kejadian);
         $kejadian->update([
             'title'     => $request->title,
             'content'   => $request->content,
@@ -83,7 +85,8 @@ class KejadianController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('kejadian.kejadian')->with(['success' => 'Data Berhasil Diubah!']);
+        //return redirect()->route('kejadian')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect('kejadian');
     }
 
 }

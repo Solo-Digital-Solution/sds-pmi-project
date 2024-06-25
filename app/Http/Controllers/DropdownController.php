@@ -20,7 +20,7 @@ class DropdownController extends Controller
     public function indexKecamatanEdit()
     {
         $data['kecamatans'] = Kecamatan::get(["id_kecamatan", "nama_kecamatan"]);
-        return view('kejadian.edit-kejadian', $data);
+        return view('kejadian.edit-kejadian', [ $data => $kecamatans]);
     }
 
     public function fetchKelurahan(Request $request)
