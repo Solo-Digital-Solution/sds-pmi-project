@@ -96,9 +96,7 @@ Route::prefix('executive-summary')->group(function() {
 // Route::get('/laporan-triwulan-search', [ExsumController::class, 'search'])->name('search');
 
 // ROUTES UNTUK FLASH REPORT
-Route::get('/flash-report', function(){
-    return view('flash-report.flash-report');
-});
+Route::get('/flash-report/{id}', [LaporanController::class, 'show'])->name('flash-report');
 
 // CONTOH
 Route::get('/form', function () {
