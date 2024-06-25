@@ -100,6 +100,11 @@
                         <input type="password" value="12345678" class="form-control" id="password" placeholder="Password" disabled>
                     </div>
                 </div>
+                <div class="d-flex justify-content-center w-100 py-1">
+                    <a href="{{ route('profile.edit') }}">
+                        <button type="submit" class="btn btn-primary btn-lg">Ubah Password</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

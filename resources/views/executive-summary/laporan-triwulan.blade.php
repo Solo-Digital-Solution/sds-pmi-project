@@ -176,7 +176,7 @@
                                 <th style="background-color: #860200;"></th>
 
                                 <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; padding-top: 0; padding-bottom: 0; align-items: center; line-height: 1; vertical-align: bottom;">
-                                    KEJADIAN KEBAKARAN<br>
+                                    KEJADIAN<br>
                                     <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>
                                 </th>
 
@@ -314,11 +314,16 @@
                     <table id="basicExample" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Tanggal Kejadian</th>
-                                <th>Nama Kejadian</th>
-                                <th>Lokasi</th>
-                                <th>Kelurahan</th>
-                                <th>Kecamatan</th>
+                                <th rowspan="2">Tanggal Kejadian</th>
+                                <th rowspan="2">Kejadian</th>
+                                <th rowspan="2">Status</th>
+                                <th rowspan="2">Lokasi</th>
+                                <th rowspan="2">Kelurahan</th>
+                                <th rowspan="2">Kecamatan</th>
+                                <th colspan="8" style="text-align:center">Total</th>
+                                <th rowspan="2">Action</th>
+                            </tr>
+                            <tr>
                                 <th>Pengungsi</th>
                                 <th>Korban</th>
                                 <th>Kerusakan Rumah</th>
@@ -327,7 +332,6 @@
                                 <th>Personil</th>
                                 <th>TSR</th>
                                 <th>TDB</th>
-                                <th>Laporan Situasi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -335,6 +339,11 @@
                             <tr>
                                 <td>{{ $kjd->waktu_kejadian }}</td>
                                 <td>{{ $kjd->nama_kejadian }}</td>
+                                <td>
+                                    @if ($kjd->status === 'Aktif' || $kjd->status == 'Selesai')
+                                        <button type="button" class="btn btn-{{ $kjd->status == 'Aktif' ? 'primary' : 'dark' }} btn-rounded">{{ $kjd->status }}</button>
+                                    @endif
+                                </td>
                                 <td>{{ $kjd->lokasi }}</td>
                                 <td>{{ $kjd->kelurahan }}</td>
                                 <td>{{ $kjd->kecamatan }}</td>
@@ -345,8 +354,9 @@
                                 <td>{{ $kjd->deskripsi_kerusakan }}</td>
                                 <td>{{ $kjd->pengurus + $kjd->staf_markas + $kjd->relawan_pmi + $kjd->sukarelawan_spesialis }}</td>
                                 <td>{{ $kjd->medis + $kjd->paramedis + $kjd->relief + $kjd->logistics + $kjd->watsan + $kjd->it_telekom + $kjd->sheltering }}</td>
-                                <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_angkutan + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans + $kjd->alat_watsan + $kjd->rs_lapangan + $kjd->alat_pkdd + $kjd->gudang_lapangan + $kjd->posko_aju + $kjd->alat_it_lapangan }}</td>
-                                <td><a href="{{ route('generateLapsit') }}" style="color:blue" target="_blank">Lihat</a></td>
+                                <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_angkutan + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans +
+                                $kjd->alat_watsan + $kjd->rs_lapangan + $kjd->alat_pkdd + $kjd->gudang_lapangan + $kjd->posko_aju + $kjd->alat_it_lapangan }}</td>
+                                <td><a href="{{ route('generateLapsit') }}" style="color:red" target="_blank">Lihat Detail</a></td>
                             </tr>
                             @empty
                             <tr>
