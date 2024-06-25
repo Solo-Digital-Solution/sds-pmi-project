@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kejadian;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
+use App\Models\Laporan;
 use Illuminate\Http\Request;
 
 
@@ -113,5 +114,14 @@ class KejadianController extends Controller
 
         return redirect('kejadian')->with('success', 'Kejadian deleted successfully.');
     }
+
+    public function viewLapsit($id_kejadian)
+    {
+        $kejadian = Kejadian::findOrFail($id_kejadian);
+        $laporans = Laporan::where('id_kejadian', $id_kejadian)->get();
+
+        return view('lapsit.laporan-situasi', compact('kejadian', 'laporans'));
+    }
+
 
 }

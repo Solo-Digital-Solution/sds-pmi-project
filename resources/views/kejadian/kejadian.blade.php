@@ -57,6 +57,8 @@
                             <td>
                                 <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">Edit</a>
                                 <a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
+                                <a href="{{ route('kejadian.view-lapsit', ['id_kejadian' => $kejadian['id_kejadian']]) }}" style="color: orangered;">Lapsit</a>
+
                                 @if($kejadian->status == 'Invalid')
                                 <form action="{{ route('kejadian.destroy', $kejadian->id_kejadian) }}" method="POST" style="display: inline-block;">
                                     @csrf
