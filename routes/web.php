@@ -59,6 +59,9 @@ Route::get('edit-kejadian', [DropdownController::class, 'indexKecamatanEdit']);
 Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 //Route::resource('kejadian', KejadianController::class);
 Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
+Route::get('/kejadian/view/{id}',[KejadianController::class,'view']);
+
+Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'viewLapsit'])->name('kejadian.view-lapsit');
 
 
 
@@ -71,7 +74,7 @@ Route::get('/form-assessment', function () {
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-Route::get('/laporan-situasi', [LaporanController::class, 'index']);
+Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
 Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 
