@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('petugas_posko', function (Blueprint $table) {
             $table->id('id_petugas_posko');
-            $table->string('nama_lengkap');
-            $table->string('kontak');
+            $table->string('nama_lengkap')->default('-');
+            $table->string('kontak')->default('-');
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('evakuasi_korban', function (Blueprint $table) {
             $table->id('id_evakuasi_korban');
-            $table->integer('luka_ringan_berat');
-            $table->integer('meninggal');
+            $table->integer('luka_ringan_berat')->default('0');
+            $table->integer('meninggal')->default('0');
             $table->timestamps();
         });
     }
