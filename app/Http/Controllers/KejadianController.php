@@ -65,6 +65,16 @@ class KejadianController extends Controller
         return view('kejadian.edit-kejadian', compact('kejadian','kecamatans'));
     }
 
+    public function view($id_kejadian)
+    {
+        // mengambil data pegawai berdasarkan id yang dipilih
+        $kejadian = DB::table('kejadian')->where('id_kejadian',$id_kejadian)->get();
+        $kecamatans = DB::table('kecamatan')->get();
+        // passing data pegawai yang didapat ke view edit.blade.php
+        //return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
+        return view('kejadian.view-kejadian', compact('kejadian','kecamatans'));
+    }
+
     public function update(Request $request, $id_kejadian)
     {
         $kejadian = Kejadian::findOrFail($id_kejadian);

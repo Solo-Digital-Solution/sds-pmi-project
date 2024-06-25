@@ -56,12 +56,12 @@
                             </td>
                             <td>
                                 <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">Edit</a>
-                                <a href="{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
+                                <a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
                                 @if($kejadian->status == 'Invalid')
                                 <form action="{{ route('kejadian.destroy', $kejadian->id_kejadian) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="" onclick="return confirm('Are you sure you want to delete this kejadian?');">Delete</button>
+                                    <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this kejadian?');">Delete</button>
                                 </form>
                                 @endif
                             </td>
