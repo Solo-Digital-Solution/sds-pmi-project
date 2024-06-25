@@ -35,38 +35,137 @@ class UserController extends Controller
         return view('user.tambah-akun', $data);
     }
 
+    // public function create()
+    // {
+    // $roles = Roles::all(); // Mengambil semua data role dari model Roles
+
+    // return view('user.tambah-akun', compact('roles'));
+    // }
+
+    
+
+    // public function simpanAkun(Request $request)
+    // {
+    //     $user_id = $request->user_id;
+
+    //     $role = $request->role_name;
+
+    //     $users = DB::table('users')->insertGetId([
+    //         'user_id' => $user_id,
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'username' => $request->username,
+    //         'password' => $request->password,
+    //         'gender' => $request->gender,
+    //         'no_telp' => $request->no_telp,
+    //         'profilePhoto' => ''
+    //     ]);
+
+    //     $file = $request->file('profilePhoto');
+    //     $nama_dokumen = $users . '.' . $request->file('profilePhoto')->getClientOriginalExtension();
+    //     $file->move('profilePhoto/', $nama_dokumen);
+
+    //     $photo = DB::table('users')->where('user_id', '=', $user_id)->update([
+    //         'profilePhoto' => $nama_dokumen
+    //     ]);
+
+    //     $role_id = $request->role_name;
+
+    //     $roles = DB::table('users_has_role')->insert([
+    //         'user_id' => $user_id,
+    //         'role_id' => $role_id
+    //     ]);
+
+    //     return redirect('user-management');
+    // }
+
     public function simpanAkun(Request $request)
+{
+    // Validasi input dari form
+    $request->validate([
+        'user_id' => 'required',
+        'name' => 'required',
+        'email' => 'required|email',
+        'username' => 'required',
+        'password' => 'required',
+        'gender' => 'required',
+        'no_telp' => 'required',
+        'profilePhoto' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk file foto profil
+        'role_name' => 'required', // Pastikan role_name terisi
+    ]);
+
+    // Simpan data pengguna ke tabel users
+    $user_id = $request->user_id;
+    $nama_dokumen = '';
+
+    if ($request->hasFile('profilePhoto')) {
+        $file = $request->file('profilePhoto');
+        $nama_dokumen = $user_id . '.' . $file->getClientOriginalExtension();
+        $file->move('profilePhoto/', $nama_dokumen);
+    }
+
+    $users = DB::table('users')->insertGetId([
+        'user_id' => $user_id,
+        'name' => $request->name,
+        'email' => $request->email,
+        'username' => $request->username,
+        'password' => $request->password,
+        'gender' => $request->gender,
+        'no_telp' => $request->no_telp,
+        'profilePhoto' => $nama_dokumen
+    ]);
+
+    // Simpan role pengguna ke tabel users_has_role
+    $role_id = $request->role_name;
+
+    $roles = DB::table('users_has_role')->insert([
+        'user_id' => $user_id,
+        'role_id' => $role_id
+    ]);
+
+    // Redirect ke halaman user-management setelah berhasil menyimpan
+    return redirect('user-management')->with('success', 'Akun berhasil dibuat');
+}
+
+
+    public function destroy($id)
     {
-        $user_id = $request->user_id;
+        // Hapus data pengguna
+        $user = DB::table('users')->where('user_id', $id)->delete();
 
-        $role = $request->role_name;
+        // Hapus relasi role pengguna
+        $userRole = DB::table('users_has_role')->where('user_id', $id)->delete();
 
-        $users = DB::table('users')->insertGetId([
-            'user_id' => $user_id,
+        return redirect('/user-management')->with('success', 'Akun berhasil dihapus');
+    }
+
+    public function edit($id)
+    {
+        $user = DB::table('users')
+            ->join('users_has_role', 'users_has_role.user_id', '=', 'users.user_id')
+            ->join('roles', 'users_has_role.role_id', '=', 'roles.role_id')
+            ->where('users.user_id', $id)
+            ->select('users.*', 'roles.role_id as role_id')
+            ->first();
+
+        $roles = DB::table('roles')->get();
+
+        return view('user.edit', compact('user', 'roles'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = DB::table('users')->where('user_id', $id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
-            'password' => $request->password,
-            'gender' => $request->gender,
             'no_telp' => $request->no_telp,
-            'profilePhoto' => ''
         ]);
 
-        $file = $request->file('profilePhoto');
-        $nama_dokumen = $users . '.' . $request->file('profilePhoto')->getClientOriginalExtension();
-        $file->move('profilePhoto/', $nama_dokumen);
-
-        $photo = DB::table('users')->where('user_id', '=', $user_id)->update([
-            'profilePhoto' => $nama_dokumen
+        $role = DB::table('users_has_role')->where('user_id', $id)->update([
+            'role_id' => $request->role_name,
         ]);
 
-        $role_id = $request->role_name;
-
-        $roles = DB::table('users_has_role')->insert([
-            'user_id' => $user_id,
-            'role_id' => $role_id
-        ]);
-
-        return redirect('user-management');
+        return redirect('/user-management')->with('success', 'Akun berhasil diperbarui');
     }
 }

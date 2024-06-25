@@ -5,14 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Korban_terdampak;
 use Illuminate\Support\Facades\DB;
-use App\Models\Personil_dihubungi; // Pastikan untuk mengimpor model Personil_dihubungi
+use App\Models\Laporan;
+use App\Models\Dampak;
+use App\Models\Distribusi_layanan;
+use App\Models\Dokumentasi;
+use App\Models\Evakuasi_korban;
+use App\Models\Giat_pmi;
+use App\Models\Kejadian;
+use App\Models\Kerusakan_fasilitas;
+use App\Models\Kerusakan_infrastruktur;
+use App\Models\Kerusakan_rumah;
+use App\Models\Korban_jiwa;
+use App\Models\Layanan_korban;
+use App\Models\Mobilisasi;
+use App\Models\Personil;
+use App\Models\Personil_dihubungi;
+use App\Models\Petugas_posko;
+use App\Models\Shelter;
+use App\Models\Tdb;
+use App\Models\Tsr;
+
+// Pastikan untuk mengimpor model Personil_dihubungi
 
 class LaporanController extends Controller
 {
     public function index()
     {
         // Menampilkan form assessment
-        return view('assessment.form-assessment');
+        $totalData = laporan::count();
+        $dataPerPage = max(min($totalData, 10), 1);
+        $laporans = Laporan::latest()->paginate($dataPerPage);
+
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
     }
 
     public function checkReportNumber(Request $request)
@@ -42,6 +66,12 @@ class LaporanController extends Controller
         } else {
             return response()->json(["status" => "success", "message" => "Angka laporan valid"]);
         }
+    }
+
+    public function create()
+    {
+        // Logika untuk menampilkan form tambah laporan
+        return view('lapsit.tambah-lapsit'); // Pastikan Anda memiliki view ini
     }
 
     public function store(Request $request)
@@ -82,25 +112,26 @@ class LaporanController extends Controller
             'deskripsi_kerusakan' => $request->deskripsi_kerusakan
         ]);
 
-        $shelter = DB::table('shelter')->insertGetId([
-            'lokasi_shelter' => $request->lokasi_shelter,
-            'jumlah_kk' => $request->jumlah_kk,
-            'jumlah_jiwa' => $request->jumlah_jiwa,
-            'jumlah_laki' => $request->jumlah_laki,
-            'jumlah_perempuan' => $request->jumlah_perempuan,
-            'dibawah_lima' => $request->dibawah_lima,
-            'antara_lima_dan_delapanbelas' => $request->antara_lima_dan_delapanbelas,
-            'lebih_delapanbelas' => $request->lebih_delapanbelas,
-            'jumlah' => $request->jumlah
-        ]);
+        foreach ($request->inp as $input) {
+            $shelter[] = DB::table('shelter')->insertGetId([
+                'lokasi_shelter' => $input['lokasi_shelter'],
+                'jumlah_kk' => $input['jumlah_kk'],
+                'jumlah_jiwa' => $input['jumlah_jiwa'],
+                'jumlah_laki' => $input['jumlah_laki'],
+                'jumlah_perempuan' => $input['jumlah_perempuan'],
+                'dibawah_lima' => $input['dibawah_lima'],
+                'antara_lima_dan_delapanbelas' => $input['antara_lima_dan_delapanbelas'],
+                'lebih_delapanbelas' => $input['lebih_delapanbelas'],
+                'jumlah' => $input['jumlah']
+            ]);
+        }
 
         $dampak = DB::table('dampak')->insert([
             'id_korban_terdampak' => $korban_terdampak,
             'id_korban_jiwa' => $korban_jiwa,
             'id_kerusakan_rumah' => $kerusakan_rumah,
             'id_kerusakan_fasilitas' => $kerusakan_fasilitas,
-            'id_kerusakan_infrastruktur' => $kerusakan_infrastruktur,
-            'id_lokasi_shelter' => $shelter
+            'id_kerusakan_infrastruktur' => $kerusakan_infrastruktur
         ]);
 
         // ================================= MOBILISASI =================================
@@ -137,13 +168,18 @@ class LaporanController extends Controller
             'alat_it_lapangan' => $request->alat_it_lapangan
         ]);
 
-        $file = $request->file('dokumentasi');
-        $nama_dokumen = $request->file('dokumentasi')->getClientOriginalName();
-        $file->move('dokuemntasi/', $nama_dokumen);
+        foreach ($request->file('in') as $input) {
+            $file = $input['dokumentasi'];
+            $nama_dokumen = $file->getClientOriginalName(); // Mendapatkan nama asli file
+            $file->move('dokumentasi/', $nama_dokumen); // Memindahkan file ke direktori yang diinginkan
 
-        $dokumentasi = DB::table('dokumentasi')->insert([
-            'file_path' => $nama_dokumen
-        ]);
+            // Simpan nama file ke dalam database
+            $id_dokumentasi = DB::table('dokumentasi')->insertGetId([
+                'file_path' => $nama_dokumen
+            ]);
+
+            $dokumentasi[] = $id_dokumentasi;
+        }
 
         $mobilisasi = DB::table('mobilisasi')->insert([
             'id_personil' => $personil,
@@ -166,8 +202,8 @@ class LaporanController extends Controller
 
         $giat_pmi = DB::table('giat_pmi')->insert([
             'id_evakuasi_korban' => $evakuasi_korban
-        ]);
-
+        ]);   
+        
         DB::table('giat_pmi')->insert([
             'id_evakuasi_korban' => $evakuasi_korban
         ]);
@@ -215,14 +251,12 @@ class LaporanController extends Controller
             'id_dampak' => $dampak ?? '',
             'id_mobilisasi' => $mobilisasi ?? '',
             'id_giat_pmi' => $giat_pmi ?? '',
-            'id_personil_dihubungi' => $personil_dihubungi ?? '',
-            'id_petugas_posko' => $petugas_posko ?? '',
-            'id_dokumentasi' => $dokumentasi ?? '',
             'giat_pemerintah' => $request->giat_pemerintah ?? '',
             'kebutuhan' => $request->kebutuhan ?? '',
             'hambatan' => $request->hambatan ?? '',
             'nama_laporan' => $request->nama_laporan ?? '',
-            'update' => $request->update ?? '' // Mengatur 'update' ke null jika tidak ada nilai yang diberikan
+            'update' => $request->update ?? '2024-06-24 07:34:05.000000',
+            'id_kejadian' => $request->id_kejadian ?? '1' // Mengatur 'id_kejadian'
         ]);
 
         // ================================= TRANSACTION =================================
@@ -230,7 +264,7 @@ class LaporanController extends Controller
         foreach($shelter as $shel) {
             DB::table('transaction_shelter')->insert([
                 'id_dampak' => $dampak,
-                'id_lokasi_shelter' => $shelter
+                'id_lokasi_shelter' => $shel
             ]);
         }
 
@@ -255,7 +289,7 @@ class LaporanController extends Controller
             ]);
         }
         // // Redirect dengan pesan sukses
-        return redirect('form-assessment');
-        //return redirect('laporan-situasi');
+        //return redirect('form-assessment');
+        return redirect('laporan-situasi');
     }
 }

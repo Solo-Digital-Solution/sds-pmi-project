@@ -35,9 +35,15 @@ Route::get('/user-management', [UserController::class, 'index']);
 Route::get('/tambah-akun', function () {
     return view('user.tambah-akun');
 });
-Route::get('/tambah-akun', [UserController::class, 'create']);
+
+//ROUTES UNTUK TAMBAH AKUN
+Route::get('/user-management/create', [UserController::class, 'create']);
 Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
 
+// ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
+Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
+Route::get('/user-management/{id}/edit', [UserController::class, 'edit']);
+Route::put('/user-management/{id}', [UserController::class, 'update']);
 
 // ROUTES UNTUK KEJADIAN
 Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKejadian');
@@ -61,22 +67,17 @@ Route::get('/form-assessment', function () {
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-// ROUTES UNTUK ASSESSMENT
-Route::get('/laporan-situasi', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/laporan-situasi', [LaporanController::class, 'index']);
+Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
-Route::resource('/laporan-situasi', \App\Http\Controllers\LaporanController::class);
+
+
+// ROUTES UNTUK ASSESSMENT
+// Route::get('/laporan-situasi', [LaporanController::class, 'index'])->name('laporan.index');
 
 // Route::get('/laporan-situasi', function () {
 //     return view('lapsit.laporan-situasi');
 // });
-
-Route::get('/laporan-situasi', function () {
-    return view('lapsit.laporan-situasi');
-});
-
-Route::get('/tambah-lapsit', function () {
-    return view('lapsit.tambah-lapsit');
-});
 
 // ROUTES UNTUK EXECUTIVE SUMMARY
 Route::prefix('executive-summary')->group(function() {

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('id_kerusakan_rumah')->references('id_kerusakan_rumah')->on('kerusakan_rumah')->onDelete('cascade');
             $table->foreignId('id_kerusakan_fasilitas')->references('id_kerusakan_fasilitas')->on('kerusakan_fasilitas')->onDelete('cascade');
             $table->foreignId('id_kerusakan_infrastruktur')->references('id_kerusakan_infrastruktur')->on('kerusakan_infrastruktur')->onDelete('cascade');
-            $table->foreignId('id_lokasi_shelter')->references('id_lokasi_shelter')->on('shelter')->onDelete('cascade');
             $table->timestamps();
         });
     }

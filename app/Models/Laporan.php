@@ -19,10 +19,10 @@ class Laporan extends Model
         'update'
     ];
 
-    // public function kejadian()
-    // {
-    //     return $this->belongsTo(Kejadian::class, 'id_kejadian');
-    // }
+    public function kejadian()
+    {
+        return $this->belongsTo(Kejadian::class, 'id_kejadian');
+    }
 
     public function dampak()
     {
