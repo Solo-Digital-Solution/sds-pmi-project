@@ -19,6 +19,16 @@ class UserController extends Controller
         return view('user.user-management', compact('users'));
     }
 
+    public function profile_index()
+    {
+        return view('profile.index');
+    }
+
+    public function profile_edit()
+    {
+        return view('profile.edit');
+    }
+
     public function create()
     {
         $data['roles'] = Roles::get(["role_id", "role_name"]);
@@ -59,6 +69,4 @@ class UserController extends Controller
 
         return redirect('user-management');
     }
-
-
 }

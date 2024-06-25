@@ -41,20 +41,17 @@
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
-                <li class="active selected">
-                    <a href="#" class="has-arrow" aria-expanded="false">
+                <li>
+                    <a href="#" class="has-arrow">
                         <span class="has-icon">
                             <i class="icon-laptop_windows"></i>
                         </span>
                         <span class="nav-title">Dashboards</span>
                     </a>
-                    <ul aria-expanded="false" class="collapse in">
+                    <ul>
                         <li>
                             <a href='{{ url('/')  }}'>Dashboard</a>
                         </li>
-                        <!-- <li>
-                            <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
-                        </li> -->
                         <li>
                             <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
@@ -75,7 +72,7 @@
                             <a href='{{ url('/kejadian')  }}'>Kejadian</a>
                         </li>
                         <li>
-                            <a href='{{ url('/executive-summary')  }}'>Laporan Triwulan</a>
+                            <a href='{{ url('/executive-summary')  }}'>Executive Summary</a>
                         </li>
                     </ul>
                 </li>

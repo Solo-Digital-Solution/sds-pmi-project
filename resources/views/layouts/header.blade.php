@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-2 col">
                 <a href="{{ asset('/') }}" class="logo">
-                    <img src="img/logo-pmi.png" alt="Logo PMI" />
+                    <img src="{{ asset('img/logo-pmi.png') }}" alt="Logo PMI" />
                 </a>
             </div>
             <div class="col-sm-5 col">
@@ -84,13 +84,13 @@
                     </li> -->
                     <li class="dropdown">
                         <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
-                            <img class="avatar" src="img/user.png" alt="Dashboards" />
+                            <img class="avatar" src="{{ asset('img/user.png') }}" alt="Dashboards" />
                             <i class="icon-chevron-small-down"></i>
                         </a>
                         <div class="dropdown-menu lg dropdown-menu-right" aria-labelledby="userSettings">
                             <ul class="user-settings-list">
                                 <li>
-                                    <a href="{{ url('/') }}">
+                                    <a href="{{ route('profile.index') }}">
                                         <div class="icon">
                                             <img src="{{ asset('img/taehyung.jpg') }}" class="rounded-image" alt="Foto Profile">
                                         </div>
@@ -98,14 +98,14 @@
                                     </a>
                                 </li>
                                 <!-- <li>
-                                    <a href="profile.html">
+                                    <a href="#">
                                         <div class="icon red">
                                             <i class="icon-cog3"></i>
                                         </div>
                                         <p>Settings</p>
                                     </a>
-                                </li>
-                                <li>
+                                </li> -->
+                                <!-- <li>
                                     <a href="filters.html">
                                         <div class="icon yellow">
                                             <i class="icon-schedule"></i>

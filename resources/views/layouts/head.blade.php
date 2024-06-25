@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <!-- <link rel="stylesheet" href="{{ asset('css/main.min.css') }}" /> -->
 
-
     <!-- Other CSS includes plugins - Cleanedup unnecessary CSS -->
     <!-- Chartist css -->
     <link href="{{ asset('vendor/chartist/css/chartist.min.css') }}" rel="stylesheet" />

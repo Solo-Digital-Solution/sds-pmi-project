@@ -15,10 +15,19 @@ Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('gen
 Route::get('/login', function () {
     return view('auth.login');
 });
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('auth.register');
 
 // ROUTES UNTUK DASHBOARD
 Route::get('/', function () {
     return view('dashboard.dashboard');
+});
+
+// ROUTES UNTUK PROFILE
+Route::prefix('profile')->group(function() {
+    Route::get('/', [UserController::class, 'profile_index'])->name('profile.index');
+    Route::get('/edit', [UserController::class, 'profile_edit'])->name('profile.edit');
 });
 
 // ROUTES UNTUK USER MANAGEMENT
@@ -70,8 +79,13 @@ Route::get('/tambah-lapsit', function () {
 });
 
 // ROUTES UNTUK EXECUTIVE SUMMARY
-Route::get('/executive-summary', [ExsumController::class, 'index']);
-Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('search');
+Route::prefix('executive-summary')->group(function() {
+    Route::get('/', [ExsumController::class, 'index'])->name('executive-summary.index');
+    Route::get('/search', [ExsumController::class, 'search'])->name('executive-summary.search');
+});
+
+// Route::get('/laporan-triwulan', [ExsumController::class, 'index']);
+// Route::get('/laporan-triwulan-search', [ExsumController::class, 'search'])->name('search');
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report', function(){
@@ -86,8 +100,4 @@ Route::get('/form', function () {
 
 Route::get('/coba', function () {
     return view('lapsit.lapsit-pdf-3');
-});
-
-Route::get('/coba2', function () {
-    return view('assessment.2form-assessment');
 });

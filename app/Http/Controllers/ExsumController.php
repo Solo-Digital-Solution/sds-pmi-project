@@ -15,7 +15,7 @@ class ExsumController extends Controller
 
         $kejadian = Kejadian::latest()->paginate($dataPerPage);
 
-        return view('executive-summary.exsum', compact('kejadian'));
+        return view('executive-summary.laporan-triwulan', compact('kejadian'));
     }
 
     public function search(Request $request)
@@ -26,6 +26,6 @@ class ExsumController extends Controller
         $kejadian = Kejadian::whereBetween('waktu_kejadian', [$tanggalAwal, $tanggalAkhir])
                         ->paginate(10);
 
-        return view('executive-summary.exsum', compact('kejadian'));
+        return view('executive-summary.laporan-triwulan', compact('kejadian'));
     }
 }

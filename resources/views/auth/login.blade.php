@@ -41,7 +41,6 @@
 </head>
 
 <body class="login-bg">
-
     <div class="container">
         <div class="login-screen row align-items-center">
             <div class="col-sm-12">
@@ -51,15 +50,15 @@
                             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                                 <div class="login-box">
                                     <a href="#" class="login-logo">
-                                        <img src="{{ asset('img/logo-pmi.png') }}" alt="Logo PMI" />
+                                        <img src="{{ asset('img/logo.svg') }}" alt="Logo PMI" />
                                     </a>
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="ID">
+                                            <span class="input-group-text" id="username">
                                                 <i class="icon-account_circle"></i>
                                             </span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="ID" aria-label="ID" aria-describedby="ID">
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="username" aria-describedby="username">
                                     </div>
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
@@ -70,7 +69,12 @@
                                         <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="Password">
                                     </div>
                                     <div class="actions clearfix">
+                                        <a href="forgot-pwd.html">Lost password?</a>
                                         <button type="submit" class="btn btn-primary">Login</button>
+                                    </div>
+                                    <div class="or"></div>
+                                    <div class="mt-4">
+                                        <a href="{{ route('auth.register') }}" class="additional-link">Don't have an Account? <span>Create Now</span></a>
                                     </div>
                                 </div>
                             </div>
