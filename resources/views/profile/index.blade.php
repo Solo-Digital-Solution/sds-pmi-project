@@ -27,7 +27,7 @@
         <div class="card">
             <div class="card-header">Detail Profil Anda</div>
             <div class="card-body text-center position-relative" style="display: inline-block;">
-                <img src="{{ asset('img/taehyung.jpg') }}" width="30%" alt="Profile Picture">
+                <img src="{{ asset('img/taehyung.jpg') }}" width="15%" alt="Profile Picture">
             </div>
             <div class="card-body">
                 <div class="form-group row">
@@ -92,17 +92,11 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-header">Ubah Password</div>
+            <div class="card-header">Password</div>
             <div class="card-body">
-                <div class="form-group row">
-                    <label for="password" class="col-sm-3 col-form-label">Password</label>
-                    <div class="col">
-                        <input type="password" value="12345678" class="form-control" id="password" placeholder="Password" disabled>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center w-100 py-1">
+                <div class="d-flex w-100 py-1">
                     <a href="{{ route('profile.edit') }}">
-                        <button type="submit" class="btn btn-primary btn-lg">Ubah Password</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Reset Password</button>
                     </a>
                 </div>
             </div>
