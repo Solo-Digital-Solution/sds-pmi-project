@@ -29,12 +29,12 @@ use App\Models\Tsr;
 
 class LaporanController extends Controller
 {
-    public function index()
+    public function index($id_kejadian)
     {
         // Menampilkan form assessment
         $totalData = laporan::count();
         $dataPerPage = max(min($totalData, 10), 1);
-        $laporans = Laporan::latest()->paginate($dataPerPage);
+        $laporans = Laporan::findorFail($id_kejadian)->latest()->paginate($dataPerPage);
 
         return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
     }

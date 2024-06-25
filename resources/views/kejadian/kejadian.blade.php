@@ -41,6 +41,7 @@
                             <th>Status</th>
                             <th>Lokasi</th>
                             <th>Lihat Kontak</th>
+                            <th>Lapsit</th>
                             <th>Detail</th>
                         </tr>
                     </thead>
@@ -53,6 +54,9 @@
                             <td>{{ $kejadian['lokasi'] }}</td>
                             <td>
                                 <a href="/kontak/{{ $kejadian['kecamatan'] }}" style="color: blue;">Lihat Kontak</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('laporan.index', $kejadian->id_kejadian) }}" style="color: blue;">Lihat Lapsit</a>
                             </td>
                             <td>
                                 <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">Edit</a>

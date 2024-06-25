@@ -74,7 +74,7 @@ Route::get('/form-assessment', function () {
 });
 
 // ROUTES UNTUK LAPORAN SITUASI
-Route::get('/laporan-situasi', [LaporanController::class, 'index']);
+Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
 Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 

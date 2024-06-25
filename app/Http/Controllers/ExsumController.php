@@ -37,6 +37,8 @@ class ExsumController extends Controller
                                       ->join('personil_dihubungi', 'transaction_personil_dihubungi.id_personil_dihubungi', '=', 'personil_dihubungi.id_personil_dihubungi')
                                       ->join('transaction_petugas_posko', 'laporan.id_laporan', '=', 'transaction_petugas_posko.id_laporan')
                                       ->join('petugas_posko', 'transaction_petugas_posko.id_petugas_posko', '=', 'petugas_posko.id_petugas_posko')
+                                      ->select('kejadian.id_kejadian', 'kejadian.nama_kejadian', 'kejadian.waktu_kejadian', 'kejadian.lokasi')
+                                      ->groupBy('kejadian.id_kejadian', 'kejadian.nama_kejadian', 'kejadian.waktu_kejadian', 'kejadian.lokasi')
                                       ->get();
 
         return view('executive-summary.laporan-triwulan', compact('exsum'));
