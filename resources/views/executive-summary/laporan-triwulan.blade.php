@@ -316,7 +316,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($kejadian as $kjd)
+                            @forelse ($exsum as $kjd)
                             <tr>
                                 <td>{{ $kjd->waktu_kejadian }}</td>
                                 <td>{{ $kjd->nama_kejadian }}</td>
