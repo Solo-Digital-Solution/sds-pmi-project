@@ -57,7 +57,9 @@ Route::post('/kejadian/update',[KejadianController::class,'update']);
 Route::put('kejadian/{id_kejadian}', [KejadianController::class, 'update'])->name('kejadian.update');
 Route::get('edit-kejadian', [DropdownController::class, 'indexKecamatanEdit']);
 Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
-Route::resource('kejadian', KejadianController::class);
+//Route::resource('kejadian', KejadianController::class);
+Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
+
 
 
 // ROUTES UNTUK ASSESSMENT

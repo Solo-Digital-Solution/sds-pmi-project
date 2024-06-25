@@ -89,4 +89,19 @@ class KejadianController extends Controller
         return redirect('kejadian');
     }
 
+    public function destroy($id_kejadian)
+    {
+        $kejadian = Kejadian::findOrFail($id_kejadian);
+
+        // Check if the status is 'invalid'
+        if ($kejadian->status !== 'Invalid') {
+            return redirect('kejadian')->with('error', 'Only kejadian with status "Invalid" can be deleted.');
+        }
+
+        // Delete the kejadian
+        $kejadian->delete();
+
+        return redirect('kejadian')->with('success', 'Kejadian deleted successfully.');
+    }
+
 }

@@ -40,6 +40,7 @@
                             <th>Tanggal</th>
                             <th>Status</th>
                             <th>Lokasi</th>
+                            <th>Lihat Kontak</th>
                             <th>Detail</th>
                         </tr>
                     </thead>
@@ -51,8 +52,18 @@
                             <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['lokasi'] }}</td>
                             <td>
+                                <a href="/kontak/{{ $kejadian['kecamatan'] }}" style="color: blue;">Lihat Kontak</a>
+                            </td>
+                            <td>
                                 <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">Edit</a>
                                 <a href="{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
+                                @if($kejadian->status == 'Invalid')
+                                <form action="{{ route('kejadian.destroy', $kejadian->id_kejadian) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="" onclick="return confirm('Are you sure you want to delete this kejadian?');">Delete</button>
+                                </form>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
