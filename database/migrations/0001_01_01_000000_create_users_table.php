@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id('user_id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->string('alamat');
+            $table->enum('goldar', ['Belum Tahu', 'O', 'A', 'B', 'AB']);
             $table->string('no_telp');
             $table->string('username');
             $table->enum('gender', ['Laki-Laki', 'Perempuan']);
