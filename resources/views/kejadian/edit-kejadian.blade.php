@@ -67,6 +67,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        @foreach ($kecamatans as $kecamatan)
+                            @if ($kecamatan->id_kecamatan == $k->kecamatan)
+                            <p>Pilihan Sebelumnya : {{ $kecamatan->nama_kecamatan }}</p>
+                            @endif
+                        @endforeach
                     </div>
 
                     <div class="form-group row">
@@ -77,6 +82,7 @@
                             </div>
                             <select class="form-control" id="kelurahan-dd" name="kelurahan"></select>
                         </div>
+                        <p>Pilihan Sebelumnya : {{ $k->kelurahan }}</p>
                     </div>
 
                     <div class="form-group">
