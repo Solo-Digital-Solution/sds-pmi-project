@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Kejadian;
-use App\Models\Dampak;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
