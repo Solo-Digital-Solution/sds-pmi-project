@@ -136,5 +136,14 @@ class KejadianController extends Controller
         return view('lapsit.laporan-situasi', compact('kejadian', 'laporans'));
     }
 
+    public function viewAssessor($id_kejadian)
+    {
+        $kejadian = DB::table('kejadian')->where('id_kejadian', $id_kejadian)->first();
+        $kecamatan = DB::table('kecamatan')->where('id_kecamatan', $kejadian->kecamatan)->first();
+        $assessor = DB::table('users')->where('kecamatan', $kecamatan->nama_kecamatan)->get();
+
+        return view('kejadian.view-assessor', compact('assessor'));
+    }
+
 
 }

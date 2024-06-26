@@ -29,6 +29,7 @@
             <div class="card-header">Kejadian</div>
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
+                    Assessor
                     <a href="{{ url('/tambah-kejadian')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Kejadian</button></a>
                 </div>
             </div>
@@ -45,7 +46,7 @@
                             <th>Detail</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {{-- <tbody>
                         @foreach ($kejadians as $kejadian )
                         <tr>
                             <td>{{ $kejadian['nama_kejadian'] }}</td>
@@ -53,7 +54,7 @@
                             <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['lokasi'] }}</td>
                             <td>
-                                <a href="/kejadian/view-assessor/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Kontak</a>
+                                <a href="/kontak/{{ $kejadian['kecamatan'] }}" style="color: blue;">Lihat Kontak</a>
                             </td>
                             <td>
                                 <a href="{{ route('laporan.index', $kejadian->id_kejadian) }}" style="color: blue;">Lihat Lapsit</a>
@@ -73,7 +74,7 @@
                             </td>
                         </tr>
                         @endforeach
-                    </tbody>
+                    </tbody> --}}
                 </table>
             </div>
         </div>

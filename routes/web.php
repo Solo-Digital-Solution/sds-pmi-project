@@ -60,7 +60,7 @@ Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan'
 //Route::resource('kejadian', KejadianController::class);
 Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
 Route::get('/kejadian/view/{id}',[KejadianController::class,'view']);
-
+Route::get('/kejadian/view-assessor/{id_kejadian}',[KejadianController::class,'viewAssessor']);
 Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'viewLapsit'])->name('kejadian.view-lapsit');
 
 
