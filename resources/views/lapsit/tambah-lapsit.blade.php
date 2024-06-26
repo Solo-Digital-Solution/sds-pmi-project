@@ -25,8 +25,10 @@
 <!-- Row start -->
 
 <div class="row gutters">
+    <p>ID Kejadian: {{ $id_kejadian }}</p> <!-- Debug line -->
 <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="id_kejadian" value="{{ $id_kejadian }}">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">

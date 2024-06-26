@@ -31,12 +31,10 @@ class LaporanController extends Controller
 {
     public function index($id_kejadian)
     {
-        // Menampilkan form assessment
-        $totalData = laporan::count();
-        $dataPerPage = max(min($totalData, 10), 1);
-        $laporans = Laporan::findorFail($id_kejadian)->latest()->paginate($dataPerPage);
+        // Menampilkan laporan situasi berdasarkan id_kejadian
+        $laporans = Laporan::where('id_kejadian', $id_kejadian)->latest()->paginate(10);
 
-        return view('lapsit.laporan-situasi', ['laporans' => $laporans]);
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans, 'id_kejadian' => $id_kejadian]);
     }
 
     public function checkReportNumber(Request $request)
@@ -68,10 +66,11 @@ class LaporanController extends Controller
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        // Logika untuk menampilkan form tambah laporan
-        return view('lapsit.tambah-lapsit'); // Pastikan Anda memiliki view ini
+        $id_kejadian = $request->query('id_kejadian');
+        \Log::info('Received id_kejadian: ' . $id_kejadian);
+        return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian]);
     }
 
     public function store(Request $request)
@@ -246,6 +245,7 @@ class LaporanController extends Controller
         }
 
         // ================================= LAPORAN =================================
+        $id_kejadian = $request->input('id_kejadian');
 
         $laporan = DB::table('laporan')->insertGetId([
             'id_dampak' => $dampak ?? '',
@@ -256,7 +256,7 @@ class LaporanController extends Controller
             'hambatan' => $request->hambatan ?? '',
             'nama_laporan' => $request->nama_laporan ?? '',
             'update' => $request->update ?? '2024-06-24 07:34:05.000000',
-            'id_kejadian' => $request->id_kejadian ?? '1' // Mengatur 'id_kejadian'
+            'id_kejadian' => $request->id_kejadian // Menggunakan id_kejadian dari request
         ]);
 
         // ================================= TRANSACTION =================================
@@ -290,7 +290,7 @@ class LaporanController extends Controller
         }
         // // Redirect dengan pesan sukses
         //return redirect('form-assessment');
-        return redirect('laporan-situasi');
+        return redirect()->route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian]);
     }
 
     public function show($id_laporan)
