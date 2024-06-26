@@ -32,7 +32,7 @@ class UserController extends Controller
     public function create()
     {
         $data['roles'] = Roles::get(["role_id", "role_name"]);
-        return view('user.tambah-akun', $data);
+        return view('user.create', $data);
     }
 
     // public function create()
@@ -42,7 +42,7 @@ class UserController extends Controller
     // return view('user.tambah-akun', compact('roles'));
     // }
 
-    
+
 
     // public function simpanAkun(Request $request)
     // {
@@ -80,52 +80,52 @@ class UserController extends Controller
     // }
 
     public function simpanAkun(Request $request)
-{
-    // Validasi input dari form
-    $request->validate([
-        'user_id' => 'required',
-        'name' => 'required',
-        'email' => 'required|email',
-        'username' => 'required',
-        'password' => 'required',
-        'gender' => 'required',
-        'no_telp' => 'required',
-        'profilePhoto' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk file foto profil
-        'role_name' => 'required', // Pastikan role_name terisi
-    ]);
+    {
+        // Validasi input dari form
+        $request->validate([
+            'user_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'username' => 'required',
+            'password' => 'required',
+            'gender' => 'required',
+            'no_telp' => 'required',
+            'profilePhoto' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk file foto profil
+            'role_name' => 'required', // Pastikan role_name terisi
+        ]);
 
-    // Simpan data pengguna ke tabel users
-    $user_id = $request->user_id;
-    $nama_dokumen = '';
+        // Simpan data pengguna ke tabel users
+        $user_id = $request->user_id;
+        $nama_dokumen = '';
 
-    if ($request->hasFile('profilePhoto')) {
-        $file = $request->file('profilePhoto');
-        $nama_dokumen = $user_id . '.' . $file->getClientOriginalExtension();
-        $file->move('profilePhoto/', $nama_dokumen);
+        if ($request->hasFile('profilePhoto')) {
+            $file = $request->file('profilePhoto');
+            $nama_dokumen = $user_id . '.' . $file->getClientOriginalExtension();
+            $file->move('profilePhoto/', $nama_dokumen);
+        }
+
+        $users = DB::table('users')->insertGetId([
+            'user_id' => $user_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => $request->password,
+            'gender' => $request->gender,
+            'no_telp' => $request->no_telp,
+            'profilePhoto' => $nama_dokumen
+        ]);
+
+        // Simpan role pengguna ke tabel users_has_role
+        $role_id = $request->role_name;
+
+        $roles = DB::table('users_has_role')->insert([
+            'user_id' => $user_id,
+            'role_id' => $role_id
+        ]);
+
+        // Redirect ke halaman user-management setelah berhasil menyimpan
+        return redirect('user-management')->with('success', 'Akun berhasil dibuat');
     }
-
-    $users = DB::table('users')->insertGetId([
-        'user_id' => $user_id,
-        'name' => $request->name,
-        'email' => $request->email,
-        'username' => $request->username,
-        'password' => $request->password,
-        'gender' => $request->gender,
-        'no_telp' => $request->no_telp,
-        'profilePhoto' => $nama_dokumen
-    ]);
-
-    // Simpan role pengguna ke tabel users_has_role
-    $role_id = $request->role_name;
-
-    $roles = DB::table('users_has_role')->insert([
-        'user_id' => $user_id,
-        'role_id' => $role_id
-    ]);
-
-    // Redirect ke halaman user-management setelah berhasil menyimpan
-    return redirect('user-management')->with('success', 'Akun berhasil dibuat');
-}
 
 
     public function destroy($id)

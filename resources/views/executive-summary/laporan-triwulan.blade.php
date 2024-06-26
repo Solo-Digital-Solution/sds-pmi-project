@@ -228,8 +228,14 @@
                             </tr>
 
                             <tr>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $kjd->mengungsi }} ORANG</td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;"> TITIK</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
+                                    @if($kjd->mengungsi !== 0)
+                                    {{ $kjd->mengungsi }} ORANG
+                                    @elseif($kjd->mengungsi === 0)
+                                    0 ORANG
+                                    @endif
+                                </td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $shelterCount }} TITIK</td>
                             </tr>
 
                             <tr>
@@ -250,14 +256,30 @@
                             </tr>
 
                             <tr>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $kjd->luka_berat + $kjd->luka_ringan }} JIWA</td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang }} BANGUNAN</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
+                                @if($kjd->luka_berat + $kjd->luka_ringan !== 0)
+                                {{ $kjd->luka_berat + $kjd->luka_ringan }} JIWA
+                                @elseif($kjd->luka_berat + $kjd->luka_ringan === 0)
+                                0 JIWA
+                                @endif
+                                </td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
+                                @if($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang !== 0)
+                                {{ $kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang }} BANGUNAN
+                                @elseif($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang === 0)
+                                0 BANGUNAN
+                                @endif
+                                </td>
                             </tr>
 
                             <tr>
                                 <td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
-                                        {{ $kjd->kebutuhan }}</span>
-                                </td>
+                                    @if($kjd->kebutuhan !== '-')
+                                    {{ $kjd->kebutuhan }}
+                                    @elseif($kjd->kebutuhan === '-')
+                                    BELUM ADA
+                                    @endif
+                                </span></td>
                             </tr>
 
                             <tr>
@@ -273,12 +295,16 @@
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>
                                         @if ($kjd->jenis_distribusi_layanan === 'Layanan Air Bersih')
                                         {{ $kjd->jumlah }} {{ $kjd->unit }}
+                                        @elseif( $kjd->jumlah != 0)
+                                        0 LITER
                                         @endif
                                     </span></td>
                                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>
                                         @if ($kjd->jenis_distribusi_layanan === 'Food Item')
                                         {{ $kjd->jumlah }} {{ $kjd->unit }}
+                                        @elseif( $kjd->jumlah === 0)
+                                        0 KK
                                         @endif
                                     </span></td>
                                 <td colspan="4" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
@@ -292,9 +318,21 @@
 
                             <tr>
                                 <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>{{ $kjd->relawan_pmi }} ORANG</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>
+                                    @if( $kjd->relawan_pmi !== 0)
+                                    {{ $kjd->relawan_pmi }} ORANG
+                                    @elseif( $kjd->relawan_pmi === 0)
+                                    0 ORANG
+                                    @endif
+                                </span></td>
                                 <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>{{ $kjd->medis + $kjd->paramedis }} ORANG</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>
+                                    @if( $kjd->medis + $kjd->paramedis !== 0)
+                                    {{ $kjd->medis + $kjd->paramedis }} ORANG
+                                    @elseif( $kjd->medis + $kjd->paramedis === 0)
+                                    0 ORANG
+                                    @endif
+                                </span></td>
                                 <td colspan="4" rowspan="2">
                                     <div class="chart-container">
                                         <canvas id="genderChart" width="150" height="150"></canvas>
@@ -438,7 +476,8 @@
             .then(data => {
                 var address = data.display_name;
                 marker.bindPopup("<b>Kejadian Kebakaran PLTSA Putri Cempo, Surakarta</b><br>Latitude: " + marker.getLatLng().lat.toFixed(6) + ", Longitude: " + marker.getLatLng().lng.toFixed(6) + "<br>" + address).openPopup();
-            });``
+            });
+        ``
     });
 </script>
 

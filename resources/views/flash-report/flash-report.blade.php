@@ -12,7 +12,7 @@
     .content-section {
         overflow-x: auto;
     }
-    
+
     #map {
         height: 450px;
         width: 460px;
@@ -20,10 +20,10 @@
 
     #informasi {
         color: white;
-        font-family: 'Inter', sans-serif; 
-        font-style: normal; 
-        font-weight: 500; 
-        text-align: center; 
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        text-align: center;
         font-size: 12px;
         text-align: left;
         padding: 10px 20px;
@@ -145,20 +145,20 @@
                 <th style="background-color: #860200;"></th>
                 <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; align-items: center; line-height: 1; vertical-align: bottom;">
                     KEJADIAN {{$laporan->kejadian->nama_kejadian}}<br>
-                    <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>                    
+                    <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>
                 </th>
-                    
+
                 <th rowspan="2" colspan="3" style="background-color: #EBF1F1;align-item: right;padding-left: 100px;"><img src="{{asset('/img/logoPMI.png')}}" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
             </tr>
             <tr>
                 <th colspan="4" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; item-align:center;padding-left: 25px;">LAPORAN SITUASI</th>
             </tr>
-        </thead>                           
- 
+        </thead>
+
 		<tfoot>
 			<td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">&nbsp&nbsp© Posko PMI Jawa Tengah</td>
 		</tfoot>
- 
+
 		<tbody>
 			<tr>
 				<td colspan="5" rowspan="10"><div id="map"></div></td>
@@ -180,7 +180,7 @@
                 <div class="graph-container" id="graph-container">
                 </td>
 			</tr>
- 
+
 			<tr>
 				<td colspan="4"><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">DATA KORBAN SEMENTARA</span></td>
 
@@ -218,7 +218,7 @@
 			</tr>
 
             <tr>
-                
+
 			</tr>
 
             <tr>
@@ -256,7 +256,7 @@
                     @if ($jumlahShelter != 0)
                         HUNIAN DARURAT
                     @endif
-                </td>                
+                </td>
                 <td colspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d;font-size:18px"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <span style="font-weight:800">big opportunity</span> to us</span></td>
 			</tr>
 		</tbody>
@@ -271,7 +271,7 @@
     function downloadContentAsImage() {
         const contentSection = document.getElementById('content-section');
 
-        html2canvas(contentSection, { 
+        html2canvas(contentSection, {
             allowTaint: true,
             useCORS: true
         }).then(canvas => {
@@ -292,7 +292,7 @@
 
     function formatTanggal(tanggalString) {
             const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
                             "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
             const tanggal = new Date(tanggalString);
@@ -314,7 +314,7 @@
 
         function formatTanggalUpdate(tanggalString) {
             const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
                             "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
             const tanggal = new Date(tanggalString);
