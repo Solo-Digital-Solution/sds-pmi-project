@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Roles;
 use Illuminate\Support\Facades\DB;
+use App\Models\Kejadian;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -31,8 +33,15 @@ class UserController extends Controller
 
     public function create()
     {
-        $data['roles'] = Roles::get(["role_id", "role_name"]);
-        return view('user.create', $data);
+        $roles = Roles::get(["role_id", "role_name"]);
+        //dd($roles);
+        //$roles = DB::table('roles')->get();
+        $kecamatans = Kecamatan::get(["id_kecamatan", "nama_kecamatan"]);
+
+        //$kecamatans = Kecamatan::all();
+        // $roles = Roles::all();
+
+        return view('user.create', compact('roles','kecamatans'));
     }
 
     // public function create()
@@ -108,6 +117,12 @@ class UserController extends Controller
             'user_id' => $user_id,
             'name' => $request->name,
             'email' => $request->email,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'alamat' => $request->alamat,
+            'goldar' => $request->goldar,
             'username' => $request->username,
             'password' => $request->password,
             'gender' => $request->gender,
@@ -155,12 +170,12 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = DB::table('users')->where('user_id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'no_telp' => $request->no_telp,
-        ]);
+        // $user = DB::table('users')->where('user_id', $id)->update([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'username' => $request->username,
+        //     'no_telp' => $request->no_telp,
+        // ]);
 
         $role = DB::table('users_has_role')->where('user_id', $id)->update([
             'role_id' => $request->role_name,

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Roles;
 use Validator;
 use Response;
 use Redirect;
@@ -15,6 +15,14 @@ class DropdownController extends Controller
     {
         $data['kecamatans'] = Kecamatan::get(["id_kecamatan", "nama_kecamatan"]);
         return view('kejadian.tambah-kejadian', $data);
+    }
+
+    public function indexKecamatanUser()
+    {
+        $kecamatans['kecamatans'] = Kecamatan::get(["id_kecamatan", "nama_kecamatan"]);
+        $roles = Roles::get(["role_id", "role_name"]);
+        //dd($kecamatans);
+        return view('user.create', compact('kecamatans', 'roles'));
     }
 
     public function indexKecamatanEdit()
