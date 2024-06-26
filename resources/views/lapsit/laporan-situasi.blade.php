@@ -40,11 +40,11 @@
                             <th>Lapsit</th>
                             <th>Tanggal Pembuatan Lapsit</th>
                             <th>Berkas Lapsit</th>
-                            <th></th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($laporans as $laporan )
+                        @foreach ($laporans as $laporan)
                         <tr>
                             <td>{{ $laporan['nama_laporan'] }}</td>
                             <td>{{ $laporan['update'] }}</td>
@@ -52,7 +52,8 @@
                                 <a href=# style="color: green;">Download</a>
                             </td>
                             <td>
-                                <a href=# style="color: blue;">Lihat Detail</a>
+                                <a href=# style="color: blue;">Lihat Detail</a></br>
+                                <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">Flash Report</a>
                             </td>
                         </tr>
                         @endforeach

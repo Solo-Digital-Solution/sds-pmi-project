@@ -2863,6 +2863,7 @@ a.blog-sm p.blog-date:after {
 .login-screen .login-logo {
   margin: 20px 0 20px 0;
   text-align: left;
+  transform: translate(-8%, 0%);
   display: block;
 }
 .login-screen .login-logo > img {

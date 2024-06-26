@@ -292,4 +292,38 @@ class LaporanController extends Controller
         //return redirect('form-assessment');
         return redirect()->route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian]);
     }
+
+    public function show($id_laporan)
+{
+    $laporan = Laporan::with('dampak.shelters', 'dampak.korbanTerdampak', 'dampak.korbanJiwa', 'dampak.kerusakanRumah', 'dampak.kerusakanFasilitas', 'dampak.kerusakanInfrastruktur', 'mobilisasi.personil', 'mobilisasi.tsr', 'mobilisasi.tdb', 'giatPMI.evakuasiKorban', 'personilDihubungi', 'petugasPosko', 'dokumentasis')
+        ->find($id_laporan);
+
+    if (!$laporan) {
+        return redirect()->back()->with('error', 'Laporan tidak ditemukan');
+    }
+
+    // Mengambil koleksi dari relasi dokumentasis dan kemudian mengakses file_path
+    $filePaths = $laporan->dokumentasis->pluck('file_path');
+
+    $jumlahShelter = 0;
+    if ($laporan->dampak && $laporan->dampak->shelters) {
+        $jumlahShelter = $laporan->dampak->shelters->count();
+    }
+
+    $jumlahLayananAirBersih = Distribusi_layanan::where('jenis_distribusi_layanan', 'Layanan Air Bersih')
+        ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
+        ->first();
+
+    $jumlahFoodItem = Distribusi_layanan::where('jenis_distribusi_layanan', 'Food Item')
+        ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
+        ->first();
+
+    return view('flash-report.flash-report')
+        ->with('laporan', $laporan)
+        ->with('jumlahShelter', $jumlahShelter)
+        ->with('jumlahLayananAirBersih', $jumlahLayananAirBersih)
+        ->with('jumlahFoodItem', $jumlahFoodItem)
+        ->with('filePaths', $filePaths); // Mengirimkan data file_path ke view
+}
+           
 }

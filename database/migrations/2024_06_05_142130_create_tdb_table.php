@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('tdb', function (Blueprint $table) {
             $table->id('id_tdb');
-            $table->integer('kend_ops');
-            $table->integer('truk_angkutan');
-            $table->integer('truk_tangki');
-            $table->integer('double_cabin');
-            $table->integer('alat_du');
-            $table->integer('ambulans');
-            $table->integer('alat_watsan');
-            $table->integer('rs_lapangan');
-            $table->integer('alat_pkdd');
-            $table->integer('gudang_lapangan');
-            $table->integer('posko_aju');
-            $table->integer('alat_it_lapangan');
+            $table->integer('kend_ops')->default('0');
+            $table->integer('truk_angkutan')->default('0');
+            $table->integer('truk_tangki')->default('0');
+            $table->integer('double_cabin')->default('0');
+            $table->integer('alat_du')->default('0');
+            $table->integer('ambulans')->default('0');
+            $table->integer('alat_watsan')->default('0');
+            $table->integer('rs_lapangan')->default('0');
+            $table->integer('alat_pkdd')->default('0');
+            $table->integer('gudang_lapangan')->default('0');
+            $table->integer('posko_aju')->default('0');
+            $table->integer('alat_it_lapangan')->default('0');
             $table->timestamps();
         });
     }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('korban_jiwa', function (Blueprint $table) {
             $table->id('id_korban_jiwa');
-            $table->integer('luka_berat');
-            $table->integer('luka_ringan');
-            $table->integer('meninggal');
-            $table->integer('hilang');
-            $table->integer('mengungsi');
+            $table->integer('luka_berat')->default('0');
+            $table->integer('luka_ringan')->default('0');
+            $table->integer('meninggal')->default('0');
+            $table->integer('hilang')->default('0');
+            $table->integer('mengungsi')->default('0');
             $table->timestamps();
         });
     }

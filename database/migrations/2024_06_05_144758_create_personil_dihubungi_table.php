@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('personil_dihubungi', function (Blueprint $table) {
             $table->id('id_personil_dihubungi');
-            $table->string('nama_lengkap');
-            $table->string('posisi');
-            $table->string('kontak');
+            $table->string('nama_lengkap')->default('-');
+            $table->string('posisi')->default('-');
+            $table->string('kontak')->default('-');
             $table->timestamps();
         });
     }

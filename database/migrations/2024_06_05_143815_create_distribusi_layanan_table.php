@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('distribusi_layanan', function (Blueprint $table) {
             $table->id('id_distribusi_layanan');
-            $table->enum('jenis_distribusi_layanan', ['Food Item', 'Non-Food Item', 'Layanan Kesehatan', 'Layanan Air Bersih']);
-            $table->string('lokasi');
-            $table->enum('unit', ['KK', 'Orang', 'Liter']);
-            $table->integer('jumlah');
+            $table->enum('jenis_distribusi_layanan', ['-', 'Food Item', 'Non-Food Item', 'Layanan Kesehatan', 'Layanan Air Bersih'])->default('-');
+            $table->string('lokasi')->default('0');
+            $table->enum('unit', ['-', 'KK', 'Orang', 'Liter'])->default('-');
+            $table->integer('jumlah')->default('0');
             $table->timestamps();
         });
     }

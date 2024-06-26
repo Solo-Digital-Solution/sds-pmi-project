@@ -26,7 +26,7 @@ class PDFController extends Controller
             'laporans' => $laporans
         ];
 
-        $pdf = PDF::loadView('lapsit.lapsit-pdf-3', $data);
+        $pdf = PDF::loadView('lapsit.lapsit-pdf', $data);
 
         return $pdf->stream('Laporan Situasi.pdf');
     }

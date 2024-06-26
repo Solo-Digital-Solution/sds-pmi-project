@@ -14,7 +14,7 @@ Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('gen
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('auth.login');
 Route::get('/register', function () {
     return view('auth.register');
 })->name('auth.register');
@@ -98,9 +98,7 @@ Route::prefix('executive-summary')->group(function() {
 // Route::get('/laporan-triwulan-search', [ExsumController::class, 'search'])->name('search');
 
 // ROUTES UNTUK FLASH REPORT
-Route::get('/flash-report', function(){
-    return view('flash-report.flash-report');
-});
+Route::get('/flash-report/{id}', [LaporanController::class, 'show'])->name('flash-report');
 
 // CONTOH
 Route::get('/form', function () {

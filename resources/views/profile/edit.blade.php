@@ -27,8 +27,8 @@
         <div class="card">
             <div class="card-header">Detail Profil Anda</div>
             <div class="card-body text-center position-relative">
-                <img src="{{ asset('img/taehyung.jpg') }}" width="30%" alt="Profile Picture">
-                <a href="#" class="position-absolute" style="top: 50%; left: 50%; transform: translate(170%, 470%);">
+                <img src="{{ asset('img/taehyung.jpg') }}" width="15%" alt="Profile Picture">
+                <a href="#" class="position-absolute" style="top: 50%; left: 50%; transform: translate(155%, 430%);">
                     <i class="icon-edit" style="background-color:red; padding:10px; color: white; width: 100px;"></i>
                 </a>
             </div>
@@ -88,6 +88,9 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center w-100 py-1">
+                    <a href="{{ route('profile.index') }}">
+                        <button type="button" class="btn btn-dark btn-lg mx-2">Batal</button>
+                    </a>
                     <a href="">
                         <button type="submit" class="btn btn-primary btn-lg">Ubah Profil</button>
                     </a>
