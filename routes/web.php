@@ -75,8 +75,10 @@ Route::get('/form-assessment', function () {
 
 // ROUTES UNTUK LAPORAN SITUASI
 Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/kejadian/view-lapsit/{id_kejadian}', [LaporanController::class, 'index'])->name('kejadian.view-lapsit');
 Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
+
 
 
 // ROUTES UNTUK ASSESSMENT
