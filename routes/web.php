@@ -20,9 +20,12 @@ Route::get('/register', function () {
 })->name('auth.register');
 
 // ROUTES UNTUK DASHBOARD
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard.dashboard');
+// });
+Route::get('/dashboard', [KejadianController::class, 'dashboard'])->name('dashboard');
+Route::get('/kejadian', [KejadianController::class, 'kejadian'])->name('kejadian');
+
 
 // ROUTES UNTUK PROFILE
 Route::prefix('profile')->group(function() {

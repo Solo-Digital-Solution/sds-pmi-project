@@ -24,6 +24,19 @@ class KejadianController extends Controller
         return view('kejadian.kejadian', ['kejadians' => $kejadians]);
     }
 
+    public function dashboard()
+    {
+        // $totalData = kejadian::count();
+        // $dataPerPage = max(min($totalData, 10), 1);
+        // $kejadians = Kejadian::latest()->paginate($dataPerPage);
+        $kejadians = Kejadian::where('status', 'Aktif')
+                    ->orWhere('status', 'Menunggu Validasi')
+                    ->latest()
+                    ->paginate(10);
+
+        return view('dashboard.dashboard', compact('kejadians'));
+    }
+
     public function add(Request $request)
     {
         //Test Input Form
