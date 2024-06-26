@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
+            $table->string('kecamatan');
+            $table->string('kelurahan');
             $table->string('alamat');
             $table->enum('goldar', ['Belum Tahu', 'O', 'A', 'B', 'AB']);
             $table->string('no_telp');
