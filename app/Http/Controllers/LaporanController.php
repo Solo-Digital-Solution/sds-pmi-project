@@ -72,6 +72,12 @@ class LaporanController extends Controller
         \Log::info('Received id_kejadian: ' . $id_kejadian);
         return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian]);
     }
+    public function createAssessment(Request $request)
+    {
+        $id_kejadian = $request->query('id_kejadian');
+        \Log::info('Received id_kejadian: ' . $id_kejadian);
+        return view('assessment.form-assessment', ['id_kejadian' => $id_kejadian]);
+    }
 
     public function store(Request $request)
     {

@@ -66,9 +66,10 @@ Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'v
 Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
 Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
-Route::get('/form-assessment', function () {
-    return view('assessment.form-assessment');
-});
+Route::get('/form-assessment', [LaporanController::class, 'createAssessment'])->name('laporan.createAssessment');
+// Route::get('/form-assessment', function () {
+//     return view('assessment.form-assessment');
+// });
 
 // ROUTES UNTUK LAPORAN SITUASI
 Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
