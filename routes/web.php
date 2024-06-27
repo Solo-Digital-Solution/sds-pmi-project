@@ -7,6 +7,7 @@ use App\Http\Controllers\KejadianController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\WhatsAppController;
 
 // ROUTES UNTUK GENERATE PDF
 Route::get('/generate-lapsit/{id}', [PDFController::class, 'pdf'])->name('generateLapsit');
@@ -105,6 +106,9 @@ Route::prefix('executive-summary')->group(function() {
 Route::get('/flash-report/{id}', [LaporanController::class, 'show'])->name('flash-report');
 
 Route::get('/pdf/{id}', [LaporanController::class, 'pdf'])->name('pdf');
+
+Route::get('/kirim-pesan', [WhatsAppController::class, 'form']);
+Route::post('/kirim-pesan', [WhatsAppController::class, 'send']);
 
 // CONTOH
 Route::get('/form', function () {

@@ -280,7 +280,10 @@ class LaporanController extends Controller
 
         $giat_pmi = DB::table('giat_pmi')->insertGetId([
             'id_evakuasi_korban' => $evakuasi_korban
-
+        ]);
+        
+        $distribusi_layanan = [];
+        
         foreach ($request->inpu as $input) {
             $distribusi_layanan[] = DB::table('distribusi_layanan')->insertGetId([
                 'jenis_distribusi_layanan' => $input['jenis_distribusi_layanan'],
@@ -288,7 +291,7 @@ class LaporanController extends Controller
                 'unit' => $input['unit'],
                 'jumlah' => $input['jumlah']
             ]);
-        }
+        }        
 
         foreach($distribusi_layanan as $dl) {
             DB::table('layanan_korban')->insertGetId([
