@@ -83,6 +83,8 @@ Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('lapora
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 Route::get('/laporan-situasi/view/{id_laporan}', [LaporanController::class, 'view'])->name('laporan.view');
 
+Route::delete('/laporan/{id_laporan}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
+
 
 
 // ROUTES UNTUK ASSESSMENT
