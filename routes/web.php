@@ -9,7 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('generateLapsit');
+Route::get('/generate-lapsit/{id}', [PDFController::class, 'pdf'])->name('generateLapsit');
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -96,6 +96,8 @@ Route::prefix('executive-summary')->group(function() {
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report/{id}', [LaporanController::class, 'show'])->name('flash-report');
+
+Route::get('/pdf/{id}', [LaporanController::class, 'pdf'])->name('pdf');
 
 // CONTOH
 Route::get('/form', function () {

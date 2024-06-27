@@ -49,7 +49,7 @@
                             <td>{{ $laporan['nama_laporan'] }}</td>
                             <td>{{ $laporan['update'] }}</td>
                             <td>
-                                <a href=# style="color: green;">Download</a>
+                                <a href="{{ url('/generate-lapsit/' . $laporan['id_laporan'])}}" style="color: green;">Download</a>
                             </td>
                             <td>
                                 <a href=# style="color: blue;">Lihat Detail</a></br>

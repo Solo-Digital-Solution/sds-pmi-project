@@ -125,7 +125,7 @@ class LaporanController extends Controller
             ]);
         }
 
-        $dampak = DB::table('dampak')->insert([
+        $dampak = DB::table('dampak')->insertGetId([
             'id_korban_terdampak' => $korban_terdampak,
             'id_korban_jiwa' => $korban_jiwa,
             'id_kerusakan_rumah' => $kerusakan_rumah,
@@ -180,16 +180,10 @@ class LaporanController extends Controller
             $dokumentasi[] = $id_dokumentasi;
         }
 
-        $mobilisasi = DB::table('mobilisasi')->insert([
+        $mobilisasi = DB::table('mobilisasi')->insertGetId([
             'id_personil' => $personil,
             'id_tsr' => $tsr,
             'id_tdb' => $tdb
-        ]);
-
-        DB::table('mobilisasi')->insert([
-            'id_personil' => $personil,
-            'id_tsr' => $tsr,
-            'id_tdb' => $tdb,
         ]);
 
         // ================================= GIAT PMI =================================
@@ -199,10 +193,10 @@ class LaporanController extends Controller
             'meninggal' => $request->meninggal
         ]);
 
-        $giat_pmi = DB::table('giat_pmi')->insert([
+        $giat_pmi = DB::table('giat_pmi')->insertGetId([
             'id_evakuasi_korban' => $evakuasi_korban
-        ]);   
-        
+        ]);
+
         DB::table('giat_pmi')->insert([
             'id_evakuasi_korban' => $evakuasi_korban
         ]);
@@ -288,7 +282,7 @@ class LaporanController extends Controller
                 'id_petugas_posko' => $pp
             ]);
         }
-        // // Redirect dengan pesan sukses
+        // Redirect dengan pesan sukses
         //return redirect('form-assessment');
         return redirect()->route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian]);
     }
@@ -325,5 +319,4 @@ class LaporanController extends Controller
         ->with('jumlahFoodItem', $jumlahFoodItem)
         ->with('filePaths', $filePaths); // Mengirimkan data file_path ke view
 }
-           
 }

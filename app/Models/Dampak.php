@@ -39,7 +39,6 @@ class Dampak extends Model
     {
         return $this->belongsTo(Kerusakan_infrastruktur::class, 'id_kerusakan_infrastruktur');
     }
-
     public function shelters()
     {
         return $this->belongsToMany(Shelter::class, 'transaction_shelter', 'id_dampak', 'id_lokasi_shelter');

@@ -187,7 +187,7 @@
 
 <body>
     <div class="container">
-        <p>Generated on {{ $currentDay }}, {{ $currentDate }} at {{ $currentTime }} </p>
+
 
         <table>
             <tr>
@@ -202,20 +202,20 @@
         </table>
 
         <h3 style="padding-top:15px; text-align: center;">LAPORAN SITUASI</h3>
-
+        @foreach ($kejadians as $kejadian)
         <div>
             <table class="deskripsi-umum" style="padding-top:10px;">
                 <tr>
                     <td style="font-weight: bold;">Kejadian Bencana</td>
-                    <td style="font-weight: bold; background-color:  white;">: Banjir</td>
+                    <td style="font-weight: bold; background-color:  white;">: {{ $kejadian->nama_kejadian }}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold;">Lokasi</td>
-                    <td>: Surakarta</td>
+                    <td>: {{ $kejadian->lokasi }}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold;">Waktu Kejadian</td>
-                    <td style="background-color: white;">: 02.00</td>
+                    <td style="background-color: white;">: {{ $kejadian->waktu_kejadian }}/td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold;">Update</td>
@@ -223,7 +223,7 @@
                 </tr>
                 <tr>
                     <td style="background-color: #f8d7da;">Pemerintah membutuhkan dukungan internasional</td>
-                    <td>: TIDAK</td>
+                    <td>: {{ $kejadian->dukungan_inter }}</td>
                 </tr>
             </table>
         </div>
@@ -234,7 +234,7 @@
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">GAMBARAN UMUM SITUASI</th>
                 </tr>
                 <tr>
-                    <td style="text-align: justify;" colspan="10">Hujan yang mengguyur kota Surakarta dan sekitarnya pada hari Kamis, 16 Februari 2023 sejak pukul 14.15 hingga pukul 16.00 WIB mengakibatkan debit air di sungai-sungai yang ada di Kota Surakarta meningkat cukup cepat. Ketinggian genangan antara 15-70 cm. hingga saat ini cuaca masih hujan ringan merata di wilayah Kota Surakarta. Terdapat beberapa genangan banjir di beberapa wilayah kota Surakarta antara lain: Jagalan, Gandekan, Sudiroprajan, Pucangsawit, Semanggi, Joyosuran, Mojo, sangkrah, dan Joyontakan. Terdapat beberapa tempat pengungsian yaitu di Pendopo kelurahan Gandekan kelurahan kedung lumbu masjid al anshor, Jagalan RW 14.</td>
+                    <td style="text-align: justify;" colspan="10">{{ $kejadian->gambaran_situasi }}</td>
                 </tr>
             </table>
         </div>
@@ -245,11 +245,13 @@
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">KETERANGAN AKSES MENUJU LOKASI</th>
                 </tr>
                 <tr>
-                    <td style="text-align: justify;" colspan="10">Beberapa jalan kampung di kelurahan Semanggi, Joyosuran, Joyontakan di tutup karena tergenang antara 50-70 cm.</td>
+                    <td style="text-align: justify;" colspan="10">{{ $kejadian->akses_lokasi }}</td>
                 </tr>
             </table>
         </div>
+        @endforeach
 
+        @foreach ($laporans as $laporan)
         <div class="padding-table">
             <table class="table dampak-table">
                 <tr>
@@ -269,10 +271,13 @@
                     <th>Lapsit-6</th>
                     <th>Lapsit-7</th>
                 </tr>
+                @foreach ($korban_terdampak as $kt)
+
+
                 <tr>
                     <td colspan="2">KK</td>
-                    <td>650</td>
-                    <td></td>
+                    <td>{{ $kt->jmlh_kk ?? 0 }}</td>
+                    <td>{{ $kt->jmlh_kk ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -282,8 +287,8 @@
                 </tr>
                 <tr>
                     <td colspan="2">Jiwa</td>
-                    <td>2614</td>
-                    <td></td>
+                    <td>{{ $kt->jmlh_jiwa ?? 0 }}</td>
+                    <td>{{ $kt->jmlh_jiwa ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -291,12 +296,13 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
                 <tr>
                     <th colspan="10">Korban Jiwa/Luka/Mengungsi</th>
                 </tr>
                 <tr>
                     <td colspan="2">Luka berat</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->korban_jiwa->luka_berat ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -307,7 +313,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Luka ringan</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->korban_jiwa->luka_ringan ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -318,7 +324,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Meninggal</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->korban_jiwa->md ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -329,7 +335,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Hilang</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->korban_jiwa->hilang ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -340,7 +346,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Mengungsi</td>
-                    <td>2614</td>
+                    <td>{{ $laporan->dampak->korban_jiwa->mengungsi ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -356,7 +362,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Berat</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_rumah->rusak_berat ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -367,7 +373,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Sedang</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_rumah->rusak_sedang ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -378,7 +384,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Ringan</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_rumah->rusak_ringan ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -394,7 +400,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Sekolah</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_fasilitas->sekolah ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -405,7 +411,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Tempat Ibadah</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_fasilitas->tempat_ibadah ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -416,7 +422,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rumah Sakit</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_fasilitas->rumah_sakit ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -427,7 +433,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Pasar</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_fasilitas->pasar ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -438,7 +444,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Gedung Pemerintah</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_fasilitas->gedung_pemerintah ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -449,7 +455,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Lain-lain</td>
-                    <td>0</td>
+                    <td>{{ $laporan->dampak->kerusakan_fasilitas->lain_lain ?? 0 }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -464,9 +470,10 @@
                     <th colspan="10">Kerusakan Infrastruktur</th>
                 </tr>
                 <tr>
-                    <td style="text-align: justify;" colspan="10">Lorem ipsum dolor sit amet</td>
+                    <td style="text-align: justify;" colspan="10">{{ $laporan->dampak->kerusakan_infrastruktur->deskripsi_kerusakan ?? 'Tidak ada deskripsi' }}</td>
                 </tr>
             </table>
+
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Pengungsian</th>
@@ -489,15 +496,15 @@
                     <th>Jumlah</th>
                 </tr>
                 <tr>
-                    <td colspan="2">Pendopo Kelurahan Gandekan</td>
-                    <td>25</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="2">{{ $laporan->dampak->shelter->lokasi_shelter ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->jumlah_kk ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->jumlah_jiwa ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->jumlah_laki ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->jumlah_perempuan ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->dibawah_lima ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->antara_lima_dan_delapanbelas ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->lebih_delapanbelas ?? 0 }}</td>
+                    <td>{{ $laporan->dampak->shelter->jumlah ?? 0 }}</td>
                 </tr>
                 <tr>
                     <td colspan="2">Masjid Al-Anshor, Jagalan, RW 14</td>
@@ -522,7 +529,9 @@
                     <td></td>
                 </tr>
             </table>
+
         </div>
+        @endforeach
 
         <div class="padding-table">
             <table class="dampak-table">

@@ -147,7 +147,6 @@
 @endsection
 
 @section('content')
-@forelse ($exsum as $kjd)
 <!-- Row start -->
 <div class="row gutters">
     <div class="col-sm-12">
@@ -194,6 +193,7 @@
                         </tfoot>
 
                         <tbody>
+
                             <tr>
                                 <td colspan="5" rowspan="10">
                                     <div id="map"></div>
@@ -235,7 +235,7 @@
                                     0 ORANG
                                     @endif
                                 </td>
-                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{ $shelterCount }} TITIK</td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;"> TITIK</td>
                             </tr>
 
                             <tr>
@@ -243,43 +243,42 @@
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
                                 <td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;"">RUMAH RUSAK</td>
-                <td colspan=" 3" rowspan="6" style="
-                border-right-width: 0px;
-                padding-right: 0px;
-                border-top-width: 0px;
-                border-left-width: 0px;
-                border-bottom-width: 0px;
-                padding-left: 0px;
-                padding-top: 0px;
-                padding-bottom: 0px;
-                "><img src="https://tangerangkota.go.id/files/berita/29821siap-hadapi-bencana-pmi-kota-tangerang-gelar-simulasi-kebakaran-29821.jpeg" style="width: 100%"></td>
+                                <td colspan=" 3" rowspan="6" style="
+                                border-right-width: 0px;
+                                padding-right: 0px;
+                                border-top-width: 0px;
+                                border-left-width: 0px;
+                                border-bottom-width: 0px;
+                                padding-left: 0px;
+                                padding-top: 0px;
+                                padding-bottom: 0px;
+                                "><img src="https://tangerangkota.go.id/files/berita/29821siap-hadapi-bencana-pmi-kota-tangerang-gelar-simulasi-kebakaran-29821.jpeg" style="width: 100%"></td>
                             </tr>
-
                             <tr>
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
-                                @if($kjd->luka_berat + $kjd->luka_ringan !== 0)
-                                {{ $kjd->luka_berat + $kjd->luka_ringan }} JIWA
-                                @elseif($kjd->luka_berat + $kjd->luka_ringan === 0)
-                                0 JIWA
-                                @endif
+                                    @if($kjd->luka_berat + $kjd->luka_ringan !== 0)
+                                    {{ $kjd->luka_berat + $kjd->luka_ringan }} JIWA
+                                    @elseif($kjd->luka_berat + $kjd->luka_ringan === 0)
+                                    0 JIWA
+                                    @endif
                                 </td>
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
-                                @if($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang !== 0)
-                                {{ $kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang }} BANGUNAN
-                                @elseif($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang === 0)
-                                0 BANGUNAN
-                                @endif
+                                    @if($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang !== 0)
+                                    {{ $kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang }} BANGUNAN
+                                    @elseif($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang === 0)
+                                    0 BANGUNAN
+                                    @endif
                                 </td>
                             </tr>
 
                             <tr>
                                 <td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
-                                    @if($kjd->kebutuhan !== '-')
-                                    {{ $kjd->kebutuhan }}
-                                    @elseif($kjd->kebutuhan === '-')
-                                    BELUM ADA
-                                    @endif
-                                </span></td>
+                                        @if($kjd->kebutuhan !== '-')
+                                        {{ $kjd->kebutuhan }}
+                                        @elseif($kjd->kebutuhan === '-')
+                                        BELUM ADA
+                                        @endif
+                                    </span></td>
                             </tr>
 
                             <tr>
@@ -319,20 +318,20 @@
                             <tr>
                                 <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>
-                                    @if( $kjd->relawan_pmi !== 0)
-                                    {{ $kjd->relawan_pmi }} ORANG
-                                    @elseif( $kjd->relawan_pmi === 0)
-                                    0 ORANG
-                                    @endif
-                                </span></td>
+                                        @if( $kjd->relawan_pmi !== 0)
+                                        {{ $kjd->relawan_pmi }} ORANG
+                                        @elseif( $kjd->relawan_pmi === 0)
+                                        0 ORANG
+                                        @endif
+                                    </span></td>
                                 <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
                                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>
-                                    @if( $kjd->medis + $kjd->paramedis !== 0)
-                                    {{ $kjd->medis + $kjd->paramedis }} ORANG
-                                    @elseif( $kjd->medis + $kjd->paramedis === 0)
-                                    0 ORANG
-                                    @endif
-                                </span></td>
+                                        @if( $kjd->medis + $kjd->paramedis !== 0)
+                                        {{ $kjd->medis + $kjd->paramedis }} ORANG
+                                        @elseif( $kjd->medis + $kjd->paramedis === 0)
+                                        0 ORANG
+                                        @endif
+                                    </span></td>
                                 <td colspan="4" rowspan="2">
                                     <div class="chart-container">
                                         <canvas id="genderChart" width="150" height="150"></canvas>
@@ -358,7 +357,6 @@
                     <button onclick="downloadContentAsImage()">Download as Image</button>
                 </div>
             </div>
-
             <hr>
 
             <!-- TABEL LAPORAN TRIWULAN -->
@@ -389,27 +387,22 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <tr>
                                 <td>{{ $kjd->waktu_kejadian }}</td>
                                 <td>{{ $kjd->update }}</td>
                                 <td>{{ $kjd->nama_kejadian }}</td>
-                                <td>
-                                    @if ($kjd->status === 'Aktif' || $kjd->status == 'Selesai')
-                                    <button type="button" class="btn btn-{{ $kjd->status == 'Aktif' ? 'primary' : 'dark' }} btn-rounded">{{ $kjd->status }}</button>
-                                    @endif
-                                </td>
+
                                 <td>{{ $kjd->lokasi }}</td>
                                 <td>{{ $kjd->kelurahan }}</td>
                                 <td>{{ $kjd->kecamatan }}</td>
                                 <td>{{ $kjd->jumlah_jiwa }}</td> <!-- SHELTER -->
                                 <td>{{ $kjd->jmlh_jiwa }}</td> <!-- KORBAN TERDAMPAK -->
                                 <td>{{ $kjd->rusak_ringan + $kjd->rusak_sedang + $kjd->rusak_berat }}</td>
-                                <td>{{ $kjd->sekolah + $kjd->tempat_ibadah + $kjd->rumah_sakit + $kjd->pasar + $kjd->gedung_pemerintah + $kjd->{'lain-lain'} }}</td>
+                                <td>{{ $kjd->sekolah + $kjd->tempat_ibadah + $kjd->rumah_sakit + $kjd->pasar + $kjd->gedung_pemerintah }}</td>
                                 <td>{{ $kjd->deskripsi_kerusakan }}</td>
                                 <td>{{ $kjd->pengurus + $kjd->staf_markas + $kjd->relawan_pmi + $kjd->sukarelawan_spesialis }}</td>
                                 <td>{{ $kjd->medis + $kjd->paramedis + $kjd->relief + $kjd->logistics + $kjd->watsan + $kjd->it_telekom + $kjd->sheltering }}</td>
-                                <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_angkutan + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans +
+                                <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_tangki + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans +
                                 $kjd->alat_watsan + $kjd->rs_lapangan + $kjd->alat_pkdd + $kjd->gudang_lapangan + $kjd->posko_aju + $kjd->alat_it_lapangan }}</td>
                                 <td><a href="{{ route('generateLapsit') }}" style="color:red" target="_blank">Lihat Detail</a></td>
                             </tr>
@@ -417,7 +410,7 @@
                             <tr>
                                 <td colspan="4">Tidak ada data kejadian.</td>
                             </tr>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
