@@ -24,6 +24,25 @@ class KejadianController extends Controller
         return view('kejadian.kejadian', ['kejadians' => $kejadians]);
     }
 
+    public function dashboard()
+    {
+        // $totalData = kejadian::count();
+        // $dataPerPage = max(min($totalData, 10), 1);
+        // $kejadians = Kejadian::latest()->paginate($dataPerPage);
+        $kejadians = Kejadian::where('status', 'Aktif')
+                    ->orWhere('status', 'Menunggu Validasi')
+                    ->latest()
+                    ->paginate(10);
+        
+        $activeKejadianCount = Kejadian::where('status', 'Aktif')->count();
+        // dd($activeKejadianCount);
+
+        $assessmentKejadianCount = Kejadian::where('status', 'Menunggu Validasi')->count();
+        // dd($assessmentKejadianCount);
+
+        return view('dashboard.dashboard', compact('kejadians', 'activeKejadianCount', 'assessmentKejadianCount'));
+    }
+
     public function add(Request $request)
     {
         //Test Input Form
@@ -121,6 +140,17 @@ class KejadianController extends Controller
         $laporans = Laporan::where('id_kejadian', $id_kejadian)->get();
 
         return view('lapsit.laporan-situasi', compact('kejadian', 'laporans'));
+    }
+
+    public function viewAssessor($id_kejadian)
+    {
+        $kejadian = DB::table('kejadian')->where('id_kejadian', $id_kejadian)->first();
+        // dd($kejadian);
+        $kecamatan = DB::table('kecamatan')->where('id_kecamatan', $kejadian->kecamatan)->first();
+        $assessor = DB::table('users')->where('kecamatan', $kecamatan->id_kecamatan)->get();
+        // dd($assessor);
+
+        return view('kejadian.view-assessor', compact('assessor'));
     }
 
 

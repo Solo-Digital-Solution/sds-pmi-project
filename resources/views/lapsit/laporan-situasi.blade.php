@@ -29,8 +29,16 @@
             <div class="card-header">Laporan Situasi</div>
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
-                    <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Lapsit</button></a>
-                    <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}"><button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Assessment</button></a>
+                    @if(!$laporanExist)
+                        <a href="{{ route('laporan.createAssessment', ['id_kejadian' => $id_kejadian]) }}">
+                            <button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Assessment</button>
+                        </a>
+                    @endif
+                    @if($isValidated)
+                        <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}">
+                            <button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Lapsit</button>
+                        </a>
+                    @endif
                 </div>
             </div>
             <div class="card-body">
@@ -49,7 +57,7 @@
                             <td>{{ $laporan['nama_laporan'] }}</td>
                             <td>{{ $laporan['update'] }}</td>
                             <td>
-                                <a href=# style="color: green;">Download</a>
+                                <a href="{{ url('/generate-lapsit/' . $laporan['id_laporan'])}}" style="color: green;">Download</a>
                             </td>
                             <td>
                                 <a href="{{ route('laporan.view', ['id_laporan' => $laporan['id_laporan']]) }}" style="color: blue;">Lihat Detail</a></br>

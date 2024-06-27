@@ -53,7 +53,7 @@
                             <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['lokasi'] }}</td>
                             <td>
-                                <a href="/kontak/{{ $kejadian['kecamatan'] }}" style="color: blue;">Lihat Kontak</a>
+                                <a href="/kejadian/view-assessor/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Kontak</a>
                             </td>
                             <td>
                                 <a href="{{ route('kejadian.view-lapsit', ['id_kejadian' => $kejadian['id_kejadian']]) }}" style="color: blue;">Lihat Lapsit</a>
@@ -61,7 +61,7 @@
                             <td>
                                 <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">Edit</a>
                                 <a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
-                                
+
                                 @if($kejadian->status == 'Invalid')
                                 <form action="{{ route('kejadian.destroy', $kejadian->id_kejadian) }}" method="POST" style="display: inline-block;">
                                     @csrf

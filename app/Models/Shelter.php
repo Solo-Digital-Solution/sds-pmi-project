@@ -22,5 +22,8 @@ class Shelter extends Model
         'lebih_delapanbelas',
         'jumlah'
     ];
+    public function dampaks()
+    {
+        return $this->belongsToMany(Dampak::class, 'transaction_shelter', 'id_lokasi_shelter', 'id_dampak');
+    }
 }
- 

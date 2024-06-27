@@ -9,7 +9,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\PDFController;
 
 // ROUTES UNTUK GENERATE PDF
-Route::get('/generate-lapsit', [PDFController::class, 'generatePDF'])->name('generateLapsit');
+Route::get('/generate-lapsit/{id}', [PDFController::class, 'pdf'])->name('generateLapsit');
 
 // ROUTES UNTUK AUTH
 Route::get('/login', function () {
@@ -20,9 +20,12 @@ Route::get('/register', function () {
 })->name('auth.register');
 
 // ROUTES UNTUK DASHBOARD
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard.dashboard');
+// });
+Route::get('/dashboard', [KejadianController::class, 'dashboard'])->name('dashboard');
+Route::get('/kejadian', [KejadianController::class, 'kejadian'])->name('kejadian');
+
 
 // ROUTES UNTUK PROFILE
 Route::prefix('profile')->group(function() {
@@ -32,13 +35,11 @@ Route::prefix('profile')->group(function() {
 
 // ROUTES UNTUK USER MANAGEMENT
 Route::get('/user-management', [UserController::class, 'index']);
-Route::get('/tambah-akun', function () {
-    return view('user.tambah-akun');
-});
 
 //ROUTES UNTUK TAMBAH AKUN
-Route::get('/user-management/create', [UserController::class, 'create']);
-Route::post('/simpanAkun', [UserController::class, 'simpanAkun'])->name('addAkun');
+Route::get('/user-management/create', [UserController::class, 'create'])->name('addAkun');
+Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
+Route::get('/user-management/create', [DropdownController::class, 'indexKecamatanUser']);
 
 // ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
 Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
@@ -60,7 +61,7 @@ Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan'
 //Route::resource('kejadian', KejadianController::class);
 Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
 Route::get('/kejadian/view/{id}',[KejadianController::class,'view']);
-
+Route::get('/kejadian/view-assessor/{id_kejadian}',[KejadianController::class,'viewAssessor']);
 Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'viewLapsit'])->name('kejadian.view-lapsit');
 
 
@@ -70,9 +71,10 @@ Route::get('/form-assessment', [LaporanController::class, 'index'])->name('lapor
 Route::get('/form-assessment', [LaporanController::class, 'createA'])->name('laporan.createA');
 Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
 Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
-Route::get('/form-assessment', function () {
-    return view('assessment.form-assessment');
-});
+Route::get('/form-assessment', [LaporanController::class, 'createAssessment'])->name('laporan.createAssessment');
+// Route::get('/form-assessment', function () {
+//     return view('assessment.form-assessment');
+// });
 
 // ROUTES UNTUK LAPORAN SITUASI
 Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
@@ -101,6 +103,8 @@ Route::prefix('executive-summary')->group(function() {
 
 // ROUTES UNTUK FLASH REPORT
 Route::get('/flash-report/{id}', [LaporanController::class, 'show'])->name('flash-report');
+
+Route::get('/pdf/{id}', [LaporanController::class, 'pdf'])->name('pdf');
 
 // CONTOH
 Route::get('/form', function () {

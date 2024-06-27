@@ -34,7 +34,13 @@ class LaporanController extends Controller
         // Menampilkan laporan situasi berdasarkan id_kejadian
         $laporans = Laporan::where('id_kejadian', $id_kejadian)->latest()->paginate(10);
 
-        return view('lapsit.laporan-situasi', ['laporans' => $laporans, 'id_kejadian' => $id_kejadian]);
+        // Ambil status validasi dari kejadian
+        $laporanExist = Laporan::where('id_kejadian', $id_kejadian)->exists();
+        $kejadian = Kejadian::find($id_kejadian);
+        $isValidated = $kejadian ? $kejadian->status == 'Aktif' : true;
+        // dd($isValidated);
+
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans, 'id_kejadian' => $id_kejadian, 'isValidated' => $isValidated, 'laporanExist' => $laporanExist]);
     }
 
     public function checkReportNumber(Request $request)
@@ -71,6 +77,12 @@ class LaporanController extends Controller
         $id_kejadian = $request->query('id_kejadian');
         \Log::info('Received id_kejadian: ' . $id_kejadian);
         return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian]);
+    }
+    public function createAssessment(Request $request)
+    {
+        $id_kejadian = $request->query('id_kejadian');
+        \Log::info('Received id_kejadian: ' . $id_kejadian);
+        return view('assessment.form-assessment', ['id_kejadian' => $id_kejadian]);
     }
 
     public function view($id_laporan)
@@ -259,7 +271,6 @@ class LaporanController extends Controller
             $dokumentasi[] = $id_dokumentasi;
         }
 
-        
         // ================================= GIAT PMI =================================
 
         $evakuasi_korban = DB::table('evakuasi_korban')->insertGetId([
@@ -269,7 +280,6 @@ class LaporanController extends Controller
 
         $giat_pmi = DB::table('giat_pmi')->insertGetId([
             'id_evakuasi_korban' => $evakuasi_korban
-        ]);  
 
         foreach ($request->inpu as $input) {
             $distribusi_layanan[] = DB::table('distribusi_layanan')->insertGetId([
@@ -352,7 +362,7 @@ class LaporanController extends Controller
                 'id_petugas_posko' => $pp
             ]);
         }
-        // // Redirect dengan pesan sukses
+        // Redirect dengan pesan sukses
         //return redirect('form-assessment');
         return redirect()->route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian]);
     }
@@ -389,5 +399,4 @@ class LaporanController extends Controller
             ->with('jumlahFoodItem', $jumlahFoodItem)
             ->with('filePaths', $filePaths); // Mengirimkan data file_path ke view
     }
-           
 }
