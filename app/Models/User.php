@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,9 +15,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $primaryKey = 'user_id';
     protected $fillable = [
         'name',
         'email',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'alamat',
+        'goldar',
+        'no_telp',
         'username',
         'gender',
         'profilePhoto',
@@ -40,11 +45,19 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    public function hasRole($roleName)
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->roles()->where('role_name', $roleName)->exists();
+    }
+
+    // Definisikan relasi many-to-many ke model Role
+    public function roles()
+    {
+        return $this->belongsToMany(Roles::class, 'users_has_role', 'user_id', 'role_id');
     }
 }
