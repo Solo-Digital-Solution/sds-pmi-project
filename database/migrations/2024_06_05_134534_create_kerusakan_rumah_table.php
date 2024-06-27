@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('kerusakan_rumah', function (Blueprint $table) {
             $table->id('id_kerusakan_rumah');
-            $table->integer('rusak_berat')->default('0');
-            $table->integer('rusak_sedang')->default('0');
-            $table->integer('rusak_ringan')->default('0');
+            $table->integer('rusak_berat');
+            $table->integer('rusak_sedang');
+            $table->integer('rusak_ringan');
             $table->timestamps();
         });
     }

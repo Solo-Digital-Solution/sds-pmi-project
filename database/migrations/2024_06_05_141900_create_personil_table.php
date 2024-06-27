@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('personil', function (Blueprint $table) {
             $table->id('id_personil');
-            $table->integer('pengurus')->default('0');
-            $table->integer('staf_markas')->default('0');
-            $table->integer('relawan_pmi')->default('0');
-            $table->integer('sukarelawan_spesialis')->default('0');
+            $table->integer('pengurus');
+            $table->integer('staf_markas');
+            $table->integer('relawan_pmi');
+            $table->integer('sukarelawan_spesialis');
             $table->timestamps();
         });
     }
