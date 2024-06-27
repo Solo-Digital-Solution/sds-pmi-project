@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('no_telp');
             $table->string('username');
             $table->enum('gender', ['Laki-Laki', 'Perempuan']);
+            $table->text('ktp');
             $table->text('profilePhoto');
             $table->string('password');
             $table->rememberToken();
