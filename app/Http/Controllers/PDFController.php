@@ -78,7 +78,7 @@ class PDFController extends Controller
     ];
 
     // Debugging the data
-    dd($data);
+    // dd($data);
 
     $pdf = PDF::loadView('lapsit.lapsit-pdf', $data);
 

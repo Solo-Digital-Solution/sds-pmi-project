@@ -289,7 +289,7 @@ class LaporanController extends Controller
                 'unit' => $input['unit'],
                 'jumlah' => $input['jumlah']
             ]);
-        }
+        }        
 
         foreach($distribusi_layanan as $dl) {
             DB::table('layanan_korban')->insertGetId([
@@ -400,4 +400,42 @@ class LaporanController extends Controller
             ->with('jumlahFoodItem', $jumlahFoodItem)
             ->with('filePaths', $filePaths); // Mengirimkan data file_path ke view
     }
+
+    public function destroy(Request $request, $id_laporan)
+    {
+        // Mulai transaksi
+        DB::beginTransaction();
+        try {
+            // Ambil id_kejadian sebelum menghapus laporan
+            $laporan = DB::table('laporan')->where('id_laporan', $id_laporan)->first();
+            $id_kejadian = $laporan->id_kejadian;
+
+            // Hapus data dokumentasi terkait
+            $dokumentasiIds = DB::table('transaction_dokumentasi')
+                ->where('id_laporan', $id_laporan)
+                ->pluck('id_dokumentasi');
+
+            foreach ($dokumentasiIds as $id_dokumentasi) {
+                $filePath = DB::table('dokumentasi')->where('id_dokumentasi', $id_dokumentasi)->value('file_path');
+                $fileFullPath = public_path('dokumentasi/' . $filePath); // Mendapatkan path lengkap file
+                if (file_exists($fileFullPath)) {
+                    unlink($fileFullPath); // Menghapus file dari direktori
+                }
+                DB::table('dokumentasi')->where('id_dokumentasi', $id_dokumentasi)->delete(); // Menghapus data dari tabel dokumentasi
+            }
+
+            DB::table('transaction_dokumentasi')->where('id_laporan', $id_laporan)->delete(); // Menghapus data dari tabel transaction_dokumentasi
+            DB::table('laporan')->where('id_laporan', $id_laporan)->delete(); // Menghapus data laporan
+
+            // Commit transaksi
+            DB::commit();
+
+            return redirect()->route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian])->with('success', 'Laporan berhasil dihapus.');
+        } catch (\Exception $e) {
+            // Rollback transaksi jika terjadi kesalahan
+            DB::rollback();
+            return redirect()->route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian])->with('error', 'Gagal menghapus laporan: ' . $e->getMessage());
+        }
+    }
+
 }
