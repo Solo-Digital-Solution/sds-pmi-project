@@ -1,0 +1,17 @@
+2024/06/27-19:55:20.197 6c9c Reusing MANIFEST C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/06/27-19:55:20.197 6c9c Recovering log #264
+2024/06/27-19:55:20.357 6c9c Reusing old log C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000264.log 
+2024/06/27-19:59:11.422 5d34 Level-0 table #272: started
+2024/06/27-19:59:11.471 5d34 Level-0 table #272: 1137215 bytes OK
+2024/06/27-19:59:11.473 5d34 Delete type=0 #264
+2024/06/27-19:59:14.359 2a58 Compacting 1@0 + 1@1 files
+2024/06/27-19:59:14.573 2a58 Generated table #273@0: 67232 keys, 1344756 bytes
+2024/06/27-19:59:14.573 2a58 Compacted 1@0 + 1@1 files => 1344756 bytes
+2024/06/27-19:59:14.575 2a58 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/06/27-19:59:14.781 2a58 Compacting 1@1 + 1@2 files
+2024/06/27-19:59:14.928 2a58 Generated table #274@1: 35849 keys, 2195358 bytes
+2024/06/27-19:59:14.979 2a58 Generated table #275@1: 29893 keys, 624172 bytes
+2024/06/27-19:59:14.979 2a58 Compacted 1@1 + 1@2 files => 2819530 bytes
+2024/06/27-19:59:14.980 2a58 compacted to: files[ 0 0 2 0 0 0 0 ]
+2024/06/27-19:59:14.981 2a58 Delete type=2 #267
+2024/06/27-19:59:14.981 2a58 Delete type=2 #272
