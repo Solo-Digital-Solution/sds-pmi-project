@@ -59,16 +59,22 @@
                             <td>{{ $laporan['nama_laporan'] }}</td>
                             <td>{{ $laporan['update'] }}</td>
                             <td>
-                                <a href="{{ url('/generate-lapsit/' . $laporan['id_laporan'])}}" style="color: green;">Download</a>
+                                <a href="{{ url('/generate-lapsit/' . $laporan['id_laporan'])}}" style="color: green;">
+                                    <button type="button" class="btn btn-success btn-rounded mb-2">Download <i class="icon-download3"></i></button>
+                                </a>
                             </td>
                             <td>
-                                <a href="{{ route('laporan.view', ['id_laporan' => $laporan['id_laporan']]) }}" style="color: blue;">Lihat Detail</a></br>
-                                <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">Flash Report</a><br>
+                                <a href="{{ route('laporan.view', ['id_laporan' => $laporan['id_laporan']]) }}" style="color: blue;">
+                                    <button type="button" class="btn btn-info btn-rounded mb-2">Lihat Detail <i class="icon-eye3"></i></button>
+                                </a>
+                                <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">
+                                    <button type="button" class="btn btn-warning btn-rounded mb-2">Flash Report <i class="icon-stats-bars"></i></button>
+                                </a>
                                 <form action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id_kejadian" value="{{ $laporan['id_kejadian'] }}">
-                                    <button type="submit" style="background:none;border:none;color:red;padding:0;" onclick="return confirm('Anda yakin ingin menghapus laporan ini?')">Hapus</button>
+                                    <button type="submit" class="btn btn-primary btn-rounded mb-2" onclick="return confirm('Anda yakin ingin menghapus laporan ini?')">Delete <i class="icon-trash2"></i></button>
                                 </form>
                             </td>
                         </tr>

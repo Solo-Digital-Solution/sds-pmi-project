@@ -53,20 +53,28 @@
                             <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['lokasi'] }}</td>
                             <td>
-                                <a href="/kejadian/view-assessor/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Kontak</a>
+                                <a href="/kejadian/view-assessor/{{ $kejadian['id_kejadian'] }}" style="color: blue;">
+                                    <button type="button" class="btn btn-info btn-rounded">Lihat Kontak <i class="icon-user2"></i></button>
+                                </a>
                             </td>
                             <td>
-                                <a href="{{ route('kejadian.view-lapsit', ['id_kejadian' => $kejadian['id_kejadian']]) }}" style="color: blue;">Lihat Lapsit</a>
+                                <a href="{{ route('kejadian.view-lapsit', ['id_kejadian' => $kejadian['id_kejadian']]) }}" style="color: blue;">
+                                    <button type="button" class="btn btn-success btn-rounded">Lihat Lapsit <i class="icon-document-text"></i></button>
+                                </a>
                             </td>
                             <td>
-                                <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">Edit</a>
-                                <a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" style="color: blue;">Lihat Detail</a>
+                                <a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" style="color: blue;">
+                                    <button type="button" class="btn btn-info btn-rounded mb-2">Lihat Detail <i class="icon-eye3"></i></button>
+                                </a><br>
+                                <a href="/kejadian/edit/{{ $kejadian['id_kejadian'] }}" style="color: green;">
+                                    <button type="button" class="btn btn-warning btn-rounded mb-2">Edit <i class="icon-pencil4"></i></button>
+                                </a><br>
 
                                 @if($kejadian->status == 'Invalid')
                                 <form action="{{ route('kejadian.destroy', $kejadian->id_kejadian) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this kejadian?');">Delete</button>
+                                    <button type="submit" class="btn btn-primary btn-rounded mb-2" onclick="return confirm('Are you sure you want to delete this kejadian?');">Delete <i class="icon-trash2"></i></button>
                                 </form>
                                 @endif
                             </td>

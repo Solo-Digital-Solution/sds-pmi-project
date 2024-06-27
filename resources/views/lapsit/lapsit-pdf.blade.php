@@ -857,7 +857,7 @@
 
             <table class="dampak-table">
                 <tr>
-                    <th colspan="10">Layanan Korban Bencana - Lapsit #</th>
+                    <th colspan="10">Layanan Korban Bencana - Lapsit</th>
                 </tr>
                 <tr>
                     <th colspan="2"></th>
@@ -912,7 +912,9 @@
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">GIAT PEMERINTAH</th>
                 </tr>
                 <tr>
-                    <td colspan="10"></td>
+                    @foreach ($laporans as $lp)
+                    <td colspan="10">{{ $lp->giat_pemerintah }}</td>
+                    @endforeach
                 </tr>
             </table>
         </div>
@@ -923,7 +925,9 @@
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">KEBUTUHAN</th>
                 </tr>
                 <tr>
-                    <td colspan="10"></td>
+                    @foreach ($laporans as $lp)
+                    <td colspan="10">{{ $lp->kebutuhan }}</td>
+                    @endforeach
                 </tr>
             </table>
         </div>
@@ -934,7 +938,9 @@
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">HAMBATAN</th>
                 </tr>
                 <tr>
-                    <td colspan="10"></td>
+                    @foreach ($laporans as $lp)
+                    <td colspan="10">{{ $lp->hambatan }}</td>
+                    @endforeach
                 </tr>
             </table>
         </div>
@@ -950,9 +956,11 @@
                     <th colspan="3">Kontak</th>
                 </tr>
                 <tr>
-                    <td colspan="4">Jumadi</td>
-                    <td colspan="3">Kepala Sie. PB PMI Solo</td>
-                    <td colspan="3">081234583328</td>
+                    @foreach ($transaction_personil_dihubungi as $pd)
+                        <td colspan="4">{{ $pd->nama_lengkap }}</td>
+                        <td colspan="3">{{ $pd->posisi }}</td>
+                        <td colspan="3">{{ $pd->kontak }}</td>
+                    @endforeach
                 </tr>
             </table>
         </div>
@@ -967,8 +975,10 @@
                     <th colspan="5">Kontak</th>
                 </tr>
                 <tr>
-                    <td colspan="5">Bambang</td>
-                    <td colspan="5">081234562178</td>
+                    @foreach ($transaction_petugas_posko as $pp)
+                        <td colspan="5">{{ $pp->nama_lengkap }}</td>
+                        <td colspan="5">{{ $pp->kontak }}</td>
+                    @endforeach
                 </tr>
             </table>
         </div>
@@ -979,6 +989,11 @@
                     <th style="background-color: white; color: black; width: 100px;" colspan="10">LAMPIRAN DOKUMENTASI</th>
                 </tr>
                 <tr>
+                    {{-- @foreach ($transaction_dokumentasi as $td)
+                        <td colspan="5">
+                            <img src="{{ asset('dokumentasi/static-image.jpg') }}" height="190px" alt="">
+                        </td>
+                    @endforeach --}}
                     <td colspan="5">
                         <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
                     </td>

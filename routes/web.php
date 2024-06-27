@@ -66,6 +66,26 @@ Route::middleware(['auth', 'role:Pegawai PMI'])->group(function () {
     Route::get('/kejadian/view-assessor/{id_kejadian}', [KejadianController::class, 'viewAssessor']);
     Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'viewLapsit'])->name('kejadian.view-lapsit');
 
+
+
+// ROUTES UNTUK ASSESSMENT
+Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/form-assessment', [LaporanController::class, 'createA'])->name('laporan.createA');
+Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
+Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
+Route::get('/form-assessment', [LaporanController::class, 'createAssessment'])->name('laporan.createAssessment');
+// Route::get('/form-assessment', function () {
+//     return view('assessment.form-assessment');
+// });
+
+// ROUTES UNTUK LAPORAN SITUASI
+Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/kejadian/view-lapsit/{id_kejadian}', [LaporanController::class, 'index'])->name('kejadian.view-lapsit');
+Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
+Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
+Route::get('/laporan-situasi/view/{id_laporan}', [LaporanController::class, 'view'])->name('laporan.view');
+Route::delete('/laporan/{id_laporan}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
+
     // ROUTES UNTUK ASSESSMENT
     Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('/form-assessment', [LaporanController::class, 'createA'])->name('laporan.createA');
@@ -106,4 +126,14 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::get('/user-management/{id}/edit', [UserController::class, 'edit']);
     Route::put('/user-management/{id}', [UserController::class, 'update']);
 });
+
+// Route::get('/landingPage', function () {
+//     return view('landing-page');
+// });
+
+//ROUTES UNTUK LANDINGPAGE
+Route::get('/', function () {
+    return view('landing-page');
+});
+
 require __DIR__ . '/auth.php';
