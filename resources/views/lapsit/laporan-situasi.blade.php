@@ -61,7 +61,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('laporan.view', ['id_laporan' => $laporan['id_laporan']]) }}" style="color: blue;">Lihat Detail</a></br>
-                                <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">Flash Report</a><br>
+                                <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: orange;">Flash Report</a><br>
                                 <form action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
