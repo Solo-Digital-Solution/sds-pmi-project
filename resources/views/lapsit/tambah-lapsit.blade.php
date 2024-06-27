@@ -38,7 +38,7 @@
                         Lapsit ke- <span style="color: red;">*</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="">
+                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="" required>
                         <div id="error-message" style="color: red;"></div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         Tanggal Update Kejadian <span style="color: red;">*</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="datetime-local" class="form-control" id="update" name="update">
+                        <input type="datetime-local" class="form-control" id="update" name="update" required>
                     </div>
                 </div>
 
@@ -66,14 +66,14 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="jumlah_kk">Jumlah KK</label>
-                            <input class="form-control" id="jmlh_kk" name="jmlh_kk" type="number" placeholder="Masukkan jumlah">
+                            <label for="jumlah_kk">Jumlah KK <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jmlh_kk" name="jmlh_kk" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="jumlah_jiwa">Jumlah Jiwa</label>
-                            <input class="form-control" id="jmlh_jiwa" name="jmlh_jiwa" type="number" placeholder="Masukkan jumlah">
+                            <label for="jumlah_jiwa">Jumlah Jiwa <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jmlh_jiwa" name="jmlh_jiwa" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -87,32 +87,32 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="luka_berat">Luka Berat</label>
-                            <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" >
+                            <label for="luka_berat">Luka Berat <span style="color: red;">*</span></label>
+                            <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="luka_ringan">Luka Ringan</label>
-                            <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" >
+                            <label for="luka_ringan">Luka Ringan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="meninggal">Meninggal</label>
-                            <input class="form-control" id="md" name="md" type="number" placeholder="Masukkan jumlah">
+                            <label for="meninggal">Meninggal <span style="color: red;">*</span></label>
+                            <input class="form-control" id="md" name="md" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="hilang">Hilang</label>
-                            <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah">
+                            <label for="hilang">Hilang <span style="color: red;">*</span></label>
+                            <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="mengungsi">Mengungsi</label>
-                            <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah">
+                            <label for="mengungsi">Mengungsi <span style="color: red;">*</span></label>
+                            <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -126,20 +126,20 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Rusak Berat</label>
-                            <input class="form-control" id="rusak_berat" name="rusak_berat" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Rusak Berat <span style="color: red;">*</span></label>
+                            <input class="form-control" id="rusak_berat" name="rusak_berat" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Rusak Sedang</label>
-                            <input class="form-control" id="rusak_sedang" name="rusak_sedang" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Rusak Sedang <span style="color: red;">*</span></label>
+                            <input class="form-control" id="rusak_sedang" name="rusak_sedang" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Rusak Ringan</label>
-                            <input class="form-control" id="rusak_ringan" name="rusak_ringan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Rusak Ringan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="rusak_ringan" name="rusak_ringan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -153,38 +153,38 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Sekolah</label>
-                            <input class="form-control" id="sekolah" name="sekolah" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Sekolah <span style="color: red;">*</span></label>
+                            <input class="form-control" id="sekolah" name="sekolah" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Tempat Ibadah</label>
-                            <input class="form-control" id="tempat_ibadah" name="tempat_ibadah" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Tempat Ibadah <span style="color: red;">*</span></label>
+                            <input class="form-control" id="tempat_ibadah" name="tempat_ibadah" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Rumah Sakit</label>
-                            <input class="form-control" id="rumah_sakit" name="rumah_sakit" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Rumah Sakit <span style="color: red;">*</span></label>
+                            <input class="form-control" id="rumah_sakit" name="rumah_sakit" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Pasar</label>
-                            <input class="form-control" id="pasar" name="pasar" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Pasar <span style="color: red;">*</span></label>
+                            <input class="form-control" id="pasar" name="pasar" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Gedung Pemerintah</label>
-                            <input class="form-control" id="gedung_pemerintah" name="gedung_pemerintah" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Gedung Pemerintah <span style="color: red;">*</span></label>
+                            <input class="form-control" id="gedung_pemerintah" name="gedung_pemerintah" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Lain-lain</label>
-                            <input class="form-control" id="lain_lain" name="lain_lain" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Lain-lain <span style="color: red;">*</span></label>
+                            <input class="form-control" id="lain_lain" name="lain_lain" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -198,8 +198,8 @@
                 <div class="row gutters">
                     <div class="col-sm-12 col-12">
                         <div class="form-group">
-                            <label for="deskripsiKerusakan">Deskripsi Kerusakan</label>
-                            <textarea class="form-control" id="deskripsi_kerusakan" name="deskripsi_kerusakan" placeholder="Masukkan deskripsi kerusakan" rows="3"></textarea>
+                            <label for="deskripsiKerusakan">Deskripsi Kerusakan <span style="color: red;">*</span></label>
+                            <textarea class="form-control" id="deskripsi_kerusakan" name="deskripsi_kerusakan" placeholder="Masukkan deskripsi kerusakan" rows="3" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -213,56 +213,56 @@
                 <div class="row gutters">
                     <div class="col-sm-12 col-12">
                         <div class="form-group">
-                            <label for="deskripsiKerusakan">Lokasi Shelter</label>
-                            <textarea class="form-control" id="lokasi_shelter" name="inp[0][lokasi_shelter]" placeholder="Masukkan lokasi shelter" rows="3"></textarea>
+                            <label for="deskripsiKerusakan">Lokasi Shelter <span style="color: red;">*</span></label>
+                            <textarea class="form-control" id="lokasi_shelter" name="inp[0][lokasi_shelter]" placeholder="Masukkan lokasi shelter" rows="3" required></textarea>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Jumlah KK</label>
-                            <input class="form-control" id="jumlah_kk" name="inp[0][jumlah_kk]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Jumlah KK <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jumlah_kk" name="inp[0][jumlah_kk]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Jumlah Jiwa</label>
-                            <input class="form-control" id="jumlah_jiwa" name="inp[0][jumlah_jiwa]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Jumlah Jiwa <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jumlah_jiwa" name="inp[0][jumlah_jiwa]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Jumlah laki-laki</label>
-                            <input class="form-control" id="jumlah_laki" name="inp[0][jumlah_laki]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Jumlah laki-laki <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jumlah_laki" name="inp[0][jumlah_laki]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Jumlah perempuan</label>
-                            <input class="form-control" id="jumlah_perempuan" name="inp[0][jumlah_perempuan]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Jumlah perempuan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jumlah_perempuan" name="inp[0][jumlah_perempuan]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Balita</label>
-                            <input class="form-control" id="dibawah_lima" name="inp[0][dibawah_lima]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Balita <span style="color: red;">*</span></label>
+                            <input class="form-control" id="dibawah_lima" name="inp[0][dibawah_lima]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">5 tahun - 18 tahun</label>
-                            <input class="form-control" id="antara_lima_dan_delapanbelas" name="inp[0][antara_lima_dan_delapanbelas]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">5 tahun - 18 tahun <span style="color: red;">*</span></label>
+                            <input class="form-control" id="antara_lima_dan_delapanbelas" name="inp[0][antara_lima_dan_delapanbelas]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Lebih dari 18 tahun</label>
-                            <input class="form-control" id="lebih_delapanbelas" name="inp[0][lebih_delapanbelas]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Lebih dari 18 tahun <span style="color: red;">*</span></label>
+                            <input class="form-control" id="lebih_delapanbelas" name="inp[0][lebih_delapanbelas]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Jumlah</label>
-                            <input class="form-control" id="jumlah" name="inp[0][jumlah]" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Jumlah <span style="color: red;">*</span></label>
+                            <input class="form-control" id="jumlah" name="inp[0][jumlah]" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -285,26 +285,26 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Pengurus</label>
-                            <input class="form-control" id="pengurus" name="pengurus" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Pengurus <span style="color: red;">*</span></label>
+                            <input class="form-control" id="pengurus" name="pengurus" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Staff Markas</label>
-                            <input class="form-control" id="staf_markas" name="staf_markas" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Staff Markas <span style="color: red;">*</span></label>
+                            <input class="form-control" id="staf_markas" name="staf_markas" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Relawan PMI</label>
-                            <input class="form-control" id="relawan_pmi" name="relawan_pmi" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Relawan PMI <span style="color: red;">*</span></label>
+                            <input class="form-control" id="relawan_pmi" name="relawan_pmi" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Sukarelawan Spesialis</label>
-                            <input class="form-control" id="sukarelawan_spesialis" name="sukarelawan_spesialis" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Sukarelawan Spesialis <span style="color: red;">*</span></label>
+                            <input class="form-control" id="sukarelawan_spesialis" name="sukarelawan_spesialis" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -318,44 +318,44 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Medis</label>
-                            <input class="form-control" id="medis" name="medis" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Medis <span style="color: red;">*</span></label>
+                            <input class="form-control" id="medis" name="medis" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Paramedis</label>
-                            <input class="form-control" id="paramedis" name="paramedis" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Paramedis <span style="color: red;">*</span></label>
+                            <input class="form-control" id="paramedis" name="paramedis" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Relief</label>
-                            <input class="form-control" id="relief" name="relief" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Relief <span style="color: red;">*</span></label>
+                            <input class="form-control" id="relief" name="relief" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Logistik</label>
-                            <input class="form-control" id="logistics" name="logistics" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Logistik <span style="color: red;">*</span></label>
+                            <input class="form-control" id="logistics" name="logistics" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Watsan</label>
-                            <input class="form-control" id="watsan" name="watsan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Watsan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="watsan" name="watsan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">IT Telekom</label>
-                            <input class="form-control" id="it_telekom" name="it_telekom" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">IT Telekom <span style="color: red;">*</span></label>
+                            <input class="form-control" id="it_telekom" name="it_telekom" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Sheltering</label>
-                            <input class="form-control" id="sheltering" name="sheltering" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Sheltering <span style="color: red;">*</span></label>
+                            <input class="form-control" id="sheltering" name="sheltering" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -369,74 +369,74 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Kendaraan Operasional</label>
-                            <input class="form-control" id="kend_ops" name="kend_ops" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Kendaraan Operasional <span style="color: red;">*</span></label>
+                            <input class="form-control" id="kend_ops" name="kend_ops" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Truk angkutan</label>
-                            <input class="form-control" id="truk_angkutan" name="truk_angkutan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Truk angkutan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="truk_angkutan" name="truk_angkutan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Truk tangki</label>
-                            <input class="form-control" id="truk_tangki" name="truk_tangki" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Truk tangki <span style="color: red;">*</span></label>
+                            <input class="form-control" id="truk_tangki" name="truk_tangki" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Double Cabin</label>
-                            <input class="form-control" id="double_cabin" name="double_cabin" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Double Cabin <span style="color: red;">*</span></label>
+                            <input class="form-control" id="double_cabin" name="double_cabin" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Alat DU</label>
-                            <input class="form-control" id="alat_du" name="alat_du" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Alat DU <span style="color: red;">*</span></label>
+                            <input class="form-control" id="alat_du" name="alat_du" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Ambulans</label>
-                            <input class="form-control" id="ambulans" name="ambulans" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Ambulans <span style="color: red;">*</span></label>
+                            <input class="form-control" id="ambulans" name="ambulans" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Alat Watsan</label>
-                            <input class="form-control" id="alat_watsan" name="alat_watsan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Alat Watsan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="alat_watsan" name="alat_watsan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">RS Lapangan</label>
-                            <input class="form-control" id="rs_lapangan" name="rs_lapangan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">RS Lapangan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="rs_lapangan" name="rs_lapangan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Alat PKDD</label>
-                            <input class="form-control" id="alat_pkdd" name="alat_pkdd" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Alat PKDD <span style="color: red;">*</span></label>
+                            <input class="form-control" id="alat_pkdd" name="alat_pkdd" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Gudang lapangan</label>
-                            <input class="form-control" id="gudang_lapangan" name="gudang_lapangan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Gudang lapangan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="gudang_lapangan" name="gudang_lapangan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Posko Aju</label>
-                            <input class="form-control" id="posko_aju" name="posko_aju" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Posko Aju <span style="color: red;">*</span></label>
+                            <input class="form-control" id="posko_aju" name="posko_aju" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="inputNumber">Alat IT/Tel Lapangan</label>
-                            <input class="form-control" id="alat_it_lapangan" name="alat_it_lapangan" type="number" placeholder="Masukkan jumlah">
+                            <label for="inputNumber">Alat IT/Tel Lapangan <span style="color: red;">*</span></label>
+                            <input class="form-control" id="alat_it_lapangan" name="alat_it_lapangan" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -454,14 +454,14 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="luka_ringan_berat">Luka Ringan Berat</label>
-                            <input class="form-control" id="luka_ringan_berat" name="luka_ringan_berat" type="number" placeholder="Masukkan jumlah">
+                            <label for="luka_ringan_berat">Luka Ringan Berat <span style="color: red;">*</span></label>
+                            <input class="form-control" id="luka_ringan_berat" name="luka_ringan_berat" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="meninggal">Meninggal</label>
-                            <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah">
+                            <label for="meninggal">Meninggal <span style="color: red;">*</span></label>
+                            <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah" required>
                         </div>
                     </div>
                 </div>
@@ -475,9 +475,9 @@
                 <div class="row gutters">
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Jenis Distribusi Layanan</label>
-                            <select class="form-control" name="inpu[0][jenis_distribusi_layanan]" id="jenis_distribusi_layanan">
-                                <option selected>-- Pilih Jenis Distribusi Layanan --</option>
+                            <label for="exampleFormControlTextarea1">Jenis Distribusi Layanan <span style="color: red;">*</span></label>
+                            <select class="form-control" name="inpu[0][jenis_distribusi_layanan]" id="jenis_distribusi_layanan" required>
+                                <option value="" selected>-- Pilih Jenis Distribusi Layanan --</option>
                                 <option value="Food Item">Food Item</option>
                                 <option value="Non-Food Item">Non-Food Item</option>
                                 <option value="Layanan Kesehatan">Layanan Kesehatan</option>
@@ -487,15 +487,15 @@
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="lokasi">Lokasi</label>
-                            <input class="form-control" name="inpu[0][lokasi]" type="text" placeholder="Masukkan lokasi">
+                            <label for="lokasi">Lokasi <span style="color: red;">*</span></label>
+                            <input class="form-control" name="inpu[0][lokasi]" type="text" placeholder="Masukkan lokasi" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Unit</label>
-                            <select class="form-control" name="inpu[0][unit]" id="unit">
-                                <option selected>-- Pilih Unit --</option>
+                            <label for="exampleFormControlTextarea1">Unit <span style="color: red;">*</span></label>
+                            <select class="form-control" name="inpu[0][unit]" id="unit" required>
+                                <option value="" selected>-- Pilih Unit --</option>
                                 <option value="KK">KK</option>
                                 <option value="orang">Orang</option>
                                 <option value="orang">Liter</option>
@@ -504,8 +504,8 @@
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="jumlah">Jumlah</label>
-                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[0][jumlah]">
+                            <label for="jumlah">Jumlah <span style="color: red;">*</span></label>
+                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[0][jumlah]" required>
                         </div>
                     </div>
                 </div>
@@ -519,25 +519,25 @@
     </div>
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header" style="font-weight: bold;">Giat Pemerintah</div>
+            <div class="card-header" style="font-weight: bold;">Giat Pemerintah <span style="color: red;">*</span></div>
             <div class="card-body">
-                <textarea class="form-control" id="giatPemerintah" placeholder="Masukkan giat pemerintah" name="giat_pemerintah" rows="3"></textarea>
+                <textarea class="form-control" id="giatPemerintah" placeholder="Masukkan giat pemerintah" name="giat_pemerintah" rows="3" required></textarea>
             </div>
         </div>
     </div>
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header" style="font-weight: bold;">Kebutuhan</div>
+            <div class="card-header" style="font-weight: bold;">Kebutuhan <span style="color: red;">*</span></div>
             <div class="card-body">
-                <textarea class="form-control" id="kebutuhan" placeholder="Masukkan kebutuhan" name="kebutuhan" rows="3"></textarea>
+                <textarea class="form-control" id="kebutuhan" placeholder="Masukkan kebutuhan" name="kebutuhan" rows="3" required></textarea>
             </div>
         </div>
     </div>
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header" style="font-weight: bold;">Hambatan</div>
+            <div class="card-header" style="font-weight: bold;">Hambatan <span style="color: red;">*</span></div>
             <div class="card-body">
-                <textarea class="form-control" id="hambatan" placeholder="Masukkan hambatan" name="hambatan" rows="3"></textarea>
+                <textarea class="form-control" id="hambatan" placeholder="Masukkan hambatan" name="hambatan" rows="3" required></textarea>
             </div>
         </div>
     </div>
@@ -549,22 +549,22 @@
                     <!-- Inputan Nama Lengkap -->
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="namaLengkap">Nama Lengkap</label>
-                            <input class="form-control" id="nama_lengkap" name="inputs[0][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap">
+                            <label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>
+                            <input class="form-control" id="nama_lengkap" name="inputs[0][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap" required>
                         </div>
                     </div>
                     <!-- Inputan Posisi -->
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="posisi">Posisi</label>
-                            <input class="form-control" id="posisi" name="inputs[0][posisi]" type="text" placeholder="Masukkan posisi">
+                            <label for="posisi">Posisi <span style="color: red;">*</span></label>
+                            <input class="form-control" id="posisi" name="inputs[0][posisi]" type="text" placeholder="Masukkan posisi" required>
                         </div>
                     </div>
                     <!-- Inputan Kontak -->
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="kontak">Kontak</label>
-                            <input class="form-control" id="kontak" name="inputs[0][kontak]" type="text" placeholder="Masukkan kontak">
+                            <label for="kontak">Kontak <span style="color: red;">*</span></label>
+                            <input class="form-control" id="kontak" name="inputs[0][kontak]" type="text" placeholder="Masukkan kontak" required>
                         </div>
                     </div>
                 </div>
@@ -584,15 +584,15 @@
                     <!-- Inputan Nama Lengkap -->
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="namaLengkap">Nama Lengkap</label>
-                            <input class="form-control" id="namaLengkap" name="input[0][nm]" type="text" placeholder="Masukkan nama lengkap">
+                            <label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>
+                            <input class="form-control" id="namaLengkap" name="input[0][nm]" type="text" placeholder="Masukkan nama lengkap" required>
                         </div>
                     </div>
                     <!-- Inputan Kontak -->
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="kontak">Kontak</label>
-                            <input class="form-control" id="kontak" name="input[0][ktk]" type="text" placeholder="Masukkan kontak">
+                            <label for="kontak">Kontak <span style="color: red;">*</span></label>
+                            <input class="form-control" id="kontak" name="input[0][ktk]" type="text" placeholder="Masukkan kontak" required>
                         </div>
                     </div>
                 </div>
@@ -612,8 +612,8 @@
                 <div class="row gutters">
                     <div class="col-sm-12 col-12">
                         <div class="form-group">
-                            <label for="dokumentasi">Unggah Dokumentasi</label>
-                            <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>
+                            <label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>
+                            <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple required>
                             <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                         </div>
                     </div>
@@ -654,20 +654,20 @@
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="namaLengkap">Nama Lengkap</label>' +
-                            '<input class="form-control" name="inputs[' + i + '][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap">' +
+                            '<label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" name="inputs[' + i + '][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap" required>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="posisi">Posisi</label>' +
-                            '<input class="form-control" name="inputs[' + i + '][posisi]" type="text" placeholder="Masukkan posisi">' +
+                            '<label for="posisi">Posisi <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" name="inputs[' + i + '][posisi]" type="text" placeholder="Masukkan posisi" required>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="kontak">Kontak</label>' +
-                            '<input class="form-control" name="inputs[' + i + '][kontak]" type="text" placeholder="Masukkan kontak">' +
+                            '<label for="kontak">Kontak <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" name="inputs[' + i + '][kontak]" type="text" placeholder="Masukkan kontak" required>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -693,14 +693,14 @@
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="namaLengkap">Nama Lengkap</label>' +
-                            '<input class="form-control" name="input[' + i + '][nm]" type="text" placeholder="Masukkan nama lengkap">' +
+                            '<label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" name="input[' + i + '][nm]" type="text" placeholder="Masukkan nama lengkap" required>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="kontak">Kontak</label>' +
-                            '<input class="form-control" name="input[' + i + '][ktk]" type="text" placeholder="Masukkan kontak">' +
+                            '<label for="kontak">Kontak <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" name="input[' + i + '][ktk]" type="text" placeholder="Masukkan kontak" required>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -726,9 +726,9 @@
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="jenis_distribusi_layanan">Jenis Distribusi Layanan</label>' +
-                            '<select class="form-control" name="inpu[' + i + '][jenis_distribusi_layanan]">' +
-                                '<option selected>-- Pilih Jenis Distribusi Layanan --</option>' +
+                            '<label for="jenis_distribusi_layanan">Jenis Distribusi Layanan <span style="color: red;">*</span></label>' +
+                            '<select class="form-control" name="inpu[' + i + '][jenis_distribusi_layanan]" required>' +
+                                '<option value="" selected>-- Pilih Jenis Distribusi Layanan --</option>' +
                                 '<option value="Food Item">Food Item</option>' +
                                 '<option value="Non-Food Item">Non-Food Item</option>' +
                                 '<option value="Layanan Kesehatan">Layanan Kesehatan</option>' +
@@ -738,15 +738,15 @@
                     '</div>' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="lokasi">Lokasi</label>' +
-                            '<input class="form-control" type="text" placeholder="Masukkan lokasi" name="inpu[' + i + '][lokasi]">' +
+                            '<label for="lokasi">Lokasi <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" type="text" placeholder="Masukkan lokasi" name="inpu[' + i + '][lokasi]" required>' +
                         '</div>' +
                     '</div>' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="unit">Unit</label>' +
-                            '<select class="form-control" name="inpu[' + i + '][unit]">' +
-                                '<option selected>-- Pilih Unit --</option>' +
+                            '<label for="unit">Unit <span style="color: red;">*</span></label>' +
+                            '<select class="form-control" name="inpu[' + i + '][unit]" required>' +
+                                '<option value="" selected>-- Pilih Unit --</option>' +
                                 '<option value="KK">KK</option>' +
                                 '<option value="orang">Orang</option>' +
                                 '<option value="liter">Liter</option>' +
@@ -755,8 +755,8 @@
                     '</div>' +
                     '<div class="col-sm-6 col-12">' +
                         '<div class="form-group">' +
-                            '<label for="jumlah">Jumlah</label>' +
-                            '<input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[' + i + '][jumlah]">' +
+                            '<label for="jumlah">Jumlah <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[' + i + '][jumlah]" required>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -781,56 +781,56 @@
             '<div class="row gutters">' +
                 '<div class="col-sm-12 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="lokasi_shelter">Lokasi Shelter</label>' +
-                        '<textarea class="form-control" id="lokasi_shelter" name="inp[' + i + '][lokasi_shelter]" placeholder="Masukkan lokasi shelter" rows="3"></textarea>' +
+                        '<label for="lokasi_shelter">Lokasi Shelter <span style="color: red;">*</span></label>' +
+                        '<textarea class="form-control" id="lokasi_shelter" name="inp[' + i + '][lokasi_shelter]" placeholder="Masukkan lokasi shelter" rows="3" required></textarea>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="jumlah_kk">Jumlah KK</label>' +
-                        '<input class="form-control" id="jumlah_kk" name="inp[' + i + '][jumlah_kk]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="jumlah_kk">Jumlah KK <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="jumlah_kk" name="inp[' + i + '][jumlah_kk]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="jumlah_jiwa">Jumlah Jiwa</label>' +
-                        '<input class="form-control" id="jumlah_jiwa" name="inp[' + i + '][jumlah_jiwa]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="jumlah_jiwa">Jumlah Jiwa <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="jumlah_jiwa" name="inp[' + i + '][jumlah_jiwa]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="jumlah_laki">Jumlah laki-laki</label>' +
-                        '<input class="form-control" id="jumlah_laki" name="inp[' + i + '][jumlah_laki]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="jumlah_laki">Jumlah laki-laki <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="jumlah_laki" name="inp[' + i + '][jumlah_laki]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="jumlah_perempuan">Jumlah perempuan</label>' +
-                        '<input class="form-control" id="jumlah_perempuan" name="inp[' + i + '][jumlah_perempuan]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="jumlah_perempuan">Jumlah perempuan <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="jumlah_perempuan" name="inp[' + i + '][jumlah_perempuan]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="dibawah_lima">Balita</label>' +
-                        '<input class="form-control" id="dibawah_lima" name="inp[' + i + '][dibawah_lima]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="dibawah_lima">Balita <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="dibawah_lima" name="inp[' + i + '][dibawah_lima]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="antara_lima_dan_delapanbelas">5 tahun - 18 tahun</label>' +
-                        '<input class="form-control" id="antara_lima_dan_delapanbelas" name="inp[' + i + '][antara_lima_dan_delapanbelas]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="antara_lima_dan_delapanbelas">5 tahun - 18 tahun <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="antara_lima_dan_delapanbelas" name="inp[' + i + '][antara_lima_dan_delapanbelas]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="lebih_delapanbelas">Lebih dari 18 tahun</label>' +
-                        '<input class="form-control" id="lebih_delapanbelas" name="inp[' + i + '][lebih_delapanbelas]" type="number" placeholder="Masukkan jumlah">' +
+                        '<label for="lebih_delapanbelas">Lebih dari 18 tahun <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="lebih_delapanbelas" name="inp[' + i + '][lebih_delapanbelas]" type="number" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
                 '<div class="col-sm-6 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="jumlah">Jumlah</label>' +
-                        '<input class="form-control" id="jumlah" name="inp[' + i + '][jumlah]" placeholder="Masukkan jumlah">' +
+                        '<label for="jumlah">Jumlah <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="jumlah" name="inp[' + i + '][jumlah]" placeholder="Masukkan jumlah" required>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -855,8 +855,8 @@
             '<div class="row gutters">' +
                 '<div class="col-sm-12 col-12">' +
                     '<div class="form-group">' +
-                        '<label for="dokumentasi">Unggah Dokumentasi</label>' +
-                        '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>' +
+                        '<label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>' +
+                        '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple required>' +
                         '<small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>' +
                     '</div>' +
                 '</div>' +
@@ -872,4 +872,5 @@
     });
 </script>
  <!-- start modal dokumentasi -->
+
 @endsection

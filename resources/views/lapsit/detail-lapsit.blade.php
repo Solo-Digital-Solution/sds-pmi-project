@@ -634,7 +634,7 @@
         </div>
     </div>
     <!-- <button type="submit" class="btn btn-primary mt-3 w-100">Kirim</button> -->
-    <div class="col-sm-12">
+    <!-- <div class="col-sm-12">
         <div class="">
             <div class="">
                 <div class="d-flex justify-content-center w-100 py-3">
@@ -642,7 +642,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </form>    
 </div>
 

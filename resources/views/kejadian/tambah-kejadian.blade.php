@@ -37,7 +37,7 @@
                     <div class="form-group row">
                         <label for="nama_kejadian" class="col-sm-3 col-form-label">Nama Kejadian <span style="color: red;">*</span> </label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="nama_kejadian" name="nama_kejadian" placeholder="">
+                            <input type="text" class="form-control" id="nama_kejadian" name="nama_kejadian" placeholder="" required>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="kecamatan-dd">Options</label>
                             </div>
-                            <select class="form-control" id="kecamatan-dd" name="kecamatan">
+                            <select class="form-control" id="kecamatan-dd" name="kecamatan" required>
                                 <option selected>Choose...</option>
                                 @foreach ($kecamatans as $data)
                                 <option value="{{ $data->id_kecamatan }}">{{ $data->nama_kecamatan }}</option>
@@ -71,7 +71,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="kelurahan-dd">Options</label>
                             </div>
-                            <select class="form-control" id="kelurahan-dd" name="kelurahan"></select>
+                            <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>
                         </div>
                     </div>
 
@@ -79,20 +79,20 @@
                         <label for="lokasi">
                             Lokasi Kejadian <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3"></textarea>
+                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group row">
                         <label for="latitude" class="col-sm-3 col-form-label">Latitude <span style="color: red;">*</span></label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"  id="latitude" name="latitude" placeholder="">
+                            <input type="text" class="form-control"  id="latitude" name="latitude" placeholder="" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="longitude" class="col-sm-3 col-form-label">Longitude <span style="color: red;">*</span></label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"  id="longitude" name="longitude" placeholder="">
+                            <input type="text" class="form-control"  id="longitude" name="longitude" placeholder="" required>
                         </div>
                     </div>
 
@@ -102,7 +102,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="dukungan_inter">Options</label>
                             </div>
-                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter">
+                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter" required>
                                 <option value="">Choose...</option>
                                 <option value="1">Ya</option>
                                 <option value="0">Tidak</option>
@@ -114,14 +114,14 @@
                         <label for="gambaran_situasi">
                             Gambaran Umum Situasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3"></textarea>
+                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="akses_lokasi">
                             Gambaran Umum Akses Lokasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3"></textarea>
+                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -130,7 +130,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="status">Options</label>
                             </div>
-                            <select class="custom-select" id="status" name="status">
+                            <select class="custom-select" id="status" name="status" required>
                                 <option value="Menunggu Validasi">Menunggu Validasi</option>
                                 <option value="Invalid">Invalid</option>
                                 <option value="Aktif">Aktif</option>
