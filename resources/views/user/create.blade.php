@@ -36,6 +36,12 @@
                         <input type="text" name="name" class="form-control" id="name" required>
                     </div>
                     <div class="form-group">
+                        <label for="nik">
+                            NIK <span style="color: red;">*</span>
+                        </label>
+                        <input type="text" name="nik" class="form-control" id="nik" required>
+                    </div>
+                    <div class="form-group">
                         <label for="email">
                             Email <span style="color: red;">*</span>
                         </label>
@@ -161,8 +167,17 @@
                     <div class="row gutters">
                         <div class="col-md-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <label for="dokumentasi">Foto Profil</label>
-                                <input type="file" class="form-control-file" id="dokumentasi" name="profilePhoto" accept=".jpg,.jpeg,.png" multiple>
+                                <label for="profilePhoto">Foto Profil</label>
+                                <input type="file" class="form-control-file" id="profilePhoto" name="profilePhoto" accept=".jpg,.jpeg,.png" multiple>
+                                <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="ktp">Foto KTP</label>
+                                <input type="file" class="form-control-file" id="ktp" name="ktp" accept=".jpg,.jpeg,.png" multiple>
                                 <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                             </div>
                         </div>
