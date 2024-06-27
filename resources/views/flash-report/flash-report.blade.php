@@ -202,7 +202,7 @@
 				<td rowspan="2"><i class="fa-solid fa-user-injured icon" style="color: #bc202d;"></i></td>
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
 				<td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;"">RUMAH RUSAK</td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RUMAH RUSAK</td>
                 <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="width: 100%"></td>
 			</tr>
 
@@ -225,13 +225,14 @@
 			</tr>
 
             <tr>
-				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
-				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->total ?? 0 }} {{ $jumlahLayananAirBersih->satuan ?? '' }}</span></td>
+                <td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
+                <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $totalLayananAirBersih }} unit</span></td>
                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah ?? 0 }} {{ $jumlahFoodItem->unit ?? '' }}</span></td>
-				<td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
-			</tr>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $totalFoodItem }} unit</span></td>
+                <td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
+            </tr>
+
 
             <tr>
 				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
