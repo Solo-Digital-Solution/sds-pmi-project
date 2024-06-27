@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('shelter', function (Blueprint $table) {
             $table->id('id_lokasi_shelter');
-            $table->text('lokasi_shelter')->default('-');
-            $table->integer('jumlah_kk')->default('0');
-            $table->integer('jumlah_jiwa')->default('0');
-            $table->integer('jumlah_laki')->default('0');
-            $table->integer('jumlah_perempuan')->default('0');
-            $table->integer('dibawah_lima')->default('0');
-            $table->integer('antara_lima_dan_delapanbelas')->default('0');
-            $table->integer('lebih_delapanbelas')->default('0');
-            $table->integer('jumlah')->default('0');
+            $table->text('lokasi_shelter');
+            $table->integer('jumlah_kk');
+            $table->integer('jumlah_jiwa');
+            $table->integer('jumlah_laki');
+            $table->integer('jumlah_perempuan');
+            $table->integer('dibawah_lima');
+            $table->integer('antara_lima_dan_delapanbelas');
+            $table->integer('lebih_delapanbelas');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

@@ -105,16 +105,27 @@ class UserController extends Controller
 
         // Simpan data pengguna ke tabel users
         $user_id = $request->user_id;
-        $nama_dokumen = '';
+        $nama_dokumen1 = '';
+        $nama_dokumen2 = '';
 
         if ($request->hasFile('profilePhoto')) {
             $file = $request->file('profilePhoto');
-            $nama_dokumen = $user_id . '.' . $file->getClientOriginalExtension();
-            $file->move('profilePhoto/', $nama_dokumen);
+            // dd($file);
+            $nama_dokumen1 = $user_id . '.' . $file->getClientOriginalExtension();
+            $file->move('profilePhoto/', $nama_dokumen1);
         }
+
+        if ($request->hasFile('ktp')) {
+            $file = $request->file('ktp');
+            $nama_dokumen2 = $user_id . '.' . $file->getClientOriginalExtension();
+            $file->move('ktp/', $nama_dokumen2);
+        }
+
+        
 
         $users = DB::table('users')->insertGetId([
             'user_id' => $user_id,
+            'nik' => $request->nik,
             'name' => $request->name,
             'email' => $request->email,
             'tempat_lahir' => $request->tempat_lahir,
@@ -127,7 +138,8 @@ class UserController extends Controller
             'password' => $request->password,
             'gender' => $request->gender,
             'no_telp' => $request->no_telp,
-            'profilePhoto' => $nama_dokumen
+            'profilePhoto' => $nama_dokumen1,
+            'ktp' => $nama_dokumen2
         ]);
 
         // Simpan role pengguna ke tabel users_has_role

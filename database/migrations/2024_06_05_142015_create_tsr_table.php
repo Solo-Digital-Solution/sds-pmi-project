@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('tsr', function (Blueprint $table) {
             $table->id('id_tsr');
-            $table->integer('medis')->default('0');
-            $table->integer('paramedis')->default('0');
-            $table->integer('relief')->default('0');
-            $table->integer('logistics')->default('0');
-            $table->integer('watsan')->default('0');
-            $table->integer('it_telekom')->default('0');
-            $table->integer('sheltering')->default('0');
+            $table->integer('medis');
+            $table->integer('paramedis');
+            $table->integer('relief');
+            $table->integer('logistics');
+            $table->integer('watsan');
+            $table->integer('it_telekom');
+            $table->integer('sheltering');
             $table->timestamps();
         });
     }

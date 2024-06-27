@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dokumentasi', function (Blueprint $table) {
             $table->id('id_dokumentasi');
-            $table->text('file_path')->default('null');
+            $table->text('file_path');
             $table->timestamps();
         });
     }

@@ -23,7 +23,8 @@ Route::get('/register', function () {
 // Route::get('/', function () {
 //     return view('dashboard.dashboard');
 // });
-Route::get('/dashboard', [KejadianController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/', [KejadianController::class, 'dashboard'])->name('dashboard');
 Route::get('/kejadian', [KejadianController::class, 'kejadian'])->name('kejadian');
 
 
@@ -82,7 +83,6 @@ Route::get('/kejadian/view-lapsit/{id_kejadian}', [LaporanController::class, 'in
 Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
 Route::get('/laporan-situasi/view/{id_laporan}', [LaporanController::class, 'view'])->name('laporan.view');
-
 Route::delete('/laporan/{id_laporan}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
 
 
@@ -115,4 +115,13 @@ Route::get('/form', function () {
 
 Route::get('/coba', function () {
     return view('lapsit.lapsit-pdf-3');
+});
+
+// Route::get('/landingPage', function () {
+//     return view('landing-page');
+// });
+
+//ROUTES UNTUK LANDINGPAGE
+Route::get('/', function () {
+    return view('landing-page');
 });
