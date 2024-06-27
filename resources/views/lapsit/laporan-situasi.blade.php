@@ -25,6 +25,12 @@
 <!-- Row start -->
 <div class="row gutters">
     <div class="col-sm-12">
+        <!-- Tombol Kembali ke Daftar Kejadian -->
+        <div class="d-flex justify-content-start mb-3">
+            <a href="{{ route('kejadian.index') }}" class="btn btn-primary">
+                <i class="icon-arrow-left-thick"></i> Kembali
+            </a>
+        </div>
         <div class="card">
             <div class="card-header">Laporan Situasi</div>
             <div class="card-body">

@@ -51,7 +51,7 @@ Route::put('/user-management/{id}', [UserController::class, 'update']);
 // ROUTES UNTUK KEJADIAN
 Route::post('tambah-kejadian', [KejadianController::class,'add'])->name('addKejadian');
 //Route::post('/tambah-kejadian/addKejadian', [KejadianController::class,'add']);
-Route::get('/kejadian', [KejadianController::class, 'index']);
+Route::get('/kejadian', [KejadianController::class, 'index'])->name('kejadian.index');
 Route::get('tambah-kejadian', [DropdownController::class, 'indexKecamatan']);
 //Route::get('{kejadian}/edit', [DropdownController::class, 'indexKecamatanEdit']);
 Route::get('/kejadian/edit/{id}',[KejadianController::class,'edit']);
