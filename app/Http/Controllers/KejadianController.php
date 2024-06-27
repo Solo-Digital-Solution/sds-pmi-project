@@ -139,8 +139,10 @@ class KejadianController extends Controller
     public function viewAssessor($id_kejadian)
     {
         $kejadian = DB::table('kejadian')->where('id_kejadian', $id_kejadian)->first();
+        // dd($kejadian);
         $kecamatan = DB::table('kecamatan')->where('id_kecamatan', $kejadian->kecamatan)->first();
-        $assessor = DB::table('users')->where('kecamatan', $kecamatan->nama_kecamatan)->get();
+        $assessor = DB::table('users')->where('kecamatan', $kecamatan->id_kecamatan)->get();
+        // dd($assessor);
 
         return view('kejadian.view-assessor', compact('assessor'));
     }

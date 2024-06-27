@@ -34,7 +34,13 @@ class LaporanController extends Controller
         // Menampilkan laporan situasi berdasarkan id_kejadian
         $laporans = Laporan::where('id_kejadian', $id_kejadian)->latest()->paginate(10);
 
-        return view('lapsit.laporan-situasi', ['laporans' => $laporans, 'id_kejadian' => $id_kejadian]);
+        // Ambil status validasi dari kejadian
+        $laporanExist = Laporan::where('id_kejadian', $id_kejadian)->exists();
+        $kejadian = Kejadian::find($id_kejadian);
+        $isValidated = $kejadian ? $kejadian->status == 'Aktif' : true;
+        // dd($isValidated);
+
+        return view('lapsit.laporan-situasi', ['laporans' => $laporans, 'id_kejadian' => $id_kejadian, 'isValidated' => $isValidated, 'laporanExist' => $laporanExist]);
     }
 
     public function checkReportNumber(Request $request)

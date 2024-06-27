@@ -161,15 +161,9 @@
                     <div class="row gutters">
                         <div class="col-md-6 col-sm-12 col-12">
                             <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Foto Profil</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="profilePhoto" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                </div>
+                                <label for="dokumentasi">Foto Profil</label>
+                                <input type="file" class="form-control-file" id="dokumentasi" name="profilePhoto" accept=".jpg,.jpeg,.png" multiple>
+                                <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                             </div>
                         </div>
                     </div>
