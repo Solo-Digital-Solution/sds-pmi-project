@@ -272,12 +272,10 @@
                     <th>Lapsit-7</th>
                 </tr>
                 @foreach ($korban_terdampak as $kt)
-
-
                 <tr>
                     <td colspan="2">KK</td>
                     <td>{{ $kt->jmlh_kk ?? 0 }}</td>
-                    <td>{{ $kt->jmlh_kk ?? 0 }}</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -288,7 +286,7 @@
                 <tr>
                     <td colspan="2">Jiwa</td>
                     <td>{{ $kt->jmlh_jiwa ?? 0 }}</td>
-                    <td>{{ $kt->jmlh_jiwa ?? 0 }}</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -300,9 +298,10 @@
                 <tr>
                     <th colspan="10">Korban Jiwa/Luka/Mengungsi</th>
                 </tr>
+                @foreach ($korban_jiwa as $kj)
                 <tr>
                     <td colspan="2">Luka berat</td>
-                    <td>{{ $laporan->dampak->korban_jiwa->luka_berat ?? 0 }}</td>
+                    <td>{{ $kj->luka_berat }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -312,8 +311,8 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Luka ringan</td>
-                    <td>{{ $laporan->dampak->korban_jiwa->luka_ringan ?? 0 }}</td>
+                    <td colspan="2">Luka Ringan</td>
+                    <td>{{ $kj->luka_ringan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -324,7 +323,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Meninggal</td>
-                    <td>{{ $laporan->dampak->korban_jiwa->md ?? 0 }}</td>
+                    <td>{{ $kj->meninggal }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -335,7 +334,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Hilang</td>
-                    <td>{{ $laporan->dampak->korban_jiwa->hilang ?? 0 }}</td>
+                    <td>{{ $kj->hilang }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -346,7 +345,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Mengungsi</td>
-                    <td>{{ $laporan->dampak->korban_jiwa->mengungsi ?? 0 }}</td>
+                    <td>{{ $kj->mengungsi }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -355,14 +354,16 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Kerusakan Rumah</th>
                 </tr>
+                @foreach ($kerusakan_rumah as $kr)
                 <tr>
                     <td colspan="2">Rusak Berat</td>
-                    <td>{{ $laporan->dampak->kerusakan_rumah->rusak_berat ?? 0 }}</td>
+                    <td>{{ $kr->rusak_berat }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -373,7 +374,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Sedang</td>
-                    <td>{{ $laporan->dampak->kerusakan_rumah->rusak_sedang ?? 0 }}</td>
+                    <td>{{ $kr->rusak_sedang }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -384,7 +385,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Ringan</td>
-                    <td>{{ $laporan->dampak->kerusakan_rumah->rusak_ringan ?? 0 }}</td>
+                    <td>{{ $kr->rusak_ringan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -393,14 +394,16 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Kerusakan Fasilitas Sosial/Umum</th>
                 </tr>
+                @foreach ($kerusakan_fasilitas as $kf)
                 <tr>
                     <td colspan="2">Sekolah</td>
-                    <td>{{ $laporan->dampak->kerusakan_fasilitas->sekolah ?? 0 }}</td>
+                    <td>{{ $kf->sekolah }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -411,7 +414,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Tempat Ibadah</td>
-                    <td>{{ $laporan->dampak->kerusakan_fasilitas->tempat_ibadah ?? 0 }}</td>
+                    <td>{{ $kf->tempat_ibadah }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -422,7 +425,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Rumah Sakit</td>
-                    <td>{{ $laporan->dampak->kerusakan_fasilitas->rumah_sakit ?? 0 }}</td>
+                    <td>{{ $kf->rumah_sakit }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -433,7 +436,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Pasar</td>
-                    <td>{{ $laporan->dampak->kerusakan_fasilitas->pasar ?? 0 }}</td>
+                    <td>{{ $kf->pasar }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -444,7 +447,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Gedung Pemerintah</td>
-                    <td>{{ $laporan->dampak->kerusakan_fasilitas->gedung_pemerintah ?? 0 }}</td>
+                    <td>{{ $kf->gedung_pemerintah }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -455,7 +458,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Lain-lain</td>
-                    <td>{{ $laporan->dampak->kerusakan_fasilitas->lain_lain ?? 0 }}</td>
+                    <td>{{ $kf->{'lain-lain'} }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -464,14 +467,17 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Kerusakan Infrastruktur</th>
                 </tr>
+                @foreach ($kerusakan_infrastruktur as $ki)
                 <tr>
-                    <td style="text-align: justify;" colspan="10">{{ $laporan->dampak->kerusakan_infrastruktur->deskripsi_kerusakan ?? 'Tidak ada deskripsi' }}</td>
+                    <td style="text-align: justify;" colspan="10">{{ $ki->deskripsi_kerusakan }}</td>
                 </tr>
+                @endforeach
             </table>
 
             <table class="table dampak-table">
@@ -495,39 +501,19 @@
                         </t>
                     <th>Jumlah</th>
                 </tr>
+                @foreach ($shelters as $sh)
                 <tr>
-                    <td colspan="2">{{ $laporan->dampak->shelter->lokasi_shelter ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->jumlah_kk ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->jumlah_jiwa ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->jumlah_laki ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->jumlah_perempuan ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->dibawah_lima ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->antara_lima_dan_delapanbelas ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->lebih_delapanbelas ?? 0 }}</td>
-                    <td>{{ $laporan->dampak->shelter->jumlah ?? 0 }}</td>
+                    <td colspan="2">{{ $sh->lokasi_shelter }}</td>
+                    <td>{{ $sh->jumlah_kk }}</td>
+                    <td>{{ $sh->jumlah_jiwa }}</td>
+                    <td>{{ $sh->jumlah_laki }}</td>
+                    <td>{{ $sh->jumlah_perempuan }}</td>
+                    <td>{{ $sh->dibawah_lima }}</td>
+                    <td>{{ $sh->antara_lima_dan_delapanbelas }}</td>
+                    <td>{{ $sh->lebih_delapanbelas }}</td>
+                    <td>{{ $sh->jumlah }}</td>
                 </tr>
-                <tr>
-                    <td colspan="2">Masjid Al-Anshor, Jagalan, RW 14</td>
-                    <td>190</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">Kelurahan Kedung Lumbu</td>
-                    <td>200</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                @endforeach
             </table>
 
         </div>
@@ -552,32 +538,10 @@
                     <th>Lapsit-6</th>
                     <th>Lapsit-7</th>
                 </tr>
+                @foreach($personil as $pr)
                 <tr>
                     <td colspan="2">Pengurus</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">Staf Markas Kab/Kota</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tr>
-                <tr>
-                    <td colspan="2">Staf Markas Provinsi</td>
-                    <td></td>
+                    <td>{{ $pr->pengurus }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -587,19 +551,8 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Staf Markas Pusat</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">Relawan PMI Kab/Kota</td>
-                    <td></td>
+                    <td colspan="2">Staf Markas</td>
+                    <td>{{ $pr->staf_markas }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -609,19 +562,8 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Relawan PMI Provinsi</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">Relawan Lintas Provinsi</td>
-                    <td></td>
+                    <td colspan="2">Relawan PMI</td>
+                    <td>{{ $pr->relawan_pmi }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -632,7 +574,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Sukarelawan Spesialis</td>
-                    <td></td>
+                    <td>{{ $pr->sukarelawan_spesialis }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -641,14 +583,16 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
             <table class="dampak-table">
                 <tr>
                     <th colspan="10">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</th>
                 </tr>
+                @foreach($tsr as $tsr)
                 <tr>
                     <td colspan="2">Medis</td>
-                    <td></td>
+                    <td>{{ $tsr->medis }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -659,7 +603,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Paramedis</td>
-                    <td></td>
+                    <td>{{ $tsr->paramedis }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -670,7 +614,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Relief</td>
-                    <td></td>
+                    <td>{{ $tsr->relief }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -681,7 +625,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Logistics</td>
-                    <td></td>
+                    <td>{{ $tsr->logistics }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -692,7 +636,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Watsan</td>
-                    <td></td>
+                    <td>{{ $tsr->watsan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -703,7 +647,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">IT-Telekom</td>
-                    <td></td>
+                    <td>{{ $tsr->it_telekom }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -714,7 +658,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Sheltering</td>
-                    <td></td>
+                    <td>{{ $tsr->sheltering }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -723,14 +667,16 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
             <table class="dampak-table">
                 <tr>
                     <th colspan="10">Alat Utama Sistem TDB</th>
                 </tr>
+                @foreach ($tdb as $tdb)
                 <tr>
                     <td colspan="2">Kend. Ops</td>
-                    <td>0</td>
+                    <td>{{ $tdb->kend_ops }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -741,7 +687,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Truk Angkutan</td>
-                    <td>0</td>
+                    <td>{{ $tdb->truk_angkutan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -752,7 +698,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Truk Tangki</td>
-                    <td>0</td>
+                    <td>{{ $tdb->truk_tangki }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -763,7 +709,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Double Cabin</td>
-                    <td>0</td>
+                    <td>{{ $tdb->double_cabin }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -774,7 +720,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Alat DU</td>
-                    <td>0</td>
+                    <td>{{ $tdb->alat_du }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -785,7 +731,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Ambulans</td>
-                    <td>0</td>
+                    <td>{{ $tdb->ambulans }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -796,7 +742,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Alat Watsan</td>
-                    <td>0</td>
+                    <td>{{ $tdb->alat_watsan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -807,7 +753,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">RS Lapangan</td>
-                    <td>0</td>
+                    <td>{{ $tdb->rs_lapangan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -818,7 +764,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Alat PKDD</td>
-                    <td>0</td>
+                    <td>{{ $tdb->alat_pkdd }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -829,7 +775,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Gudang Lapangan</td>
-                    <td>0</td>
+                    <td>{{ $tdb->gudang_lapangan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -840,7 +786,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Posko Aju</td>
-                    <td>0</td>
+                    <td>{{ $tdb->posko_aju }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -851,7 +797,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Alat IT/Tel Lapangan</td>
-                    <td>0</td>
+                    <td>{{ $tdb->alat_it_lapangan }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -860,6 +806,7 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
         </div>
 
@@ -882,9 +829,10 @@
                     <th>Lapsit-6</th>
                     <th>Lapsit-7</th>
                 </tr>
+                @foreach ($evakuasi_korban as $ek)
                 <tr>
                     <td colspan="2">Luka Ringan/Berat</td>
-                    <td></td>
+                    <td>{{ $ek->luka_ringan_berat }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -895,7 +843,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">Meninggal</td>
-                    <td></td>
+                    <td>{{ $ek->meninggal }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -904,6 +852,7 @@
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
             </table>
 
             <table class="dampak-table">
@@ -916,36 +865,44 @@
                     <th colspan="2">KK/Orang</th>
                     <th colspan="2">Jumlah</th>
                 </tr>
+                @foreach ($distribusi_layanans as $dl)
+                @if($dl->jenis_distribusi_layanan == 'Food Item')
                 <tr>
                     <td colspan="2">Distribusi Food Item</td>
-                    <td colspan="4"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
+                    <td colspan="4">{{ $dl->lokasi }}</td>
+                    <td colspan="2">{{ $dl->unit }}</td>
+                    <td colspan="2">{{ $dl->jumlah }}</td>
                 </tr>
+                @elseif($dl->jenis_distribusi_layanan == 'Non-Food Item')
                 <tr>
                     <td colspan="2">Distribusi Non-Food Item</td>
-                    <td colspan="4"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
+                    <td colspan="4">{{ $dl->lokasi }}</td>
+                    <td colspan="2">{{ $dl->unit }}</td>
+                    <td colspan="2">{{ $dl->jumlah }}</td>
                 </tr>
+                @elseif($dl->jenis_distribusi_layanan == 'Layanan Kesehatan')
                 <tr>
                     <td colspan="2">Layanan Kesehatan</td>
-                    <td colspan="4"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
+                    <td colspan="4">{{ $dl->lokasi }}</td>
+                    <td colspan="2">{{ $dl->unit }}</td>
+                    <td colspan="2">{{ $dl->jumlah }}</td>
                 </tr>
+                @elseif($dl->jenis_distribusi_layanan == 'Layanan Air Bersih')
                 <tr>
                     <td colspan="2">Layanan Air Bersih</td>
-                    <td colspan="4"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
+                    <td colspan="4">{{ $dl->lokasi }}</td>
+                    <td colspan="2">{{ $dl->unit }}</td>
+                    <td colspan="2">{{ $dl->jumlah }}</td>
                 </tr>
+                @else
                 <tr>
                     <td colspan="2">Lain-lain</td>
-                    <td colspan="4"></td>
-                    <td colspan="2"></td>
-                    <td colspan="2"></td>
+                    <td colspan="4">{{ $dl->lokasi }}</td>
+                    <td colspan="2">{{ $dl->unit }}</td>
+                    <td colspan="2">{{ $dl->jumlah }}</td>
                 </tr>
+                @endif
+                @endforeach
             </table>
         </div>
 
