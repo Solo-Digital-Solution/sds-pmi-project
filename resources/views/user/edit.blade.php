@@ -47,8 +47,24 @@
                         <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $user->no_telp }}" required disabled>
                     </div>
                     <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $user->alamat }}" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="kelurahan">Kelurahan</label>
+                        <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="{{ $user->kelurahan }}" required disabled>
+                    </div>
+                    <div class="form-group">
                         <label for="user_id">ID Pegawai</label>
                         <input type="user_id" class="form-control" id="user_id" name="user_id" value="{{ $user->user_id }}" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Jenis Kelamin</label>
+                        <input type="gender" class="form-control" id="gender" name="gender" value="{{ $user->gender }}" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="goldar">Golongan Darah</label>
+                        <input type="goldar" class="form-control" id="goldar" name="goldar" value="{{ $user->goldar }}" required disabled>
                     </div>
                     <div class="form-group">
                         <label for="role_name">Role</label>
