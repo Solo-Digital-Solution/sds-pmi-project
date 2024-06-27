@@ -33,8 +33,14 @@ class KejadianController extends Controller
                     ->orWhere('status', 'Menunggu Validasi')
                     ->latest()
                     ->paginate(10);
+        
+        $activeKejadianCount = Kejadian::where('status', 'Aktif')->count();
+        // dd($activeKejadianCount);
 
-        return view('dashboard.dashboard', compact('kejadians'));
+        $assessmentKejadianCount = Kejadian::where('status', 'Menunggu Validasi')->count();
+        // dd($assessmentKejadianCount);
+
+        return view('dashboard.dashboard', compact('kejadians', 'activeKejadianCount', 'assessmentKejadianCount'));
     }
 
     public function add(Request $request)
