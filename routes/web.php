@@ -20,9 +20,12 @@ Route::get('/register', function () {
 })->name('auth.register');
 
 // ROUTES UNTUK DASHBOARD
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard.dashboard');
+// });
+Route::get('/dashboard', [KejadianController::class, 'dashboard'])->name('dashboard');
+Route::get('/kejadian', [KejadianController::class, 'kejadian'])->name('kejadian');
+
 
 // ROUTES UNTUK PROFILE
 Route::prefix('profile')->group(function() {
@@ -36,6 +39,7 @@ Route::get('/user-management', [UserController::class, 'index']);
 //ROUTES UNTUK TAMBAH AKUN
 Route::get('/user-management/create', [UserController::class, 'create'])->name('addAkun');
 Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
+Route::get('/user-management/create', [DropdownController::class, 'indexKecamatanUser']);
 
 // ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
 Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
@@ -57,7 +61,7 @@ Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan'
 //Route::resource('kejadian', KejadianController::class);
 Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
 Route::get('/kejadian/view/{id}',[KejadianController::class,'view']);
-
+Route::get('/kejadian/view-assessor/{id_kejadian}',[KejadianController::class,'viewAssessor']);
 Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'viewLapsit'])->name('kejadian.view-lapsit');
 
 
@@ -66,9 +70,10 @@ Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'v
 Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
 Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
 Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
-Route::get('/form-assessment', function () {
-    return view('assessment.form-assessment');
-});
+Route::get('/form-assessment', [LaporanController::class, 'createAssessment'])->name('laporan.createAssessment');
+// Route::get('/form-assessment', function () {
+//     return view('assessment.form-assessment');
+// });
 
 // ROUTES UNTUK LAPORAN SITUASI
 Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');

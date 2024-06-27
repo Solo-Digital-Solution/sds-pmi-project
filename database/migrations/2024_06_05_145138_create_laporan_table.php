@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('kebutuhan')->default('-');
             $table->string('hambatan')->default('-');
             $table->string('nama_laporan')->default('-');
-            $table->dateTime('update')->default('null');;
+            $table->dateTime('update');
             $table->timestamps();
         });
     }

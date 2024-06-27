@@ -90,6 +90,7 @@
                             <th>ID Pegawai</th>
                             <th>Role</th>
                             <th>Telepon</th>
+                            <th>Kelurahan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -101,6 +102,7 @@
                             <td>{{ $us->user_id }}</td>
                             <td>{{ $us->role_name }}</td>
                             <td>{{ $us->no_telp }}</td>
+                            <td>{{ $us->kelurahan }}</td>
                             <td>
                                 <a href="{{ url('/user-management/' . $us->user_id . '/edit') }}" class="btn btn-warning">Edit</a>
                                 <form action="{{ url('/user-management/' . $us->user_id) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun ini?');">

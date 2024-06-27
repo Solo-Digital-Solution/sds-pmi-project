@@ -32,19 +32,23 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required disabled>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required disabled>
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" required>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" required disabled>
                     </div>
                     <div class="form-group">
                         <label for="no_telp">Telepon</label>
-                        <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $user->no_telp }}" required>
+                        <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $user->no_telp }}" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_id">ID Pegawai</label>
+                        <input type="user_id" class="form-control" id="user_id" name="user_id" value="{{ $user->user_id }}" required disabled>
                     </div>
                     <div class="form-group">
                         <label for="role_name">Role</label>
