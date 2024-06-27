@@ -67,6 +67,7 @@ Route::get('/kejadian/view-lapsit/{id_kejadian}', [KejadianController::class, 'v
 
 // ROUTES UNTUK ASSESSMENT
 Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/form-assessment', [LaporanController::class, 'createA'])->name('laporan.createA');
 Route::post('/form-assessment', [LaporanController::class, 'store'])->name('laporan.store');
 Route::post('/submit-assessment', [KejadianController::class, 'store'])->name('submit-assessment');
 Route::get('/form-assessment', function () {
@@ -78,6 +79,7 @@ Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index']
 Route::get('/kejadian/view-lapsit/{id_kejadian}', [LaporanController::class, 'index'])->name('kejadian.view-lapsit');
 Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
 Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
+Route::get('/laporan-situasi/view/{id_laporan}', [LaporanController::class, 'view'])->name('laporan.view');
 
 
 

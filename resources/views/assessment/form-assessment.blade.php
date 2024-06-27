@@ -24,6 +24,7 @@
 @section('content')
 <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="id_kejadian" value="{{ $id_kejadian }}">
 	<div class="col-sm-12">
         <div class="card">
             <div class="card-header"><Nav>Nama Laporan</Nav></div>
