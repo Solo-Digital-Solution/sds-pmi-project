@@ -103,10 +103,10 @@ class LaporanController extends Controller
             ->join('tdb', 'mobilisasi.id_tdb', '=', 'tdb.id_tdb')
             ->join('evakuasi_korban', 'giat_pmi.id_evakuasi_korban', '=', 'evakuasi_korban.id_evakuasi_korban')
             ->select(
-                'laporan.*', 
-                'kejadian.*', 
-                'dampak.*', 
-                'mobilisasi.*', 
+                'laporan.*',
+                'kejadian.*',
+                'dampak.*',
+                'mobilisasi.*',
                 'giat_pmi.*',
                 'korban_terdampak.*',
                 'korban_jiwa.*',
@@ -280,6 +280,7 @@ class LaporanController extends Controller
 
         $giat_pmi = DB::table('giat_pmi')->insertGetId([
             'id_evakuasi_korban' => $evakuasi_korban
+        ]);
 
         foreach ($request->inpu as $input) {
             $distribusi_layanan[] = DB::table('distribusi_layanan')->insertGetId([

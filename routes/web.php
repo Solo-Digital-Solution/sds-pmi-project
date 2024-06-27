@@ -23,7 +23,8 @@ Route::get('/register', function () {
 // Route::get('/', function () {
 //     return view('dashboard.dashboard');
 // });
-Route::get('/dashboard', [KejadianController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/', [KejadianController::class, 'dashboard'])->name('dashboard');
 Route::get('/kejadian', [KejadianController::class, 'kejadian'])->name('kejadian');
 
 
