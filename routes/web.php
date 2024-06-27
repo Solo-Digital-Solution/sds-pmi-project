@@ -116,3 +116,12 @@ Route::get('/form', function () {
 Route::get('/coba', function () {
     return view('lapsit.lapsit-pdf-3');
 });
+
+// Route::get('/landingPage', function () {
+//     return view('landing-page');
+// });
+
+//ROUTES UNTUK LANDINGPAGE
+Route::get('/', function () {
+    return view('landing-page');
+});
