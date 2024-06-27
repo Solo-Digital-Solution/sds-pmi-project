@@ -114,31 +114,33 @@
     }
 
     .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.4); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .modal-content {
-            background-color: #fefefe;
+            background-color: #fff;
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
         }
         .close {
             color: #aaa;
-            float: right;
+            position: absolute;
+            right: 15px;
+            top: 15px;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
@@ -147,6 +149,40 @@
         .close:focus {
             color: black;
             text-decoration: none;
+            cursor: pointer;
+        }
+        h4 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+        input[type="text"], input[type="file"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #bc202d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #a81b26;
         }
 
 </style>
@@ -302,7 +338,7 @@
 </div>
 <div class="button-wrapper">
     <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" onclick="downloadContentAsImage()">Download as Image</button>
-    <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" id="send-to-whatsapp">Send to Whatsapp</button>
+    <button style="border-radius: 5px;border:none;font-size: 17px;margin-top: 20px;background-color: #bc202d;color: #fff;padding: 8px 14px margin-left: 10px;" id="send-to-whatsapp">Send to Whatsapp</button>
 </div>
 <div id="sendMessageModal" class="modal">
     <div class="modal-content">
@@ -311,15 +347,15 @@
         <form id="sendMessageForm" enctype="multipart/form-data">
             @csrf
             <div>
-                <label for="nowa">Upload CSV File (with phone numbers)</label><br>
+                <label for="nowa">Upload CSV File (with phone numbers)</label>
                 <input type="file" name="nowa" id="nowa" accept=".csv" />
             </div>
             <div>
-                <label for="pesan">Message</label><br>
+                <label for="pesan">Message</label>
                 <input type="text" name="pesan" id="pesan" />
             </div>
             <div>
-                <label for="gambar">Upload Image</label><br>
+                <label for="gambar">Upload Image</label>
                 <input type="file" name="gambar" id="gambar" />
             </div>
             <div>
