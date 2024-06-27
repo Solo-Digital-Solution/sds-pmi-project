@@ -57,6 +57,7 @@ class PDFController extends Controller
         $layanan_korban = [];
         $transaction_shelter = [];
         $transaction_dokumentasi = [];
+        $transaction_personil_dihubungi = [];
         $transaction_petugas_posko = [];
         $distribusi_layanans = [];
 
@@ -122,11 +123,28 @@ class PDFController extends Controller
             }
 
             // Fetch transaction_dokumentasi related to laporan
-            $transaction_dokumentasi_items = DB::table('transaction_dokumentasi')->where('id_laporan', $laporan->id_laporan)->get();
+            $transaction_dokumentasi_items = DB::table('transaction_dokumentasi')
+                ->join('dokumentasi', 'transaction_dokumentasi.id_dokumentasi', '=', 'dokumentasi.id_dokumentasi')
+                ->where('transaction_dokumentasi.id_laporan', $laporan->id_laporan)
+                ->select('dokumentasi.file_path') // Fetch the image path
+                ->get();
+                //dd($transaction_dokumentasi_items);
             $transaction_dokumentasi = array_merge($transaction_dokumentasi, $transaction_dokumentasi_items->toArray());
 
+            // Fetch transaction_personil_dihubungi related to laporan
+            $transaction_personil_dihubungi_items = DB::table('transaction_personil_dihubungi')
+                ->join('personil_dihubungi', 'transaction_personil_dihubungi.id_personil_dihubungi', '=', 'personil_dihubungi.id_personil_dihubungi')
+                ->where('transaction_personil_dihubungi.id_laporan', $laporan->id_laporan)
+                ->select('personil_dihubungi.nama_lengkap', 'personil_dihubungi.posisi', 'personil_dihubungi.kontak')
+                ->get();
+            $transaction_personil_dihubungi = array_merge($transaction_personil_dihubungi, $transaction_personil_dihubungi_items->toArray());
+
             // Fetch transaction_petugas_posko related to laporan
-            $transaction_petugas_posko_items = DB::table('transaction_petugas_posko')->where('id_laporan', $laporan->id_laporan)->get();
+            $transaction_petugas_posko_items = DB::table('transaction_petugas_posko')
+            ->join('petugas_posko', 'transaction_petugas_posko.id_petugas_posko', '=', 'petugas_posko.id_petugas_posko')
+            ->where('transaction_petugas_posko.id_laporan', $laporan->id_laporan)
+            ->select('petugas_posko.nama_lengkap', 'petugas_posko.kontak')
+            ->get();
             $transaction_petugas_posko = array_merge($transaction_petugas_posko, $transaction_petugas_posko_items->toArray());
 
             $kejadians = array_merge($kejadians, $kejadian->toArray());
@@ -165,6 +183,7 @@ class PDFController extends Controller
             'shelters' => $shelters,
             'distribusi_layanans' => $distribusi_layanans,
             'transaction_shelter' => $transaction_shelter,
+            'transaction_personil_dihubungi' => $transaction_personil_dihubungi,
             'transaction_dokumentasi' => $transaction_dokumentasi,
             'transaction_petugas_posko' => $transaction_petugas_posko
         ];
