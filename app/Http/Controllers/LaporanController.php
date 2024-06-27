@@ -289,7 +289,7 @@ class LaporanController extends Controller
                 'unit' => $input['unit'],
                 'jumlah' => $input['jumlah']
             ]);
-        }
+        }        
 
         foreach($distribusi_layanan as $dl) {
             DB::table('layanan_korban')->insertGetId([

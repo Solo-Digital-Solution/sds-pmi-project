@@ -86,7 +86,6 @@ Route::get('/laporan-situasi/view/{id_laporan}', [LaporanController::class, 'vie
 Route::delete('/laporan/{id_laporan}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
 
 
-
 // ROUTES UNTUK ASSESSMENT
 // Route::get('/laporan-situasi', [LaporanController::class, 'index'])->name('laporan.index');
 
