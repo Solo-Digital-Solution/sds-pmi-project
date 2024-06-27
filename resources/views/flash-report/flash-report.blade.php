@@ -112,6 +112,79 @@
         display: flex;
         justify-content: right;
     }
+
+    .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        h4 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+        input[type="text"], input[type="file"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #bc202d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #a81b26;
+        }
+
 </style>
 
 @section('heading')
@@ -202,7 +275,7 @@
 				<td rowspan="2"><i class="fa-solid fa-user-injured icon" style="color: #bc202d;"></i></td>
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
 				<td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RUMAH RUSAK</td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;"">RUMAH RUSAK</td>
                 <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="width: 100%"></td>
 			</tr>
 
@@ -227,7 +300,7 @@
             <tr>
 				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
 				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->jumlah ?? 0 }} {{ $jumlahLayananAirBersih->unit ?? '' }}</span></td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->total ?? 0 }} {{ $jumlahLayananAirBersih->satuan ?? '' }}</span></td>
                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah ?? 0 }} {{ $jumlahFoodItem->unit ?? '' }}</span></td>
 				<td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
@@ -265,7 +338,82 @@
 </div>
 <div class="button-wrapper">
     <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" onclick="downloadContentAsImage()">Download as Image</button>
+    <button style="border-radius: 5px;border:none;font-size: 17px;margin-top: 20px;background-color: #bc202d;color: #fff;padding: 8px 14px; margin-left: 10px;" id="send-to-whatsapp">Send to Whatsapp</button>
 </div>
+<div id="sendMessageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h4>Send WhatsApp Message</h4>
+        <form id="sendMessageForm" enctype="multipart/form-data">
+            @csrf
+            <div>
+                <label for="nowa">Upload CSV File (with phone numbers)</label>
+                <input type="file" name="nowa" id="nowa" accept=".csv" />
+            </div>
+            <div>
+                <label for="pesan">Message</label>
+                <input type="text" name="pesan" id="pesan" />
+            </div>
+            <div>
+                <label for="gambar">Upload Image</label><br>
+                <input type="file" name="gambar" id="gambar" accept=".jpg,.jpeg,.png" />
+            </div>
+            <div>
+                <input type="submit" value="Send Message" />
+            </div>
+        </form>
+    </div>
+</div>
+    <script>
+        document.getElementById('send-to-whatsapp').addEventListener('click', function() {
+            const modal = document.getElementById('sendMessageModal');
+            modal.style.display = 'flex'; // Show the modal
+        });
+
+        document.getElementById('sendMessageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = document.getElementById('sendMessageForm');
+            const formData = new FormData(form);
+
+            fetch('{{ route('kirim.pesan') }}', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text || 'Network response was not ok') });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+                alert('Pesan telah dikirim ke semua nomor');
+                closeModal(); // Close modal after successful send
+            })
+            .catch(error => {
+                console.error('Error sending data:', error);
+                alert('Terjadi kesalahan saat mengirim pesan');
+            });
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('sendMessageModal');
+            modal.style.display = 'none'; // Hide the modal
+        }
+
+        // Close the modal when the user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('sendMessageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 
 <script>
     function downloadContentAsImage() {
