@@ -355,8 +355,8 @@
                 <input type="text" name="pesan" id="pesan" />
             </div>
             <div>
-                <label for="gambar">Upload Image</label>
-                <input type="file" name="gambar" id="gambar" />
+                <label for="gambar">Upload Image</label><br>
+                <input type="file" name="gambar" id="gambar" accept=".jpg,.jpeg,.png" />
             </div>
             <div>
                 <input type="submit" value="Send Message" />

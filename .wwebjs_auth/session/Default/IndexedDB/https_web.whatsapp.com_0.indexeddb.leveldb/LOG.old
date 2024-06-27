@@ -1,17 +1,11 @@
-2024/06/27-19:55:20.197 6c9c Reusing MANIFEST C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/06/27-19:55:20.197 6c9c Recovering log #264
-2024/06/27-19:55:20.357 6c9c Reusing old log C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000264.log 
-2024/06/27-19:59:11.422 5d34 Level-0 table #272: started
-2024/06/27-19:59:11.471 5d34 Level-0 table #272: 1137215 bytes OK
-2024/06/27-19:59:11.473 5d34 Delete type=0 #264
-2024/06/27-19:59:14.359 2a58 Compacting 1@0 + 1@1 files
-2024/06/27-19:59:14.573 2a58 Generated table #273@0: 67232 keys, 1344756 bytes
-2024/06/27-19:59:14.573 2a58 Compacted 1@0 + 1@1 files => 1344756 bytes
-2024/06/27-19:59:14.575 2a58 compacted to: files[ 0 1 1 0 0 0 0 ]
-2024/06/27-19:59:14.781 2a58 Compacting 1@1 + 1@2 files
-2024/06/27-19:59:14.928 2a58 Generated table #274@1: 35849 keys, 2195358 bytes
-2024/06/27-19:59:14.979 2a58 Generated table #275@1: 29893 keys, 624172 bytes
-2024/06/27-19:59:14.979 2a58 Compacted 1@1 + 1@2 files => 2819530 bytes
-2024/06/27-19:59:14.980 2a58 compacted to: files[ 0 0 2 0 0 0 0 ]
-2024/06/27-19:59:14.981 2a58 Delete type=2 #267
-2024/06/27-19:59:14.981 2a58 Delete type=2 #272
+2024/06/27-23:56:17.313 7a5c Reusing MANIFEST C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/06/27-23:56:17.313 7a5c Recovering log #271
+2024/06/27-23:56:17.418 7a5c Reusing old log C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000271.log 
+2024/06/27-23:56:22.086 48c Level-0 table #278: started
+2024/06/27-23:56:22.270 48c Level-0 table #278: 1993866 bytes OK
+2024/06/27-23:56:22.272 48c Delete type=0 #271
+2024/06/27-23:56:24.445 1e6c Compacting 1@1 + 2@2 files
+2024/06/27-23:56:24.523 1e6c Generated table #279@1: 31501 keys, 2206713 bytes
+2024/06/27-23:56:24.564 1e6c Generated table #280@1: 41343 keys, 1028183 bytes
+2024/06/27-23:56:24.564 1e6c Compacted 1@1 + 2@2 files => 3234896 bytes
+2024/06/27-23:56:24.565 1e6c compacted to: files[ 0 0 2 0 0 0 0 ]

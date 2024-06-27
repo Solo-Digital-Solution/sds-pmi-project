@@ -45,6 +45,13 @@ class MessageController extends Controller
             return response()->json(['status' => 'Image file is not valid'], 400);
         }
 
+        // Check the file extension
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        $extension = $imageFile->getClientOriginalExtension();
+        if (!in_array(strtolower($extension), $allowedExtensions)) {
+            return response()->json(['status' => 'Image file must be a jpg, jpeg, or png'], 400);
+        }
+
         // Store the image file
         $imagePath = $imageFile->store('uploads', 'public');
         $imageFilePath = storage_path('app/public/' . $imagePath);
