@@ -41,7 +41,7 @@
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
-                @can('hrd')
+
                 <li>
                     <a href="#" class="has-arrow">
                         <span class="has-icon">
@@ -53,12 +53,14 @@
                         <li>
                             <a href='{{ url('/dashboard')  }}'>Dashboard</a>
                         </li>
+                        @can('hrd')
                         <li>
                             <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
-                @endcan
+
                 @can('adm')
                 <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
