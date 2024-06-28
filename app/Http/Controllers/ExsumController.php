@@ -66,6 +66,8 @@ class ExsumController extends Controller
                 'tdb.alat_pkdd', 'tdb.gudang_lapangan', 'tdb.posko_aju', 'tdb.alat_it_lapangan')
             ->get();
 
+            // dd($exsum);
+
         return view('executive-summary.laporan-triwulan', compact('exsum'));
     }
 
