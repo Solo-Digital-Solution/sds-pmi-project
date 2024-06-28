@@ -233,7 +233,7 @@
 				<div class="u-align-left u-container-align-left u-container-style u-group u-white u-group-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="750">
 					<div class="u-container-layout u-valign-middle u-container-layout-1">
 						<span class="u-align-left u-icon u-icon-circle u-icon-1">
-							
+
 						</span>
 						<h3 class="u-align-left u-text u-text-1">DONASI</h3>
 						<p class="u-align-left u-text u-text-2">Ulurkan bantuan anda melalui PMI untuk meringankan beban penderitaan mereka yang terdampak bencana/krisis kesehatan/krisis kemanusiaan lainnya
@@ -243,7 +243,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="u-align-center u-clearfix u-container-align-center u-image u-shading u-section-8" id="carousel_3311" data-image-width="1980" data-image-height="1114" style="background-color: #a71d2a">
 			<div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
 				<h2 class="" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Sistem Penanggulangan Bencana PMI Solo</h2>

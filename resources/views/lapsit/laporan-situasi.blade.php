@@ -33,6 +33,7 @@
         </div>
         <div class="card">
             <div class="card-header">Laporan Situasi</div>
+            @can('adm')
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
                     @if(!$laporanExist)
@@ -47,6 +48,7 @@
                     @endif
                 </div>
             </div>
+            @endcan
             <div class="card-body">
                 <table id="basicExample" class="table table-striped table-bordered">
                     <thead>

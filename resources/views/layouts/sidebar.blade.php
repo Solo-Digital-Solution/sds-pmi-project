@@ -41,6 +41,7 @@
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
+                @can('hrd')
                 <li>
                     <a href="#" class="has-arrow">
                         <span class="has-icon">
@@ -57,6 +58,8 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
+                @can('adm')
                 <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
@@ -73,6 +76,25 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
+
+                <!-- Menu items for 'skr' -->
+        @can('skr')
+        <li>
+            <a href="{{ url('/kejadian') }}">
+                <span class="nav-title">Kejadian</span>
+            </a>
+        </li>
+        @endcan
+
+        <!-- Menu items for 'exc' -->
+        @can('exc')
+        <li>
+            <a href="{{ url('/executive-summary') }}">
+                <span class="nav-title">Executive Summary</span>
+            </a>
+        </li>
+        @endcan
             </ul>
             <!-- END: side-nav-content -->
         </nav>

@@ -11,7 +11,7 @@
                 </a>
             </div>
             <div class="col-sm-2 col">
-                <a href="{{ asset('/') }}" class="logo">
+                <a href="{{ route('dashboard') }}" class="logo">
                     <img src="{{ asset('img/logo-pmi.png') }}" alt="Logo PMI" />
                 </a>
             </div>
@@ -114,9 +114,14 @@
                                     </a>
                                 </li> -->
                             </ul>
+                            <!-- Authentication -->
                             <div class="logout-btn">
-                                <a href="{{ url('/') }}" class="btn btn-primary">Logout</a>
+                                <a href="{{ url('/') }}" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                             </div>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>

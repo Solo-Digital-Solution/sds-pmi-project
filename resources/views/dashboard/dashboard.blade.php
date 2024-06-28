@@ -9,7 +9,7 @@
             </div>
             <div class="page-title">
                 <h5>Dashboard</h5>
-                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
+                <h6 class="sub-heading">Selamat datang {{ Auth::user()->name }} di Sistem Penanggulangan Bencana PMI Solo</h6>
             </div>
         </div>
         <div class="col-sm-4">
