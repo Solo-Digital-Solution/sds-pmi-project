@@ -93,6 +93,32 @@
                                         @enderror
                                     </div>
 
+                                    <!-- Kecamatan -->
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="kecamatan">
+                                                <i class="icon-home"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" id="kecamatan" name="kecamatan" class="form-control" placeholder="Kecamatan" aria-label="kecamatan" aria-describedby="kelurahan" value="{{ old('kelurahan') }}" required>
+                                        @error('kecamatan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Kecamatan -->
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="kelurahan">
+                                                <i class="icon-home"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" id="kelurahan" name="kelurahan" class="form-control" placeholder="Kelurahan" aria-label="kelurahan" aria-describedby="kelurahan" value="{{ old('kecamatan') }}" required>
+                                        @error('kecamatan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
                                     <!-- Alamat -->
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
@@ -165,6 +191,16 @@
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                         @error('gender')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- KTP -->
+                                    <div class="input-group mb-2">
+                                            <label for="ktp">KTP</label>
+                                            <input type="file" class="form-control-file" id="ktp" name="ktp" accept=".jpg,.jpeg,.png" multiple required>
+                                            <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
+                                        @error('ktp')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
