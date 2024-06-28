@@ -167,7 +167,7 @@
                     </div>
                 </div>
 
-                <div class="content-section">
+                {{-- <div class="content-section">
                     <table border="0" width="500px" cellpadding="10px" cellspacing="0px" id="content-section">
                         <thead>
                             <tr>
@@ -352,7 +352,7 @@
                         </tbody>
 
                     </table>
-                </div>
+                </div> --}}
                 <div>
                     <button onclick="downloadContentAsImage()">Download as Image</button>
                 </div>
@@ -368,7 +368,7 @@
                                 <th rowspan="2">Tanggal Kejadian</th>
                                 <th rowspan="2">Tanggal Update</th>
                                 <th rowspan="2">Kejadian</th>
-                                <th rowspan="2">Status</th>
+                                {{-- <th rowspan="2">Status</th> --}}
                                 <th rowspan="2">Lokasi</th>
                                 <th rowspan="2">Kelurahan</th>
                                 <th rowspan="2">Kecamatan</th>
@@ -387,31 +387,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{{ $kjd->waktu_kejadian }}</td>
-                                <td>{{ $kjd->update }}</td>
-                                <td>{{ $kjd->nama_kejadian }}</td>
-
-                                <td>{{ $kjd->lokasi }}</td>
-                                <td>{{ $kjd->kelurahan }}</td>
-                                <td>{{ $kjd->kecamatan }}</td>
-                                <td>{{ $kjd->jumlah_jiwa }}</td> <!-- SHELTER -->
-                                <td>{{ $kjd->jmlh_jiwa }}</td> <!-- KORBAN TERDAMPAK -->
-                                <td>{{ $kjd->rusak_ringan + $kjd->rusak_sedang + $kjd->rusak_berat }}</td>
-                                <td>{{ $kjd->sekolah + $kjd->tempat_ibadah + $kjd->rumah_sakit + $kjd->pasar + $kjd->gedung_pemerintah }}</td>
-                                <td>{{ $kjd->deskripsi_kerusakan }}</td>
-                                <td>{{ $kjd->pengurus + $kjd->staf_markas + $kjd->relawan_pmi + $kjd->sukarelawan_spesialis }}</td>
-                                <td>{{ $kjd->medis + $kjd->paramedis + $kjd->relief + $kjd->logistics + $kjd->watsan + $kjd->it_telekom + $kjd->sheltering }}</td>
-                                <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_tangki + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans +
-                                $kjd->alat_watsan + $kjd->rs_lapangan + $kjd->alat_pkdd + $kjd->gudang_lapangan + $kjd->posko_aju + $kjd->alat_it_lapangan }}</td>
-                                <td><a href="{{ route('generateLapsit') }}" style="color:red" target="_blank">Lihat Detail</a></td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="4">Tidak ada data kejadian.</td>
-                            </tr>
+                            @foreach ($exsum as $kjd)
+                                <tr>
+                                    <td>{{ $kjd->waktu_kejadian }}</td>
+                                    <td>{{ $kjd->update }}</td>
+                                    <td>{{ $kjd->nama_kejadian }}</td>
+                                    <td>{{ $kjd->lokasi }}</td>
+                                    <td>{{ $kjd->kelurahan }}</td>
+                                    <td>{{ $kjd->kecamatan }}</td>
+                                    <td>{{ $kjd->jumlah_jiwa }}</td> <!-- SHELTER -->
+                                    <td>{{ $kjd->jmlh_jiwa }}</td> <!-- KORBAN TERDAMPAK -->
+                                    <td>{{ $kjd->rusak_ringan + $kjd->rusak_sedang + $kjd->rusak_berat }}</td>
+                                    <td>{{ $kjd->sekolah + $kjd->tempat_ibadah + $kjd->rumah_sakit + $kjd->pasar + $kjd->gedung_pemerintah }}</td>
+                                    <td>{{ $kjd->deskripsi_kerusakan }}</td>
+                                    <td>{{ $kjd->pengurus + $kjd->staf_markas + $kjd->relawan_pmi + $kjd->sukarelawan_spesialis }}</td>
+                                    <td>{{ $kjd->medis + $kjd->paramedis + $kjd->relief + $kjd->logistics + $kjd->watsan + $kjd->it_telekom + $kjd->sheltering }}</td>
+                                    <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_tangki + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans +
+                                        $kjd->alat_watsan + $kjd->rs_lapangan + $kjd->alat_pkdd + $kjd->gudang_lapangan + $kjd->posko_aju + $kjd->alat_it_lapangan }}</td>
+                                    <td><a href="{{ route('generateLapsit', ['id' => $kjd->id_kejadian]) }}" style="color:red" target="_blank">Lihat Detail</a></td>
+                                </tr>
+                                {{-- @empty
+                                <tr>
+                                    <td colspan="4">Tidak ada data kejadian.</td>
+                                </tr> --}}
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
