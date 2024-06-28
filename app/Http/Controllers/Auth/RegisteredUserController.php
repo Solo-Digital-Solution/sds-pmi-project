@@ -36,6 +36,8 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'tempat_lahir' => ['required', 'string', 'max:255'],
             'tanggal_lahir' => ['required', 'date'],
+            'kecamatan' => ['required', 'string', 'max:255'],
+            'kelurahan' => ['required', 'string', 'max:255'],
             'alamat' => ['required', 'string', 'max:255'],
             'goldar' => ['required', 'string', 'max:255'],
             'no_telp' => ['required', 'string', 'max:255'],
@@ -44,8 +46,16 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $filePath = $request->file('ktp');
+        $fileFullPath = public_path('ktp/' . $filePath); // Mendapatkan path lengkap file
+        // if (file_exists($fileFullPath)) {
+        //     unlink($filePath); // Menghapus file dari direktori
+        // }
+
         $user = User::create([
             'name' => $request->name,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
             'email' => $request->email,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -54,6 +64,7 @@ class RegisteredUserController extends Controller
             'no_telp' => $request->no_telp,
             'username' => $request->username,
             'gender' => $request->gender,
+            'ktp' => $fileFullPath,
             'password' => Hash::make($request->password),
         ]);
 
