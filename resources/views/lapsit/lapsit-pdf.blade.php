@@ -215,7 +215,7 @@
                 </tr>
                 <tr>
                     <td style="font-weight: bold;">Waktu Kejadian</td>
-                    <td style="background-color: white;">: {{ $kejadian->waktu_kejadian }}/td>
+                    <td style="background-color: white;">: {{ $kejadian->waktu_kejadian }}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold;">Update</td>
@@ -989,21 +989,10 @@
                     <th style="background-color: white; color: black; width: 100px;" colspan="10">LAMPIRAN DOKUMENTASI</th>
                 </tr>
                 <tr>
-                    {{-- @foreach ($transaction_dokumentasi as $td)
-                        <td colspan="5">
-                            <img src="{{ asset('dokumentasi/static-image.jpg') }}" height="190px" alt="">
-                        </td>
-                    @endforeach --}}
-                    <td colspan="5">
-                        <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
-                    </td>
-                    <td colspan="5">
-                        <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
-                    </td>
+
                 </tr>
             </table>
         </div>
     </div>
 </body>
-
 </html>

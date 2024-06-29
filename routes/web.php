@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
     // ROUTES UNTUK PROFILE
     Route::get('/profile', [UserController::class, 'profile_index'])->name('profile.index');
-    Route::get('/profile/edit', [UserController::class, 'profile_edit'])->name('profile.edit');
+    Route::get('/profile/edit', [UserController::class, 'profile_edit'])->name('profile.update');
 });
 
 Route::middleware(['auth', 'role:Pegawai PMI, Sukarelawan'])->group(function () {
