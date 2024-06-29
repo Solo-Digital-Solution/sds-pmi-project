@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaction_dokumentasi', function (Blueprint $table) {
-            $table->foreignId('id_laporan')->references('id_laporan')->on('laporan')->onDelete('cascade');
+            $table->string('id_laporan');
+            $table->foreign('id_laporan')->references('id_laporan')->on('laporan')->onDelete('cascade');
             $table->foreignId('id_dokumentasi')->references('id_dokumentasi')->on('dokumentasi')->onDelete('cascade');
             $table->timestamps();
         });

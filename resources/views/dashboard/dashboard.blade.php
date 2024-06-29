@@ -21,7 +21,6 @@
 </div>
 @endsection
 
-
 @section('content')
 @can('adm')
 <!-- Row start -->
@@ -219,7 +218,7 @@
 </div>
 @endcan
 
-@can('adm')
+{{-- @can('adm')
 <!-- Row start -->
 <div class="row gutters">
     <div class="col-md-4 col-sm-6">
@@ -298,5 +297,5 @@
     </div>
 </div>
 <!-- Row end -->
-@endcan
+@endcan --}}
 @endsection
