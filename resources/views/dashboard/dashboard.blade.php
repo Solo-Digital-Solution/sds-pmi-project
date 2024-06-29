@@ -21,7 +21,6 @@
 </div>
 @endsection
 
-
 @section('content')
 @can('null')
 <div class="row gutters">
