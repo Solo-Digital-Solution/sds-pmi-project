@@ -12,11 +12,15 @@ class Laporan extends Model
     protected $table = 'laporan';
     protected $primaryKey = 'id_laporan';
     protected $fillable = [
-        'giat_pemerintah', 
-        'kebutuhan', 
-        'hambatan', 
-        'nama_laporan', 
+        'giat_pemerintah',
+        'kebutuhan',
+        'hambatan',
+        'nama_laporan',
         'update'
+    ];
+
+    protected $casts = [
+        'id_laporan' => 'string',
     ];
 
     public function kejadian()
