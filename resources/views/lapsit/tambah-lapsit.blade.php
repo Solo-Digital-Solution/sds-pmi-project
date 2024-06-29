@@ -66,13 +66,13 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="jumlah_kk">Jumlah KK <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jmlh_kk" name="jmlh_kk" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jmlh_kk" name="jmlh_kk" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="jumlah_jiwa">Jumlah Jiwa <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jmlh_jiwa" name="jmlh_jiwa" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jmlh_jiwa" name="jmlh_jiwa" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -87,31 +87,31 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="luka_berat">Luka Berat <span style="color: red;">*</span></label>
-                            <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="luka_berat" name="luka_berat" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="luka_ringan">Luka Ringan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="luka_ringan" name="luka_ringan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="meninggal">Meninggal <span style="color: red;">*</span></label>
-                            <input class="form-control" id="md" name="md" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="md" name="md" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="hilang">Hilang <span style="color: red;">*</span></label>
-                            <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="hilang" name="hilang" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="mengungsi">Mengungsi <span style="color: red;">*</span></label>
-                            <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="mengungsi" name="mengungsi" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -126,19 +126,19 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Rusak Berat <span style="color: red;">*</span></label>
-                            <input class="form-control" id="rusak_berat" name="rusak_berat" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="rusak_berat" name="rusak_berat" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Rusak Sedang <span style="color: red;">*</span></label>
-                            <input class="form-control" id="rusak_sedang" name="rusak_sedang" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="rusak_sedang" name="rusak_sedang" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Rusak Ringan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="rusak_ringan" name="rusak_ringan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="rusak_ringan" name="rusak_ringan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -153,37 +153,37 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Sekolah <span style="color: red;">*</span></label>
-                            <input class="form-control" id="sekolah" name="sekolah" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="sekolah" name="sekolah" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Tempat Ibadah <span style="color: red;">*</span></label>
-                            <input class="form-control" id="tempat_ibadah" name="tempat_ibadah" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="tempat_ibadah" name="tempat_ibadah" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Rumah Sakit <span style="color: red;">*</span></label>
-                            <input class="form-control" id="rumah_sakit" name="rumah_sakit" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="rumah_sakit" name="rumah_sakit" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Pasar <span style="color: red;">*</span></label>
-                            <input class="form-control" id="pasar" name="pasar" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="pasar" name="pasar" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Gedung Pemerintah <span style="color: red;">*</span></label>
-                            <input class="form-control" id="gedung_pemerintah" name="gedung_pemerintah" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="gedung_pemerintah" name="gedung_pemerintah" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Lain-lain <span style="color: red;">*</span></label>
-                            <input class="form-control" id="lain_lain" name="lain_lain" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="lain_lain" name="lain_lain" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -219,49 +219,49 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Jumlah KK <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jumlah_kk" name="inp[0][jumlah_kk]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jumlah_kk" name="inp[0][jumlah_kk]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Jumlah Jiwa <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jumlah_jiwa" name="inp[0][jumlah_jiwa]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jumlah_jiwa" name="inp[0][jumlah_jiwa]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Jumlah laki-laki <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jumlah_laki" name="inp[0][jumlah_laki]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jumlah_laki" name="inp[0][jumlah_laki]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Jumlah perempuan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jumlah_perempuan" name="inp[0][jumlah_perempuan]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jumlah_perempuan" name="inp[0][jumlah_perempuan]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Balita <span style="color: red;">*</span></label>
-                            <input class="form-control" id="dibawah_lima" name="inp[0][dibawah_lima]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="dibawah_lima" name="inp[0][dibawah_lima]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">5 tahun - 18 tahun <span style="color: red;">*</span></label>
-                            <input class="form-control" id="antara_lima_dan_delapanbelas" name="inp[0][antara_lima_dan_delapanbelas]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="antara_lima_dan_delapanbelas" name="inp[0][antara_lima_dan_delapanbelas]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Lebih dari 18 tahun <span style="color: red;">*</span></label>
-                            <input class="form-control" id="lebih_delapanbelas" name="inp[0][lebih_delapanbelas]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="lebih_delapanbelas" name="inp[0][lebih_delapanbelas]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Jumlah <span style="color: red;">*</span></label>
-                            <input class="form-control" id="jumlah" name="inp[0][jumlah]" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="jumlah" name="inp[0][jumlah]" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -285,25 +285,25 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Pengurus <span style="color: red;">*</span></label>
-                            <input class="form-control" id="pengurus" name="pengurus" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="pengurus" name="pengurus" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Staff Markas <span style="color: red;">*</span></label>
-                            <input class="form-control" id="staf_markas" name="staf_markas" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="staf_markas" name="staf_markas" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Relawan PMI <span style="color: red;">*</span></label>
-                            <input class="form-control" id="relawan_pmi" name="relawan_pmi" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="relawan_pmi" name="relawan_pmi" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Sukarelawan Spesialis <span style="color: red;">*</span></label>
-                            <input class="form-control" id="sukarelawan_spesialis" name="sukarelawan_spesialis" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="sukarelawan_spesialis" name="sukarelawan_spesialis" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -318,43 +318,43 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Medis <span style="color: red;">*</span></label>
-                            <input class="form-control" id="medis" name="medis" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="medis" name="medis" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Paramedis <span style="color: red;">*</span></label>
-                            <input class="form-control" id="paramedis" name="paramedis" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="paramedis" name="paramedis" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Relief <span style="color: red;">*</span></label>
-                            <input class="form-control" id="relief" name="relief" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="relief" name="relief" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Logistik <span style="color: red;">*</span></label>
-                            <input class="form-control" id="logistics" name="logistics" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="logistics" name="logistics" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Watsan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="watsan" name="watsan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="watsan" name="watsan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">IT Telekom <span style="color: red;">*</span></label>
-                            <input class="form-control" id="it_telekom" name="it_telekom" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="it_telekom" name="it_telekom" type="number" placeholder="Masukkan jumlah" min="0" value="0" equired>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Sheltering <span style="color: red;">*</span></label>
-                            <input class="form-control" id="sheltering" name="sheltering" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="sheltering" name="sheltering" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -369,73 +369,73 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Kendaraan Operasional <span style="color: red;">*</span></label>
-                            <input class="form-control" id="kend_ops" name="kend_ops" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="kend_ops" name="kend_ops" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Truk angkutan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="truk_angkutan" name="truk_angkutan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="truk_angkutan" name="truk_angkutan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Truk tangki <span style="color: red;">*</span></label>
-                            <input class="form-control" id="truk_tangki" name="truk_tangki" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="truk_tangki" name="truk_tangki" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Double Cabin <span style="color: red;">*</span></label>
-                            <input class="form-control" id="double_cabin" name="double_cabin" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="double_cabin" name="double_cabin" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Alat DU <span style="color: red;">*</span></label>
-                            <input class="form-control" id="alat_du" name="alat_du" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="alat_du" name="alat_du" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Ambulans <span style="color: red;">*</span></label>
-                            <input class="form-control" id="ambulans" name="ambulans" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="ambulans" name="ambulans" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Alat Watsan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="alat_watsan" name="alat_watsan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="alat_watsan" name="alat_watsan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">RS Lapangan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="rs_lapangan" name="rs_lapangan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="rs_lapangan" name="rs_lapangan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Alat PKDD <span style="color: red;">*</span></label>
-                            <input class="form-control" id="alat_pkdd" name="alat_pkdd" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="alat_pkdd" name="alat_pkdd" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Gudang lapangan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="gudang_lapangan" name="gudang_lapangan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="gudang_lapangan" name="gudang_lapangan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Posko Aju <span style="color: red;">*</span></label>
-                            <input class="form-control" id="posko_aju" name="posko_aju" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="posko_aju" name="posko_aju" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="inputNumber">Alat IT/Tel Lapangan <span style="color: red;">*</span></label>
-                            <input class="form-control" id="alat_it_lapangan" name="alat_it_lapangan" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="alat_it_lapangan" name="alat_it_lapangan" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -454,13 +454,13 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="luka_ringan_berat">Luka Ringan Berat <span style="color: red;">*</span></label>
-                            <input class="form-control" id="luka_ringan_berat" name="luka_ringan_berat" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="luka_ringan_berat" name="luka_ringan_berat" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="meninggal">Meninggal <span style="color: red;">*</span></label>
-                            <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah" required>
+                            <input class="form-control" id="meninggal" name="meninggal" type="number" placeholder="Masukkan jumlah" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -504,7 +504,7 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="jumlah">Jumlah <span style="color: red;">*</span></label>
-                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[0][jumlah]" required>
+                            <input class="form-control" type="number" placeholder="Masukkan jumlah" name="inpu[0][jumlah]" min="0" value="0" required>
                         </div>
                     </div>
                 </div>
@@ -563,7 +563,16 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="kontak">Kontak <span style="color: red;">*</span></label>
-                            <input class="form-control" id="kontak" name="inputs[0][kontak]" type="text" placeholder="Masukkan kontak" required>
+                            <input class="form-control" id="kontak" name="inputs[0][kontak]" type="tel" placeholder="Masukkan kontak" pattern="^[0-9]{10,15}$"
+                                title="Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka."
+                                oninvalid="this.setCustomValidity('Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka.')"
+                                oninput="this.setCustomValidity('');
+                                        if(this.checkValidity()) {
+                                            this.classList.add('valid-input');
+                                        } else {
+                                            this.classList.remove('valid-input');
+                                        }"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -650,29 +659,40 @@
         ++i;
         var newRow = 
             '<div class="personil-form">' +
-                '<div class="row gutters">' +
-                    '<div class="col-sm-6 col-12">' +
-                        '<div class="form-group">' +
-                            '<label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>' +
-                            '<input class="form-control" name="inputs[' + i + '][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap" required>' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-sm-6 col-12">' +
-                        '<div class="form-group">' +
-                            '<label for="posisi">Posisi <span style="color: red;">*</span></label>' +
-                            '<input class="form-control" name="inputs[' + i + '][posisi]" type="text" placeholder="Masukkan posisi" required>' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-sm-6 col-12">' +
-                        '<div class="form-group">' +
-                            '<label for="kontak">Kontak <span style="color: red;">*</span></label>' +
-                            '<input class="form-control" name="inputs[' + i + '][kontak]" type="text" placeholder="Masukkan kontak" required>' +
-                        '</div>' +
+            '<div class="row gutters">' +
+                '<div class="col-sm-6 col-12">' +
+                    '<div class="form-group">' +
+                        '<label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" name="inputs[' + i + '][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap" required>' +
                     '</div>' +
                 '</div>' +
-                '<button type="button" class="btn btn-danger remove-personil">Hapus</button>' +
-                '<hr>' +
-            '</div>';
+                '<div class="col-sm-6 col-12">' +
+                    '<div class="form-group">' +
+                        '<label for="posisi">Posisi <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" name="inputs[' + i + '][posisi]" type="text" placeholder="Masukkan posisi" required>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="col-sm-6 col-12">' +
+                    '<div class="form-group">' +
+                        '<label for="kontak">Kontak <span style="color: red;">*</span></label>' +
+                        '<input class="form-control" id="kontak_' + i + '" name="inputs[' + i + '][kontak]" type="tel" placeholder="Masukkan kontak" pattern="^[0-9]{10,15}$" ' +
+                            'title="Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka." ' +
+                            'oninvalid="this.setCustomValidity(\'Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka.\')" ' +
+                            'oninput="this.setCustomValidity(\'\'); ' +
+                                    'if(this.checkValidity()) { ' +
+                                        'this.classList.add(\'valid-input\'); ' +
+                                    '} else { ' +
+                                        'this.classList.remove(\'valid-input\'); ' +
+                                    '}" ' +
+                            'required>' +
+                        '<small class="form-text text-muted">Masukkan nomor telepon yang valid (10-15 digit angka).</small>' +
+                        '<div class="error-message">Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka.</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<button type="button" class="btn btn-danger remove-personil">Hapus</button>' +
+            '<hr>' +
+        '</div>';
 
         $('#personilContainer').append(newRow);
     });
@@ -870,6 +890,18 @@
         $(this).closest('.dokumentasi-form').remove();
     });
 </script>
- <!-- start modal dokumentasi -->
+<script>
+$(document).on('input', '.form-control', function () {
+    var kontakInput = this;
+    var formGroup = kontakInput.closest('.form-group');
+    
+    if (kontakInput.validity.valid) {
+        formGroup.classList.remove('invalid');
+    } else {
+        formGroup.classList.add('invalid');
+    }
+});
+</script>
+<!-- start modal dokumentasi -->
 
 @endsection
