@@ -31,10 +31,10 @@ class PDFController extends Controller
         return $pdf->stream('Laporan Situasi.pdf');
     }
 
-    public function pdf($id_laporan)
+    public function pdf($id_kejadian)
     {
         // Fetch all laporan entries with the given id_laporan
-        $laporans = DB::table('laporan')->where('id_laporan', $id_laporan)->orderBy('created_at', 'desc')->get();
+        $laporans = DB::table('laporan')->where('id_kejadian', $id_kejadian)->orderBy('created_at', 'desc')->get();
 
         if ($laporans->isEmpty()) {
             return abort(404); // Handle case where no laporan is found
@@ -85,7 +85,10 @@ class PDFController extends Controller
                 $kerusakan_infrastruktur = array_merge($kerusakan_infrastruktur, $kerusakan_infrastruktur_items->toArray());
 
                 // Fetch transaction_shelter related to dampak
-                $transaction_shelter_items = DB::table('transaction_shelter')->where('id_dampak', $dampak->id_dampak)->get();
+                $transaction_shelter_items = DB::table('transaction_shelter')->join('shelter', 'transaction_shelter.id_lokasi_shelter', '=', 'shelter.id_lokasi_shelter')
+                ->where('id_dampak', $dampak->id_dampak)
+                ->select('shelter.lokasi_shelter', 'shelter.jumlah_kk', 'shelter.jumlah_jiwa', 'shelter.lokasi_shelter', 'shelter.jumlah_laki', 'shelter.jumlah_perempuan', 'shelter.dibawah_lima', 'shelter.antara_lima_dan_delapanbelas', 'shelter.lebih_delapanbelas', 'shelter.jumlah')
+                ->get();
                 $transaction_shelter = array_merge($transaction_shelter, $transaction_shelter_items->toArray());
             }
 
@@ -151,12 +154,6 @@ class PDFController extends Controller
             $dampaks[] = $dampak;
         }
 
-        // Fetch shelters related to dampak through transaction_shelter
-        $shelters = DB::table('shelter')
-            ->join('transaction_shelter', 'shelter.id_lokasi_shelter', '=', 'transaction_shelter.id_lokasi_shelter')
-            ->where('transaction_shelter.id_dampak', $dampak->id_dampak)
-            ->get();
-
         $currentDate = date('m/d/Y');
         $currentDay = date('l');
         $currentTime = date('h:i:s A');
@@ -180,7 +177,7 @@ class PDFController extends Controller
             'giat_pmi' => $giat_pmi,
             'evakuasi_korban' => $evakuasi_korban,
             'layanan_korban' => $layanan_korban,
-            'shelters' => $shelters,
+            // 'shelters' => $shelters,
             'distribusi_layanans' => $distribusi_layanans,
             'transaction_shelter' => $transaction_shelter,
             'transaction_personil_dihubungi' => $transaction_personil_dihubungi,
@@ -190,6 +187,8 @@ class PDFController extends Controller
 
         // Debugging the data
         // dd($data);
+
+        // dd($tsr);
 
         $pdf = PDF::loadView('lapsit.lapsit-pdf', $data);
 

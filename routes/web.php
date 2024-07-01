@@ -73,7 +73,7 @@ Route::middleware(['auth', 'role:Pegawai PMI'])->group(function () {
     //Route::resource('kejadian', KejadianController::class);
     Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
     Route::get('/kejadian/view-assessor/{id_kejadian}', [KejadianController::class, 'viewAssessor']);
-    Route::get('/generate-lapsit/{id_laporan}', [PDFController::class, 'pdf']);
+    Route::get('/generate-lapsit/{id_kejadian}', [PDFController::class, 'pdf']);
 
     // Route::get('/form-assessment', function () {
     //     return view('assessment.form-assessment');
