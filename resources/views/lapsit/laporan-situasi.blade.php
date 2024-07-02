@@ -37,18 +37,36 @@
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
                     @if(!$laporanExist)
-                        <a href="{{ route('laporan.createAssessment', ['id_kejadian' => $id_kejadian]) }}">
-                            <button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Assessment</button>
-                        </a>
+                    <a href="{{ route('laporan.createAssessment', ['id_kejadian' => $id_kejadian]) }}">
+                        <button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Assessment</button>
+                    </a>
                     @endif
                     @if($isValidated)
-                        <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}">
-                            <button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Lapsit</button>
-                        </a>
+                    <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}">
+                        <button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Lapsit</button>
+                    </a>
                     @endif
                 </div>
             </div>
             @endcan
+
+            @can('skr')
+            <div class="card-body">
+                <div class="d-flex justify-content-start w-100">
+                    @if(!$laporanExist)
+                    <a href="{{ route('laporan.createAssessment', ['id_kejadian' => $id_kejadian]) }}">
+                        <button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Assessment</button>
+                    </a>
+                    @endif
+                    @if($isValidated)
+                    <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}">
+                        <button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Lapsit</button>
+                    </a>
+                    @endif
+                </div>
+            </div>
+            @endcan
+
             <div class="card-body">
                 <table id="basicExample" class="table table-striped table-bordered">
                     <thead>
@@ -65,7 +83,7 @@
                             <td>{{ $laporan['nama_laporan'] }}</td>
                             <td>{{ $laporan['update'] }}</td>
                             <td>
-                                <a href="{{ url('/generate-lapsit/' . $laporan['id_kejadian'])}}" target="_blank" style="color: green;">
+                                <a href="{{ url('/generate-lapsit/' . $laporan['id_laporan'])}}" target="_blank" style="color: green;">
                                     <button type="button" class="btn btn-success btn-rounded mb-2">Download <i class="icon-download3"></i></button>
                                 </a>
                             </td>

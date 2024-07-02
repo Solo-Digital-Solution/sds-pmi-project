@@ -28,9 +28,11 @@
         <div class="card">
             <div class="card-header">Kejadian</div>
             <div class="card-body">
+                @can('adm')
                 <div class="d-flex justify-content-start w-100">
                     <a href="{{ url('/tambah-kejadian')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Kejadian</button></a>
                 </div>
+                @endcan
             </div>
             <div class="card-body">
                 <table id="basicExample" class="table table-striped table-bordered">

@@ -21,11 +21,9 @@ class RoleMiddleware
         // Get the authenticated user
         $user = Auth::user();
 
-        // Check if user has any of the specified roles
-        foreach ($roles as $role) {
-            if ($user->hasRole($role)) {
-                return $next($request);
-            }
+        // Assuming your roles are stored in a pivot table `users_has_role`
+        if ($user->roles()->whereIn('role_name', $roles)->exists()) {
+            return $next($request);
         }
 
         return redirect('unauthorized'); // or handle unauthorized access
