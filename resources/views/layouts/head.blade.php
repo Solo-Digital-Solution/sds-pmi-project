@@ -37,4 +37,6 @@
     <!-- input lokasi dengan peta -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="{{ asset('vendor/c3/c3.min.css') }}" />
 </head>

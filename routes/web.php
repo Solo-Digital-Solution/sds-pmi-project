@@ -123,4 +123,8 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::put('/user-management/{id}', [UserController::class, 'update']);
 });
 
+Route::get('/cobaaa', function () {
+    return view('executive-summary.c3');
+});
+
 require __DIR__ . '/auth.php';
