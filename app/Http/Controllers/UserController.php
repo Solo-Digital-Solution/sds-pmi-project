@@ -9,6 +9,8 @@ use App\Models\Kejadian;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -114,7 +116,6 @@ class UserController extends Controller
 
         if ($request->hasFile('profilePhoto')) {
             $file = $request->file('profilePhoto');
-            // dd($file);
             $nama_dokumen1 = $user_id . '.' . $file->getClientOriginalExtension();
             $file->move('profilePhoto/', $nama_dokumen1);
         }
@@ -125,7 +126,8 @@ class UserController extends Controller
             $file->move('ktp/', $nama_dokumen2);
         }
 
-
+        // Hash the password before saving
+        $hashedPassword = Hash::make($request->password);
 
         $users = DB::table('users')->insertGetId([
             'user_id' => $user_id,
@@ -139,7 +141,7 @@ class UserController extends Controller
             'alamat' => $request->alamat,
             'goldar' => $request->goldar,
             'username' => $request->username,
-            'password' => $request->password,
+            'password' => $hashedPassword, // Save hashed password
             'gender' => $request->gender,
             'no_telp' => $request->no_telp,
             'profilePhoto' => $nama_dokumen1,
@@ -157,6 +159,7 @@ class UserController extends Controller
         // Redirect ke halaman user-management setelah berhasil menyimpan
         return redirect('user-management')->with('success', 'Akun berhasil dibuat');
     }
+
 
 
     public function destroy($id)
