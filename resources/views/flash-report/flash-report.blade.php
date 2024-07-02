@@ -364,7 +364,7 @@
         </form>
     </div>
 </div>
-    <script>
+    {{-- <script>
         document.getElementById('send-to-whatsapp').addEventListener('click', function() {
             const modal = document.getElementById('sendMessageModal');
             modal.style.display = 'flex'; // Show the modal
@@ -413,7 +413,7 @@
                 modal.style.display = 'none';
             }
         }
-    </script>
+    </script> --}}
 
 <script>
     function downloadContentAsImage() {

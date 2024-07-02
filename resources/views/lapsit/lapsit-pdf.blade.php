@@ -898,11 +898,23 @@
                 <tr>
                     <th style="background-color: white; color: black; width: 100px;" colspan="10">LAMPIRAN DOKUMENTASI</th>
                 </tr>
-                <tr>
-
-                </tr>
+                @foreach ($transaction_dokumentasi as $index => $dk)
+                    @if ($index % 2 == 0)
+                        <tr>
+                    @endif
+                    <td colspan="5">
+                        <img src="{{ public_path('dokumentasi/'.$dk->file_path) }}" height="190px" alt="">
+                    </td>
+                    @if ($index % 2 == 1)
+                        </tr>
+                    @endif
+                @endforeach
+                @if (count($transaction_dokumentasi) % 2 != 0)
+                    <td colspan="5"></td></tr>
+                @endif
             </table>
         </div>
+
     </div>
 </body>
 </html>
