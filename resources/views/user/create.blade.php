@@ -122,7 +122,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="kelurahan-dd">Options</label>
                             </div>
-                            <select class="form-control" id="kelurahan-dd" name="kelurahan"></select>
+                            <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>
                         </div>
                     </div>
 
@@ -151,13 +151,12 @@
                     </div>
                     <div class="form-group">
                         <label for="role_name">Role <span style="color: red;">*</span></label>
-                        <select class="form-control" name="role_name" id="role_name" style="width: 100%; margin-bottom: 1.5vh;">
-                            <option selected>-- Pilih jenis role --</option>
+                        <select class="form-control" name="role_name[]" id="role_name" multiple style="width: 100%; margin-bottom: 1.5vh;">
                             @foreach($roles as $r)
                             <option value="{{ $r->role_id }}">{{ $r->role_name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label for="no_telp">
                             Nomor Telepon <span style="color: red;">*</span>

@@ -17,17 +17,19 @@ class RoleMiddleware
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
-    {
-        // Get the authenticated user
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-        // Check if user has any of the specified roles
-        foreach ($roles as $role) {
-            if ($user->hasRole($role)) {
-                return $next($request);
-            }
-        }
-
-        return redirect('unauthorized'); // or handle unauthorized access
+    if (!$user) {
+        return redirect('unauthorized');
     }
+
+    foreach ($roles as $role) {
+        if ($user->roles->contains('role_name', $role)) {
+            return $next($request);
+        }
+    }
+
+    return redirect('unauthorized');
+}
 }

@@ -1,3 +1,6 @@
-2024/06/27-23:59:38.496 5cfc Reusing MANIFEST C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2024/06/27-23:59:38.497 5cfc Recovering log #4
-2024/06/27-23:59:38.499 5cfc Reusing old log C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\Local Storage\leveldb/000004.log 
+2024/06/28-07:49:50.638 6648 Reusing MANIFEST C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2024/06/28-07:49:50.645 6648 Recovering log #4
+2024/06/28-07:49:50.646 6648 Reusing old log C:\laragon\www\sds-pmi-project\.wwebjs_auth\session\Default\Local Storage\leveldb/000004.log 
+2024/06/28-09:06:45.780 1f4 Level-0 table #8: started
+2024/06/28-09:06:45.785 1f4 Level-0 table #8: 13186 bytes OK
+2024/06/28-09:06:45.791 1f4 Delete type=0 #4

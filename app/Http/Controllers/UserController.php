@@ -13,14 +13,11 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index()
-    {
-        $totalData = User::count();
-        $dataPerPage = max(min($totalData, 10), 1);
+{
+    $users = User::all(); // Mengambil semua data pengguna menggunakan model User
 
-        $users = DB::table('users')->join('users_has_role', 'users_has_role.user_id', '=', 'users.user_id')->join('roles', 'users_has_role.role_id', 'roles.role_id')->get();
-
-        return view('user.user-management', compact('users'));
-    }
+    return view('user.user-management', compact('users'));
+}
 
     public function profile_index()
     {
@@ -36,17 +33,12 @@ class UserController extends Controller
     }
 
     public function create()
-    {
-        $roles = Roles::get(["role_id", "role_name"]);
-        //dd($roles);
-        //$roles = DB::table('roles')->get();
-        $kecamatans = Kecamatan::get(["id_kecamatan", "nama_kecamatan"]);
+{
+    $roles = Roles::all(); // Mengambil semua data role dari model Roles
+    $kecamatans = Kecamatan::all(); // Mengambil semua data kecamatan dari model Kecamatan
+    return view('user.create', compact('roles', 'kecamatans'));
+}
 
-        //$kecamatans = Kecamatan::all();
-        // $roles = Roles::all();
-
-        return view('user.create', compact('roles','kecamatans'));
-    }
 
     // public function create()
     // {
@@ -147,15 +139,19 @@ class UserController extends Controller
         ]);
 
         // Simpan role pengguna ke tabel users_has_role
-        $role_id = $request->role_name;
+        $role_ids = $request->input('role_name'); // Ini bisa berupa array jika memungkinkan pengguna untuk memilih banyak peran
 
-        $roles = DB::table('users_has_role')->insert([
-            'user_id' => $user_id,
-            'role_id' => $role_id
-        ]);
+        if (!empty($role_ids)) {
+            foreach ($role_ids as $role_id) {
+                DB::table('users_has_role')->insert([
+                    'user_id' => $user_id,
+                    'role_id' => $role_id
+                ]);
+            }
+        }
 
         // Redirect ke halaman user-management setelah berhasil menyimpan
-        return redirect('user-management')->with('success', 'Akun berhasil dibuat');
+        return redirect('/user-management')->with('success', 'Akun berhasil dibuat');
     }
 
 
@@ -172,11 +168,8 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = DB::table('users')
-            ->join('users_has_role', 'users_has_role.user_id', '=', 'users.user_id')
-            ->join('roles', 'users_has_role.role_id', '=', 'roles.role_id')
-            ->where('users.user_id', $id)
-            ->select('users.*', 'roles.role_id as role_id')
+        $user = User::with('roles')
+            ->where('user_id', $id)
             ->first();
 
         $roles = DB::table('roles')->get();
@@ -185,18 +178,22 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        // $user = DB::table('users')->where('user_id', $id)->update([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'username' => $request->username,
-        //     'no_telp' => $request->no_telp,
-        // ]);
+{
+    // Ambil data pengguna
+    $user = User::findOrFail($id);
 
-        $role = DB::table('users_has_role')->where('user_id', $id)->update([
-            'role_id' => $request->role_name,
-        ]);
+    // Hapus semua relasi peran saat ini untuk pengguna ini
+    $user->roles()->detach();
 
-        return redirect('/user-management')->with('success', 'Akun berhasil diperbarui');
+    // Simpan peran baru
+    $roles = $request->input('role_name');
+    if (!empty($roles)) {
+        foreach ($roles as $role_id) {
+            $user->roles()->attach($role_id);
+        }
     }
+
+    return redirect('/user-management')->with('success', 'Peran pengguna berhasil diperbarui');
+}
+
 }

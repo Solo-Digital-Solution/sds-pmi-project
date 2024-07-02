@@ -100,7 +100,12 @@
                             <td>{{ $us->name }}</td>
                             <td>{{ $us->email }}</td>
                             <td>{{ $us->user_id }}</td>
-                            <td>{{ $us->role_name }}</td>
+                            <td>
+                                @foreach($us->roles as $role)
+                                    <span class="badge badge-primary">{{ $role->role_name }}</span>
+                                @endforeach
+                            </td>
+                            
                             <td>{{ $us->no_telp }}</td>
                             <td>{{ $us->kelurahan }}</td>
                             <td>
