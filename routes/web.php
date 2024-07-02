@@ -46,7 +46,7 @@ Route::middleware(['auth', 'role:Pegawai PMI, Sukarelawan'])->group(function () 
     Route::get('/form-assessment', [LaporanController::class, 'createAssessment'])->name('laporan.createAssessment');
 
     // ROUTES UNTUK LAPORAN SITUASI
-    Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan-situasi/{id_kejadian}', [LaporanController::class])->name('laporan.index');
     Route::get('/kejadian/view-lapsit/{id_kejadian}', [LaporanController::class, 'index'])->name('kejadian.view-lapsit');
     Route::get('/tambah-lapsit', [LaporanController::class, 'create'])->name('laporan.create');
     Route::post('/tambah-lapsit', [LaporanController::class, 'store'])->name('laporan.store');
@@ -56,10 +56,8 @@ Route::middleware(['auth', 'role:Pegawai PMI, Sukarelawan'])->group(function () 
 
 Route::middleware(['auth', 'role:Pegawai PMI, Executive'])->group(function () {
     // ROUTES UNTUK EXECUTIVE SUMMARY
-    Route::prefix('executive-summary')->group(function () {
-        Route::get('/', [ExsumController::class, 'index'])->name('executive-summary.index');
-        Route::get('/search', [ExsumController::class, 'search'])->name('executive-summary.search');
-    });
+    Route::get('/executive-summary', [ExsumController::class, 'index'])->name('executive-summary.index');
+    Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('executive-summary.search');
 });
 
 Route::middleware(['auth', 'role:Pegawai PMI'])->group(function () {
@@ -73,7 +71,7 @@ Route::middleware(['auth', 'role:Pegawai PMI'])->group(function () {
     //Route::resource('kejadian', KejadianController::class);
     Route::delete('kejadian/{id}', [KejadianController::class, 'destroy'])->name('kejadian.destroy');
     Route::get('/kejadian/view-assessor/{id_kejadian}', [KejadianController::class, 'viewAssessor']);
-    Route::get('/generate-lapsit/{id_kejadian}', [PDFController::class, 'pdf']);
+    Route::get('/generate-lapsit/{id_kejadian}', [PDFController::class, 'pdf'])->name('generateLapsit');
 
     // Route::get('/form-assessment', function () {
     //     return view('assessment.form-assessment');

@@ -17,4 +17,9 @@ class Giat_pmi extends Model
     {
         return $this->belongsTo(Evakuasi_korban::class, 'id_evakuasi_korban');
     }
+
+    public function layananKorban()
+    {
+        return $this->belongsTo(Layanan_korban::class, 'id_distribusi_layanan');
+    }
 }

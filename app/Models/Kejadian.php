@@ -26,4 +26,14 @@ class Kejadian extends Model
         'akses_lokasi',
         'status'
     ];
+
+    public function laporan()
+    {
+        return $this->hasMany(Laporan::class, 'id_kejadian');
+    }
+
+    public function getLaporanTerbaruAttribute()
+    {
+        return $this->laporan()->orderByDesc('update')->first();
+    }
 }
