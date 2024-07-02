@@ -28,6 +28,11 @@
 <form>
     @csrf
     <input type="hidden" name="id_kejadian" value="{{ $id_kejadian }}">
+    <div class="col-sm-12 mb-3">
+        <a href="{{ route('kejadian.view-lapsit', ['id_kejadian' => $id_kejadian]) }}" class="btn btn-primary">
+           <i class="icon-arrow-left-thick"></i> Kembali
+        </a>
+    </div>
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">

@@ -76,12 +76,13 @@
                                 <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">
                                     <button type="button" class="btn btn-warning btn-rounded mb-2">Flash Report <i class="icon-stats-bars"></i></button>
                                 </a>
-                                <form action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
+                                <form id="deleteForm-{{ $laporan['id_laporan'] }}" action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id_kejadian" value="{{ $laporan['id_kejadian'] }}">
-                                    <button type="submit" class="btn btn-primary btn-rounded mb-2" onclick="return confirm('Anda yakin ingin menghapus laporan ini?')">Delete <i class="icon-trash2"></i></button>
+                                    <button type="button" class="btn btn-primary btn-rounded mb-2" data-toggle="modal" data-target="#confirmModal" data-id="{{ $laporan['id_laporan'] }}">Delete <i class="icon-trash2"></i></button>
                                 </form>
+
                             </td>
                         </tr>
                         @endforeach
@@ -93,5 +94,67 @@
 </div>
 <!-- Row ends -->
 
+</div>
+
+<!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Penghapusan Laporan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Anda yakin ingin menghapus laporan ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel" style="color: green;">Success</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: green;">
+                    {{ session('success') }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel" style="color: red;">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: red;">
+                    {{ session('error') }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

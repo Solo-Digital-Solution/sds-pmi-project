@@ -66,13 +66,31 @@ class KejadianController extends Controller
             return redirect()->back()->with('error', 'Validasi data gagal!');
         }
         */
-        $request = Kejadian::create($request->except('_token'));
+        // $request = Kejadian::create($request->except('_token'));
 
-        // Pesan : Sukses
-        //$request->session()->flash('success', 'Kejadian Berhasil Ditambahkan');
-        return redirect('kejadian');
+        // // Pesan : Sukses
+        // //$request->session()->flash('success', 'Kejadian Berhasil Ditambahkan');
+        // return redirect('kejadian');
 
-        // Pesan : Gagal
+        // // Pesan : Gagal
+        // Mulai transaksi database
+        DB::beginTransaction();
+        try {
+            // Simpan data kejadian
+            $request = Kejadian::create($request->except('_token'));
+
+            // Commit transaksi
+            DB::commit();
+
+            // Pesan sukses
+            return redirect('kejadian')->with('success', 'Kejadian berhasil ditambahkan');
+        } catch (\Exception $e) {
+            // Rollback transaksi jika terjadi kesalahan
+            DB::rollback();
+
+            // Pesan gagal
+            return redirect('kejadian')->with('error', 'Kejadian gagal ditambahkan: ' . $e->getMessage());
+        }
     }
 
     public function edit($id_kejadian)
@@ -97,26 +115,41 @@ class KejadianController extends Controller
 
     public function update(Request $request, $id_kejadian)
     {
-        $kejadian = Kejadian::findOrFail($id_kejadian);
-        $kejadian->update([
-            'title'     => $request->title,
-            'content'   => $request->content,
-            'nama_kejadian' => $request->nama_kejadian,
-            'lokasi' => $request->lokasi,
-            'kecamatan' => $request->kecamatan,
-            'kelurahan' => $request->kelurahan,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'waktu_kejadian' => $request->waktu_kejadian,
-            'dukungan_inter' => $request->dukungan_inter,
-            'gambaran_situasi' => $request->gambaran_situasi,
-            'akses_lokasi' => $request->akses_lokasi,
-            'status' => $request->status
-        ]);
+        // Mulai transaksi database
+        DB::beginTransaction();
+        try {
+            // Temukan kejadian berdasarkan id
+            $kejadian = Kejadian::findOrFail($id_kejadian);
 
-        //redirect to index
-        //return redirect()->route('kejadian')->with(['success' => 'Data Berhasil Diubah!']);
-        return redirect('kejadian');
+            // Update data kejadian
+            $kejadian->update([
+                'title' => $request->title,
+                'content' => $request->content,
+                'nama_kejadian' => $request->nama_kejadian,
+                'lokasi' => $request->lokasi,
+                'kecamatan' => $request->kecamatan,
+                'kelurahan' => $request->kelurahan,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'waktu_kejadian' => $request->waktu_kejadian,
+                'dukungan_inter' => $request->dukungan_inter,
+                'gambaran_situasi' => $request->gambaran_situasi,
+                'akses_lokasi' => $request->akses_lokasi,
+                'status' => $request->status
+            ]);
+
+            // Commit transaksi
+            DB::commit();
+
+            // Pesan sukses
+            return redirect('kejadian')->with('success', 'Kejadian berhasil diubah');
+        } catch (\Exception $e) {
+            // Rollback transaksi jika terjadi kesalahan
+            DB::rollback();
+
+            // Pesan gagal
+            return redirect('kejadian')->with('error', 'Kejadian gagal diubah: ' . $e->getMessage());
+        }
     }
 
     public function destroy($id_kejadian)
