@@ -4877,3 +4877,29 @@ label {
   padding-right: 0px;
   padding-left: 0px;
 }
+
+
+.form-group {
+  position: relative;
+}
+.error-message {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #dc3545;
+  background-color: white;
+  padding: 5px 10px;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  z-index: 10;
+  display: none;
+}
+.form-group.invalid .error-message {
+  display: block;
+}
+.form-control.valid-input {
+  border-color: green !important;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}

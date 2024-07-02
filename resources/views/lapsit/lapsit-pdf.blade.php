@@ -202,54 +202,55 @@
         </table>
 
         <h3 style="padding-top:15px; text-align: center;">LAPORAN SITUASI</h3>
-        @foreach ($kejadians as $kejadian)
-        <div>
-            <table class="deskripsi-umum" style="padding-top:10px;">
-                <tr>
-                    <td style="font-weight: bold;">Kejadian Bencana</td>
-                    <td style="font-weight: bold; background-color:  white;">: {{ $kejadian->nama_kejadian }}</td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold;">Lokasi</td>
-                    <td>: {{ $kejadian->lokasi }}</td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold;">Waktu Kejadian</td>
-                    <td style="background-color: white;">: {{ $kejadian->waktu_kejadian }}/td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold;">Update</td>
-                    <td>: 06.30</td>
-                </tr>
-                <tr>
-                    <td style="background-color: #f8d7da;">Pemerintah membutuhkan dukungan internasional</td>
-                    <td>: {{ $kejadian->dukungan_inter }}</td>
-                </tr>
-            </table>
-        </div>
+        @if (!empty($kejadians))
+            @php $kejadian = $kejadians[0]; @endphp
+            <div>
+                <table class="deskripsi-umum" style="padding-top:10px;">
+                    <tr>
+                        <td style="font-weight: bold;">Kejadian Bencana</td>
+                        <td style="font-weight: bold; background-color:  white;">: {{ $kejadian->nama_kejadian }}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Lokasi</td>
+                        <td>: {{ $kejadian->lokasi }}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Waktu Kejadian</td>
+                        <td style="background-color: white;">: {{ $kejadian->waktu_kejadian }}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Update</td>
+                        <td>: 06.30</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #f8d7da;">Pemerintah membutuhkan dukungan internasional</td>
+                        <td>: {{ $kejadian->dukungan_inter }}</td>
+                    </tr>
+                </table>
+            </div>
 
-        <div class="padding-table">
-            <table class="dampak-table">
-                <tr>
-                    <th style="background-color: red; color: white; width: 100px;" colspan="10">GAMBARAN UMUM SITUASI</th>
-                </tr>
-                <tr>
-                    <td style="text-align: justify;" colspan="10">{{ $kejadian->gambaran_situasi }}</td>
-                </tr>
-            </table>
-        </div>
+            <div class="padding-table">
+                <table class="dampak-table">
+                    <tr>
+                        <th style="background-color: red; color: white; width: 100px;" colspan="10">GAMBARAN UMUM SITUASI</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: justify;" colspan="10">{{ $kejadian->gambaran_situasi }}</td>
+                    </tr>
+                </table>
+            </div>
 
-        <div class="padding-table">
-            <table class="dampak-table">
-                <tr>
-                    <th style="background-color: red; color: white; width: 100px;" colspan="10">KETERANGAN AKSES MENUJU LOKASI</th>
-                </tr>
-                <tr>
-                    <td style="text-align: justify;" colspan="10">{{ $kejadian->akses_lokasi }}</td>
-                </tr>
-            </table>
-        </div>
-        @endforeach
+            <div class="padding-table">
+                <table class="dampak-table">
+                    <tr>
+                        <th style="background-color: red; color: white; width: 100px;" colspan="10">KETERANGAN AKSES MENUJU LOKASI</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: justify;" colspan="10">{{ $kejadian->akses_lokasi }}</td>
+                    </tr>
+                </table>
+            </div>
+        @endif
 
         @foreach ($laporans as $laporan)
         <div class="padding-table">
@@ -271,213 +272,179 @@
                     <th>Lapsit-6</th>
                     <th>Lapsit-7</th>
                 </tr>
-                @foreach ($korban_terdampak as $kt)
+
                 <tr>
                     <td colspan="2">KK</td>
-                    <td>{{ $kt->jmlh_kk ?? 0 }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_terdampak as $kt)
+                        <td>{{ $kt->jmlh_kk ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_terdampak); $i < 8; $i++)
+                        <td></td>
+                    @endfor
+
                 </tr>
                 <tr>
                     <td colspan="2">Jiwa</td>
-                    <td>{{ $kt->jmlh_jiwa ?? 0 }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_terdampak as $kt)
+                        <td>{{ $kt->jmlh_jiwa ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_terdampak); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
                 <tr>
                     <th colspan="10">Korban Jiwa/Luka/Mengungsi</th>
                 </tr>
-                @foreach ($korban_jiwa as $kj)
                 <tr>
                     <td colspan="2">Luka berat</td>
-                    <td>{{ $kj->luka_berat }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_jiwa as $kj)
+                        <td>{{ $kj->luka_berat ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_jiwa); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Luka Ringan</td>
-                    <td>{{ $kj->luka_ringan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_jiwa as $kj)
+                        <td>{{ $kj->luka_ringan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_jiwa); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Meninggal</td>
-                    <td>{{ $kj->meninggal }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_jiwa as $kj)
+                        <td>{{ $kj->meninggal ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_jiwa); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Hilang</td>
-                    <td>{{ $kj->hilang }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_jiwa as $kj)
+                        <td>{{ $kj->hilang ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_jiwa); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Mengungsi</td>
-                    <td>{{ $kj->mengungsi }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($korban_jiwa as $kj)
+                        <td>{{ $kj->mengungsi ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($korban_jiwa); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Kerusakan Rumah</th>
                 </tr>
-                @foreach ($kerusakan_rumah as $kr)
                 <tr>
                     <td colspan="2">Rusak Berat</td>
-                    <td>{{ $kr->rusak_berat }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_rumah as $kr)
+                        <td>{{ $kr->rusak_berat ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_rumah); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Sedang</td>
-                    <td>{{ $kr->rusak_sedang }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_rumah as $kr)
+                        <td>{{ $kr->rusak_sedang ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_rumah); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Rusak Ringan</td>
-                    <td>{{ $kr->rusak_ringan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_rumah as $kr)
+                        <td>{{ $kr->rusak_ringan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_rumah); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Kerusakan Fasilitas Sosial/Umum</th>
                 </tr>
-                @foreach ($kerusakan_fasilitas as $kf)
                 <tr>
                     <td colspan="2">Sekolah</td>
-                    <td>{{ $kf->sekolah }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_fasilitas as $kf)
+                        <td>{{ $kf->sekolah ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_fasilitas); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Tempat Ibadah</td>
-                    <td>{{ $kf->tempat_ibadah }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_fasilitas as $kf)
+                        <td>{{ $kf->tempat_ibadah ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_fasilitas); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Rumah Sakit</td>
-                    <td>{{ $kf->rumah_sakit }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_fasilitas as $kf)
+                        <td>{{ $kf->rumah_sakit ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_fasilitas); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Pasar</td>
-                    <td>{{ $kf->pasar }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_fasilitas as $kf)
+                        <td>{{ $kf->pasar ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_fasilitas); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Gedung Pemerintah</td>
-                    <td>{{ $kf->gedung_pemerintah }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_fasilitas as $kf)
+                        <td>{{ $kf->gedung_pemerintah ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_fasilitas); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Lain-lain</td>
-                    <td>{{ $kf->{'lain-lain'} }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($kerusakan_fasilitas as $kf)
+                        <td>{{ $kf->lain_lain ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($kerusakan_fasilitas); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
             <table class="table dampak-table">
                 <tr>
                     <th colspan="10">Kerusakan Infrastruktur</th>
                 </tr>
-                @foreach ($kerusakan_infrastruktur as $ki)
                 <tr>
-                    <td style="text-align: justify;" colspan="10">{{ $ki->deskripsi_kerusakan }}</td>
+                    <td colspan="10">
+                        <ul style="text-align: left;">
+                            @foreach ($kerusakan_infrastruktur as $ki)
+                            <li>{{ $ki->deskripsi_kerusakan }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                 </tr>
-                @endforeach
             </table>
 
             <table class="table dampak-table">
@@ -501,7 +468,7 @@
                         </t>
                     <th>Jumlah</th>
                 </tr>
-                @foreach ($shelters as $sh)
+                @foreach ($transaction_shelter as $sh)
                 <tr>
                     <td colspan="2">{{ $sh->lokasi_shelter }}</td>
                     <td>{{ $sh->jumlah_kk }}</td>
@@ -538,275 +505,223 @@
                     <th>Lapsit-6</th>
                     <th>Lapsit-7</th>
                 </tr>
-                @foreach($personil as $pr)
                 <tr>
                     <td colspan="2">Pengurus</td>
-                    <td>{{ $pr->pengurus }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($personil as $pr)
+                        <td>{{ $pr->pengurus ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($personil); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Staf Markas</td>
-                    <td>{{ $pr->staf_markas }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($personil as $pr)
+                        <td>{{ $pr->staf_markas ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($personil); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Relawan PMI</td>
-                    <td>{{ $pr->relawan_pmi }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($personil as $pr)
+                        <td>{{ $pr->relawan_pmi ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($personil); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Sukarelawan Spesialis</td>
-                    <td>{{ $pr->sukarelawan_spesialis }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($personil as $pr)
+                        <td>{{ $pr->sukarelawan_spesialis ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($personil); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
             <table class="dampak-table">
                 <tr>
                     <th colspan="10">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</th>
                 </tr>
-                @foreach($tsr as $tsr)
                 <tr>
                     <td colspan="2">Medis</td>
-                    <td>{{ $tsr->medis }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->medis ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Paramedis</td>
-                    <td>{{ $tsr->paramedis }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->paramedis ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Relief</td>
-                    <td>{{ $tsr->relief }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->relief ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Logistics</td>
-                    <td>{{ $tsr->logistics }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->logistics ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Watsan</td>
-                    <td>{{ $tsr->watsan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->watsan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">IT-Telekom</td>
-                    <td>{{ $tsr->it_telekom }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->it_telekom ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Sheltering</td>
-                    <td>{{ $tsr->sheltering }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tsr as $ts)
+                        <td>{{ $ts->sheltering ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tsr); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
             <table class="dampak-table">
                 <tr>
                     <th colspan="10">Alat Utama Sistem TDB</th>
                 </tr>
-                @foreach ($tdb as $tdb)
                 <tr>
                     <td colspan="2">Kend. Ops</td>
-                    <td>{{ $tdb->kend_ops }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->kend_ops ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Truk Angkutan</td>
-                    <td>{{ $tdb->truk_angkutan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->truk_angkutan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Truk Tangki</td>
-                    <td>{{ $tdb->truk_tangki }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->truk_tangki ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Double Cabin</td>
-                    <td>{{ $tdb->double_cabin }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->double_cabin ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Alat DU</td>
-                    <td>{{ $tdb->alat_du }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->alat_du ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Ambulans</td>
-                    <td>{{ $tdb->ambulans }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->ambulans ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Alat Watsan</td>
-                    <td>{{ $tdb->alat_watsan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->alat_watsan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">RS Lapangan</td>
-                    <td>{{ $tdb->rs_lapangan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->rs_lapangan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Alat PKDD</td>
-                    <td>{{ $tdb->alat_pkdd }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->alat_pkdd ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Gudang Lapangan</td>
-                    <td>{{ $tdb->gudang_lapangan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->gudang_lapangan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Posko Aju</td>
-                    <td>{{ $tdb->posko_aju }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->posko_aju ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Alat IT/Tel Lapangan</td>
-                    <td>{{ $tdb->alat_it_lapangan }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($tdb as $td)
+                        <td>{{ $td->it_lapangan ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($tdb); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
         </div>
 
@@ -829,30 +744,24 @@
                     <th>Lapsit-6</th>
                     <th>Lapsit-7</th>
                 </tr>
-                @foreach ($evakuasi_korban as $ek)
                 <tr>
                     <td colspan="2">Luka Ringan/Berat</td>
-                    <td>{{ $ek->luka_ringan_berat }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($evakuasi_korban as $ek)
+                        <td>{{ $ek->luka_ringan_berat ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($evakuasi_korban); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Meninggal</td>
-                    <td>{{ $ek->meninggal }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($evakuasi_korban as $ek)
+                        <td>{{ $ek->meninggal ?? 0 }}</td>
+                    @endforeach
+                    @for ($i = count($evakuasi_korban); $i < 8; $i++)
+                        <td></td>
+                    @endfor
                 </tr>
-                @endforeach
             </table>
 
             <table class="dampak-table">
@@ -911,11 +820,11 @@
                 <tr>
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">GIAT PEMERINTAH</th>
                 </tr>
+                @foreach ($laporans as $lp)
                 <tr>
-                    @foreach ($laporans as $lp)
-                    <td colspan="10">{{ $lp->giat_pemerintah }}</td>
-                    @endforeach
+                    <td colspan="10">{{ $lp->giat_pemerintah ?? 0 }}</td>
                 </tr>
+                @endforeach
             </table>
         </div>
 
@@ -924,11 +833,11 @@
                 <tr>
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">KEBUTUHAN</th>
                 </tr>
+                @foreach ($laporans as $lp)
                 <tr>
-                    @foreach ($laporans as $lp)
                     <td colspan="10">{{ $lp->kebutuhan }}</td>
-                    @endforeach
                 </tr>
+                @endforeach
             </table>
         </div>
 
@@ -937,11 +846,11 @@
                 <tr>
                     <th style="background-color: red; color: white; width: 100px;" colspan="10">HAMBATAN</th>
                 </tr>
+                @foreach ($laporans as $lp)
                 <tr>
-                    @foreach ($laporans as $lp)
                     <td colspan="10">{{ $lp->hambatan }}</td>
-                    @endforeach
                 </tr>
+                @endforeach
             </table>
         </div>
 
@@ -955,14 +864,15 @@
                     <th colspan="3">Posisi</th>
                     <th colspan="3">Kontak</th>
                 </tr>
+                @foreach ($transaction_personil_dihubungi as $pd)
                 <tr>
-                    @foreach ($transaction_personil_dihubungi as $pd)
-                        <td colspan="4">{{ $pd->nama_lengkap }}</td>
-                        <td colspan="3">{{ $pd->posisi }}</td>
-                        <td colspan="3">{{ $pd->kontak }}</td>
-                    @endforeach
+                    <td colspan="4">{{ $pd->nama_lengkap }}</td>
+                    <td colspan="3">{{ $pd->posisi }}</td>
+                    <td colspan="3">{{ $pd->kontak }}</td>
                 </tr>
+                @endforeach
             </table>
+
         </div>
 
         <div class="padding-table">
@@ -974,12 +884,12 @@
                     <th colspan="5">Nama Lengkap</th>
                     <th colspan="5">Kontak</th>
                 </tr>
+                @foreach ($transaction_petugas_posko as $pp)
                 <tr>
-                    @foreach ($transaction_petugas_posko as $pp)
                         <td colspan="5">{{ $pp->nama_lengkap }}</td>
                         <td colspan="5">{{ $pp->kontak }}</td>
-                    @endforeach
                 </tr>
+                @endforeach
             </table>
         </div>
 
@@ -989,21 +899,10 @@
                     <th style="background-color: white; color: black; width: 100px;" colspan="10">LAMPIRAN DOKUMENTASI</th>
                 </tr>
                 <tr>
-                    {{-- @foreach ($transaction_dokumentasi as $td)
-                        <td colspan="5">
-                            <img src="{{ asset('dokumentasi/static-image.jpg') }}" height="190px" alt="">
-                        </td>
-                    @endforeach --}}
-                    <td colspan="5">
-                        <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
-                    </td>
-                    <td colspan="5">
-                        <img src="{{ public_path('img/banjir.jpg') }}" height="190px" alt="">
-                    </td>
+
                 </tr>
             </table>
         </div>
     </div>
 </body>
-
 </html>

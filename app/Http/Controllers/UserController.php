@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Kejadian;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -23,7 +24,10 @@ class UserController extends Controller
 
     public function profile_index()
     {
-        return view('profile.index');
+        $user = Auth::user();
+        $roles = $user->roles;
+
+        return view('profile.index', compact('user', 'roles'));
     }
 
     public function profile_edit()
@@ -121,7 +125,7 @@ class UserController extends Controller
             $file->move('ktp/', $nama_dokumen2);
         }
 
-        
+
 
         $users = DB::table('users')->insertGetId([
             'user_id' => $user_id,

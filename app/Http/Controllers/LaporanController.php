@@ -289,7 +289,7 @@ class LaporanController extends Controller
                 'unit' => $input['unit'],
                 'jumlah' => $input['jumlah']
             ]);
-        }        
+        }
 
         foreach($distribusi_layanan as $dl) {
             DB::table('layanan_korban')->insertGetId([
@@ -322,7 +322,16 @@ class LaporanController extends Controller
         // ================================= LAPORAN =================================
         $id_kejadian = $request->input('id_kejadian');
 
-        $laporan = DB::table('laporan')->insertGetId([
+        $jumlahLaporan = DB::table('laporan')->where('id_kejadian', $id_kejadian)->count();
+
+        if ($jumlahLaporan == 0){
+            $penomoranLaporan = $id_kejadian . '-' . $jumlahLaporan;
+        } elseif ($jumlahLaporan > 0){
+            $penomoranLaporan = $id_kejadian . '-' . ($jumlahLaporan);
+        }
+
+        DB::table('laporan')->insert([
+            'id_laporan'=> $penomoranLaporan,
             'id_dampak' => $dampak,
             'id_mobilisasi' => $mobilisasi,
             'id_giat_pmi' => $giat_pmi,
@@ -345,21 +354,21 @@ class LaporanController extends Controller
 
         foreach($dokumentasi as $dokum) {
             DB::table('transaction_dokumentasi')->insertGetId([
-                'id_laporan' => $laporan,
+                'id_laporan' => $penomoranLaporan,
                 'id_dokumentasi' => $dokum
             ]);
         }
 
         foreach($personil_dihubungi as $pd) {
             DB::table('transaction_personil_dihubungi')->insertGetId([
-                'id_laporan' => $laporan,
+                'id_laporan' => $penomoranLaporan,
                 'id_personil_dihubungi' => $pd
             ]);
         }
 
         foreach($petugas_posko as $pp) {
             DB::table('transaction_petugas_posko')->insertGetId([
-                'id_laporan' => $laporan,
+                'id_laporan' => $penomoranLaporan,
                 'id_petugas_posko' => $pp
             ]);
         }

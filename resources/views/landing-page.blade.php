@@ -175,6 +175,20 @@
 				</div>
 				<div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
 					<div class="u-layout">
+                    <div class="u-layout-row">
+                        <div class="u-container-align-left u-container-style u-layout-cell u-left-cell u-size-20-lg u-size-20-xl u-size-26-md u-size-26-sm u-size-26-xs u-layout-cell-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
+                            <div class="u-container-layout u-valign-top u-container-layout-1">
+                            <h3 class="u-align-left u-text u-text-1">JADI RELAWAN</h3>
+                            </div>
+                        </div>
+                        <div class="u-container-align-left u-container-style u-layout-cell u-right-cell u-size-34-md u-size-34-sm u-size-34-xs u-size-40-lg u-size-40-xl u-layout-cell-2" data-animation-name="customAnimationIn" data-animation-duration="1500">
+                            <div class="u-container-layout u-valign-top u-container-layout-2">
+                            <p class="u-align-left u-text u-text-2">Relawan merupakan ujung tombak bagi PMI dalam melaksanakan tugas-tugas kemanusiaan. Minat jadi Relawan PMI? Silakan klik tombol di bawah ini!
+                            </p>
+                            <a href="#" class="u-align-left u-btn u-button-style u-btn-2" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">Baca Selengkapnya</a>
+                            </div>
+                        </div>
+                        </div>
 					</div>
 				</div>
 			</div>

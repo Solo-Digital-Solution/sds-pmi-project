@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Definisikan gates
+        Gate::define('null', function (User $user) {
+            return $user->roles()->doesntExist();
+        });
         Gate::define('adm', function (User $user) {
             return $user->roles()->where('role_name', 'Pegawai PMI')->exists();
         });
