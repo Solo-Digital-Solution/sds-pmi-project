@@ -54,14 +54,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function hasRole($roleName)
-    {
-        return $this->roles()->where('role_name', $roleName)->exists();
-    }
-
     // Definisikan relasi many-to-many ke model Role
     public function roles()
     {
         return $this->belongsToMany(Roles::class, 'users_has_role', 'user_id', 'role_id');
     }
+
 }

@@ -17,9 +17,26 @@
 <script src="{{ asset('vendor/chartist/js/custom/custom-area-chart.js') }}"></script>
 <script src="{{ asset('vendor/chartist/js/custom/donut-chart2.js') }}"></script>
 <script src="{{ asset('vendor/chartist/js/custom/custom-line-chart4.js') }}"></script>
+<script src="{{ asset('vendor/d3/d3.min.js') }}"></script>
+<script src="{{ asset('vendor/c3/c3.min.js') }}"></script>
 
-<!-- Common JS -->
-<script src="{{ asset('js/common.js') }}"></script>
+<!-- C3 Graphs -->
+<script src="{{ asset('vendor/c3/c3.min.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/line-graph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/spline-graph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/area-spline-graph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/step-graph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/bar-area-graph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/bar-graph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/stacked-bar-braph.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/scatter-plot.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/pie-chart.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/pie-chart-one.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/donut-chart.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/server-requests.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/spline-sales.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/line-graph-overview.js') }}"></script>
+	<script src="{{ asset('vendor/c3/custom/line-graph-one.js') }}"></script>
 
 <!-- Data Tables -->
 <script src="{{ asset('vendor/datatables/dataTables.min.js') }}"></script>
@@ -29,6 +46,9 @@
 <script src="{{ asset('vendor/datatables/custom/custom-datatables.js') }}"></script>
 
 <script src="{{ asset('vendor/datatables/custom/fixedHeader.js') }}"></script>
+
+<!-- Common JS -->
+<script src="{{ asset('js/common.js') }}"></script>
 
 <!-- Custom Scripts -->
 <script>

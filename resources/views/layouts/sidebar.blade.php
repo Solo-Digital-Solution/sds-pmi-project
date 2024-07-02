@@ -81,22 +81,38 @@
                 @endcan
 
                 <!-- Menu items for 'skr' -->
-        @can('skr')
-        <li>
-            <a href="{{ url('/kejadian') }}">
-                <span class="nav-title">Kejadian</span>
-            </a>
-        </li>
-        @endcan
+                @can('skr')
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="icon-center_focus_strong"></i>
+                        </span>
+                        <span class="nav-title">Laporan</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href='{{ url('/kejadian')  }}'>Kejadian</a>
+                        </li>
+                    </ul>
+                </li>
+                @endcan
 
-        <!-- Menu items for 'exc' -->
-        @can('exc')
-        <li>
-            <a href="{{ url('/executive-summary') }}">
-                <span class="nav-title">Executive Summary</span>
-            </a>
-        </li>
-        @endcan
+                <!-- Menu items for 'exc' -->
+                @can('exc')
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="icon-center_focus_strong"></i>
+                        </span>
+                        <span class="nav-title">Laporan</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            <a href='{{ url('/executive-summary')  }}'>Executive Summary</a>
+                        </li>
+                    </ul>
+                </li>
+                @endcan
             </ul>
             <!-- END: side-nav-content -->
         </nav>

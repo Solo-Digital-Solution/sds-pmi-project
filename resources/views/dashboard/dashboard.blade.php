@@ -250,9 +250,9 @@
 </div>
 @endcan
 
-@can('adm')
+@can('skr')
 <!-- Row start -->
-<!-- <div class="row gutters">
+<div class="row gutters">
     <div class="col-md-4 col-sm-6">
         <div class="card">
             <div class="card-body">
@@ -261,7 +261,7 @@
                         <i class="icon-new_releases"></i>
                     </div>
                     <div class="stats-widget-body">
-                        Row start
+                        <!-- Row start -->
                         <ul class="row no-gutters">
                             <li class="col-sm-6 col">
                                 <h4 class="title">Kejadian Aktif</h4>
@@ -283,7 +283,7 @@
                         <i class="icon-clipboard3"></i>
                     </div>
                     <div class="stats-widget-body">
-                        Row start
+                        <!-- Row start -->
                         <ul class="row no-gutters">
                             <li class="col-sm-6 col">
                                 <h4 class="title">Assessment</h4>
@@ -297,8 +297,8 @@
             </div>
         </div>
     </div>
-</div> -->
-<!-- <div class="row gutters">
+</div>
+<div class="row gutters">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">Daftar Kejadian Aktif</div>
@@ -318,6 +318,7 @@
                         <tr>
                             <td>{{ $kejadian['nama_kejadian'] }}</td>
                             <td>{{ $kejadian['waktu_kejadian'] }}</td>
+                            <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['kelurahan'] }}</td>
                             <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
                         </tr>
@@ -327,7 +328,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 <!-- Row end -->
 @endcan
 @endsection
