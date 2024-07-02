@@ -419,19 +419,55 @@ class LaporanController extends Controller
             $jumlahShelter = $laporan->dampak->shelters->count();
         }
 
-        $jumlahLayananAirBersih = Distribusi_layanan::where('jenis_distribusi_layanan', 'Layanan Air Bersih')
-            ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
-            ->first();
+        // $jumlahLayananAirBersih = Distribusi_layanan::where('jenis_distribusi_layanan', 'Layanan Air Bersih')
+        //     ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
+        //     ->first();
 
-        $jumlahFoodItem = Distribusi_layanan::where('jenis_distribusi_layanan', 'Food Item')
-            ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
-            ->first();
+        $jumlahLayananAirBersih = DB::table('laporan')
+                                    ->join('layanan_korban', 'layanan_korban.id_giat_pmi', '=', 'laporan.id_giat_pmi')
+                                    ->join('distribusi_layanan', 'distribusi_layanan.id_distribusi_layanan', '=', 'layanan_korban.id_distribusi_layanan')
+                                    ->where('id_laporan', '=', $id_laporan)
+                                    ->groupBy(['jenis_distribusi_layanan'])
+                                    ->select(DB::raw('jenis_distribusi_layanan, sum(jumlah) as jumlah_distribusi_layanan'))
+                                    ->get();
+
+        $jumlahLayananPerLokasi = DB::table('laporan')
+        ->join('layanan_korban', 'layanan_korban.id_giat_pmi', '=', 'laporan.id_giat_pmi')
+        ->join('distribusi_layanan', 'distribusi_layanan.id_distribusi_layanan', '=', 'layanan_korban.id_distribusi_layanan')
+        ->where('id_laporan', '=', $id_laporan)
+        ->groupBy(['jenis_distribusi_layanan', 'lokasi'])
+        ->select(DB::raw('lokasi, jenis_distribusi_layanan, sum(jumlah) as jumlah_distribusi_layanan'))
+        ->get();
+
+        
+        // $layananPerLokasi = $jumlahLayananPerLokasi->groupBy('lokasi')->map(function ($value, $key){
+        //     $kecamatan = $value->map(function ($v) { 
+        //         return [
+        //             $v->jenis_distribusi_layanan => $v->jumlah_distribusi_layanan
+        //         ];
+        //     });
+        //     return [
+        //         $key => $kecamatan
+        //         // $key => $value->map(function ($v, $k) { 
+        //         //     return [
+        //         //         $v->jenis_distribusi_layanan => $v->jumlah_distribusi_layanan
+        //         //     ];
+        //         // })
+        //     ];
+        // });
+        // dd($jumlahLayananPerLokasi->groupBy('lokasi')->toArray());
+        $layananPerLokasi = $jumlahLayananPerLokasi->groupBy('lokasi')->toArray();
+
+        // $jumlahFoodItem = Distribusi_layanan::where('jenis_distribusi_layanan', 'Food Item')
+        //     ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
+        //     ->first();
 
         return view('flash-report.flash-report')
             ->with('laporan', $laporan)
             ->with('jumlahShelter', $jumlahShelter)
-            ->with('jumlahLayananAirBersih', $jumlahLayananAirBersih)
-            ->with('jumlahFoodItem', $jumlahFoodItem)
+            ->with('jumlahLayananAirBersih', $jumlahLayananAirBersih->where('jenis_distribusi_layanan', 'Layanan Air Bersih')->first())
+            ->with('jumlahFoodItem', $jumlahLayananAirBersih->where('jenis_distribusi_layanan', 'Food Item')->first())
+            ->with('jumlahLayananPerLokasi', json_encode($layananPerLokasi))
             ->with('filePaths', $filePaths); // Mengirimkan data file_path ke view
     }
 

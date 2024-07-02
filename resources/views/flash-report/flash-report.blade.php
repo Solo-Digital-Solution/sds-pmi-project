@@ -86,11 +86,17 @@
     }
 
     .bar1 {
-        background: linear-gradient(90deg, #bc202d, #73020E); /* Gradasi warna untuk data diterjunkan */
+        background: linear-gradient(90deg, #bc202d, #bc202d); /* Gradasi warna untuk data diterjunkan */
     }
 
     .bar2 {
-        background: linear-gradient(90deg, #FD5B6D, #A20415); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #fa3402, #fa3402); /* Gradasi warna untuk data dimiliki */
+    }
+    .bar3 {
+        background: linear-gradient(90deg, #fa7e02, #fa7e02); /* Gradasi warna untuk data dimiliki */
+    }
+    .bar4 {
+        background: linear-gradient(90deg, #fad902, #fad902); /* Gradasi warna untuk data dimiliki */
     }
 
     .download-button {
@@ -110,7 +116,7 @@
 
     .button-wrapper {
         display: flex;
-        justify-content: right;
+        justify-content: start;
     }
 
     .modal {
@@ -250,7 +256,25 @@
 
             <tr>
 				<td colspan="3" rowspan="4">
-                <div class="graph-container" id="graph-container">
+                <div class="graph-container" id="graph-container"></div>
+                <div style="display: flex;">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar1" style="width: 20px; margin-right: 5px"></div>
+                        <div>Food Item</div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar2" style="width: 20px; margin-right: 5px"></div>
+                        <div>Non-Food Item</div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar3" style="width: 20px; margin-right: 5px"></div>
+                        <div>Layanan Kesehatan</div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar4" style="width: 20px; margin-right: 5px"></div>
+                        <div>Layanan Air Bersih</div>
+                    </div>
+                </div>
                 </td>
 			</tr>
 
@@ -300,9 +324,9 @@
             <tr>
 				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
 				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->total ?? 0 }} {{ $jumlahLayananAirBersih->satuan ?? '' }}</span></td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->jumlah_distribusi_layanan ?? 0 }}</span></td>
                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah ?? 0 }} {{ $jumlahFoodItem->unit ?? '' }}</span></td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah_distribusi_layanan ?? 0 }}</span></td>
 				<td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
 			</tr>
 
@@ -364,56 +388,7 @@
         </form>
     </div>
 </div>
-    <script>
-        document.getElementById('send-to-whatsapp').addEventListener('click', function() {
-            const modal = document.getElementById('sendMessageModal');
-            modal.style.display = 'flex'; // Show the modal
-        });
 
-        document.getElementById('sendMessageForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const form = document.getElementById('sendMessageForm');
-            const formData = new FormData(form);
-
-            fetch('{{ route('kirim.pesan') }}', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: formData
-            })
-            .then(response => {
-                console.log('Response status:', response.status);
-                if (!response.ok) {
-                    return response.text().then(text => { throw new Error(text || 'Network response was not ok') });
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-                alert('Pesan telah dikirim ke semua nomor');
-                closeModal(); // Close modal after successful send
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
-                alert('Terjadi kesalahan saat mengirim pesan');
-            });
-        });
-
-        function closeModal() {
-            const modal = document.getElementById('sendMessageModal');
-            modal.style.display = 'none'; // Hide the modal
-        }
-
-        // Close the modal when the user clicks outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('sendMessageModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
 
 <script>
     function downloadContentAsImage() {
@@ -560,51 +535,97 @@
 
 
     // Data kecamatan
-    const dataKecamatan = [
-            { nama: 'Banjarsari', diterjunkan: 82, dimiliki: 105 },
-            { nama: 'Jebres', diterjunkan: 42, dimiliki: 120 },
-            { nama: 'Laweyan', diterjunkan: 0, dimiliki: 60 },
-            { nama: 'Pasar Kliwon', diterjunkan: 30, dimiliki: 70 },
-            { nama: 'Serengan', diterjunkan: 50, dimiliki: 90 }
-        ];
-
+    // const dataKecamatan = [
+    //         { nama: 'Banjarsari', diterjunkan: 82, dimiliki: 105 },
+    //         { nama: 'Jebres', diterjunkan: 42, dimiliki: 120 },
+    //         { nama: 'Laweyan', diterjunkan: 0, dimiliki: 60 },
+    //         { nama: 'Pasar Kliwon', diterjunkan: 30, dimiliki: 70 },
+    //         { nama: 'Serengan', diterjunkan: 50, dimiliki: 90 }
+    //     ];
+        const dataKecamatan = JSON.parse('<?= $jumlahLayananPerLokasi ?>')
+        console.log(dataKecamatan)
         // Container untuk grafik
         const graphContainer = document.getElementById('graph-container');
 
         // Mencari nilai terbesar dari dimiliki
-        const maxDimiliki = Math.max(...dataKecamatan.map(kecamatan => kecamatan.dimiliki));
+        // const maxDimiliki = Math.max(...dataKecamatan.map(kecamatan => kecamatan.map(item => item.jumlah_distribusi_layanan)));
 
         // Membuat dan menambahkan bar untuk setiap kecamatan
-        dataKecamatan.forEach(kecamatan => {
+        for (const kecamatan in dataKecamatan){
+            const kec = dataKecamatan[kecamatan]
+            const maxDimiliki = Math.max(...kec.map(kecamatan => kecamatan.jumlah_distribusi_layanan));
+
+            console.log(kec[0])
+
             const barContainer = document.createElement('div');
             barContainer.classList.add('bar-container');
 
             const label = document.createElement('div');
             label.classList.add('label');
-            label.textContent = kecamatan.nama;
+            label.textContent = kecamatan;
 
             const barWrapper = document.createElement('div');
             barWrapper.classList.add('bar-wrapper');
 
+            let counter = 1
+            kec.forEach(kec => {
+                const bar1Width = (kec.jumlah_distribusi_layanan / maxDimiliki) * 300;
+
+                const bar1 = document.createElement('div');
+                bar1.classList.add('bar', `bar${counter}`);
+                bar1.style.width = `${bar1Width}px`;
+
+                barWrapper.appendChild(bar1);
+                counter++
+            })
             // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
-            const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 300;
-            const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
+            // const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
 
-            const bar1 = document.createElement('div');
-            bar1.classList.add('bar', 'bar1');
-            bar1.style.width = `${bar1Width}px`;
+            
 
-            const bar2 = document.createElement('div');
-            bar2.classList.add('bar', 'bar2');
-            bar2.style.width = `${bar2Width}px`;
+            // const bar2 = document.createElement('div');
+            // bar2.classList.add('bar', 'bar2');
+            // bar2.style.width = `${bar2Width}px`;
 
-            barWrapper.appendChild(bar1);
-            barWrapper.appendChild(bar2);
+            
+            // barWrapper.appendChild(bar2);
             barContainer.appendChild(label);
             barContainer.appendChild(barWrapper);
 
             graphContainer.appendChild(barContainer);
-        });
+        }
+
+        // dataKecamatan.forEach(kecamatan => {
+        //     console.log(kecamatan)
+        //     const barContainer = document.createElement('div');
+        //     barContainer.classList.add('bar-container');
+
+        //     const label = document.createElement('div');
+        //     label.classList.add('label');
+        //     label.textContent = kecamatan.nama;
+
+        //     const barWrapper = document.createElement('div');
+        //     barWrapper.classList.add('bar-wrapper');
+
+        //     // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
+        //     const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 300;
+        //     const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
+
+        //     const bar1 = document.createElement('div');
+        //     bar1.classList.add('bar', 'bar1');
+        //     bar1.style.width = `${bar1Width}px`;
+
+        //     const bar2 = document.createElement('div');
+        //     bar2.classList.add('bar', 'bar2');
+        //     bar2.style.width = `${bar2Width}px`;
+
+        //     barWrapper.appendChild(bar1);
+        //     barWrapper.appendChild(bar2);
+        //     barContainer.appendChild(label);
+        //     barContainer.appendChild(barWrapper);
+
+        //     graphContainer.appendChild(barContainer);
+        // });
 </script>
 
 @endsection
