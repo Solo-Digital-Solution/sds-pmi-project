@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('lokasi');
             $table->text('kecamatan');
             $table->text('kelurahan');
-            $table->double('latitude');
-            $table->double('longitude');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->dateTime('waktu_kejadian');
             $table->boolean('dukungan_inter');
             $table->text('gambaran_situasi');

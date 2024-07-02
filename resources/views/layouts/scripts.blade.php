@@ -29,3 +29,36 @@
 <script src="{{ asset('vendor/datatables/custom/custom-datatables.js') }}"></script>
 
 <script src="{{ asset('vendor/datatables/custom/fixedHeader.js') }}"></script>
+
+<!-- Custom Scripts -->
+<script>
+    $(document).ready(function() {
+        // Show the success modal if there's a success message
+        @if(session('success'))
+            $('#successModal').modal('show');
+        @endif
+
+        // Show the error modal if there's an error message
+        @if(session('error'))
+            $('#errorModal').modal('show');
+        @endif
+
+        var formToSubmit;
+
+        // Handle the delete confirmation modal
+        $('#confirmModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            formToSubmit = $('#deleteForm-' + id);
+        });
+
+        $('#confirmDelete').click(function() {
+            formToSubmit.submit();
+        });
+
+        // Remove the modal backdrop when the modal is hidden
+        $('#confirmModal').on('hidden.bs.modal', function () {
+            $('.modal-backdrop').remove();
+        });
+    });
+</script>

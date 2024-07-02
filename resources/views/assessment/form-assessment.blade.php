@@ -439,7 +439,7 @@
 					<div class="col-sm-12 col-12">
 						<div class="form-group">
                             <label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>
-                            <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple required>
+                            <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>
                             <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                         </div>
 					</div>
@@ -865,7 +865,7 @@
 				'<div class="col-sm-12 col-12">' +
 					'<div class="form-group">' +
 						'<label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>' +
-                        '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple required>' +
+                        '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>' +
                         '<small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>' +
 					'</div>' +
 				'</div>' +

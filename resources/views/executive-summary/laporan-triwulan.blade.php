@@ -40,6 +40,194 @@
                     </form>
                 </div>
             </div>
+
+            {{-- <div class="content-section">
+                    <table border="0" width="500px" cellpadding="10px" cellspacing="0px" id="content-section">
+                        <thead>
+                            <tr>
+                                <th style="background-color: #860200; width: 2px"></th>
+                                <th colspan=2 style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
+                                <th style="background-color: #860200;"></th>
+
+                                <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; padding-top: 0; padding-bottom: 0; align-items: center; line-height: 1; vertical-align: bottom;">
+                                    KEJADIAN BULAN MEI-JULI 2024<br>
+                                    <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>
+                                </th>
+
+                                <th rowspan="2" colspan="3" style="background-color: #EBF1F1; align-item: right;padding-left: 100px;"><img src="https://www.starjogja.com/assets/2016/10/PMI.png" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #860200;"></th>
+                                <th colspan="3" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; text-align:center">LAPORAN TRIWULAN</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">Posko PMI Jawa Tengah</td>
+                        </tfoot>
+
+                        <tbody>
+
+                            <tr>
+                                <td colspan="5" rowspan="10">
+                                    <div id="map"></div>
+                                </td>
+                                <td colspan="4" rowspan="2" style="background-color: #650103;">
+                                    <div id="informasi">
+                                        Kejadian : <span style="font-weight: 900">{{ $kjd->nama_kejadian }}</span> <br>
+                                        Lokasi : <span style="font-weight: 900">{{ $kjd->lokasi }}</span> <br>
+                                        Waktu Kejadian : <span style="font-weight: 900">{{ $kjd->waktu_kejadian }}</span> <br><br>
+                                        <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE</span> {{ $kjd->update }}</span><br><br>
+                                    </div>
+                                </td>
+                                <td colspan="3" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER KECAMATAN</span></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" rowspan="4">
+                                    <div class="graph-container" id="graph-container">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="4" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">DATA KORBAN SEMENTARA</span></td>
+
+                            </tr>
+
+                            <tr>
+                                <td rowspan="2"><i class="fa-solid fa-person-walking-dashed-line-arrow-right icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap">MENGUNGSI</td>
+                                <td rowspan="2"><i class="fa-solid fa-tent-arrows-down icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">PENGUNGSIAN</td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
+                                    @if($kjd->mengungsi !== 0)
+                                    {{ $kjd->mengungsi }} ORANG
+                                    @elseif($kjd->mengungsi === 0)
+                                    0 ORANG
+                                    @endif
+                                </td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;"> TITIK</td>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="2"><i class="fa-solid fa-user-injured icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
+                                <td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;"">RUMAH RUSAK</td>
+                                <td colspan=" 3" rowspan="6" style="
+                                border-right-width: 0px;
+                                padding-right: 0px;
+                                border-top-width: 0px;
+                                border-left-width: 0px;
+                                border-bottom-width: 0px;
+                                padding-left: 0px;
+                                padding-top: 0px;
+                                padding-bottom: 0px;
+                                "><img src="https://tangerangkota.go.id/files/berita/29821siap-hadapi-bencana-pmi-kota-tangerang-gelar-simulasi-kebakaran-29821.jpeg" style="width: 100%"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
+                                    @if($kjd->luka_berat + $kjd->luka_ringan !== 0)
+                                    {{ $kjd->luka_berat + $kjd->luka_ringan }} JIWA
+                                    @elseif($kjd->luka_berat + $kjd->luka_ringan === 0)
+                                    0 JIWA
+                                    @endif
+                                </td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">
+                                    @if($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang !== 0)
+                                    {{ $kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang }} BANGUNAN
+                                    @elseif($kjd->rusak_berat + $kjd->rusak_ringan + $kjd->rusak_sedang === 0)
+                                    0 BANGUNAN
+                                    @endif
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
+                                        @if($kjd->kebutuhan !== '-')
+                                        {{ $kjd->kebutuhan }}
+                                        @elseif($kjd->kebutuhan === '-')
+                                        BELUM ADA
+                                        @endif
+                                    </span></td>
+                            </tr>
+
+                            <tr>
+
+                            </tr>
+
+                            <tr>
+                            </tr>
+
+                            <tr>
+                                <td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">PELAYANAN PMI</td>
+                                <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>
+                                        @if ($kjd->jenis_distribusi_layanan === 'Layanan Air Bersih')
+                                        {{ $kjd->jumlah }} {{ $kjd->unit }}
+                                        @elseif( $kjd->jumlah != 0)
+                                        0 LITER
+                                        @endif
+                                    </span></td>
+                                <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>
+                                        @if ($kjd->jenis_distribusi_layanan === 'Food Item')
+                                        {{ $kjd->jumlah }} {{ $kjd->unit }}
+                                        @elseif( $kjd->jumlah === 0)
+                                        0 KK
+                                        @endif
+                                    </span></td>
+                                <td colspan="4" style="background-color: #E91A20;"><span style="color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
+
+                                <input type="hidden" id="perempuan" value="{{ $kjd->jumlah_perempuan }}">
+                                <input type="hidden" id="laki_laki" value="{{ $kjd->jumlah_laki }}">
+
+                                <input type="hidden" id="latitude" value="{{ $kjd->latitude }}">
+                                <input type="hidden" id="longitude" value="{{ $kjd->longitude }}">
+                            </tr>
+
+                            <tr>
+                                <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>
+                                        @if( $kjd->relawan_pmi !== 0)
+                                        {{ $kjd->relawan_pmi }} ORANG
+                                        @elseif( $kjd->relawan_pmi === 0)
+                                        0 ORANG
+                                        @endif
+                                    </span></td>
+                                <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>
+                                        @if( $kjd->medis + $kjd->paramedis !== 0)
+                                        {{ $kjd->medis + $kjd->paramedis }} ORANG
+                                        @elseif( $kjd->medis + $kjd->paramedis === 0)
+                                        0 ORANG
+                                        @endif
+                                    </span></td>
+                                <td colspan="4" rowspan="2">
+                                    <div class="chart-container">
+                                        <canvas id="genderChart" width="150" height="150"></canvas>
+                                    </div>
+                                </td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank Mandiri<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
+                                <td valign="top" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank BCA<span style="color:#bc202d;"></br>206.300668.8</span></br><span style="font-size: 10px"></br>a/n Kantor PMI Pusat</span></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank BRI<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">PERTOLONGAN</br>PERTAMA</br>DARURAT DAN</br>EVAKUASI</BR>BENCANA</td>
+                                <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-tents icon" style="color: #bc202d;"></i></td>
+                                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">HUNIAN DARURAT</td>
+                                <td colspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d;font-size:18px"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <span style="font-weight:800">big opportunity</span> to us</span></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div> --}}
+
             <!-- TABEL LAPORAN TRIWULAN -->
             <div class="card-body">
                 <div class="table-responsive">

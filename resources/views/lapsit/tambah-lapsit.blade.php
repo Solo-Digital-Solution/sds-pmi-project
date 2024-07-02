@@ -607,7 +607,18 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="kontak">Kontak <span style="color: red;">*</span></label>
-                            <input class="form-control" id="kontak" name="input[0][ktk]" type="text" placeholder="Masukkan kontak" required>
+                            <!-- <input class="form-control" id="kontak" name="input[0][ktk]" type="text" placeholder="Masukkan kontak" required> -->
+                            <input class="form-control" id="kontak" name="input[0][ktk]" type="tel" placeholder="Masukkan kontak" pattern="^[0-9]{10,15}$"
+                                title="Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka."
+                                oninvalid="this.setCustomValidity('Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka.')"
+                                oninput="this.setCustomValidity('');
+                                        if(this.checkValidity()) {
+                                            this.classList.add('valid-input');
+                                        } else {
+                                            this.classList.remove('valid-input');
+                                        }"
+                                required>
+                            <small class="form-text text-muted">Masukkan nomor telepon yang valid (10-15 digit angka).</small>
                         </div>
                     </div>
                 </div>
@@ -628,7 +639,7 @@
                     <div class="col-sm-12 col-12">
                         <div class="form-group">
                             <label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>
-                            <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple required>
+                            <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>
                             <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                         </div>
                     </div>
@@ -882,7 +893,7 @@
                 '<div class="col-sm-12 col-12">' +
                     '<div class="form-group">' +
                         '<label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>' +
-                        '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple required>' +
+                        '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>' +
                         '<small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>' +
                     '</div>' +
                 '</div>' +

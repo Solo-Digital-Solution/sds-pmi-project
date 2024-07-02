@@ -67,13 +67,16 @@
                         <input type="goldar" class="form-control" id="goldar" name="goldar" value="{{ $user->goldar }}" required disabled>
                     </div>
                     <div class="form-group">
-                        <label for="role_name">Role</label>
-                        <select class="form-control" id="role_name" name="role_name">
+                        <label for="role_name">Peran:</label>
+                        <select name="role_name[]" id="role_name" class="form-control" multiple>
                             @foreach($roles as $role)
-                            <option value="{{ $role->role_id }}" {{ $role->role_id == $user->role_id ? 'selected' : '' }}>{{ $role->role_name }}</option>
+                                <option value="{{ $role->role_id }}"
+                                    @if($user->roles->contains('role_id', $role->role_id)) selected @endif>
+                                    {{ $role->role_name }}
+                                </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div>                                                                         
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>

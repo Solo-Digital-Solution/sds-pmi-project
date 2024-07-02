@@ -115,6 +115,7 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::get('/user-management/create', [UserController::class, 'create'])->name('addAkun');
     Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
     Route::get('/user-management/create', [DropdownController::class, 'indexKecamatanUser']);
+    Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 
     // ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
     Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
