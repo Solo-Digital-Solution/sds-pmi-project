@@ -1,4 +1,129 @@
 @extends('layouts.layout')
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+    .content-section {
+        overflow-x: auto;
+    }
+
+    #map {
+        height: 450px;
+        width: 460px;
+    }
+
+    #informasi {
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        text-align: center;
+        font-size: 12px;
+        text-align: left;
+        padding: 10px 20px;
+        margin: 0
+    }
+
+    .icon-container {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .icon {
+        font-size: 35px;
+        /* Ukuran ikon */
+    }
+
+    /* Gaya untuk kontainer grafik lingkaran */
+    .chart-container {
+        text-align: center;
+    }
+
+    /* Gaya untuk grafik lingkaran */
+    #genderChart {
+        max-width: 300px;
+        margin: auto;
+    }
+
+    .graph-container {
+        margin-top: 20px;
+        justify-content: center;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .bar-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .label {
+        width: 100px;
+        text-align: left;
+        margin-right: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .bar-wrapper {
+        width: 300px;
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .bar {
+        height: 20px;
+    }
+
+    .bar1 {
+        background: linear-gradient(90deg, #bc202d, #73020E);
+        /* Gradasi warna untuk data diterjunkan */
+    }
+
+    .bar2 {
+        background: linear-gradient(90deg, #FD5B6D, #A20415);
+        /* Gradasi warna untuk data dimiliki */
+    }
+
+    .download-button {
+        background-color: #4CAF50;
+        /* Green background */
+        border: none;
+        /* Remove borders */
+        color: white;
+        /* White text */
+        padding: 15px 32px;
+        /* Some padding */
+        text-align: center;
+        /* Center the text */
+        text-decoration: none;
+        /* Remove underline */
+        display: inline-block;
+        /* Get the element to behave like a button */
+        font-size: 16px;
+        /* Increase font size */
+        margin: 20px auto;
+        /* Some margin for spacing */
+        cursor: pointer;
+        /* Pointer/hand icon */
+        border-radius: 5px;
+        /* Rounded corners */
+        display: block;
+        /* Make it a block element */
+    }
+</style>
 
 @section('heading')
 <div class="container-fluid">
@@ -27,21 +152,22 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">Laporan Triwulan</div>
-            <div class="clearfix m-3">
-                <div class="btn-group float-left form-group" role="group">
-                    <form action="{{ route('executive-summary.search') }}" method="GET">
-                        <div class="input-group">
-                            <input type="date" class="form-control" id="startDate" name="tanggal_awal" placeholder="Tanggal Awal">
-                            <input type="date" class="form-control" id="endDate" name="tanggal_akhir" placeholder="Tanggal Akhir">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">Cari</button>
+            <div class="card-body">
+                <div class="clearfix m-3">
+                    <div class="btn-group float-left form-group" role="group">
+                        <form action="{{ route('executive-summary.search') }}" method="GET">
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="startDate" name="tanggal_awal" placeholder="Tanggal Awal">
+                                <input type="date" class="form-control" id="endDate" name="tanggal_akhir" placeholder="Tanggal Akhir">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Cari</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-            {{-- <div class="content-section">
+                {{-- <div class="content-section">
                     <table border="0" width="500px" cellpadding="10px" cellspacing="0px" id="content-section">
                         <thead>
                             <tr>
@@ -227,6 +353,11 @@
 
                     </table>
                 </div> --}}
+                <div>
+                    <button onclick="downloadContentAsImage()">Download as Image</button>
+                </div>
+            </div>
+            <hr>
 
             <!-- TABEL LAPORAN TRIWULAN -->
             <div class="card-body">
@@ -241,11 +372,11 @@
                                 <th rowspan="2">Lokasi</th>
                                 <th rowspan="2">Kelurahan</th>
                                 <th rowspan="2">Kecamatan</th>
-                                <th colspan="7" style="text-align:center">Total</th>
+                                <th colspan="8" style="text-align:center">Total</th>
                                 <th rowspan="2">Action</th>
                             </tr>
                             <tr>
-                                <!-- <th>Pengungsi</th> -->
+                                <th>Pengungsi</th>
                                 <th>Korban</th>
                                 <th>Kerusakan Rumah</th>
                                 <th>Kerusakan Fasilitas</th>
@@ -256,34 +387,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($exsum as $kjd)
-                            <tr>
-                                <td>{{ $kjd->waktu_kejadian }}</td>
-                                @if ($kjd->laporan_terbaru)
-                                <td>{{ $kjd->laporan_terbaru->update }}</td>
-                                <td>{{ $kjd->nama_kejadian }}</td>
-                                <td>{{ $kjd->lokasi }}</td>
-                                <td>{{ $kjd->kelurahan }}</td>
-                                <td>{{ $kjd->kecamatan }}</td>
-                                <td>{{ optional($kjd->laporan_terbaru->dampak->korbanTerdampak)->jmlh_jiwa }}</td> <!-- KORBAN TERDAMPAK -->
-                                <td>{{ optional($kjd->laporan_terbaru->dampak->kerusakanRumah)->rusak_ringan + optional($kjd->laporan_terbaru->dampak->kerusakanRumah)->rusak_sedang + optional($kjd->laporan_terbaru->dampak->kerusakanRumah)->rusak_berat }}</td> <!-- KERUSAKAN RUMAH -->
-                                <td>{{ $kjd->laporan_terbaru->dampak->kerusakanFasilitas->sekolah + $kjd->laporan_terbaru->dampak->kerusakanFasilitas->tempat_ibadah + $kjd->laporan_terbaru->dampak->kerusakanFasilitas->rumah_sakit + $kjd->laporan_terbaru->dampak->kerusakanFasilitas->pasar + $kjd->laporan_terbaru->dampak->kerusakanFasilitas->gedung_pemerintah }}</td> <!-- KERUSAKAN FASILITAS -->
-                                <td>{{ optional($kjd->laporan_terbaru->dampak->kerusakanInfrastruktur)->deskripsi_kerusakan }}</td> <!-- KERUSAKAN INFRASTRUKTUR -->
-                                <td>{{ optional($kjd->laporan_terbaru->mobilisasi->personil)->pengurus + optional($kjd->laporan_terbaru->mobilisasi->personil)->staf_markas + optional($kjd->laporan_terbaru->mobilisasi->personil)->relawan_pmi + optional($kjd->laporan_terbaru->mobilisasi->personil)->sukarelawan_spesialis }}</td>
-                                <td>{{ optional($kjd->laporan_terbaru->mobilisasi->tsr)->medis + optional($kjd->laporan_terbaru->mobilisasi->tsr)->paramedis + optional($kjd->laporan_terbaru->mobilisasi->tsr)->relief + optional($kjd->laporan_terbaru->mobilisasi->tsr)->logistics + optional($kjd->laporan_terbaru->mobilisasi->tsr)->watsan + optional($kjd->laporan_terbaru->mobilisasi->tsr)->it_telekom + optional($kjd->laporan_terbaru->mobilisasi->tsr)->sheltering }}</td>
-                                <td>{{ optional($kjd->laporan_terbaru->mobilisasi->tdb)->kend_ops + optional($kjd->laporan_terbaru->mobilisasi->tdb)->truk_angkutan + optional($kjd->laporan_terbaru->mobilisasi->tdb)->truk_tangki + optional($kjd->laporan_terbaru->mobilisasi->tdb)->double_cabin + optional($kjd->laporan_terbaru->mobilisasi->tdb)->alat_du + optional($kjd->laporan_terbaru->mobilisasi->tdb)->ambulans +
-                    optional($kjd->laporan_terbaru->mobilisasi->tdb)->alat_watsan + optional($kjd->laporan_terbaru->mobilisasi->tdb)->rs_lapangan + optional($kjd->laporan_terbaru->mobilisasi->tdb)->alat_pkdd + optional($kjd->laporan_terbaru->mobilisasi->tdb)->gudang_lapangan + optional($kjd->laporan_terbaru->mobilisasi->tdb)->posko_aju + optional($kjd->laporan_terbaru->mobilisasi->tdb)->alat_it_lapangan }}</td>
-                                <td><a href="{{ url('/generate-lapsit/' . $kjd->laporan_terbaru->id_laporan) }}" style="color:red" target="_blank">Lihat Detail</a></td>
-                                @else
-                                <td colspan="14">Tidak ada laporan terbaru.</td>
-                                @endif
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="14">Tidak ada data kejadian.</td>
-                            </tr>
-                            @endforelse
+                            @foreach ($exsum as $kjd)
+                                <tr>
+                                    <td>{{ $kjd->waktu_kejadian }}</td>
+                                    <td>{{ $kjd->update }}</td>
+                                    <td>{{ $kjd->nama_kejadian }}</td>
+                                    <td>{{ $kjd->lokasi }}</td>
+                                    <td>{{ $kjd->kelurahan }}</td>
+                                    <td>{{ $kjd->kecamatan }}</td>
+                                    <td>{{ $kjd->jumlah_jiwa }}</td> <!-- SHELTER -->
+                                    <td>{{ $kjd->jmlh_jiwa }}</td> <!-- KORBAN TERDAMPAK -->
+                                    <td>{{ $kjd->rusak_ringan + $kjd->rusak_sedang + $kjd->rusak_berat }}</td>
+                                    <td>{{ $kjd->sekolah + $kjd->tempat_ibadah + $kjd->rumah_sakit + $kjd->pasar + $kjd->gedung_pemerintah }}</td>
+                                    <td>{{ $kjd->deskripsi_kerusakan }}</td>
+                                    <td>{{ $kjd->pengurus + $kjd->staf_markas + $kjd->relawan_pmi + $kjd->sukarelawan_spesialis }}</td>
+                                    <td>{{ $kjd->medis + $kjd->paramedis + $kjd->relief + $kjd->logistics + $kjd->watsan + $kjd->it_telekom + $kjd->sheltering }}</td>
+                                    <td>{{ $kjd->kend_ops + $kjd->truk_angkutan + $kjd->truk_tangki + $kjd->double_cabin + $kjd->alat_du + $kjd->ambulans +
+                                        $kjd->alat_watsan + $kjd->rs_lapangan + $kjd->alat_pkdd + $kjd->gudang_lapangan + $kjd->posko_aju + $kjd->alat_it_lapangan }}</td>
+                                    <td><a href="{{ route('generateLapsit', ['id' => $kjd->id_kejadian]) }}" style="color:red" target="_blank">Lihat Detail</a></td>
+                                </tr>
+                                {{-- @empty
+                                <tr>
+                                    <td colspan="4">Tidak ada data kejadian.</td>
+                                </tr> --}}
+                            @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -291,4 +420,175 @@
     </div>
 </div>
 <!-- Row ends -->
+
+<script>
+    function downloadContentAsImage() {
+        const contentSection = document.getElementById('content-section');
+
+        html2canvas(contentSection, {
+            allowTaint: true,
+            useCORS: true
+        }).then(canvas => {
+            // Mengonversi canvas menjadi data URL gambar PNG
+            const imgData = canvas.toDataURL('image/png');
+
+            // Membuat link untuk mengunduh gambar
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imgData;
+            downloadLink.download = 'content-section.png'; // Nama file yang diunduh
+
+            // Menambahkan link ke dokumen dan mengkliknya untuk mengunduh
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var latitudeValue = document.getElementById('latitude').value;
+        var longitudeValue = document.getElementById('longitude').value;
+
+        var map = L.map('map', {
+            zoomControl: false // Menonaktifkan kontrol zoom
+        }).setView([latitudeValue, longitudeValue], 12); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
+
+        // Tambahkan layer peta dari OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Tambahkan marker di Mojosongo dengan tooltip dan pop-up
+        var marker = L.marker([latitudeValue, longitudeValue]).addTo(map);
+        marker.bindTooltip("Mojosongo").openTooltip();
+
+        // Membuat permintaan geokode untuk mendapatkan informasi jalan
+        var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + marker.getLatLng().lat + "&lon=" + marker.getLatLng().lng;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var address = data.display_name;
+                marker.bindPopup("<b>Kejadian Kebakaran PLTSA Putri Cempo, Surakarta</b><br>Latitude: " + marker.getLatLng().lat.toFixed(6) + ", Longitude: " + marker.getLatLng().lng.toFixed(6) + "<br>" + address).openPopup();
+            });
+        ``
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var perempuanValue = document.getElementById('perempuan').value;
+        var lakilakiValue = document.getElementById('laki_laki').value;
+
+        // Data jumlah pria dan wanita
+        var data = {
+            labels: ['Pria', 'Wanita'],
+            datasets: [{
+                data: [lakilakiValue, perempuanValue], // Jumlah pria dan wanita
+                backgroundColor: [
+                    '#BC202D', // Warna untuk pria
+                    '#FB7E89' // Warna untuk wanita
+                ],
+                borderColor: [
+                    '#B31424', // Warna pinggiran untuk pria
+                    '#FE9FA9' // Warna pinggiran untuk wanita
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Konfigurasi grafik lingkaran
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: '#333',
+                    fontSize: 12
+                }
+            },
+            title: {
+                display: true,
+                text: 'Data Gender'
+            }
+        };
+
+        // Membuat grafik lingkaran
+        var ctx = document.getElementById('genderChart').getContext('2d');
+        var genderChart = new Chart(ctx, {
+            type: 'doughnut', // Jenis grafik lingkaran
+            data: data,
+            options: options
+        });
+    });
+
+    // Data kecamatan
+    const dataKecamatan = [{
+            nama: 'Banjarsari',
+            diterjunkan: 82,
+            dimiliki: 105
+        },
+        {
+            nama: 'Jebres',
+            diterjunkan: 42,
+            dimiliki: 120
+        },
+        {
+            nama: 'Laweyan',
+            diterjunkan: 0,
+            dimiliki: 60
+        },
+        {
+            nama: 'Pasar Kliwon',
+            diterjunkan: 30,
+            dimiliki: 70
+        },
+        {
+            nama: 'Serengan',
+            diterjunkan: 50,
+            dimiliki: 90
+        }
+    ];
+
+    // Container untuk grafik
+    const graphContainer = document.getElementById('graph-container');
+
+    // Mencari nilai terbesar dari dimiliki
+    const maxDimiliki = Math.max(...dataKecamatan.map(kecamatan => kecamatan.dimiliki));
+
+    // Membuat dan menambahkan bar untuk setiap kecamatan
+    dataKecamatan.forEach(kecamatan => {
+        const barContainer = document.createElement('div');
+        barContainer.classList.add('bar-container');
+
+        const label = document.createElement('div');
+        label.classList.add('label');
+        label.textContent = kecamatan.nama;
+
+        const barWrapper = document.createElement('div');
+        barWrapper.classList.add('bar-wrapper');
+
+        // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
+        const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 300;
+        const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
+
+        const bar1 = document.createElement('div');
+        bar1.classList.add('bar', 'bar1');
+        bar1.style.width = `${bar1Width}px`;
+
+        const bar2 = document.createElement('div');
+        bar2.classList.add('bar', 'bar2');
+        bar2.style.width = `${bar2Width}px`;
+
+        barWrapper.appendChild(bar1);
+        barWrapper.appendChild(bar2);
+        barContainer.appendChild(label);
+        barContainer.appendChild(barWrapper);
+
+        graphContainer.appendChild(barContainer);
+    });
+</script>
+
 @endsection

@@ -260,18 +260,26 @@ class LaporanController extends Controller
             ]);
 
             // Periksa apakah ada file dokumentasi yang diunggah
-            if ($request->hasFile('in')) {
+
+
+            // dd($request->all());
+            if ($request->has('in')) {
+                // dd($request->file('in')); // Debug untuk melihat struktur data
                 foreach ($request->file('in') as $input) {
-                    $file = $input['dokumentasi'];
-                    $nama_dokumen = $file->getClientOriginalName(); // Mendapatkan nama asli file
-                    $file->move('dokumentasi/', $nama_dokumen); // Memindahkan file ke direktori yang diinginkan
+                    // Pastikan bahwa $input['dokumentasi'] adalah file yang valid
+                    // dd($input);
+                    if (isset($input['dokumentasi']) && $input['dokumentasi']->isValid()) {
+                        $file = $input['dokumentasi'];
+                        $nama_dokumen = $file->getClientOriginalName(); // Mendapatkan nama asli file
+                        $file->move('dokumentasi/', $nama_dokumen); // Memindahkan file ke direktori yang diinginkan
 
-                    // Simpan nama file ke dalam database
-                    $id_dokumentasi = DB::table('dokumentasi')->insertGetId([
-                        'file_path' => $nama_dokumen
-                    ]);
+                        // Simpan nama file ke dalam database
+                        $id_dokumentasi = DB::table('dokumentasi')->insertGetId([
+                            'file_path' => $nama_dokumen
+                        ]);
 
-                    $dokumentasi[] = $id_dokumentasi;
+                        $dokumentasi[] = $id_dokumentasi;
+                    }
                 }
             } else {
                 $dokumentasi = [];
