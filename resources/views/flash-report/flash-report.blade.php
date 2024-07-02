@@ -168,12 +168,16 @@
             display: block;
             color: #555;
         }
-        input[type="text"], input[type="file"], input[type="submit"] {
+        input[type="text"], textarea, input[type="file"], input[type="submit"] {
             width: 100%;
             padding: 10px;
             box-sizing: border-box;
             border-radius: 5px;
             border: 1px solid #ccc;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
         }
         input[type="submit"] {
             background-color: #bc202d;
@@ -184,7 +188,6 @@
         input[type="submit"]:hover {
             background-color: #a81b26;
         }
-
 </style>
 
 @section('heading')
@@ -352,7 +355,7 @@
             </div>
             <div>
                 <label for="pesan">Message</label>
-                <input type="text" name="pesan" id="pesan" />
+                <textarea name="pesan" id="pesan"></textarea>
             </div>
             <div>
                 <label for="gambar">Upload Image</label><br>
@@ -364,7 +367,7 @@
         </form>
     </div>
 </div>
-    {{-- <script>
+    <script>
         document.getElementById('send-to-whatsapp').addEventListener('click', function() {
             const modal = document.getElementById('sendMessageModal');
             modal.style.display = 'flex'; // Show the modal
@@ -413,7 +416,7 @@
                 modal.style.display = 'none';
             }
         }
-    </script> --}}
+    </script>
 
 <script>
     function downloadContentAsImage() {
