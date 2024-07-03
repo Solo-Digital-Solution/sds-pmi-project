@@ -94,12 +94,14 @@
                                 <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">
                                     <button type="button" class="btn btn-warning btn-rounded mb-2">Flash Report <i class="icon-stats-bars"></i></button>
                                 </a>
+                                @if ($loop->last)
                                 <form id="deleteForm-{{ $laporan['id_laporan'] }}" action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id_kejadian" value="{{ $laporan['id_kejadian'] }}">
                                     <button type="button" class="btn btn-primary btn-rounded mb-2" data-toggle="modal" data-target="#confirmModal" data-id="{{ $laporan['id_laporan'] }}">Delete <i class="icon-trash2"></i></button>
                                 </form>
+                                @endif
 
                             </td>
                         </tr>
