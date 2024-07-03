@@ -101,6 +101,14 @@ class UserController extends Controller
             'role_name' => 'required', // Pastikan role_name terisi
         ]);
 
+        $birthDate = new \DateTime($request->input('tanggal_lahir'));
+        $currentDate = new \DateTime();
+        $age = $birthDate->diff($currentDate)->y;
+
+        if ($age < 17) {
+            return back()->withErrors(['tanggal_lahir' => 'Anda harus berusia minimal 17 tahun untuk mendaftar.'])->withInput();
+        }
+
         // Simpan data pengguna ke tabel users
         $user_id = $request->user_id;
         $nama_dokumen1 = '';
