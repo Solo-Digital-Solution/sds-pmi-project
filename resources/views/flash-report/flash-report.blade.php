@@ -14,8 +14,8 @@
     }
 
     #map {
-        height: 450px;
-        width: 460px;
+        height: 300px;
+        width: 100%;
     }
 
     #informasi {
@@ -51,8 +51,11 @@
         }
         .graph-container {
         margin-top: 20px;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         width: 400px;
+        height: 200px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -243,7 +246,7 @@
 
 		<tbody>
 			<tr>
-				<td colspan="5" rowspan="10"><div id="map"></div></td>
+				<td colspan="5" rowspan="7"><div id="map"></div></td>
 				<td colspan="4" rowspan="2">
                     <div id="informasi"  style="background-color: #650103;">
                     Kejadian        : <span style="font-weight: 900">{{$laporan->kejadian->nama_kejadian}}</span> <br>
@@ -252,31 +255,15 @@
                     <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE&nbsp&nbsp&nbsp</span> <span id="waktuKejadianUpdate"></span></span><br><br>
                     </div>
                 </td>
-                <td colspan="3" style="
-    padding-top: 15px;
-"><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER LOKASI</span></td>
+                <td colspan="3" style="padding-top: 15px;">
+                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">DATA FLUKTUASI KORBAN</span>
+                </td>
 			</tr>
 
             <tr>
 				<td colspan="3" rowspan="4">
-                <div class="graph-container" id="graph-container"></div>
-                <div style="display: flex;">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar1" style="width: 20px; margin-right: 5px"></div>
-                        <div>Food Item</div>
-                    </div>
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar2" style="width: 20px; margin-right: 5px"></div>
-                        <div>Non-Food Item</div>
-                    </div>
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar3" style="width: 20px; margin-right: 5px"></div>
-                        <div>Layanan Kesehatan</div>
-                    </div>
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar4" style="width: 20px; margin-right: 5px"></div>
-                        <div>Layanan Air Bersih</div>
-                    </div>
+                <div class="graph-container" >
+                    <canvas id="graph-container-korban"></canvas>
                 </div>
                 </td>
 			</tr>
@@ -303,7 +290,10 @@
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
 				<td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RUMAH RUSAK</td>
-                <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="height: 265px;"></td>
+                <td colspan="3" style="padding-top: 15px;">
+                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">DATA FLUKTUASI LAYANAN</span>
+                </td>
+                <!-- <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="height: 300px; width :400px; object-fit:cover;"></td> -->
 			</tr>
 
             <tr>
@@ -312,53 +302,126 @@
 			</tr>
 
             <tr>
-				<td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
-                {{$laporan->kebutuhan}}</span>
-                </td>
-			</tr>
-
-            <tr>
-
-			</tr>
-
-            <tr>
-			</tr>
-
-            <tr>
-				<td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
+                <td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
 				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->jumlah_distribusi_layanan ?? 0 }}</span></td>
                 <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah_distribusi_layanan ?? 0 }}</span></td>
+				<td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
+                {{$laporan->kebutuhan}}</span>
+                </td>
+                <td colspan="3" rowspan="4">
+                    <div class="graph-container" >
+                        <canvas id="graph-container-layanan"></canvas>
+                    </div>
+                </td>
+			</tr>
+
+            <tr>
+			</tr>
+            
+            <tr>
+                
+            </tr>
+
+            <tr>
+				<td rowspan="2" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
+				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
+				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>{{$laporan->mobilisasi->personil->pengurus + $laporan->mobilisasi->personil->relawan_pmi + $laporan->mobilisasi->personil->staf_markas + $laporan->mobilisasi->personil->sukarelawan_spesialis}} ORANG</span></td>
+				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>{{$jumlahTenagaMedis->medis + $jumlahTenagaMedis->paramedis}} ORANG</span></td>
 				<td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
 			</tr>
 
             <tr>
-				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>{{$laporan->mobilisasi->personil->pengurus + $laporan->mobilisasi->personil->relawan_pmi + $laporan->mobilisasi->personil->staf_markas + $laporan->mobilisasi->personil->sukarelawan_spesialis}} ORANG</span></td>
-				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>482.000 ORANG</span></td>
-                <td colspan="4" rowspan="2" style="
-    padding-bottom: 70px;
-"><div class="chart-container">
-                    <canvas id="genderChart" width="150" height="150"></canvas>
-                </div></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank Mandiri<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
-                <td valign="top" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank BCA<span style="color:#bc202d;"></br>206.300668.8</span></br><span style="font-size: 10px"></br>a/n Kantor PMI Pusat</span></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank BRI<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
-			</tr>
-
-            <tr>
-				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
+                <!-- <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">PERTOLONGAN</br>PERTAMA</br>DARURAT DAN</br>EVAKUASI</BR>BENCANA</td>
 				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-tents icon" style="color: #bc202d;"></i></td>
                 <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">
                     @if ($jumlahShelter != 0)
                         HUNIAN DARURAT
                     @endif
+                </td> -->
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="4" rowspan="3" style="padding-bottom: 70px;">
+                    <div class="chart-container">
+                        <canvas id="genderChart" width="300" height="300"></canvas>
+                    </div>
                 </td>
-                <td colspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d;font-size:18px"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <span style="font-weight:800">big opportunity</span> to us</span></td>
+                <td colspan="3" rowspan="3"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="height: 300px; width :400px; object-fit:cover;"></td>
+				
 			</tr>
+
+            <tr>
+            <td colspan="5" style="padding-top: 15px;">
+                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER LOKASI</span>
+                </td>
+                
+			</tr>
+            <tr>
+                <td colspan="5">
+                    <div class="graph-container" id="graph-container" ></div>
+                    <div style="display: flex;">
+                        
+                        
+                        
+                        
+                    </div>
+                </td>
+                
+            </tr>
+            <tr>
+                <td></td>
+                <td rowspan="2">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar1" style="width: 20px; margin-right: 5px"></div>
+                        <div>Food Item</div>
+                    </div>
+                </td>
+                <td rowspan="2">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar2" style="width: 20px; margin-right: 5px"></div>
+                        <div>Non-Food Item</div>
+                    </div>
+                </td>
+                <td rowspan="2">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar3" style="width: 20px; margin-right: 5px"></div>
+                        <div>Layanan Kesehatan</div>
+                    </div>
+                </td>
+                <td rowspan="2">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="bar bar4" style="width: 20px; margin-right: 5px"></div>
+                        <div>Layanan Air Bersih</div>
+                    </div>
+                </td>
+                <td colspan="2" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">
+                    <div style="margin-bottom: 30px;">
+                    Bank Mandiri<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span>
+                    </div>
+                    <div>
+                        Bank BCA<span style="color:#bc202d;"></br>206.300668.8</span></br><span style="font-size: 10px"></br>a/n Kantor PMI Pusat</span>
+                    </div>
+                </td>
+                <td colspan="2" rowspan="2" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank BRI<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
+                <td colspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d;font-size:28px"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <br><span style="font-weight:800">big opportunity</span> to us</span></td>
+            </tr>
+            <tr>
+                <!-- <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td> -->
+                
+            </tr>
 		</tbody>
 
 	</table>
@@ -470,7 +533,7 @@
 
     var map = L.map('map', {
         zoomControl: false // Menonaktifkan kontrol zoom
-    }).setView([latitude, longitude], 12); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
+    }).setView([latitude, longitude], 14); // Inisialisasi peta dengan koordinat Mojosongo dan zoom level 12
 
     // Tambahkan layer peta dari OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -533,6 +596,61 @@
         type: 'doughnut', // Jenis grafik lingkaran
         data: data,
         options: options
+    });
+
+    // Membuat grafik lingkaran
+    const fluktuasiKorban = JSON.parse('<?= $fluktuasiKorban ?>')
+    console.log(fluktuasiKorban)
+    var ctxKorban = document.getElementById('graph-container-korban');
+    const dataKorban = {
+        labels: fluktuasiKorban.labels,
+        datasets: [
+            {
+            label: 'Luka ringan',
+            data: fluktuasiKorban.luka_ringan,
+            },
+            {
+            label: 'Luka berat',
+            data: fluktuasiKorban.luka_berat,
+            },
+            {
+            label: 'Jumlah jiwa',
+            data: fluktuasiKorban.jmlh_jiwa,
+            }
+        ]
+    }
+    var korbanChart = new Chart(ctxKorban, {
+        type: 'line', // Jenis grafik lingkaran
+        data: dataKorban,
+    });
+
+    const fluktuasiLayanan = JSON.parse('<?= $fluktuasiLayanan ?>')
+    console.log(fluktuasiLayanan)
+    var ctxKorban = document.getElementById('graph-container-layanan');
+    const dataLayanan = {
+        labels: fluktuasiLayanan.labels,
+        datasets: [
+            {
+            label: 'Food Item',
+            data: fluktuasiLayanan.food_item,
+            },
+            {
+            label: 'Non-Food Item',
+            data: fluktuasiLayanan.non_food_item,
+            },
+            {
+            label: 'Layanan Kesehatan',
+            data: fluktuasiLayanan.layanan_kesehatan,
+            },
+            {
+            label: 'Distribusi Air Bersih',
+            data: fluktuasiLayanan.distribusi_air_bersih,
+            }
+        ]
+    }
+    var korbanChart = new Chart(ctxKorban, {
+        type: 'line', // Jenis grafik lingkaran
+        data: dataLayanan,
     });
 
 
@@ -598,37 +716,7 @@
             graphContainer.appendChild(barContainer);
         }
 
-        // dataKecamatan.forEach(kecamatan => {
-        //     console.log(kecamatan)
-        //     const barContainer = document.createElement('div');
-        //     barContainer.classList.add('bar-container');
-
-        //     const label = document.createElement('div');
-        //     label.classList.add('label');
-        //     label.textContent = kecamatan.nama;
-
-        //     const barWrapper = document.createElement('div');
-        //     barWrapper.classList.add('bar-wrapper');
-
-        //     // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
-        //     const bar1Width = (kecamatan.diterjunkan / maxDimiliki) * 300;
-        //     const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
-
-        //     const bar1 = document.createElement('div');
-        //     bar1.classList.add('bar', 'bar1');
-        //     bar1.style.width = `${bar1Width}px`;
-
-        //     const bar2 = document.createElement('div');
-        //     bar2.classList.add('bar', 'bar2');
-        //     bar2.style.width = `${bar2Width}px`;
-
-        //     barWrapper.appendChild(bar1);
-        //     barWrapper.appendChild(bar2);
-        //     barContainer.appendChild(label);
-        //     barContainer.appendChild(barWrapper);
-
-        //     graphContainer.appendChild(barContainer);
-        // });
+        
 </script>
 
 @endsection
