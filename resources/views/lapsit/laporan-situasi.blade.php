@@ -96,7 +96,7 @@
                                     <button type="button" class="btn btn-warning btn-rounded mb-2">Flash Report <i class="icon-stats-bars"></i></button>
                                 </a>
                                 @endif
-                                @if ($loop->last)
+                                @if ($loop->last && $loop->count > 1)
                                 <form id="deleteForm-{{ $laporan['id_laporan'] }}" action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
