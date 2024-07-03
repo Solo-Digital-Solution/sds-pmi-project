@@ -365,7 +365,7 @@
 </div>
 <div class="button-wrapper">
     <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" onclick="downloadContentAsImage()">Download as Image</button>
-    <button style="border-radius: 5px;border:none;font-size: 17px;margin-top: 20px;background-color: #bc202d;color: #fff;padding: 8px 14px; margin-left: 10px;" id="send-to-whatsapp">Send to Whatsapp</button>
+    <!-- <button style="border-radius: 5px;border:none;font-size: 17px;margin-top: 20px;background-color: #bc202d;color: #fff;padding: 8px 14px; margin-left: 10px;" id="send-to-whatsapp">Send to Whatsapp</button> -->
 </div>
 <div id="sendMessageModal" class="modal">
     <div class="modal-content">
