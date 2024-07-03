@@ -154,7 +154,7 @@
                                 </button>
                             </td>
                             <td>{{ $kejadian['kelurahan'] }}</td>
-                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                            <td><a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" class="text-primary">Lihat detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -320,7 +320,7 @@
                             <td>{{ $kejadian['waktu_kejadian'] }}</td>
                             <td>{{ $kejadian['status'] }}</td>
                             <td>{{ $kejadian['kelurahan'] }}</td>
-                            <td><a href="" class="text-primary" data-toggle="modal" data-target="#detailModal">Lihat detail</a></td>
+                            <td><a href="/kejadian/view/{{ $kejadian['id_kejadian'] }}" class="text-primary">Lihat detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>

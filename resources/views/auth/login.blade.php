@@ -38,6 +38,11 @@
     <div class="container">
         <div class="login-screen row align-items-center">
             <div class="col-sm-12">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="login-container">
