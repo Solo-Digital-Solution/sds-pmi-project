@@ -39,7 +39,6 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-
                     <div class="form-group row">
                         <label for="nama_laporan" class="col-sm-3 col-form-label">
                             Lapsit ke- <span style="color: red;">*</span>
@@ -281,7 +280,7 @@
             </div>
         </div>
         <div class="button-container">    
-            <button type="button" class="btn btn-primary next-btn">Next</button>
+            <button type="button" class="btn btn-primary next-btn ml-3">Next</button>
         </div>
     </div>
     <div class="step">
@@ -454,8 +453,8 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn btn-primary prev-btn">Previous</button>    
-            <button type="button" class="btn btn-primary next-btn">Next</button>
+            <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+            <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
         </div>  
     </div>
     <!-- <div class="container-fluid"> -->
@@ -534,8 +533,8 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn btn-primary prev-btn">Previous</button>    
-            <button type="button" class="btn btn-primary next-btn">Next</button>
+            <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+            <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
         </div>  
     </div>
     <!-- </div> -->
@@ -565,8 +564,8 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn btn-primary prev-btn">Previous</button>    
-            <button type="button" class="btn btn-primary next-btn">Next</button>
+            <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+            <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
         </div>
     </div>
     <div class="step">
@@ -615,8 +614,8 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn btn-primary prev-btn">Previous</button>    
-            <button type="button" class="btn btn-primary next-btn">Next</button>
+            <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+            <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
         </div>
     </div>
     <div class="step">
@@ -660,8 +659,8 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn btn-primary prev-btn">Previous</button>    
-            <button type="button" class="btn btn-primary next-btn">Next</button>
+            <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+            <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
         </div>
     </div>
     <div class="step">
@@ -982,40 +981,45 @@ $(document).on('input', '.form-control', function () {
 <!-- start modal dokumentasi -->
 <!-- halaman selanjutnya -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".step");
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentStep = 0;
+            const steps = document.querySelectorAll(".step");
 
-    function showStep(step) {
-        steps.forEach((element, index) => {
-            element.classList.toggle("active", index === step);
+            function showStep(step) {
+                steps.forEach((element, index) => {
+                    element.classList.toggle("active", index === step);
+                });
+                // Scroll to top when changing steps
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            function nextStep() {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            }
+
+            function prevStep() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            }
+
+            document.querySelectorAll(".next-btn").forEach(button => {
+                button.addEventListener("click", nextStep);
+            });
+
+            document.querySelectorAll(".prev-btn").forEach(button => {
+                button.addEventListener("click", prevStep);
+            });
+
+            showStep(currentStep);
         });
-    }
-
-    function nextStep() {
-        if (currentStep < steps.length - 1) {
-            currentStep++;
-            showStep(currentStep);
-        }
-    }
-
-    function prevStep() {
-        if (currentStep > 0) {
-            currentStep--;
-            showStep(currentStep);
-        }
-    }
-
-    document.querySelectorAll(".next-btn").forEach(button => {
-        button.addEventListener("click", nextStep);
-    });
-
-    document.querySelectorAll(".prev-btn").forEach(button => {
-        button.addEventListener("click", prevStep);
-    });
-
-    showStep(currentStep);
-});
-</script>
+    </script>
 
 @endsection
