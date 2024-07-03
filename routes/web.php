@@ -14,6 +14,9 @@ Route::get('/', function () {
     return view('landing-page');
 });
 
+Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
+
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
