@@ -72,6 +72,7 @@ Route::middleware(['auth', 'role:Pegawai PMI,Executive'])->group(function () {
     // ROUTES UNTUK EXECUTIVE SUMMARY
     Route::get('/executive-summary', [ExsumController::class, 'index'])->name('executive-summary.index');
     Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('executive-summary.search');
+    Route::get('/generate-lapsit/{id_kejadian}', [PDFController::class, 'pdf'])->name('generateLapsit');
 });
 
 // MIDDLEWARE HRD
@@ -90,10 +91,10 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::put('/user-management/{id}', [UserController::class, 'update']);
 });
 
-// MIDDLEWARE fetchkelurahan API
 Route::middleware(['auth', 'role:Pegawai PMI,HRD'])->group(function () {
     Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 });
+
 
 Route::get('/cobaaa', function () {
     return view('executive-summary.c3');

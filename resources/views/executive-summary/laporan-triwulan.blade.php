@@ -37,24 +37,24 @@
             </form>
         </div>
     </div>
-    <div class="row gutters">
-        <div class="col-sm-4">
+    {{-- <div class="row gutters">
+        {{-- <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">Pie Chart</div>
                 <div class="card-body">
                     <div id="pieChart" class="chart-height"></div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4">
+        </div> --}}
+        {{-- <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">Donut Chart</div>
                 <div class="card-body">
                     <div id="donutChart" class="chart-height"></div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4">
+        </div> --}}
+        {{-- <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">Pie Chart</div>
                 <div class="card-body">
@@ -62,11 +62,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Row end -->
 
     <!-- Row start -->
-    <div class="row gutters">
+    {{-- <div class="row gutters">
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-header">Line Graph</div>
@@ -83,11 +83,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Row end -->
 
     <!-- Row start -->
-    <div class="row gutters">
+    {{-- <div class="row gutters">
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-header">Line Graph</div>
@@ -104,11 +104,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Row end -->
 
     <!-- Row start -->
-    <div class="row gutters">
+    {{-- <div class="row gutters">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">Area Spline Graph</div>
@@ -117,11 +117,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Row end -->
 
     <!-- Row start -->
-    <div class="row gutters">
+    {{-- <div class="row gutters">
         <div class="col-lg-6 col-sm-12">
             <div class="card">
                 <div class="card-header">Scatter Plot</div>
@@ -138,11 +138,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Row end -->
 
     <!-- Row start -->
-    <div class="row gutters">
+    {{-- <div class="row gutters">
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-header">Spline Graph</div>
@@ -159,14 +159,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Row end -->
 
     <!-- Row start -->
     <div class="row gutters">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header">Bar Graph</div>
+                <div class="card-header">Tenaga yang Dikerahkan</div>
                 <div class="card-body">
                     <div id="barGraph" class="chart-height"></div>
                 </div>
@@ -179,7 +179,7 @@
     <div class="row gutters">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header">Server Requests</div>
+                <div class="card-header">Jumlah Korban Jiwa Setiap Kejadian</div>
                 <div class="card-body">
                     <div id="serverRequests" class="chart-height"></div>
                 </div>
@@ -439,5 +439,13 @@ Waktu Kejadian : <span style="font-weight: 900">{{ $kjd->waktu_kejadian }}</span
     </div>
 </div>
 </div>
+<script>
+    // Expose chart data to global context
+    window.barData = @json($barData);
+</script>
+<script>
+    // Expose chart data to global context
+    window.chartData = @json($chartData);
+</script>
 <!-- Row ends -->
 @endsection

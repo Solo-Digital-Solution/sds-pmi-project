@@ -86,17 +86,17 @@
     }
 
     .bar1 {
-        background: linear-gradient(90deg, #bc202d, #bc202d); /* Gradasi warna untuk data diterjunkan */
+        background: linear-gradient(90deg, #007a06, #007a06); /* Gradasi warna untuk data diterjunkan */
     }
 
     .bar2 {
-        background: linear-gradient(90deg, #fa3402, #fa3402); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #d16500, #d16500); /* Gradasi warna untuk data dimiliki */
     }
     .bar3 {
-        background: linear-gradient(90deg, #fa7e02, #fa7e02); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #d10007, #d10007); /* Gradasi warna untuk data dimiliki */
     }
     .bar4 {
-        background: linear-gradient(90deg, #fad902, #fad902); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #00497a, #00497a); /* Gradasi warna untuk data dimiliki */
     }
 
     .download-button {
@@ -244,8 +244,8 @@
 		<tbody>
 			<tr>
 				<td colspan="5" rowspan="10"><div id="map"></div></td>
-				<td colspan="4" rowspan="2"">
-                    <div id="informasi"  style="background-color: #650103;"">
+				<td colspan="4" rowspan="2">
+                    <div id="informasi"  style="background-color: #650103;">
                     Kejadian        : <span style="font-weight: 900">{{$laporan->kejadian->nama_kejadian}}</span> <br>
                     Lokasi          : <span style="font-weight: 900">{{$laporan->kejadian->kecamatan}}, {{$laporan->kejadian->kelurahan}}, Surakarta</span> <br>
                     Waktu Kejadian  : <span id="waktuKejadian" style="font-weight: 900"></span> <br><br>
@@ -302,8 +302,8 @@
 				<td rowspan="2"><i class="fa-solid fa-user-injured icon" style="color: #bc202d;"></i></td>
 				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
 				<td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;"">RUMAH RUSAK</td>
-                <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="width: 100%"></td>
+                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RUMAH RUSAK</td>
+                <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="height: 265px;"></td>
 			</tr>
 
             <tr>

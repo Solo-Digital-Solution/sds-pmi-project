@@ -37,9 +37,9 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">Detail Profil Anda</div>
-            <!-- <div class="card-body text-center position-relative" style="display: inline-block;">
+            <div class="card-body text-center position-relative" style="display: inline-block;">
                 <img src="{{ asset('img/taehyung.jpg') }}" width="15%" alt="Profile Picture">
-            </div> -->
+            </div>
             <div class="card-body">
                 <div class="form-group row">
                     <label for="fullName" class="col-sm-3 col-form-label">Nama Lengkap</label>
@@ -88,6 +88,9 @@
                     <div class="col">
                         <input type="text" value="{{ Auth::user()->goldar }}" class="form-control" id="goldar" placeholder="Golongan Darah" disabled>
                     </div>
+                </div>
+                <div class="d-flex justify-content-center w-100 py-3">
+                    <a href="{{ url('/profile/edit')" class="btn btn-primary btn-lg"><i class="icon-pencil"></i> Edit Profil</a>
                 </div>
             </div>
         </div>

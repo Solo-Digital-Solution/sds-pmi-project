@@ -15,7 +15,7 @@ use App\Http\Controllers\DropdownController;
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
-    Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
+    Route::post('api/fetch-kelurahans-g', [DropdownController::class, 'fetchKelurahanGuest']);
 
 
     Route::post('register', [RegisteredUserController::class, 'store']);

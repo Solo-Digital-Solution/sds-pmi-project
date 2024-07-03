@@ -262,7 +262,7 @@
                 var idKecamatan = this.value;
                 $("#kelurahan-dd").html('');
                 $.ajax({
-                    url: "{{url('api/fetch-kelurahans')}}",
+                    url: "{{url('api/fetch-kelurahans-g')}}",
                     type: "POST",
                     data: {
                         id_kecamatan: idKecamatan,
