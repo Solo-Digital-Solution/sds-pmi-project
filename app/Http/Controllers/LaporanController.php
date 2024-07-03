@@ -76,13 +76,20 @@ class LaporanController extends Controller
     {
         $id_kejadian = $request->query('id_kejadian');
         \Log::info('Received id_kejadian: ' . $id_kejadian);
-        return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian]);
+
+        $jumlahLaporan = DB::table('laporan')->where('id_kejadian', $id_kejadian)->count();
+
+        return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian, 'jumlahLaporan' => $jumlahLaporan]);
     }
+
     public function createAssessment(Request $request)
     {
         $id_kejadian = $request->query('id_kejadian');
         \Log::info('Received id_kejadian: ' . $id_kejadian);
-        return view('assessment.form-assessment', ['id_kejadian' => $id_kejadian]);
+
+        $jumlahLaporan = DB::table('laporan')->where('id_kejadian', $id_kejadian)->count();
+
+        return view('assessment.form-assessment', ['id_kejadian' => $id_kejadian, 'jumlahLaporan' => $jumlahLaporan]);
     }
 
     public function view($id_laporan)
@@ -338,8 +345,10 @@ class LaporanController extends Controller
 
             if ($jumlahLaporan == 0) {
                 $penomoranLaporan = $id_kejadian . '-' . $jumlahLaporan;
+                $namaLaporan = 'Lapsit-Awal';
             } elseif ($jumlahLaporan > 0) {
                 $penomoranLaporan = $id_kejadian . '-' . ($jumlahLaporan);
+                $namaLaporan = 'Lapsit-' . $jumlahLaporan;
             }
 
             DB::table('laporan')->insert([
@@ -350,7 +359,7 @@ class LaporanController extends Controller
                 'giat_pemerintah' => $request->giat_pemerintah,
                 'kebutuhan' => $request->kebutuhan,
                 'hambatan' => $request->hambatan,
-                'nama_laporan' => $request->nama_laporan,
+                'nama_laporan' => $namaLaporan,
                 'update' => $request->update ?? '2024-06-24 07:34:05.000000',
                 'id_kejadian' => $request->id_kejadian // Menggunakan id_kejadian dari request
             ]);
@@ -458,9 +467,60 @@ class LaporanController extends Controller
         // dd($jumlahLayananPerLokasi->groupBy('lokasi')->toArray());
         $layananPerLokasi = $jumlahLayananPerLokasi->groupBy('lokasi')->toArray();
 
-        // $jumlahFoodItem = Distribusi_layanan::where('jenis_distribusi_layanan', 'Food Item')
-        //     ->select('jenis_distribusi_layanan', 'jumlah', 'unit')
-        //     ->first();
+        $idLaporanDepan = mb_split('-', $id_laporan);
+        $korban = DB::table('laporan')
+        ->join('dampak', 'dampak.id_dampak', '=', 'laporan.id_dampak')
+        ->join('korban_jiwa', 'korban_jiwa.id_korban_jiwa', '=', 'dampak.id_korban_jiwa')
+        ->join('korban_terdampak', 'korban_terdampak.id_korban_terdampak', '=', 'dampak.id_korban_terdampak')
+        ->where('id_laporan', 'like', $idLaporanDepan[0] . '-%')
+        ->get();
+
+        $fluktuasiKorban = [
+            'labels' => [],
+            'luka_ringan' => [],
+            'luka_berat' => [],
+            'jmlh_jiwa' => [],
+        ];
+        for ($i = 0; $i <= $idLaporanDepan[1]; $i++){
+            array_push($fluktuasiKorban['labels'], 'Lapsit ' . $idLaporanDepan[0] . '-' . $i);
+            array_push($fluktuasiKorban['luka_ringan'], $korban[$i]->luka_ringan);
+            array_push($fluktuasiKorban['luka_berat'], $korban[$i]->luka_berat);
+            array_push($fluktuasiKorban['jmlh_jiwa'], $korban[$i]->jmlh_jiwa);
+        }
+
+        $layanan = DB::table('laporan')
+                                    ->join('layanan_korban', 'layanan_korban.id_giat_pmi', '=', 'laporan.id_giat_pmi')
+                                    ->join('distribusi_layanan', 'distribusi_layanan.id_distribusi_layanan', '=', 'layanan_korban.id_distribusi_layanan')
+                                    ->where('id_laporan', 'like', $idLaporanDepan[0] . '-%')
+                                    ->groupBy(['jenis_distribusi_layanan', 'id_laporan'])
+                                    ->select(DB::raw('id_laporan, jenis_distribusi_layanan, sum(jumlah) as jumlah_distribusi_layanan'))
+                                    ->get();
+
+        $fluktuasiLayanan = [
+            'labels' => [],
+            'food_item' => [],
+            'non_food_item' => [],
+            'distribusi_air_bersih' => [],
+            'layanan_kesehatan' => [],
+        ];
+
+        foreach ($layanan->groupBy('id_laporan') as $key => $value){
+            $temp = mb_split('-', $key);
+            if ($temp[1] > $idLaporanDepan[1]){
+                break;
+            }
+            array_push($fluktuasiLayanan['labels'], 'Lapsit ' . $key);
+            array_push($fluktuasiLayanan['food_item'], $value->where('id_laporan', '=', $key)->where('jenis_distribusi_layanan', '=', 'Food Item')->first()->jumlah_distribusi_layanan ?? 0);
+            array_push($fluktuasiLayanan['non_food_item'], $value->where('id_laporan', '=', $key)->where('jenis_distribusi_layanan', '=', 'Non-Food Item')->first()->jumlah_distribusi_layanan ?? 0);
+            array_push($fluktuasiLayanan['distribusi_air_bersih'], $value->where('id_laporan', '=', $key)->where('jenis_distribusi_layanan', '=', 'Layanan Air Bersih')->first()->jumlah_distribusi_layanan ?? 0);
+            array_push($fluktuasiLayanan['layanan_kesehatan'], $value->where('id_laporan', '=', $key)->where('jenis_distribusi_layanan', '=', 'Layanan Kesehatan')->first()->jumlah_distribusi_layanan ?? 0);
+        }
+
+        $jumlahTenagaMedis = Laporan::join('mobilisasi', 'mobilisasi.id_mobilisasi', '=', 'laporan.id_mobilisasi')
+                                ->join('tsr', 'tsr.id_tsr', '=', 'mobilisasi.id_tsr')
+                                ->where('id_laporan', '=', $id_laporan)
+                                ->first();
+        // dd($jumlahTenagaMedis);
 
         return view('flash-report.flash-report')
             ->with('kejadian', $laporan->kejadian)
@@ -469,6 +529,9 @@ class LaporanController extends Controller
             ->with('jumlahLayananAirBersih', $jumlahLayananAirBersih->where('jenis_distribusi_layanan', 'Layanan Air Bersih')->first())
             ->with('jumlahFoodItem', $jumlahLayananAirBersih->where('jenis_distribusi_layanan', 'Food Item')->first())
             ->with('jumlahLayananPerLokasi', json_encode($layananPerLokasi))
+            ->with('fluktuasiKorban', json_encode($fluktuasiKorban))
+            ->with('fluktuasiLayanan', json_encode($fluktuasiLayanan))
+            ->with('jumlahTenagaMedis', $jumlahTenagaMedis)
             ->with('filePaths', $filePaths); // Mengirimkan data file_path ke view
     }
 
