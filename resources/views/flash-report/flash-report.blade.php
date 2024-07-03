@@ -86,17 +86,17 @@
     }
 
     .bar1 {
-        background: linear-gradient(90deg, #bc202d, #bc202d); /* Gradasi warna untuk data diterjunkan */
+        background: linear-gradient(90deg, #007a06, #007a06); /* Gradasi warna untuk data diterjunkan */
     }
 
     .bar2 {
-        background: linear-gradient(90deg, #fa3402, #fa3402); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #d16500, #d16500); /* Gradasi warna untuk data dimiliki */
     }
     .bar3 {
-        background: linear-gradient(90deg, #fa7e02, #fa7e02); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #d10007, #d10007); /* Gradasi warna untuk data dimiliki */
     }
     .bar4 {
-        background: linear-gradient(90deg, #fad902, #fad902); /* Gradasi warna untuk data dimiliki */
+        background: linear-gradient(90deg, #00497a, #00497a); /* Gradasi warna untuk data dimiliki */
     }
 
     .download-button {
