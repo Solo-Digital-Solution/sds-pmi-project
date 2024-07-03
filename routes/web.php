@@ -72,6 +72,7 @@ Route::middleware(['auth', 'role:Pegawai PMI,Executive'])->group(function () {
     // ROUTES UNTUK EXECUTIVE SUMMARY
     Route::get('/executive-summary', [ExsumController::class, 'index'])->name('executive-summary.index');
     Route::get('/executive-summary/search', [ExsumController::class, 'search'])->name('executive-summary.search');
+    Route::get('/generate-lapsit/{id_kejadian}', [PDFController::class, 'pdf'])->name('generateLapsit');
 });
 
 // MIDDLEWARE HRD
