@@ -114,7 +114,32 @@ class ExsumController extends Controller
             ->with('laporan')
             ->paginate(10);
 
-        return view('executive-summary.laporan-triwulan', compact('exsum'));
+            $chartData = $exsum->map(function ($item) {
+                return [
+                    'name' => $item->nama_kejadian, // Assuming nama_kejadian is the field name for the name of the kejadian
+                    'value' => optional($item->laporan_terbaru->dampak->korbanTerdampak)->jmlh_jiwa,
+                ];
+            })->toArray();
+
+            $barData = $exsum->map(function ($item) {
+                return [
+                    'name' => $item->nama_kejadian, // Assuming nama_kejadian is the field name for the name of the kejadian
+                    'personil' => optional($item->laporan_terbaru->mobilisasi->personil)->pengurus + optional($item->laporan_terbaru->mobilisasi->personil)->staf_markas + optional($item->laporan_terbaru->mobilisasi->personil)->relawan_pmi + optional($item->laporan_terbaru->mobilisasi->personil)->sukarelawan_spesialis,
+                    'tsr' => optional($item->laporan_terbaru->mobilisasi->tsr)->medis + optional($item->laporan_terbaru->mobilisasi->tsr)->paramedis + optional($item->laporan_terbaru->mobilisasi->tsr)->relief + optional($item->laporan_terbaru->mobilisasi->tsr)->logistics + optional($item->laporan_terbaru->mobilisasi->tsr)->watsan + optional($item->laporan_terbaru->mobilisasi->tsr)->it_telekom + optional($item->laporan_terbaru->mobilisasi->tsr)->sheltering,
+                    'tdb' => optional($item->laporan_terbaru->mobilisasi->tdb)->kend_ops + optional($item->laporan_terbaru->mobilisasi->tdb)->truk_angkutan + optional($item->laporan_terbaru->mobilisasi->tdb)->truk_tangki + optional($item->laporan_terbaru->mobilisasi->tdb)->double_cabin + optional($item->laporan_terbaru->mobilisasi->tdb)->alat_du + optional($item->laporan_terbaru->mobilisasi->tdb)->ambulans +
+                        optional($item->laporan_terbaru->mobilisasi->tdb)->alat_watsan + optional($item->laporan_terbaru->mobilisasi->tdb)->rs_lapangan + optional($item->laporan_terbaru->mobilisasi->tdb)->alat_pkdd + optional($item->laporan_terbaru->mobilisasi->tdb)->gudang_lapangan + optional($item->laporan_terbaru->mobilisasi->tdb)->posko_aju + optional($item->laporan_terbaru->mobilisasi->tdb)->alat_it_lapangan,
+                ];
+            })->toArray();
+
+            $kejadianData = $exsum->map(function ($item) {
+                return [
+                    'nama_kejadian' => $item->nama_kejadian,
+                    'latitude' => $item->latitude,
+                    'longitude' => $item->longitude,
+                ];
+            })->toArray();
+
+        return view('executive-summary.laporan-triwulan', compact('exsum', 'chartData', 'barData', 'kejadianData'));
     }
 
     public function showTriwulan($id_kejadian)

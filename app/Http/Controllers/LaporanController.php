@@ -338,8 +338,10 @@ class LaporanController extends Controller
 
             if ($jumlahLaporan == 0) {
                 $penomoranLaporan = $id_kejadian . '-' . $jumlahLaporan;
+                $namaLaporan = 'Lapsit-Awal';
             } elseif ($jumlahLaporan > 0) {
                 $penomoranLaporan = $id_kejadian . '-' . ($jumlahLaporan);
+                $namaLaporan = 'Lapsit-' . $jumlahLaporan;
             }
 
             DB::table('laporan')->insert([
@@ -350,7 +352,7 @@ class LaporanController extends Controller
                 'giat_pemerintah' => $request->giat_pemerintah,
                 'kebutuhan' => $request->kebutuhan,
                 'hambatan' => $request->hambatan,
-                'nama_laporan' => $request->nama_laporan,
+                'nama_laporan' => $namaLaporan,
                 'update' => $request->update ?? '2024-06-24 07:34:05.000000',
                 'id_kejadian' => $request->id_kejadian // Menggunakan id_kejadian dari request
             ]);
@@ -439,16 +441,16 @@ class LaporanController extends Controller
         ->select(DB::raw('lokasi, jenis_distribusi_layanan, sum(jumlah) as jumlah_distribusi_layanan'))
         ->get();
 
-        
+
         // $layananPerLokasi = $jumlahLayananPerLokasi->groupBy('lokasi')->map(function ($value, $key){
-        //     $kecamatan = $value->map(function ($v) { 
+        //     $kecamatan = $value->map(function ($v) {
         //         return [
         //             $v->jenis_distribusi_layanan => $v->jumlah_distribusi_layanan
         //         ];
         //     });
         //     return [
         //         $key => $kecamatan
-        //         // $key => $value->map(function ($v, $k) { 
+        //         // $key => $value->map(function ($v, $k) {
         //         //     return [
         //         //         $v->jenis_distribusi_layanan => $v->jumlah_distribusi_layanan
         //         //     ];

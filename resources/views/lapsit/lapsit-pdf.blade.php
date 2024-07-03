@@ -263,14 +263,12 @@
                 </tr>
                 <tr>
                     <th colspan="2"></th>
-                    <th>Lapsit-awal</th>
-                    <th>Lapsit-1</th>
-                    <th>Lapsit-2</th>
-                    <th>Lapsit-3</th>
-                    <th>Lapsit-4</th>
-                    <th>Lapsit-5</th>
-                    <th>Lapsit-6</th>
-                    <th>Lapsit-7</th>
+                    @foreach ($laporans as $lp)
+                        <th>{{ $lp->nama_laporan}}</th>
+                    @endforeach
+                    @for ($i = count($laporans); $i < 8; $i++)
+                        <th></th>
+                    @endfor
                 </tr>
 
                 <tr>
@@ -496,14 +494,12 @@
                 </tr>
                 <tr>
                     <th colspan="2"></th>
-                    <th>Lapsit-awal</th>
-                    <th>Lapsit-1</th>
-                    <th>Lapsit-2</th>
-                    <th>Lapsit-3</th>
-                    <th>Lapsit-4</th>
-                    <th>Lapsit-5</th>
-                    <th>Lapsit-6</th>
-                    <th>Lapsit-7</th>
+                    @foreach ($laporans as $lp)
+                        <th>{{ $lp->nama_laporan}}</th>
+                    @endforeach
+                    @for ($i = count($laporans); $i < 8; $i++)
+                        <th></th>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Pengurus</td>
@@ -735,14 +731,12 @@
                 </tr>
                 <tr>
                     <th colspan="2"></th>
-                    <th>Lapsit-awal</th>
-                    <th>Lapsit-1</th>
-                    <th>Lapsit-2</th>
-                    <th>Lapsit-3</th>
-                    <th>Lapsit-4</th>
-                    <th>Lapsit-5</th>
-                    <th>Lapsit-6</th>
-                    <th>Lapsit-7</th>
+                    @foreach ($laporans as $lp)
+                        <th>{{ $lp->nama_laporan}}</th>
+                    @endforeach
+                    @for ($i = count($laporans); $i < 8; $i++)
+                        <th></th>
+                    @endfor
                 </tr>
                 <tr>
                     <td colspan="2">Luka Ringan/Berat</td>
