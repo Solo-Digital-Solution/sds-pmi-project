@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="card">
-            <div class="card-header">Laporan Situasi</div>
+            <!-- <div class="card-header">Laporan Situasi</div> -->
             @can('adm')
             <div class="card-body">
                 <div class="d-flex justify-content-start w-100">
@@ -43,7 +43,7 @@
                     @endif
                     @if($isValidated)
                     <a href="{{ route('laporan.create', ['id_kejadian' => $id_kejadian]) }}">
-                        <button type="button" class="btn btn-primary btn-lg ml-3"><i class="icon-plus2"></i> Tambah Lapsit</button>
+                        <button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Lapsit</button>
                     </a>
                     @endif
                 </div>
