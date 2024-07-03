@@ -76,13 +76,20 @@ class LaporanController extends Controller
     {
         $id_kejadian = $request->query('id_kejadian');
         \Log::info('Received id_kejadian: ' . $id_kejadian);
-        return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian]);
+        
+        $jumlahLaporan = DB::table('laporan')->where('id_kejadian', $id_kejadian)->count();
+
+        return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian, 'jumlahLaporan' => $jumlahLaporan]);
     }
+
     public function createAssessment(Request $request)
     {
         $id_kejadian = $request->query('id_kejadian');
         \Log::info('Received id_kejadian: ' . $id_kejadian);
-        return view('assessment.form-assessment', ['id_kejadian' => $id_kejadian]);
+
+        $jumlahLaporan = DB::table('laporan')->where('id_kejadian', $id_kejadian)->count();
+
+        return view('assessment.form-assessment', ['id_kejadian' => $id_kejadian, 'jumlahLaporan' => $jumlahLaporan]);
     }
 
     public function view($id_laporan)

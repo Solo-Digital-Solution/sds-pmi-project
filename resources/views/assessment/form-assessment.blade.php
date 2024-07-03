@@ -38,7 +38,7 @@
                 <div class="row gutters">
                     <div class="col-sm-12 col-12">
                         <div class="form-group">
-                            <input class="form-control" id="nama_laporan" name="nama_laporan" type="text" placeholder="Masukkan nama laporan" required>
+                            <input class="form-control" id="nama_laporan" name="nama_laporan" type="text" placeholder="Masukkan nama laporan" value="{{ $jumlahLaporan }}" readonly required>
                         </div>
                     </div>
                 </div>
@@ -438,7 +438,7 @@
 				<div class="row gutters">
 					<div class="col-sm-12 col-12">
 						<div class="form-group">
-                            <label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>
+                            <label for="dokumentasi">Unggah Dokumentasi</label>
                             <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>
                             <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                         </div>
@@ -864,7 +864,7 @@
 			'<div class="row gutters">' +
 				'<div class="col-sm-12 col-12">' +
 					'<div class="form-group">' +
-						'<label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>' +
+						'<label for="dokumentasi">Unggah Dokumentasi</label>' +
                         '<input type="file" class="form-control-file" id="dokumentasi" name="in[' + i + '][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>' +
                         '<small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>' +
 					'</div>' +

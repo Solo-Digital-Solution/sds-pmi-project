@@ -44,7 +44,7 @@
                         Lapsit ke- <span style="color: red;">*</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="" required>
+                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" value="{{ $jumlahLaporan }}" readonly required>
                         <div id="error-message" style="color: red;"></div>
                     </div>
                 </div>
@@ -670,6 +670,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mengambil elemen input datetime-local
+        var dateTimeInput = document.getElementById('update');
+
+        // Fungsi untuk mendapatkan waktu saat ini dalam format yang sesuai
+        function getCurrentDateTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = ('0' + (now.getMonth() + 1)).slice(-2);
+            var day = ('0' + now.getDate()).slice(-2);
+            var hours = ('0' + now.getHours()).slice(-2);
+            var minutes = ('0' + now.getMinutes()).slice(-2);
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        // Mengatur nilai default untuk input datetime-local
+        dateTimeInput.value = getCurrentDateTime();
+    });
+</script>
 <!-- start modal personil dihubungi -->
 <script>
     var i = 0;
