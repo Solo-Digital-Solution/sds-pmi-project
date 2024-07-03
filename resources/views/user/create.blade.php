@@ -33,19 +33,19 @@
                         <label for="name">
                             Nama <span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="name" class="form-control" id="name" required>
+                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="nik">
                             NIK <span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="nik" class="form-control" id="nik" required>
+                        <input type="text" name="nik" class="form-control" id="nik" value="{{ old('nik') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="email">
                             Email <span style="color: red;">*</span>
                         </label>
-                        <input type="email" name="email" class="form-control" id="email" required>
+                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="password">
@@ -57,28 +57,33 @@
                         <label for="user_id">
                             ID Pegawai <span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="user_id" class="form-control" id="user_id" required>
+                        <input type="text" name="user_id" class="form-control" id="user_id" value="{{ old('user_id') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="username">
                             Username <span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="username" class="form-control" id="username" required>
+                        <input type="text" name="username" class="form-control" id="username" value="{{ old('username') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="tempat_lahir">
                             Tempat Lahir <span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="tempat_lahir" class="form-control" id="tempat_lahir" required>
+                        <input type="text" name="tempat_lahir" class="form-control" id="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="tanggal_lahir">
                             Tanggal Lahir <span style="color: red;">*</span>
                         </label>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control"  id="tanggal_lahir" name="tanggal_lahir" required>
+                        <input type="date" id="tanggal_lahir" style="color: #aab3c3;" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir" aria-label="tanggal_lahir" aria-describedby="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required>
+                                        @error('tanggal_lahir')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                         </div>                    
                     </div>
+
+                
                     
                     {{-- <div class="form-group">
                         <label for="kecamatan">
@@ -97,7 +102,7 @@
                         <label for="alamat">
                             Alamat tinggal<span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="alamat" class="form-control" id="alamat" required>
+                        <input type="text" name="alamat" class="form-control" id="alamat" value="{{ old('alamat') }}" required>
                     </div>
                     <div class="form-group row">
                         <label for="kecamatan-dd" class="col-sm-3 col-form-label">Kecamatan <span style="color: red;">*</span> </label>
@@ -115,7 +120,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="kelurahan-dd" class="col-sm-3 col-form-label">Kelurahan <span style="color: red;">*</span> </label>
                         <div class="input-group col-sm-3">
@@ -125,18 +129,19 @@
                             <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>
                         </div>
                     </div>
+                    
 
                     <div class="form-group">
                         <label for="goldar">
                             Golongan Darah <span style="color: red;">*</span>
                         </label>
                         <select class="form-control" id="goldar" name="goldar" required>
-                            <option selected>-- Pilih glongan darah --</option>
-                            <option value="Belum Tahu">Belum Tahu</option>
-                            <option value="O">O</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="AB">AB</option>
+                            <option selected>-- Pilih golongan darah --</option>
+                            <option value="Belum Tahu" {{ old('goldar') == 'Belum Tahu' ? 'selected' : '' }}>Belum Tahu</option>
+                            <option value="O" {{ old('goldar') == 'O' ? 'selected' : '' }}>O</option>
+                            <option value="A" {{ old('goldar') == 'A' ? 'selected' : '' }}>A</option>
+                            <option value="B" {{ old('goldar') == 'B' ? 'selected' : '' }}>B</option>
+                            <option value="AB" {{ old('goldar') == 'AB' ? 'selected' : '' }}>AB</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -145,15 +150,15 @@
                         </label>
                         <select class="form-control" id="gender" name="gender" required>
                             <option selected>-- Pilih jenis kelamin --</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
+                            <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                            <option value="Perempuan" {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="role_name">Role <span style="color: red;">*</span></label>
-                        <select class="form-control" name="role_name[]" id="role_name" multiple style="width: 100%; margin-bottom: 1.5vh;">
+                        <select class="form-control" name="role_name[]" id="role_name" multiple style="width: 100%; margin-bottom: 1.5vh;" required>
                             @foreach($roles as $r)
-                            <option value="{{ $r->role_id }}">{{ $r->role_name }}</option>
+                            <option value="{{ $r->role_id }}" {{ in_array($r->role_id, old('role_name', [])) ? 'selected' : '' }}>{{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>                    
@@ -161,7 +166,7 @@
                         <label for="no_telp">
                             Nomor Telepon <span style="color: red;">*</span>
                         </label>
-                        <input type="text" name="no_telp" class="form-control" id="no_telp" required>
+                        <input type="text" name="no_telp" class="form-control" id="no_telp" id="no_telp" value="{{ old('no_telp') }}" required>
                     </div>
                     <div class="row gutters">
                         <div class="col-md-6 col-sm-12 col-12">
