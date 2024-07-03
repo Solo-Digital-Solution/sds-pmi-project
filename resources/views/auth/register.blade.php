@@ -100,8 +100,14 @@
                                                 <i class="icon-home"></i>
                                             </span>
                                         </div>
-                                        <input type="text" id="kecamatan" name="kecamatan" class="form-control" placeholder="Kecamatan" aria-label="kecamatan" aria-describedby="kelurahan" value="{{ old('kelurahan') }}" required>
-                                        @error('kecamatan')
+                                        <select class="form-control" id="kecamatan-dd" name="kecamatan">
+                                            <option value="">Kecamatan</option>
+                                            <option value="1">Banjarsari</option>
+                                            <option value="2">Jebres</option>
+                                            <option value="3">Laweyan</option>
+                                            <option value="4">Pasar Kliwon</option>
+                                            <option value="5">Serengan</option>
+                                        </select>                                        @error('kecamatan')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -113,8 +119,7 @@
                                                 <i class="icon-home"></i>
                                             </span>
                                         </div>
-                                        <input type="text" id="kelurahan" name="kelurahan" class="form-control" placeholder="Kelurahan" aria-label="kelurahan" aria-describedby="kelurahan" value="{{ old('kecamatan') }}" required>
-                                        @error('kecamatan')
+                                        <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>                                        @error('kecamatan')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -249,6 +254,34 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#kecamatan-dd').on('change', function () {
+                var idKecamatan = this.value;
+                $("#kelurahan-dd").html('');
+                $.ajax({
+                    url: "{{url('api/fetch-kelurahans')}}",
+                    type: "POST",
+                    data: {
+                        id_kecamatan: idKecamatan,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#kelurahan-dd').html('<option value="">Kelurahan</option>');
+                        $.each(result.kelurahans, function (key, value) {
+                            $("#kelurahan-dd").append('<option value="' + value
+                                .nama_kelurahan + '">' + value.nama_kelurahan + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+
     <footer class="main-footer no-bdr fixed-btm">
         <div class="container">
             © Solo Digital Solution 2024
