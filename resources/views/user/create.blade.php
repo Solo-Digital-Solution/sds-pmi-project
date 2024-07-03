@@ -46,6 +46,9 @@
                             Email <span style="color: red;">*</span>
                         </label>
                         <input type="email" name="email" class="form-control" id="email" required>
+                        @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="password">
