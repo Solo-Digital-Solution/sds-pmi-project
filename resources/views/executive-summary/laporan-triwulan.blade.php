@@ -9,12 +9,10 @@
             </div>
             <div class="page-title">
                 <h5>Executive Summary</h5>
-                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Executive Summary</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -46,7 +44,7 @@
                 </div>
             </div>
         </div> --}}
-        {{-- <div class="col-sm-4">
+    {{-- <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">Donut Chart</div>
                 <div class="card-body">
@@ -54,7 +52,7 @@
                 </div>
             </div>
         </div> --}}
-        {{-- <div class="col-sm-4">
+    {{-- <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">Pie Chart</div>
                 <div class="card-body">

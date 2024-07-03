@@ -404,7 +404,7 @@ class LaporanController extends Controller
 
     public function show($id_laporan)
     {
-        $laporan = Laporan::with('dampak.shelters', 'dampak.korbanTerdampak', 'dampak.korbanJiwa', 'dampak.kerusakanRumah', 'dampak.kerusakanFasilitas', 'dampak.kerusakanInfrastruktur', 'mobilisasi.personil', 'mobilisasi.tsr', 'mobilisasi.tdb', 'giatPMI.evakuasiKorban', 'personilDihubungi', 'petugasPosko', 'dokumentasis')
+        $laporan = Laporan::with('kejadian','dampak.shelters', 'dampak.korbanTerdampak', 'dampak.korbanJiwa', 'dampak.kerusakanRumah', 'dampak.kerusakanFasilitas', 'dampak.kerusakanInfrastruktur', 'mobilisasi.personil', 'mobilisasi.tsr', 'mobilisasi.tdb', 'giatPMI.evakuasiKorban', 'personilDihubungi', 'petugasPosko', 'dokumentasis')
             ->find($id_laporan);
 
         if (!$laporan) {
@@ -439,16 +439,16 @@ class LaporanController extends Controller
         ->select(DB::raw('lokasi, jenis_distribusi_layanan, sum(jumlah) as jumlah_distribusi_layanan'))
         ->get();
 
-        
+
         // $layananPerLokasi = $jumlahLayananPerLokasi->groupBy('lokasi')->map(function ($value, $key){
-        //     $kecamatan = $value->map(function ($v) { 
+        //     $kecamatan = $value->map(function ($v) {
         //         return [
         //             $v->jenis_distribusi_layanan => $v->jumlah_distribusi_layanan
         //         ];
         //     });
         //     return [
         //         $key => $kecamatan
-        //         // $key => $value->map(function ($v, $k) { 
+        //         // $key => $value->map(function ($v, $k) {
         //         //     return [
         //         //         $v->jenis_distribusi_layanan => $v->jumlah_distribusi_layanan
         //         //     ];
@@ -463,6 +463,7 @@ class LaporanController extends Controller
         //     ->first();
 
         return view('flash-report.flash-report')
+            ->with('kejadian', $laporan->kejadian)
             ->with('laporan', $laporan)
             ->with('jumlahShelter', $jumlahShelter)
             ->with('jumlahLayananAirBersih', $jumlahLayananAirBersih->where('jenis_distribusi_layanan', 'Layanan Air Bersih')->first())

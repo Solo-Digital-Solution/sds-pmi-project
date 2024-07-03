@@ -15,31 +15,83 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index()
-{
-    $users = User::all(); // Mengambil semua data pengguna menggunakan model User
-
-    return view('user.user-management', compact('users'));
-}
-
-    public function profile_index()
     {
-        $user = Auth::user();
-        $roles = $user->roles;
+        $users = User::all(); // Mengambil semua data pengguna menggunakan model User
 
-        return view('profile.index', compact('user', 'roles'));
+        return view('user.user-management', compact('users'));
     }
 
-    public function profile_edit()
+    public function editProfil()
     {
-        return view('profile.edit');
+        $user = Auth::user();
+        $kecamatans = DB::table('kecamatan')->get();
+        // passing data pegawai yang didapat ke view edit.blade.php
+        //return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
+        return view('profile.edit', compact('kecamatans', 'user'));
+    }
+
+    public function updateProfil(Request $request, $user_id)
+    {
+        // Mulai transaksi database
+        DB::beginTransaction();
+        try {
+            // Validasi data input
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'tempat_lahir' => 'required',
+                'tanggal_lahir' => 'required',
+                'kecamatan' => 'required',
+                'kelurahan' => 'required',
+                'alamat' => 'required',
+                'goldar' => 'required',
+                'no_telp' => 'required',
+                'username' => 'required',
+                'gender' => 'required',
+                'profilePhoto' => 'image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            // Temukan user berdasarkan id
+            $user = User::findOrFail($user_id);
+
+            // Update data user
+            $user->update($request->only([
+                'name', 'email', 'tempat_lahir', 'tanggal_lahir',
+                'kecamatan', 'kelurahan', 'alamat', 'goldar',
+                'no_telp', 'username', 'gender'
+            ]));
+
+            // Simpan foto profil jika ada
+            if ($request->hasFile('profilePhoto')) {
+                $file = $request->file('profilePhoto');
+                $nama_dokumen = $user_id . '.' . $file->getClientOriginalExtension();
+                $file->move('profilePhoto/', $nama_dokumen);
+
+                // Simpan nama file foto di kolom 'profilePhoto' dalam tabel users
+                $user->profilePhoto = $nama_dokumen;
+                $user->save();
+            }
+
+            // Commit transaksi
+            DB::commit();
+
+            // Pesan sukses
+            return redirect('profile')->with('success', 'Profil berhasil diubah');
+        } catch (\Exception $e) {
+            // Rollback transaksi jika terjadi kesalahan
+            DB::rollback();
+
+            // Pesan gagal
+            return redirect('profile')->with('error', 'Profil gagal diedit: ' . $e->getMessage());
+        }
     }
 
     public function create()
-{
-    $roles = Roles::all(); // Mengambil semua data role dari model Roles
-    $kecamatans = Kecamatan::all(); // Mengambil semua data kecamatan dari model Kecamatan
-    return view('user.create', compact('roles', 'kecamatans'));
-}
+    {
+        $roles = Roles::all(); // Mengambil semua data role dari model Roles
+        $kecamatans = Kecamatan::all(); // Mengambil semua data kecamatan dari model Kecamatan
+        return view('user.create', compact('roles', 'kecamatans'));
+    }
 
 
     // public function create()
@@ -181,22 +233,21 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    // Ambil data pengguna
-    $user = User::findOrFail($id);
+    {
+        // Ambil data pengguna
+        $user = User::findOrFail($id);
 
-    // Hapus semua relasi peran saat ini untuk pengguna ini
-    $user->roles()->detach();
+        // Hapus semua relasi peran saat ini untuk pengguna ini
+        $user->roles()->detach();
 
-    // Simpan peran baru
-    $roles = $request->input('role_name');
-    if (!empty($roles)) {
-        foreach ($roles as $role_id) {
-            $user->roles()->attach($role_id);
+        // Simpan peran baru
+        $roles = $request->input('role_name');
+        if (!empty($roles)) {
+            foreach ($roles as $role_id) {
+                $user->roles()->attach($role_id);
+            }
         }
+
+        return redirect('/user-management')->with('success', 'Peran pengguna berhasil diperbarui');
     }
-
-    return redirect('/user-management')->with('success', 'Peran pengguna berhasil diperbarui');
-}
-
 }

@@ -8,13 +8,12 @@
                 <i class="icon-center_focus_strong"></i>
             </div>
             <div class="page-title">
-                <h5>Form Kejadian</h5>
-                <h6 class="sub-heading">Lengkapi formulir berikut untuk menambahkan kejadian baru.</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <h5>Form Laporan Kejadian</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/kejadian') }}">Laporan Kejadian</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Form Laporan Kejadian</li>
+                </ol>
             </div>
         </div>
     </div>

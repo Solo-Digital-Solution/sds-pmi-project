@@ -53,13 +53,24 @@
                         <li>
                             <a href='{{ url('/dashboard')  }}'>Dashboard</a>
                         </li>
-                        @can('hrd')
+                    </ul>
+                </li>
+
+                @can('hrd')
+                <li>
+                    <a href="#" class="has-arrow" aria-expanded="false">
+                        <span class="has-icon">
+                            <i class="icon-people"></i>
+                        </span>
+                        <span class="nav-title">Manajemen Akun</span>
+                    </a>
+                    <ul aria-expanded="false">
                         <li>
                             <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
                         </li>
-                        @endcan
                     </ul>
                 </li>
+                @endcan
 
                 @can('adm')
                 <li>

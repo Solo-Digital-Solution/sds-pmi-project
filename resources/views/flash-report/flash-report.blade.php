@@ -204,13 +204,13 @@
                 <i class="icon-laptop_windows"></i>
             </div>
             <div class="page-title">
-                <h5>Dashboard</h5>
-                <h6 class="sub-heading">Welcome to Cherry Admin Template</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 2 hours ago</span>
+                <h5>Flash Report Laporan Situasi ke-{{ $laporan->nama_laporan }}</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/kejadian') }}">Laporan Kejadian</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/kejadian/view-lapsit/'. $kejadian->id_kejadian) }}">Laporan Situasi</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Flash Report</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -584,13 +584,13 @@
             // Menghitung lebar bar berdasarkan nilai relatif terhadap maxDimiliki
             // const bar2Width = ((kecamatan.dimiliki - kecamatan.diterjunkan) / maxDimiliki) * 300;
 
-            
+
 
             // const bar2 = document.createElement('div');
             // bar2.classList.add('bar', 'bar2');
             // bar2.style.width = `${bar2Width}px`;
 
-            
+
             // barWrapper.appendChild(bar2);
             barContainer.appendChild(label);
             barContainer.appendChild(barWrapper);

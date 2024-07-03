@@ -59,4 +59,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Roles::class, 'users_has_role', 'user_id', 'role_id');
     }
+
+    public function hasAllRoles($roles)
+    {
+        // Pastikan $roles adalah array
+        if (!is_array($roles)) {
+            $roles = [$roles];
+        }
+
+        // Periksa apakah pengguna memiliki semua peran yang diperlukan
+        return $this->roles()->whereIn('role_id', $roles)->count() === count($roles);
+    }
 }

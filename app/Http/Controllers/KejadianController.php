@@ -10,6 +10,8 @@ use App\Models\Kejadian;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
 use App\Models\Laporan;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 
@@ -26,22 +28,41 @@ class KejadianController extends Controller
 
     public function dashboard()
     {
-        // $totalData = kejadian::count();
-        // $dataPerPage = max(min($totalData, 10), 1);
-        // $kejadians = Kejadian::latest()->paginate($dataPerPage);
+        // Mengambil user yang sedang login
+        $user = Auth::user();
+
+        if (!$user) {
+            // Jika user tidak ditemukan, kirim pesan error atau redirect
+            return redirect()->back()->withErrors(['User not found']);
+        }
+
+        // Dapatkan role_name milik user tersebut
+        $roles = $user->roles->pluck('role_name')->toArray();
+        $rolesString = implode(', ', $roles);
+
+        // Mengambil data kejadian sesuai kondisi yang ditentukan
         $kejadians = Kejadian::where('status', 'Aktif')
-                    ->orWhere('status', 'Menunggu Validasi')
-                    ->latest()
-                    ->paginate(10);
-        
+            ->orWhere('status', 'Menunggu Validasi')
+            ->latest()
+            ->paginate(10);
+
+        // Menghitung jumlah kejadian dengan status 'Aktif'
         $activeKejadianCount = Kejadian::where('status', 'Aktif')->count();
-        // dd($activeKejadianCount);
 
+        // Menghitung jumlah kejadian dengan status 'Menunggu Validasi'
         $assessmentKejadianCount = Kejadian::where('status', 'Menunggu Validasi')->count();
-        // dd($assessmentKejadianCount);
 
-        return view('dashboard.dashboard', compact('kejadians', 'activeKejadianCount', 'assessmentKejadianCount'));
+        // Mengirim data ke view
+        return view('dashboard.dashboard', [
+            'user' => $user,
+            'rolesString' => $rolesString,
+            'kejadians' => $kejadians,
+            'activeKejadianCount' => $activeKejadianCount,
+            'assessmentKejadianCount' => $assessmentKejadianCount
+        ]);
     }
+
+
 
     public function add(Request $request)
     {
@@ -96,21 +117,21 @@ class KejadianController extends Controller
     public function edit($id_kejadian)
     {
         // mengambil data pegawai berdasarkan id yang dipilih
-        $kejadian = DB::table('kejadian')->where('id_kejadian',$id_kejadian)->get();
+        $kejadian = DB::table('kejadian')->where('id_kejadian', $id_kejadian)->get();
         $kecamatans = DB::table('kecamatan')->get();
         // passing data pegawai yang didapat ke view edit.blade.php
         //return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
-        return view('kejadian.edit-kejadian', compact('kejadian','kecamatans'));
+        return view('kejadian.edit-kejadian', compact('kejadian', 'kecamatans'));
     }
 
     public function view($id_kejadian)
     {
         // mengambil data pegawai berdasarkan id yang dipilih
-        $kejadian = DB::table('kejadian')->where('id_kejadian',$id_kejadian)->get();
+        $kejadian = DB::table('kejadian')->where('id_kejadian', $id_kejadian)->get();
         $kecamatans = DB::table('kecamatan')->get();
         // passing data pegawai yang didapat ke view edit.blade.php
         //return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
-        return view('kejadian.view-kejadian', compact('kejadian','kecamatans'));
+        return view('kejadian.view-kejadian', compact('kejadian', 'kecamatans'));
     }
 
     public function update(Request $request, $id_kejadian)
@@ -185,6 +206,4 @@ class KejadianController extends Controller
 
         return view('kejadian.view-assessor', compact('assessor'));
     }
-
-
 }

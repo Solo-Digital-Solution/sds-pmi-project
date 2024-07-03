@@ -8,13 +8,12 @@
                 <i class="icon-laptop_windows"></i>
             </div>
             <div class="page-title">
-                <h5>Edit Akun</h5>
-                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <h5>Form Edit Akun</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/user-management') }}">Manajemen Akun</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Form Edit Akun</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -70,13 +69,12 @@
                         <label for="role_name">Peran:</label>
                         <select name="role_name[]" id="role_name" class="form-control" multiple>
                             @foreach($roles as $role)
-                                <option value="{{ $role->role_id }}"
-                                    @if($user->roles->contains('role_id', $role->role_id)) selected @endif>
-                                    {{ $role->role_name }}
-                                </option>
+                            <option value="{{ $role->role_id }}" @if($user->roles->contains('role_id', $role->role_id)) selected @endif>
+                                {{ $role->role_name }}
+                            </option>
                             @endforeach
                         </select>
-                    </div>                                                                         
+                    </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
