@@ -37,4 +37,10 @@ class DropdownController extends Controller
         return response()->json($data);
     }
 
+    public function fetchKelurahanGuest(Request $request)
+    {
+        $data['kelurahans'] = Kelurahan::where("id_kecamatan",$request->id_kecamatan)->get(["id_kelurahan", "nama_kelurahan"]);
+        return response()->json($data);
+    }
+
 }

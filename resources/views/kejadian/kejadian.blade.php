@@ -26,7 +26,7 @@
 <div class="row gutters">
     <div class="col-sm-12">
         <div class="card">
-            <div class="card-header">Kejadian</div>
+            <!-- <div class="card-header">Kejadian</div> -->
             <div class="card-body">
                 @can('adm')
                 <div class="d-flex justify-content-start w-100">

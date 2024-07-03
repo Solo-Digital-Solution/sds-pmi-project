@@ -90,10 +90,10 @@ class UserController extends Controller
     {
         // Validasi input dari form
         $request->validate([
-            'user_id' => 'required',
+            'user_id' => ['required', 'unique:' . User::class],
             'name' => 'required',
-            'email' => 'required|email',
-            'username' => 'required',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'username' => ['required', 'string', 'max:255', 'unique:' . User::class],
             'password' => 'required',
             'gender' => 'required',
             'no_telp' => 'required',
@@ -101,61 +101,73 @@ class UserController extends Controller
             'role_name' => 'required', // Pastikan role_name terisi
         ]);
 
+        $birthDate = new \DateTime($request->input('tanggal_lahir'));
+        $currentDate = new \DateTime();
+        $age = $birthDate->diff($currentDate)->y;
+
+        if ($age < 17) {
+            return back()->withErrors(['tanggal_lahir' => 'Anda harus berusia minimal 17 tahun untuk mendaftar.'])->withInput();
+        }
+
         // Simpan data pengguna ke tabel users
-        $user_id = $request->user_id;
-        $nama_dokumen1 = '';
-        $nama_dokumen2 = '';
+        try {
+            $user_id = $request->user_id;
+            $nama_dokumen1 = '';
+            $nama_dokumen2 = '';
 
-        if ($request->hasFile('profilePhoto')) {
-            $file = $request->file('profilePhoto');
-            $nama_dokumen1 = $user_id . '.' . $file->getClientOriginalExtension();
-            $file->move('profilePhoto/', $nama_dokumen1);
-        }
-
-        if ($request->hasFile('ktp')) {
-            $file = $request->file('ktp');
-            $nama_dokumen2 = $user_id . '.' . $file->getClientOriginalExtension();
-            $file->move('ktp/', $nama_dokumen2);
-        }
-
-        // Hash the password before saving
-        $hashedPassword = Hash::make($request->password);
-
-        $users = DB::table('users')->insertGetId([
-            'user_id' => $user_id,
-            'nik' => $request->nik,
-            'name' => $request->name,
-            'email' => $request->email,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'kecamatan' => $request->kecamatan,
-            'kelurahan' => $request->kelurahan,
-            'alamat' => $request->alamat,
-            'goldar' => $request->goldar,
-            'username' => $request->username,
-            'password' => $hashedPassword, // Save hashed password
-            'gender' => $request->gender,
-            'no_telp' => $request->no_telp,
-            'profilePhoto' => $nama_dokumen1,
-            'ktp' => $nama_dokumen2
-        ]);
-
-        // Simpan role pengguna ke tabel users_has_role
-        $role_ids = $request->input('role_name'); // Ini bisa berupa array jika memungkinkan pengguna untuk memilih banyak peran
-
-        if (!empty($role_ids)) {
-            foreach ($role_ids as $role_id) {
-                DB::table('users_has_role')->insert([
-                    'user_id' => $user_id,
-                    'role_id' => $role_id
-                ]);
+            if ($request->hasFile('profilePhoto')) {
+                $file = $request->file('profilePhoto');
+                $nama_dokumen1 = $user_id . '.' . $file->getClientOriginalExtension();
+                $file->move('profilePhoto/', $nama_dokumen1);
             }
+
+            if ($request->hasFile('ktp')) {
+                $file = $request->file('ktp');
+                $nama_dokumen2 = $user_id . '.' . $file->getClientOriginalExtension();
+                $file->move('ktp/', $nama_dokumen2);
+            }
+
+            // Hash the password before saving
+            $hashedPassword = Hash::make($request->password);
+
+            $users = DB::table('users')->insertGetId([
+                'user_id' => $user_id,
+                'nik' => $request->nik,
+                'name' => $request->name,
+                'email' => $request->email,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'kecamatan' => $request->kecamatan,
+                'kelurahan' => $request->kelurahan,
+                'alamat' => $request->alamat,
+                'goldar' => $request->goldar,
+                'username' => $request->username,
+                'password' => $hashedPassword, // Save hashed password
+                'gender' => $request->gender,
+                'no_telp' => $request->no_telp,
+                'profilePhoto' => $nama_dokumen1,
+                'ktp' => $nama_dokumen2
+            ]);
+
+            // Simpan role pengguna ke tabel users_has_role
+            $role_ids = $request->input('role_name'); // Ini bisa berupa array jika memungkinkan pengguna untuk memilih banyak peran
+
+            if (!empty($role_ids)) {
+                foreach ($role_ids as $role_id) {
+                    DB::table('users_has_role')->insert([
+                        'user_id' => $user_id,
+                        'role_id' => $role_id
+                    ]);
+                }
+            }
+
+            // Redirect ke halaman user-management setelah berhasil menyimpan
+            return redirect('/user-management')->with('success', 'Berhasil menambahkan akun baru');
+        } catch (\Exception $e) {
+            // Redirect kembali dengan pesan gagal
+            return back()->with('error', 'Gagal menambahkan akun baru')->withInput();
         }
-
-        // Redirect ke halaman user-management setelah berhasil menyimpan
-        return redirect('/user-management')->with('success', 'Akun berhasil dibuat');
     }
-
 
 
     public function destroy($id)
