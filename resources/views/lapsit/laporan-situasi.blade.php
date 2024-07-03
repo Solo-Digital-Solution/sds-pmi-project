@@ -91,10 +91,12 @@
                                 <a href="{{ route('laporan.view', ['id_laporan' => $laporan['id_laporan']]) }}" style="color: blue;">
                                     <button type="button" class="btn btn-info btn-rounded mb-2">Lihat Detail <i class="icon-eye3"></i></button>
                                 </a>
+                                @if(!$loop->first)
                                 <a href="{{url('/flash-report/' . $laporan['id_laporan'])}}" style="color: red;">
                                     <button type="button" class="btn btn-warning btn-rounded mb-2">Flash Report <i class="icon-stats-bars"></i></button>
                                 </a>
-                                @if ($loop->last)
+                                @endif
+                                @if ($loop->last && $loop->count > 1)
                                 <form id="deleteForm-{{ $laporan['id_laporan'] }}" action="{{ route('laporan.destroy', ['id_laporan' => $laporan['id_laporan']]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
