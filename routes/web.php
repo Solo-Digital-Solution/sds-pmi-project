@@ -14,9 +14,6 @@ Route::get('/', function () {
     return view('landing-page');
 });
 
-Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
-
-
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -94,10 +91,10 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::put('/user-management/{id}', [UserController::class, 'update']);
 });
 
-// MIDDLEWARE fetchkelurahan API
 Route::middleware(['auth', 'role:Pegawai PMI,HRD'])->group(function () {
     Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 });
+
 
 Route::get('/cobaaa', function () {
     return view('executive-summary.c3');
