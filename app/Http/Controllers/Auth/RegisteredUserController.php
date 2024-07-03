@@ -47,6 +47,14 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $birthDate = new \DateTime($request->input('tanggal_lahir'));
+        $currentDate = new \DateTime();
+        $age = $birthDate->diff($currentDate)->y;
+
+        if ($age < 17) {
+            return back()->withErrors(['tanggal_lahir' => 'Anda harus berusia minimal 17 tahun untuk mendaftar.'])->withInput();
+        }
+
         $filePath = $request->file('ktp');
         $fileFullPath = public_path('ktp/' . $filePath); // Mendapatkan path lengkap file
         // if (file_exists($fileFullPath)) {
