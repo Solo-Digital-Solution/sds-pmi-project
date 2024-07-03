@@ -17,14 +17,17 @@ class RoleMiddleware
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
 
-        // Assuming your roles are stored in a pivot table `users_has_role`
-        if ($user->roles()->whereIn('role_name', $roles)->exists()) {
-            return $next($request);
+        // Periksa jika pengguna memiliki salah satu dari peran yang diberikan
+        foreach ($roles as $role) {
+            if ($user->roles()->where('role_name', $role)->exists()) {
+                return $next($request);
+            }
         }
 
-    return redirect('unauthorized');
-}
+        // Jika pengguna tidak memiliki peran yang sesuai, redirect ke halaman tidak diizinkan
+        return redirect('unauthorized');
+    }
 }

@@ -24,6 +24,19 @@
 @section('content')
 <!-- Row start -->
 <div class="col-sm-12">
+    <div class="clearfix">
+        <div class="btn-group float-left form-group" role="group">
+            <form action="{{ route('executive-summary.search') }}" method="GET">
+                <div class="input-group">
+                    <input type="date" class="form-control" id="startDate" name="tanggal_awal" placeholder="Tanggal Awal">
+                    <input type="date" class="form-control" id="endDate" name="tanggal_akhir" placeholder="Tanggal Akhir">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="row gutters">
         <div class="col-sm-4">
             <div class="card">
