@@ -14,7 +14,7 @@
     }
 
     #map {
-        height: 300px;
+        height: 400px;
         width: 100%;
     }
 
@@ -241,7 +241,7 @@
         </thead>
 
 		<tfoot>
-			<td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 14px;white-space: nowrap; padding-left: 2">&nbsp&nbsp© Posko PMI Jawa Tengah</td>
+			<td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 18px;white-space: nowrap; padding-left: 2">&nbsp&nbsp© Posko PMI Surakarta, Jawa Tengah</td>
 		</tfoot>
 
 		<tbody>
@@ -576,13 +576,18 @@
     var options = {
         responsive: true,
         maintainAspectRatio: false,
-        legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-                fontColor: '#333',
-                fontSize: 12
-            }
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    font: {
+                        size: 20
+                    }
+                    // fontColor: '#333',
+                    // fontSize: 20
+                }
+            },
         },
         title: {
             display: true,
