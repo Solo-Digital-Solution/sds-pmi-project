@@ -61,12 +61,18 @@
                             ID Pegawai <span style="color: red;">*</span>
                         </label>
                         <input type="text" name="user_id" class="form-control" id="user_id" value="{{ old('user_id') }}" required>
+                        @error('user_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="username">
                             Username <span style="color: red;">*</span>
                         </label>
                         <input type="text" name="username" class="form-control" id="username" value="{{ old('username') }}" required>
+                        @error('username')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="tempat_lahir">
