@@ -50,7 +50,6 @@ Route::middleware(['auth', 'role:Pegawai PMI,Sukarelawan'])->group(function () {
     Route::post('/kejadian/update', [KejadianController::class, 'update']);
     Route::put('kejadian/{id_kejadian}', [KejadianController::class, 'update'])->name('kejadian.update');
     Route::get('edit-kejadian', [DropdownController::class, 'indexKecamatanEdit']);
-    Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 
     // ROUTES UNTUK ASSESSMENT
     Route::get('/form-assessment', [LaporanController::class, 'index'])->name('laporan.index');
@@ -84,12 +83,16 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::get('/user-management/create', [UserController::class, 'create'])->name('addAkun');
     Route::post('/simpanAkun', [UserController::class, 'simpanAkun']);
     Route::get('/user-management/create', [DropdownController::class, 'indexKecamatanUser']);
-    Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 
     // ROUTES UNTUK EDIT DAN HAPUS USER MANAGEMENT
     Route::delete('/user-management/{id}', [UserController::class, 'destroy']);
     Route::get('/user-management/{id}/edit', [UserController::class, 'edit']);
     Route::put('/user-management/{id}', [UserController::class, 'update']);
+});
+
+// MIDDLEWARE fetchkelurahan API
+Route::middleware(['auth', 'role:Pegawai PMI,HRD'])->group(function () {
+    Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 });
 
 Route::get('/cobaaa', function () {
