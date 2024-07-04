@@ -44,7 +44,7 @@
                         Lapsit ke- <span style="color: red;">*</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="" required>
+                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" value="{{ $jumlahLaporan }}" readonly required>
                         <div id="error-message" style="color: red;"></div>
                     </div>
                 </div>
