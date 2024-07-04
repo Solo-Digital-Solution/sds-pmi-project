@@ -201,7 +201,8 @@ class KejadianController extends Controller
         $kejadian = DB::table('kejadian')->where('id_kejadian', $id_kejadian)->first();
         // dd($kejadian);
         $kecamatan = DB::table('kecamatan')->where('id_kecamatan', $kejadian->kecamatan)->first();
-        $assessor = DB::table('users')->where('kecamatan', $kecamatan->id_kecamatan)->get();
+        $roles = ['sukarelawan', 'admin'];
+        $assessor = DB::table('users')->join('users_has_role', 'users.user_id', '=', 'users_has_role.user_id')->join('roles', 'roles.role_id', '=', 'users_has_role.role_id')->where('kecamatan', $kecamatan->id_kecamatan)->whereIn('roles.role_name', $roles)->get();
         // dd($assessor);
 
         return view('kejadian.view-assessor', compact('assessor'));
