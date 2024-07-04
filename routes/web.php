@@ -94,7 +94,7 @@ Route::middleware(['auth', 'role:HRD'])->group(function () {
     Route::put('/user-management/{id}', [UserController::class, 'update']);
 });
 
-Route::middleware(['auth', 'role:Pegawai PMI,HRD'])->group(function () {
+Route::middleware(['auth', 'role:Pegawai PMI,HRD,Executive,Sukarelawan'])->group(function () {
     Route::post('api/fetch-kelurahans', [DropdownController::class, 'fetchKelurahan']);
 });
 
