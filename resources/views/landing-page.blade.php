@@ -72,6 +72,7 @@
 						<div class="u-inner-container-layout u-sidenav-overflow">
 							<div class="u-menu-close"></div>
 							<ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+<<<<<<< Updated upstream
 								@guest
                                 <li class="u-nav-item">
                                     <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href='{{ url('/login')  }}' style="padding: 10px 20px;">Login</a>
@@ -85,6 +86,14 @@
                                     <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{{ url('/dashboard') }}" style="padding: 10px 20px;">Dashboard</a>
                                 </li>
                                 @endauth
+=======
+								<li class="u-nav-item">
+									<a class="u-button-style u-nav-link" href='{{ url('/login')  }}'>Login</a>
+								</li>
+								<li class="u-nav-item">
+									<a class="u-button-style u-nav-link" href='{{ url('/register')  }}'>Register</a>
+								</li>
+>>>>>>> Stashed changes
 							</ul>
 						</div>
 					</div>
