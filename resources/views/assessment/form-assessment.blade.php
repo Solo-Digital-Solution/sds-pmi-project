@@ -449,7 +449,7 @@
                     <div class="row gutters">
                         <div class="col-sm-12 col-12">
                             <div class="form-group">
-                                <label for="dokumentasi">Unggah Dokumentasi <span style="color: red;">*</span></label>
+                                <label for="dokumentasi">Unggah Dokumentasi</label>
                                 <input type="file" class="form-control-file" id="dokumentasi" name="in[0][dokumentasi]" accept=".jpg,.jpeg,.png" multiple>
                                 <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                             </div>
@@ -557,14 +557,14 @@
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>
-                                <input class="form-control" id="nama_lengkap" name="inputs[0][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap" min="0" value="0" required>
+                                <input class="form-control" id="nama_lengkap" name="inputs[0][nama_lengkap]" type="text" placeholder="Masukkan nama lengkap" required>
                             </div>
                         </div>
                         <!-- Inputan Posisi -->
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="posisi">Posisi <span style="color: red;">*</span></label>
-                                <input class="form-control" id="posisi" name="inputs[0][posisi]" type="text" placeholder="Masukkan posisi" min="0" value="0" required>
+                                <input class="form-control" id="posisi" name="inputs[0][posisi]" type="text" placeholder="Masukkan posisi" required>
                             </div>
                         </div>
                         <!-- Inputan Kontak -->
