@@ -9,12 +9,10 @@
             </div>
             <div class="page-title">
                 <h5>Manajemen Akun</h5>
-                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Manajemen Akun</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -105,7 +103,7 @@
                                     <span class="badge badge-primary">{{ $role->role_name }}</span>
                                 @endforeach
                             </td>
-                            
+
                             <td>{{ $us->no_telp }}</td>
                             <td>{{ $us->kelurahan }}</td>
                             <td>

@@ -413,7 +413,7 @@ class LaporanController extends Controller
 
     public function show($id_laporan)
     {
-        $laporan = Laporan::with('dampak.shelters', 'dampak.korbanTerdampak', 'dampak.korbanJiwa', 'dampak.kerusakanRumah', 'dampak.kerusakanFasilitas', 'dampak.kerusakanInfrastruktur', 'mobilisasi.personil', 'mobilisasi.tsr', 'mobilisasi.tdb', 'giatPMI.evakuasiKorban', 'personilDihubungi', 'petugasPosko', 'dokumentasis')
+        $laporan = Laporan::with('kejadian','dampak.shelters', 'dampak.korbanTerdampak', 'dampak.korbanJiwa', 'dampak.kerusakanRumah', 'dampak.kerusakanFasilitas', 'dampak.kerusakanInfrastruktur', 'mobilisasi.personil', 'mobilisasi.tsr', 'mobilisasi.tdb', 'giatPMI.evakuasiKorban', 'personilDihubungi', 'petugasPosko', 'dokumentasis')
             ->find($id_laporan);
 
         if (!$laporan) {
@@ -523,6 +523,7 @@ class LaporanController extends Controller
         // dd($jumlahTenagaMedis);
 
         return view('flash-report.flash-report')
+            ->with('kejadian', $laporan->kejadian)
             ->with('laporan', $laporan)
             ->with('jumlahShelter', $jumlahShelter)
             ->with('jumlahLayananAirBersih', $jumlahLayananAirBersih->where('jenis_distribusi_layanan', 'Layanan Air Bersih')->first())

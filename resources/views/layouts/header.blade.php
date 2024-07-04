@@ -92,7 +92,11 @@
                                 <li>
                                     <a href="{{ route('profile.index') }}">
                                         <div class="icon">
-                                            <img src="{{ asset('img/taehyung.jpg') }}" class="rounded-image" alt="Foto Profile">
+                                            @if (Auth::user()->profilePhoto)
+                                            <img src="{{ asset('profilePhoto/' . Auth::user()->profilePhoto) }}" class="rounded-image"  class="img-fluid" alt="Profile Picture">
+                                            @else
+                                            <img src="{{ asset('img/default.jpg') }}" class="img-fluid rounded-image" alt="Default Profile Picture">
+                                            @endif
                                         </div>
                                         <p>Profil Anda</p>
                                     </a>

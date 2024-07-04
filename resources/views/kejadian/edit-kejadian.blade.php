@@ -8,13 +8,12 @@
                 <i class="icon-center_focus_strong"></i>
             </div>
             <div class="page-title">
-                <h5>Edit Form Kejadian</h5>
-                <h6 class="sub-heading">Silahkan edit formulir berikut untuk mengedit kejadian.</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <h5>Form Edit Laporan Kejadian</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/kejadian') }}">Laporan Kejadian</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Edit Form Laporan Kejadian</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -28,18 +27,18 @@
 
 <div class="row gutters">
 
-        <div class="col-sm-12">
-            <!-- Tombol Kembali ke Daftar Kejadian -->
-            <div class="d-flex justify-content-start mb-3">
-                <a href="{{ route('kejadian.index') }}" class="btn btn-primary">
-                    <i class="icon-arrow-left-thick"></i> Cancel
-                </a>
-            </div>
-            <div class="card">
-                <div class="card-header" style="font-weight: bold;">Kejadian Bencana</div>
-                <div class="card-body">
-                    @foreach ($kejadian as $k)
-                    <form action="{{ route('kejadian.update', $k->id_kejadian) }}" method="POST" enctype="multipart/form-data">
+    <div class="col-sm-12">
+        <!-- Tombol Kembali ke Daftar Kejadian -->
+        <div class="d-flex justify-content-start mb-3">
+            <a href="{{ route('kejadian.index') }}" class="btn btn-primary">
+                <i class="icon-arrow-left-thick"></i> Cancel
+            </a>
+        </div>
+        <div class="card">
+            <div class="card-header" style="font-weight: bold;">Kejadian Bencana</div>
+            <div class="card-body">
+                @foreach ($kejadian as $k)
+                <form action="{{ route('kejadian.update', $k->id_kejadian) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
@@ -56,7 +55,7 @@
                             Tanggal Kejadian <span style="color: red;">*</span>
                         </label>
                         <div class="col-sm-3">
-                            <input type="datetime-local" class="form-control"  id="waktu_kejadian" name="waktu_kejadian" value="{{ $k->waktu_kejadian }}">
+                            <input type="datetime-local" class="form-control" id="waktu_kejadian" name="waktu_kejadian" value="{{ $k->waktu_kejadian }}">
                         </div>
                     </div>
 
@@ -67,16 +66,16 @@
                                 <label class="input-group-text" for="kecamatan-dd">Options</label>
                             </div>
                             <select class="form-control" id="kecamatan-dd" name="kecamatan">
-                                <option value="" >Choose...</option>
+                                <option value="">Choose...</option>
                                 @foreach ($kecamatans as $kecamatan)
-                                <option value="{{ $kecamatan->id_kecamatan }}" {{ $kecamatan->id_kecamatan == $k->kecamatan ? 'selected' : '' }} > {{ $kecamatan->nama_kecamatan }} </option>
+                                <option value="{{ $kecamatan->id_kecamatan }}" {{ $kecamatan->id_kecamatan == $k->kecamatan ? 'selected' : '' }}> {{ $kecamatan->nama_kecamatan }} </option>
                                 @endforeach
                             </select>
                         </div>
                         @foreach ($kecamatans as $kecamatan)
-                            @if ($kecamatan->id_kecamatan == $k->kecamatan)
-                            <p>Pilihan Sebelumnya : {{ $kecamatan->nama_kecamatan }}</p>
-                            @endif
+                        @if ($kecamatan->id_kecamatan == $k->kecamatan)
+                        <p>Pilihan Sebelumnya : {{ $kecamatan->nama_kecamatan }}</p>
+                        @endif
                         @endforeach
                     </div>
 
@@ -95,20 +94,20 @@
                         <label for="lokasi">
                             Lokasi Kejadian <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3" >{{ $k->lokasi }}</textarea>
+                        <textarea class="form-control" id="lokasi" name="lokasi" rows="3">{{ $k->lokasi }}</textarea>
                     </div>
 
                     <div class="form-group row">
                         <label for="latitude" class="col-sm-3 col-form-label">Latitude <span style="color: red;">*</span></label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"  id="latitude" name="latitude" placeholder="" value="{{ $k->latitude }}">
+                            <input type="text" class="form-control" id="latitude" name="latitude" placeholder="" value="{{ $k->latitude }}">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="longitude" class="col-sm-3 col-form-label">Longitude <span style="color: red;">*</span></label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"  id="longitude" name="longitude" placeholder="" value="{{ $k->longitude }}">
+                            <input type="text" class="form-control" id="longitude" name="longitude" placeholder="" value="{{ $k->longitude }}">
                         </div>
                     </div>
 
@@ -118,7 +117,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="dukungan_inter">Options</label>
                             </div>
-                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter" >
+                            <select class="custom-select" id="dukungan_inter" name="dukungan_inter">
                                 <option value="">Choose..</option>
                                 <option value="1" {{ $k->dukungan_inter == 1 ? 'selected' : ''}}>Ya</option>
                                 <option value="0" {{ $k->dukungan_inter == 0 ? 'selected' : ''}}>Tidak</option>
@@ -130,14 +129,14 @@
                         <label for="gambaran_situasi">
                             Gambaran Umum Situasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3" >{{ $k->gambaran_situasi }}</textarea>
+                        <textarea class="form-control" id="gambaran_situasi" name="gambaran_situasi" rows="3">{{ $k->gambaran_situasi }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="akses_lokasi">
                             Gambaran Umum Akses Lokasi <span style="color: red;">*</span>
                         </label>
-                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3" >{{ $k->akses_lokasi }}</textarea>
+                        <textarea class="form-control" id="akses_lokasi" name="akses_lokasi" rows="3">{{ $k->akses_lokasi }}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -161,10 +160,10 @@
                         </a>
                     </div>
 
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                     <script>
-                        $(document).ready(function () {
-                            $('#kecamatan-dd').on('change', function () {
+                        $(document).ready(function() {
+                            $('#kecamatan-dd').on('change', function() {
                                 var idKecamatan = this.value;
                                 $("#kelurahan-dd").html('');
                                 $.ajax({
@@ -175,9 +174,9 @@
                                         _token: '{{csrf_token()}}'
                                     },
                                     dataType: 'json',
-                                    success: function (result) {
+                                    success: function(result) {
                                         $('#kelurahan-dd').html('<option value="">Choose...</option>');
-                                        $.each(result.kelurahans, function (key, value) {
+                                        $.each(result.kelurahans, function(key, value) {
                                             var isSelected = value.nama_kelurahan == "{{ $k->kelurahan }}" ? 'selected' : '';
                                             $("#kelurahan-dd").append('<option value="' + value.nama_kelurahan + '" ' + isSelected + '>' + value.nama_kelurahan + '</option>');
                                         });
@@ -191,13 +190,12 @@
                                 });
                             });
                         });
-
                     </script>
                 </form>
                 @endforeach
-                </div> <!-- card-body close -->
-            </div> <!-- card-close -->
-        </div> <!-- col 12  close -->
+            </div> <!-- card-body close -->
+        </div> <!-- card-close -->
+    </div> <!-- col 12  close -->
 </div> <!-- row gutters close -->
 
 

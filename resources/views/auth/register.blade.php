@@ -107,7 +107,7 @@
                                             <option value="3">Laweyan</option>
                                             <option value="4">Pasar Kliwon</option>
                                             <option value="5">Serengan</option>
-                                        </select>                                        @error('kecamatan')
+                                        </select> @error('kecamatan')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -119,9 +119,7 @@
                                                 <i class="icon-home"></i>
                                             </span>
                                         </div>
-                                        <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>                                        @error('kecamatan')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="text" id="kelurahan" style="color: #aab3c3;" name="kelurahan" class="form-control" placeholder="Kelurahan" aria-label="kelurahan" aria-describedby="kelurahan" value="{{ old('kelurahan') }}" required>
                                     </div>
 
                                     <!-- Alamat -->
@@ -202,9 +200,9 @@
 
                                     <!-- KTP -->
                                     <div class="input-group mb-2">
-                                            <label for="ktp">KTP</label>
-                                            <input type="file" class="form-control-file" id="ktp" name="ktp" accept=".jpg,.jpeg,.png" multiple required>
-                                            <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
+                                        <label for="ktp">KTP</label>
+                                        <input type="file" class="form-control-file" id="ktp" name="ktp" accept=".jpg,.jpeg,.png" multiple required>
+                                        <small class="form-text text-muted">Format yang diperbolehkan: JPG, JPEG, PNG</small>
                                         @error('ktp')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -257,8 +255,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#kecamatan-dd').on('change', function () {
+        $(document).ready(function() {
+            $('#kecamatan-dd').on('change', function() {
                 var idKecamatan = this.value;
                 $("#kelurahan-dd").html('');
                 $.ajax({
@@ -269,9 +267,9 @@
                         _token: '{{csrf_token()}}'
                     },
                     dataType: 'json',
-                    success: function (result) {
+                    success: function(result) {
                         $('#kelurahan-dd').html('<option value="">Kelurahan</option>');
-                        $.each(result.kelurahans, function (key, value) {
+                        $.each(result.kelurahans, function(key, value) {
                             $("#kelurahan-dd").append('<option value="' + value
                                 .nama_kelurahan + '">' + value.nama_kelurahan + '</option>');
                         });
@@ -279,7 +277,6 @@
                 });
             });
         });
-
     </script>
 
     <footer class="main-footer no-bdr fixed-btm">

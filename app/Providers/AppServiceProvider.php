@@ -41,5 +41,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('exc', function (User $user) {
             return $user->roles()->where('role_name', 'Executive')->exists();
         });
+
+        Gate::define('multiple-roles', function ($user, $roles) {
+            return $user->hasAllRoles($roles);
+        });
     }
 }

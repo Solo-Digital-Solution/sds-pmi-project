@@ -72,18 +72,19 @@
 						<div class="u-inner-container-layout u-sidenav-overflow">
 							<div class="u-menu-close"></div>
 							<ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-								<li class="u-nav-item">
-									<a class="u-button-style u-nav-link" href="Home.html">Home</a>
-								</li>
-								<li class="u-nav-item">
-									<a class="u-button-style u-nav-link" href="About.html">About</a>
-								</li>
-								<li class="u-nav-item">
-									<a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
-								</li>
-								<li class="u-nav-item">
-									<a class="u-button-style u-nav-link" href="Page-1.html">Page 1</a>
-								</li>
+								@guest
+                                <li class="u-nav-item">
+                                    <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href='{{ url('/login')  }}' style="padding: 10px 20px;">Login</a>
+                                </li>
+                                <li class="u-nav-item">
+                                    <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href='{{ url('/register')  }}' style="padding: 10px 20px;">Register</a>
+                                </li>
+                                @endguest
+                                @auth
+                                <li class="u-nav-item">
+                                    <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{{ url('/dashboard') }}" style="padding: 10px 20px;">Dashboard</a>
+                                </li>
+                                @endauth
 							</ul>
 						</div>
 					</div>

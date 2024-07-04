@@ -8,13 +8,11 @@
                 <i class="icon-laptop_windows"></i>
             </div>
             <div class="page-title">
-                <h5>Kejadian</h5>
-                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <h5>Laporan Kejadian</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Laporan Kejadian</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -26,11 +24,11 @@
 <div class="row gutters">
     <div class="col-sm-12">
         <div class="card">
-            <!-- <div class="card-header">Kejadian</div> -->
+            <div class="card-header">Laporan Kejadian</div>
             <div class="card-body">
                 @can('adm')
                 <div class="d-flex justify-content-start w-100">
-                    <a href="{{ url('/tambah-kejadian')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Kejadian</button></a>
+                    <a href="{{ url('/tambah-kejadian')  }}"><button type="button" class="btn btn-primary btn-lg mr-auto"><i class="icon-plus2"></i> Tambah Laporan Kejadian</button></a>
                 </div>
                 @endcan
             </div>
@@ -136,11 +134,11 @@
 <script>
     $(document).ready(function() {
         @if(session('success'))
-            $('#successModal').modal('show');
+        $('#successModal').modal('show');
         @endif
 
         @if(session('error'))
-            $('#errorModal').modal('show');
+        $('#errorModal').modal('show');
         @endif
     });
 </script>

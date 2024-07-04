@@ -8,13 +8,12 @@
                 <i class="icon-center_focus_strong"></i>
             </div>
             <div class="page-title">
-                <h5>Tambah Akun</h5>
-                <h6 class="sub-heading">Selamat datang di Sistem Penanggulangan Bencana PMI Solo</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <h5>Form Tambah Akun</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/user-management') }}">Manajemen Akun</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Form Tambah Akun</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -89,11 +88,11 @@
                                         @error('tanggal_lahir')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                        </div>                    
+                        </div>
                     </div>
 
-                
-                    
+
+
                     {{-- <div class="form-group">
                         <label for="kecamatan">
                             Kecamatan <span style="color: red;">*</span>
@@ -138,7 +137,7 @@
                             <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>
                         </div>
                     </div>
-                    
+
 
                     <div class="form-group">
                         <label for="goldar">
@@ -170,7 +169,7 @@
                             <option value="{{ $r->role_id }}" {{ in_array($r->role_id, old('role_name', [])) ? 'selected' : '' }}>{{ $r->role_name }}</option>
                             @endforeach
                         </select>
-                    </div>                    
+                    </div>
                     <div class="form-group">
                         <label for="no_telp">
                             Nomor Telepon <span style="color: red;">*</span>
@@ -198,7 +197,7 @@
                     <div class="d-flex justify-content-center w-100 py-3">
                         <button type="submit" class="btn btn-primary btn-lg"><i class="icon-location-arrow"></i> Simpan</button>
                     </div>
-                   
+
                 </form>
             </div>
         </div>

@@ -8,13 +8,13 @@
                 <i class="icon-center_focus_strong"></i>
             </div>
             <div class="page-title">
-                <h5>Form Laporan Situasi</h5>
-                <h6 class="sub-heading">Lengkapi formulir berikut untuk menambahkan laporan situasi baru.</h6>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="right-actions">
-                <span class="last-login">Last Login: 5 minutes ago</span>
+                <h5>Detail Laporan Situasi</h5>
+                <ol class="breadcrumb" style="background-color: transparent; margin-left:0px; margin-bottom:0px">
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/kejadian') }}">Laporan Kejadian</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt"><a href="{{ url('/kejadian/view-lapsit/'. $id_kejadian) }}">Laporan Situasi</a></li>
+                    <li class="breadcrumb-item" style="font-size:12pt">Detail Laporan Situasi</li>
+                </ol>
             </div>
         </div>
     </div>
@@ -280,7 +280,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12">
         <div class="d-flex justify-content-center">
             <h5 class="m-0 mb-2">MOBILISASI SUMBER DAYA PMI</h5>
@@ -316,7 +316,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="font-weight: bold;">Personil Bantuan Teknis/Ahli/Spesialis (TSR)</div>
@@ -449,7 +449,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12">
         <div class="d-flex justify-content-center">
             <h5 class="m-0 mb-2">GIAT PMI</h5>
@@ -614,7 +614,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="font-weight: bold;">Laporan Dokumentasi</div>
@@ -648,7 +648,7 @@
             </div>
         </div>
     </div> -->
-</form>    
+</form>
 </div>
 
 <!-- Row end -->
@@ -661,7 +661,7 @@
     var i = 0;
     $('#addPersonil').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
             '<div class="personil-form">' +
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
@@ -700,7 +700,7 @@
     var i = 0;
     $('#addPetugas').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
             '<div class="petugas-form">' +
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
@@ -733,7 +733,7 @@
     var i = 0;
     $('#addDistribusi').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
             '<div class="distribusi-form">' +
                 '<div class="row gutters">' +
                     '<div class="col-sm-6 col-12">' +
@@ -862,7 +862,7 @@
     var i = 0;
     $('#addDokumentasi').click(function(){
         ++i;
-        var newRow = 
+        var newRow =
         '<div class="dokumentasi-form">' +
             '<div class="row gutters">' +
                 '<div class="col-sm-12 col-12">' +

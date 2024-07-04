@@ -3967,6 +3967,34 @@ a.blog-sm p.blog-date:after {
   border-bottom: inherit;
 }
 
+/*************** Breadcrumbs ***************/
+
+ol.breadcrumb {
+  padding: 0;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+ol.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+
+ol.breadcrumb li + li:before {
+  color: #666666;
+  content: "/";
+}
+
+ol.breadcrumb li a {
+  color: red;
+  text-decoration: none;
+}
+
+ol.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
 /*************** Media ***************/
 .media {
   margin-top: 0;

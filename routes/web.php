@@ -25,8 +25,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [KejadianController::class, 'dashboard'])->name('dashboard');
 
     // ROUTES UNTUK PROFILE
-    Route::get('/profile', [UserController::class, 'profile_index'])->name('profile.index');
-    Route::get('/profile/edit', [UserController::class, 'profile_edit'])->name('profile.update');
+    Route::get('/profile', function () {
+        return view('profile.index');
+    })->name('profile.index');
+    Route::get('/profile/edit', [UserController::class, 'editProfil'])->name('profile.edit');
+    Route::put('/profile/edit/{id}', [UserController::class, 'updateProfil'])->name('profile.update');
 });
 
 Route::middleware(['auth', 'role:Pegawai PMI'])->group(function () {
