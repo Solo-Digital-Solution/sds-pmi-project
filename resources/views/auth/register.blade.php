@@ -112,14 +112,14 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Kecamatan -->
+                                    <!-- Kelurahan -->
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="kelurahan">
                                                 <i class="icon-home"></i>
                                             </span>
                                         </div>
-                                        <input type="text" id="kelurahan" style="color: #aab3c3;" name="kelurahan" class="form-control" placeholder="Kelurahan" aria-label="kelurahan" aria-describedby="kelurahan" value="{{ old('kelurahan') }}" required>
+                                        <select class="form-control" id="kelurahan-dd" name="kelurahan" required></select>
                                     </div>
 
                                     <!-- Alamat -->
