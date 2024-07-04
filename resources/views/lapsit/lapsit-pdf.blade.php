@@ -220,7 +220,7 @@
                     </tr>
                     <tr>
                         <td style="font-weight: bold;">Update</td>
-                        <td>: 06.30</td>
+                        <td>: {{ $laporan_terakhir->update }}</td>
                     </tr>
                     <tr>
                         <td style="background-color: #f8d7da;">Pemerintah membutuhkan dukungan internasional</td>

@@ -71,6 +71,8 @@ class PDFController extends Controller
             }
         }
 
+        $lastLaporan = $chunk1->last();
+
         // Now $chunk contains all the laporan data needed for PDF generation
         // dd($chunk);
 
@@ -192,6 +194,7 @@ class PDFController extends Controller
             // Generate the PDF for the current chunk
             $pdf = PDF::loadView('lapsit.lapsit-pdf', [
                 'laporans' => $chunk1,
+                'laporan_terakhir' => $lastLaporan,
                 'kejadians' => $kejadian,
                 'dampaks' => $dampaks,
                 'korban_terdampak' => $korban_terdampak,
