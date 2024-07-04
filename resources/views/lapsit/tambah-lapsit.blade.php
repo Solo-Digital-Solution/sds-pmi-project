@@ -24,7 +24,7 @@
 @section('content')
 <!-- Row start -->
 
-<div class="row gutters">
+<!-- <div class="row gutters"> -->
 
 <form action="{{ route('laporan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -35,6 +35,7 @@
         </a>
     </div>
 
+    <div class="step">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
@@ -280,7 +281,12 @@
             </div>
         </div>
     </div>
+    <div class="button-container">    
+        <button type="button" class="btn btn-primary next-btn ml-3">Next</button>
+    </div>
+    </div>
 
+    <div class="step">
     <div class="col-sm-12">
         <div class="d-flex justify-content-center">
             <h5 class="m-0 mb-2">MOBILISASI SUMBER DAYA PMI</h5>
@@ -449,7 +455,13 @@
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+        <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
+    </div>   
+    </div>
 
+    <div class="step">
     <div class="col-sm-12">
         <div class="d-flex justify-content-center">
             <h5 class="m-0 mb-2">GIAT PMI</h5>
@@ -523,6 +535,13 @@
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+        <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
+    </div>   
+    </div>
+
+    <div class="step">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="font-weight: bold;">Giat Pemerintah <span style="color: red;">*</span></div>
@@ -547,6 +566,13 @@
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+        <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
+    </div>   
+    </div>
+
+    <div class="step">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="font-weight: bold;">Personil Dihubungi</div>
@@ -591,6 +617,13 @@
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+        <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
+    </div>   
+    </div>
+
+    <div class="step">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="font-weight: bold;">Petugas Posko</div>
@@ -630,7 +663,13 @@
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+        <button type="button" class="btn btn-primary next-btn mr-3">Next</button>
+    </div>   
+    </div>
 
+    <div class="step">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header" style="font-weight: bold;">Laporan Dokumentasi</div>
@@ -652,6 +691,9 @@
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <button type="button" class="btn btn-primary prev-btn ml-3">Previous</button>    
+    </div>
     <!-- <button type="submit" class="btn btn-primary mt-3 w-100">Kirim</button> -->
     <div class="col-sm-12">
         <div class="">
@@ -663,7 +705,7 @@
         </div>
     </div>
 </form>
-</div>
+<!-- </div> -->
 
 <!-- Row end -->
 
