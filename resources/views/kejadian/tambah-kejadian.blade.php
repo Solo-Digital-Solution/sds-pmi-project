@@ -170,6 +170,32 @@
         </div> <!-- col 12  close -->
 </div> <!-- row gutters close -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#kecamatan-dd').on('change', function () {
+            var idKecamatan = this.value;
+            $("#kelurahan-dd").html('');
+            $.ajax({
+                url: "{{url('api/fetch-kelurahans')}}",
+                type: "POST",
+                data: {
+                    id_kecamatan: idKecamatan,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#kelurahan-dd').html('<option value="">Choose...</option>');
+                    $.each(result.kelurahans, function (key, value) {
+                        $("#kelurahan-dd").append('<option value="' + value
+                            .nama_kelurahan + '">' + value.nama_kelurahan + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
