@@ -171,63 +171,90 @@
 </div> <!-- row gutters close -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#kecamatan-dd').on('change', function () {
-                var idKecamatan = this.value;
-                $("#kelurahan-dd").html('');
-                $.ajax({
-                    url: "{{url('api/fetch-kelurahans')}}",
-                    type: "POST",
-                    data: {
-                        id_kecamatan: idKecamatan,
-                        _token: '{{csrf_token()}}'
-                    },
-                    dataType: 'json',
-                    success: function (result) {
-                        $('#kelurahan-dd').html('<option value="">Choose...</option>');
-                        $.each(result.kelurahans, function (key, value) {
-                            $("#kelurahan-dd").append('<option value="' + value
-                                .nama_kelurahan + '">' + value.nama_kelurahan + '</option>');
-                        });
-                    }
-                });
+<script>
+    $(document).ready(function () {
+        $('#kecamatan-dd').on('change', function () {
+            var idKecamatan = this.value;
+            $("#kelurahan-dd").html('');
+            $.ajax({
+                url: "{{url('api/fetch-kelurahans')}}",
+                type: "POST",
+                data: {
+                    id_kecamatan: idKecamatan,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#kelurahan-dd').html('<option value="">Choose...</option>');
+                    $.each(result.kelurahans, function (key, value) {
+                        $("#kelurahan-dd").append('<option value="' + value
+                            .nama_kelurahan + '">' + value.nama_kelurahan + '</option>');
+                    });
+                }
             });
         });
+    });
+</script>
 
-    </script>
-    <script>
-        let map;
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat:  -7.550676, lng: 110.828316 },
-                zoom: 8,
-                scrollwheel: true,
-            });
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
-            const uluru = { lat:  -7.550676, lng: 110.828316 };
-            let marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-                draggable: true
-            });
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-            google.maps.event.addListener(marker,'position_changed',
-                function (){
-                    let lat = marker.position.lat()
-                    let lng = marker.position.lng()
-                    $('#latitude').val(lat)
-                    $('#longitude').val(lng)
-                })
+<!-- Include Leaflet Geocoding plugin -->
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
-            google.maps.event.addListener(map,'click',
-            function (event){
-                pos = event.latLng
-                marker.setPosition(pos)
-            })
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACJYwRCHm98FncXNZzVvac-F2WWA66czg&callback=initMap"
-            type="text/javascript"></script>
+<script>
+    let map = L.map('map').setView([-7.550676, 110.828316], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    let marker = L.marker([-7.550676, 110.828316], {draggable: true}).addTo(map);
+
+    function updateLatLng(lat, lng) {
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lng;
+    }
+
+    marker.on('dragend', function(e) {
+        let lat = marker.getLatLng().lat;
+        let lng = marker.getLatLng().lng;
+        updateLatLng(lat, lng);
+
+        // Reverse Geocoding to get the address
+        L.Control.Geocoder.nominatim().reverse(
+            L.latLng(lat, lng),
+            map.options.crs.scale(map.getZoom()),
+            function(results) {
+                let r = results[0];
+                if (r) {
+                    document.getElementById('lokasi').value = r.name;
+                }
+            }
+        );
+    });
+
+    map.on('click', function(e) {
+        let lat = e.latlng.lat;
+        let lng = e.latlng.lng;
+        marker.setLatLng([lat, lng]);
+        updateLatLng(lat, lng);
+
+        // Reverse Geocoding to get the address
+        L.Control.Geocoder.nominatim().reverse(
+            L.latLng(lat, lng),
+            map.options.crs.scale(map.getZoom()),
+            function(results) {
+                let r = results[0];
+                if (r) {
+                    document.getElementById('lokasi').value = r.name;
+                }
+            }
+        );
+    });
+</script>
 <!-- Row end -->
 @endsection

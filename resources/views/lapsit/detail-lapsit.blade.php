@@ -38,14 +38,16 @@
             <div class="card-body">
 
                 <div class="form-group row">
-                    <label for="nama_laporan" class="col-sm-3 col-form-label">
-                        Lapsit ke- <span style="color: red;">*</span>
-                    </label>
-                    <div class="col-sm-3">
-                        <input type="number" class="form-control" id="nama_laporan" name="nama_laporan" placeholder="" value="{{ $laporan->nama_laporan }}" disabled>
-                        <div id="error-message" style="color: red;"></div>
-                    </div>
-                </div>
+    <label for="nama_laporan" class="col-sm-3 col-form-label">
+        Lapsit ke- <span style="color: red;">*</span>
+    </label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control" id="nama_laporan" name="nama_laporan" placeholder=""
+        value="{{ Str::after($laporan->nama_laporan, 'Lapsit-') }}" disabled>
+        <div id="error-message" style="color: red;"></div>
+    </div>
+</div>
+
 
                 <div class="form-group row">
                     <label for="update" class="col-sm-3 col-form-label">

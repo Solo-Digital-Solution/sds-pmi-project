@@ -935,46 +935,59 @@ $(document).on('input', '.form-control', function () {
 <!-- end modal dokumentasi -->
 <!-- halaman selanjutnya -->
 <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let currentStep = 0;
-            const steps = document.querySelectorAll(".step");
+    document.addEventListener("DOMContentLoaded", function() {
+        let currentStep = 0;
+        const steps = document.querySelectorAll(".step");
 
-            function showStep(step) {
-                steps.forEach((element, index) => {
-                    element.classList.toggle("active", index === step);
-                });
-                // Scroll to top when changing steps
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
+        function showStep(step) {
+            steps.forEach((element, index) => {
+                element.classList.toggle("active", index === step);
+            });
+            // Scroll to top when changing steps
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
-            function nextStep() {
-                if (currentStep < steps.length - 1) {
-                    currentStep++;
-                    showStep(currentStep);
+        function nextStep() {
+            const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+            let valid = true;
+
+            for (let input of inputs) {
+                if (!input.checkValidity()) {
+                    valid = false;
+                    input.reportValidity();
+                    input.scrollIntoView({behavior: "smooth", block: "center"});
+                    break;  // Stop at the first invalid input
                 }
             }
 
-            function prevStep() {
-                if (currentStep > 0) {
-                    currentStep--;
-                    showStep(currentStep);
-                }
+            if (valid && currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
             }
+        }
 
-            document.querySelectorAll(".next-btn").forEach(button => {
-                button.addEventListener("click", nextStep);
-            });
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
 
-            document.querySelectorAll(".prev-btn").forEach(button => {
-                button.addEventListener("click", prevStep);
-            });
-
-            showStep(currentStep);
+        document.querySelectorAll(".next-btn").forEach(button => {
+            button.addEventListener("click", nextStep);
         });
-    </script>
+
+        document.querySelectorAll(".prev-btn").forEach(button => {
+            button.addEventListener("click", prevStep);
+        });
+
+        showStep(currentStep);
+    });
+
+</script>
 
 
 @endsection
