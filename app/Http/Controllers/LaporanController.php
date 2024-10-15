@@ -345,7 +345,7 @@ class LaporanController extends Controller
 
             if ($jumlahLaporan == 0) {
                 $penomoranLaporan = $id_kejadian . '-' . $jumlahLaporan;
-                $namaLaporan = 'Lapsit-Awal';
+                $namaLaporan = 'Lapsit-0 (Awal)';
             } elseif ($jumlahLaporan > 0) {
                 $penomoranLaporan = $id_kejadian . '-' . ($jumlahLaporan);
                 $namaLaporan = 'Lapsit-' . $jumlahLaporan;
