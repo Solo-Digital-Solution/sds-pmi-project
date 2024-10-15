@@ -26,22 +26,11 @@
 
 @section('content')
 <div class="row gutters">
-    @if (Auth::check() && Auth::user()->roles->isEmpty())
-    <div class="col-sm-12">
-        <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <i class="icon-info-large"></i> <strong>Halo, {{ Auth::user()->name }}!</strong>
-            Akun Anda sedang dalam pengecekan oleh HRD. Mohon menunggu!
-        </div>
-    </div>
-    @endif
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">Detail Profil Anda</div>
             <div class="card-body text-center position-relative">
-                <div class="d-inline-block position-relative" style="width: 15%;">
+                <div class="d-inline-block position-relative" style="width: 150px;">
                     @if (Auth::user()->profilePhoto)
                     <img src="{{ asset('profilePhoto/' . Auth::user()->profilePhoto) }}" class="img-fluid" alt="Profile Picture">
                     @else
@@ -119,3 +108,56 @@
     </div>
 </div>
 @endsection
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel" style="color: green;">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color: green;">
+                {{ session('success') }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel" style="color: red;">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color: red;">
+                {{ session('error') }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script to trigger modals -->
+<script>
+    $(document).ready(function() {
+        @if(session('success'))
+        $('#successModal').modal('show');
+        @endif
+
+        @if(session('error'))
+        $('#errorModal').modal('show');
+        @endif
+    });
+</script>

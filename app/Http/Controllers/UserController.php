@@ -76,13 +76,13 @@ class UserController extends Controller
             DB::commit();
 
             // Pesan sukses
-            return redirect('profile')->with('success', 'Profil berhasil diubah');
+            return redirect('profile')->with('success', 'Profil berhasil di-edit');
         } catch (\Exception $e) {
             // Rollback transaksi jika terjadi kesalahan
             DB::rollback();
 
             // Pesan gagal
-            return redirect('profile')->with('error', 'Profil gagal diedit: ' . $e->getMessage());
+            return redirect('profile')->with('error', 'Profil gagal di-edit: ' . $e->getMessage());
         }
     }
 

@@ -9,7 +9,7 @@
             </div>
             <div class="page-title">
                 <h5>Dashboard</h5>
-                <h6 style="font-size: 14pt; color:gray;">Selamat datang {{ Auth::user()->name }} di Sistem Penanggulangan Bencana PMI Solo</h6>
+                <h6 style="color:gray;">Sistem Informasi Pelaporan Penanggulangan Bencana PMI Surakarta
             </div>
         </div>
     </div>
@@ -17,46 +17,56 @@
 @endsection
 
 @section('content')
+@can('null')
 <div class="row gutters">
-    <div class="col-md-4 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 style="color:gray">Anda login sebagai {{ $rolesString }}</h5>
-            </div>
+    <div class="col-sm-12">
+        <div class="alert custom alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Halo, {{ Auth::user()->name }}!</strong>
+            Mohon menunggu, akun Anda sedang dalam proses verifikasi
         </div>
-        @can('null')
+    </div>
+    <div class="col-md-4 col-sm-6">
         <div class="card">
             <div class="card-body">
                 <div class="stats-widget">
                     <div class="stats-widget-header">
-                        <i class="icon-person"></i>
+                        <i class="icon-stats-bars"></i>
                     </div>
-                    <div class="stats-widget-body"></div>
-                    <!-- Row start -->
-                    <ul class="row no-gutters">
-                        <li class="col-sm-6 col">
-                            <h4 class="title"><a href="{{ url('/profile') }}">Lengkapi Profil Anda!</a></h4>
-                        </li>
-                        <li class="col-sm-6 col">
-                            <h4 class="total">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5" />
-                                </svg>
-                            </h4>
-                        </li>
-                    </ul>
+                    <div class="stats-widget-body">
+                        <!-- Row start -->
+                        <ul class="row no-gutters">
+                            <li class="col-sm-6 col">
+                                <h4 class="title"><a href="{{ url('/profile') }}">Lihat profil</a></h4>
+                            </li>
+                            <li class="col-sm-6 col">
+                                <h4 class="total">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5" />
+                                    </svg>
+                                </h4>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        @endcan
     </div>
 </div>
-</div>
 <!-- Row end -->
+@endcan
 
-
-@can('adm')
+@if(Auth::user()->can('adm') || Auth::user()->can('skr') || Auth::user()->can('hrd') || Auth::user()->can('exc'))
 <!-- Row start -->
+<div class="alert custom alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Halo, {{ Auth::user()->name }}!</strong>
+    Anda login sebagai {{ $rolesString }}
+</div>
 <div class="row gutters">
     <div class="col-md-4 col-sm-6">
         <div class="card">
@@ -80,6 +90,7 @@
             </div>
         </div>
     </div>
+    @if(Auth::user()->can('adm') || Auth::user()->can('skr'))
     <div class="col-md-4 col-sm-6">
         <div class="card">
             <div class="card-body">
@@ -102,6 +113,8 @@
             </div>
         </div>
     </div>
+    @endif
+    @can('adm')
     <div class="col-md-4 col-sm-6">
         <div class="card">
             <div class="card-body">
@@ -128,7 +141,10 @@
             </div>
         </div>
     </div>
+    @endcan
 </div>
+<!-- Row start -->
+
 <div class="row gutters">
     <div class="col-sm-12">
         <div class="card">
@@ -165,6 +181,7 @@
     </div>
 </div>
 <!-- Row end -->
+@endif
 
 <!-- Modal start -->
 <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
@@ -187,17 +204,4 @@
     </div>
 </div>
 <!-- Modal end -->
-@endcan
-
-@can('hrd')
-
-@endcan
-
-@can('exc')
-
-@endcan
-
-@can('skr')
-
-@endcan
 @endsection

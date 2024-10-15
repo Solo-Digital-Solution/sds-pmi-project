@@ -26,7 +26,7 @@
         <div class="card">
             <div class="card-header">Profil Anda</div>
             <div class="card-body text-center position-relative">
-                <div class="d-inline-block position-relative" style="width: 15%;">
+                <div class="d-inline-block position-relative" style="width: 150px;">
                     @if ($user->profilePhoto)
                     <img src="{{ asset('profilePhoto/' . $user->profilePhoto) }}" class="img-fluid" alt="Profile Picture">
                     @else

@@ -72,7 +72,7 @@
                 </li>
                 @endcan
 
-                @can('adm')
+                @if(Auth::user()->can('adm') || Auth::user()->can('skr') || Auth::user()->can('exc'))
                 <li>
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
@@ -81,49 +81,19 @@
                         <span class="nav-title">Laporan</span>
                     </a>
                     <ul aria-expanded="false">
+                        @if(Auth::user()->can('adm') || Auth::user()->can('skr'))
                         <li>
                             <a href='{{ url('/kejadian')  }}'>Kejadian</a>
                         </li>
+                        @endif
+                        @if(Auth::user()->can('adm') || Auth::user()->can('exc'))
                         <li>
                             <a href='{{ url('/executive-summary')  }}'>Executive Summary</a>
                         </li>
+                        @endif
                     </ul>
                 </li>
-                @endcan
-
-                <!-- Menu items for 'skr' -->
-                @can('skr')
-                <li>
-                    <a href="#" class="has-arrow" aria-expanded="false">
-                        <span class="has-icon">
-                            <i class="icon-center_focus_strong"></i>
-                        </span>
-                        <span class="nav-title">Laporan</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a href='{{ url('/kejadian')  }}'>Kejadian</a>
-                        </li>
-                    </ul>
-                </li>
-                @endcan
-
-                <!-- Menu items for 'exc' -->
-                @can('exc')
-                <li>
-                    <a href="#" class="has-arrow" aria-expanded="false">
-                        <span class="has-icon">
-                            <i class="icon-center_focus_strong"></i>
-                        </span>
-                        <span class="nav-title">Laporan</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li>
-                            <a href='{{ url('/executive-summary')  }}'>Executive Summary</a>
-                        </li>
-                    </ul>
-                </li>
-                @endcan
+                @endif
             </ul>
             <!-- END: side-nav-content -->
         </nav>
