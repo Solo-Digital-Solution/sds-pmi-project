@@ -633,15 +633,21 @@
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
                             <label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>
-                            <input class="form-control" id="namaLengkap" name="input[0][nm]" type="text" placeholder="Masukkan nama lengkap" required>
+                            <select class="form-control" id="namaLengkap" name="input[0][nm]" required>
+                                <option value="" disabled selected>Pilih Pegawai PMI</option>
+                                @foreach($pegawaiPMI as $pegawai)
+                                    <option value="{{ $pegawai->name }}" data-no_telp="{{ $pegawai->no_telp }}">
+                                        {{ $pegawai->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <!-- Inputan Kontak -->
                     <div class="col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="kontak">Kontak <span style="color: red;">*</span></label>
-                            <!-- <input class="form-control" id="kontak" name="input[0][ktk]" type="text" placeholder="Masukkan kontak" required> -->
-                            <input class="form-control" id="kontak" name="input[0][ktk]" type="tel" placeholder="Masukkan kontak" pattern="^[0-9]{10,15}$"
+                            <label for="ktk">Kontak <span style="color: red;">*</span></label>
+                            <input class="form-control" id="ktk" name="input[0][ktk]" type="tel" placeholder="Masukkan kontak" pattern="^[0-9]{10,15}$"
                                 title="Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka."
                                 oninvalid="this.setCustomValidity('Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka.')"
                                 oninput="this.setCustomValidity('');
@@ -650,8 +656,7 @@
                                         } else {
                                             this.classList.remove('valid-input');
                                         }"
-                                required>
-                            <small class="form-text text-muted">Masukkan nomor telepon yang valid (10-15 digit angka).</small>
+                                required readonly>
                         </div>
                     </div>
                 </div>
@@ -789,25 +794,46 @@
         ++i;
         var newRow =
             '<div class="petugas-form">' +
-            '<div class="row gutters">' +
-            '<div class="col-sm-6 col-12">' +
-            '<div class="form-group">' +
-            '<label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>' +
-            '<input class="form-control" name="input[' + i + '][nm]" type="text" placeholder="Masukkan nama lengkap" required>' +
-            '</div>' +
-            '</div>' +
-            '<div class="col-sm-6 col-12">' +
-            '<div class="form-group">' +
-            '<label for="kontak">Kontak <span style="color: red;">*</span></label>' +
-            '<input class="form-control" name="input[' + i + '][ktk]" type="text" placeholder="Masukkan kontak" required>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '<button type="button" class="btn btn-danger remove-petugas">Hapus</button>' +
-            '<hr>' +
+                '<div class="row gutters">' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="namaLengkap">Nama Lengkap <span style="color: red;">*</span></label>' +
+                            '<select class="form-control" name="input[' + i + '][nm]" required>' +
+                                '<option value="" disabled selected>Pilih Pegawai PMI</option>' +
+                                '@foreach($pegawaiPMI as $pegawai)' +
+                                    '<option value="{{ $pegawai->name }}" data-no_telp="{{ $pegawai->no_telp }}">' +
+                                        '{{ $pegawai->name }}' +
+                                    '</option>' +
+                                '@endforeach' +
+                            '</select>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-sm-6 col-12">' +
+                        '<div class="form-group">' +
+                            '<label for="ktk">Kontak <span style="color: red;">*</span></label>' +
+                            '<input class="form-control" name="input[' + i + '][ktk]" type="tel" placeholder="Masukkan kontak" pattern="^[0-9]{10,15}$"' +
+                            'title="Nomor telepon harus terdiri dari 10 hingga 15 digit angka dan hanya boleh berisi angka."' +
+                            'required readonly>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<button type="button" class="btn btn-danger remove-petugas">Hapus</button>' +
+                '<hr>' +
             '</div>';
 
+        // Tambahkan row baru ke dalam container
         $('#petugasContainer').append(newRow);
+
+        // Fungsi untuk mengisi kontak secara otomatis ketika pegawai dipilih
+        $('select[name="input[' + i + '][nm]"]').on('change', function() {
+            // Ambil no_telp dari opsi yang dipilih
+            var selectedOption = $(this).find('option:selected');
+            var noTelp = selectedOption.data('no_telp');
+            
+            // Isi input kontak dengan no_telp pegawai PMI yang dipilih
+            $(this).closest('.petugas-form').find('input[name="input[' + i + '][ktk]"]').val(noTelp);
+        });
+
     });
 
     $(document).on('click', '.remove-petugas', function() {
@@ -1039,5 +1065,16 @@
 
 </script>
 
+<!-- JavaScript untuk Mengisi Kontak Otomatis -->
+<script>
+    document.getElementById('namaLengkap').addEventListener('change', function() {
+        // Ambil no_telp dari opsi yang dipilih
+        var selectedOption = this.options[this.selectedIndex];
+        var noTelp = selectedOption.getAttribute('data-no_telp');
+        
+        // Isi input kontak dengan no_telp pegawai PMI yang dipilih
+        document.getElementById('ktk').value = noTelp ? noTelp : '';
+    });
+</script>
 
 @endsection

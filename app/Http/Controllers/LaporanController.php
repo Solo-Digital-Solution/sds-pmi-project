@@ -79,7 +79,19 @@ class LaporanController extends Controller
 
         $jumlahLaporan = DB::table('laporan')->where('id_kejadian', $id_kejadian)->count();
 
-        return view('lapsit.tambah-lapsit', ['id_kejadian' => $id_kejadian, 'jumlahLaporan' => $jumlahLaporan]);
+        // Ambil data pengguna yang memiliki role_id = 3 (Pegawai PMI), termasuk no_telp
+        $pegawaiPMI = DB::table('users')
+            ->join('users_has_role', 'users.user_id', '=', 'users_has_role.user_id')
+            ->where('users_has_role.role_id', 3)
+            ->select('users.user_id', 'users.name', 'users.no_telp') // Ambil name dan no_telp
+            ->get();
+
+        // Kirim data pegawai PMI ke view
+        return view('lapsit.tambah-lapsit', [
+            'id_kejadian' => $id_kejadian, 
+            'jumlahLaporan' => $jumlahLaporan,
+            'pegawaiPMI' => $pegawaiPMI // tambahkan ini untuk dropdown
+        ]);
     }
 
     public function createAssessment(Request $request)
