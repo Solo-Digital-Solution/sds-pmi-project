@@ -14,9 +14,14 @@
     }
 
     #map {
-        height: 400px;
+        height: 320px;
         width: 100%;
     }
+
+    #data{
+        margin-top: 2rem;
+    }
+
 
     #informasi {
         color: white;
@@ -221,240 +226,189 @@
 @endsection
 
 @section('content')
-<div class="content-section">
-	<table border="0" width="500px" cellpadding="10px" cellspacing="0px" id="content-section">
-		<thead>
-            <tr>
-                <th style="background-color: #860200; width: 2px"></th>
-                <th colspan="2" style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
-                <th style="background-color: #860200;"></th>
-                <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; align-items: center; line-height: 1; vertical-align: bottom;">
-                    KEJADIAN {{$laporan->kejadian->nama_kejadian}}<br>
-                    <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>
-                </th>
 
-                <th rowspan="2" colspan="3" style="background-color: #EBF1F1;align-item: right;padding-left: 100px;"><img src="{{asset('/img/logoPMI.png')}}" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
-            </tr>
-            <tr>
-                <th colspan="4" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; item-align:center;padding-left: 25px;">LAPORAN SITUASI</th>
-            </tr>
-        </thead>
 
-		<tfoot>
-			<td colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 18px;white-space: nowrap; padding-left: 2">&nbsp&nbsp© Posko PMI Surakarta, Jawa Tengah</td>
-		</tfoot>
+<div id="content-section" class="content-section">
 
-		<tbody>
-			<tr>
-				<td colspan="5" rowspan="7"><div id="map"></div></td>
-				<td colspan="4" rowspan="2">
-                    <div id="informasi"  style="background-color: #650103;">
-                    Kejadian        : <span style="font-weight: 900">{{$laporan->kejadian->nama_kejadian}}</span> <br>
-                    Lokasi          : <span style="font-weight: 900">{{$laporan->kejadian->kecamatan}}, {{$laporan->kejadian->kelurahan}}, Surakarta</span> <br>
-                    Waktu Kejadian  : <span id="waktuKejadian" style="font-weight: 900"></span> <br><br>
-                    <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE&nbsp&nbsp&nbsp</span> <span id="waktuKejadianUpdate"></span></span><br><br>
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <table border="0" width="100%" cellpadding="10px" cellspacing="0px" id="content-section">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #860200; width: 2px"></th>
+                            <th colspan="2" style="background-color: #650103;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; text-align: center; height: 20px; width: 50px; font-size: 24px">infografis</th>
+                            <th style="background-color: #860200;"></th>
+                            <th rowspan="2" colspan="5" style="background-color: #EBF1F1; color: #ED292C; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 67px; white-space: nowrap; align-items: center; line-height: 1; vertical-align: bottom;">
+                                KEJADIAN {{$laporan->kejadian->nama_kejadian}}<br>
+                                <span style="font-size: 54px; color: #000000;">SURAKARTA <p style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 39px; background-color: #1E1E1C; color: white; padding: 5px 10px;display: inline-block;">JAWA TENGAH</p></span>
+                            </th>
+
+                            <th rowspan="2" colspan="3" style="background-color: #EBF1F1;align-item: right;padding-left: 100px;"><img src="{{asset('/img/logoPMI.png')}}" alt="Logo PMI" style="width: 280; padding: 0px 20px"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="4" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 28px;white-space: nowrap; item-align:center;padding-left: 25px;">LAPORAN SITUASI</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-content">
+    <!-- Row start -->
+    <div class="row gutters">
+        <div class="col-md-4 col-sm-6">
+            <td><div id="map"></div></td>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div id="informasi"  style="background-color: #650103;">
+                Kejadian        : <span style="font-weight: 900">{{$laporan->kejadian->nama_kejadian}}</span> <br>
+                Lokasi          : <span style="font-weight: 900">{{$laporan->kejadian->kecamatan}}, {{$laporan->kejadian->kelurahan}}, Surakarta</span> <br>
+                Waktu Kejadian  : <span id="waktuKejadian" style="font-weight: 900"></span> <br><br>
+                <span style="font-size: 14px"><span style="font-weight: 900; text-align:right">UPDATE&nbsp&nbsp&nbsp</span> <span id="waktuKejadianUpdate"></span></span><br><br>
+            </div>
+            <div style="display: flex; gap: 0.5rem; padding: 1rem;">
+                <div class="left">
+                    <div style="display: flex">
+                        <div><i class="fa-solid fa-person-walking-dashed-line-arrow-right icon" style="color: #bc202d; padding : 1rem"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap">MENGUNGSI <br> <br> <span style="color:#bc202d;"> {{$laporan->dampak->korbanJiwa->mengungsi}} JIWA</span></div>
                     </div>
-                </td>
+                    <div id="data" style="display: flex">
+                        <div><i class="fa-solid fa-user-injured icon" style="color: #bc202d; padding : 1rem"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA <br> <br> <span style="color:#bc202d;">{{$laporan->dampak->korbanJiwa->mengungsi}} JIWA</span></div>
+                    </div>
+                </div>
+                <div class="right" >
+                    <div style="display: flex">
+                        <div><i class="fa-solid fa-tent-arrows-down icon" style="color: #bc202d; padding : 1rem"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">PENGUNGSIAN <br> <br><span style="color:#bc202d;">{{$jumlahShelter}} TITIK</span></div>
+                    </div>
+                    <div id="data"style="display: flex">
+                        <div><i class="fa-solid fa-house-crack icon" style="color: #bc202d; padding : 1rem"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RUMAH RUSAK <br> <br> <span style="color:#bc202d;"> {{$laporan->dampak->kerusakanRumah->rusak_berat + $laporan->dampak->kerusakanRumah->rusak_ringan + $laporan->dampak->kerusakanRumah->rusak_sedang}} RUMAH</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div>
                 <td colspan="3" style="padding-top: 15px;">
-                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">DATA FLUKTUASI KORBAN</span>
+                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH PENGUNGSI</span>
                 </td>
-			</tr>
-
-            <tr>
-				<td colspan="3" rowspan="4">
                 <div class="graph-container" >
                     <canvas id="graph-container-korban"></canvas>
                 </div>
-                </td>
-			</tr>
+            </div>
 
-			<tr>
-				<td colspan="4"><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">DATA KORBAN SEMENTARA</span></td>
-
-			</tr>
-
-            <tr>
-				<td rowspan="2"><i class="fa-solid fa-person-walking-dashed-line-arrow-right icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap">MENGUNGSI</td>
-				<td rowspan="2"><i class="fa-solid fa-tent-arrows-down icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">PENGUNGSIAN</td>
-			</tr>
-
-            <tr>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$laporan->dampak->korbanJiwa->mengungsi}} JIWA</td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$jumlahShelter}} TITIK</td>
-			</tr>
-
-            <tr>
-				<td rowspan="2"><i class="fa-solid fa-user-injured icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">LUKA-LUKA</td>
-				<td rowspan="2"><i class="fa-solid fa-house-crack icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RUMAH RUSAK</td>
-                <td colspan="3" style="padding-top: 15px;">
-                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">DATA FLUKTUASI LAYANAN</span>
-                </td>
-                <!-- <td colspan="3" rowspan="6"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="height: 300px; width :400px; object-fit:cover;"></td> -->
-			</tr>
-
-            <tr>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$laporan->dampak->korbanJiwa->luka_berat + $laporan->dampak->korbanJiwa->luka_ringan}} JIWA</td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">{{$laporan->dampak->kerusakanRumah->rusak_berat + $laporan->dampak->kerusakanRumah->rusak_ringan + $laporan->dampak->kerusakanRumah->rusak_sedang}} RUMAH</td>
-			</tr>
-
-            <tr>
-                <td rowspan="3" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
-				<td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->jumlah_distribusi_layanan ?? 0 }}</span></td>
-                <td style="width: 20px;height: 20px; text-align: center"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">FOOD ITEM</br><span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah_distribusi_layanan ?? 0 }}</span></td>
-				<td colspan="4" rowspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
-                {{$laporan->kebutuhan}}</span>
-                </td>
-                <td colspan="3" rowspan="4">
-                    <div class="graph-container" >
-                        <canvas id="graph-container-layanan"></canvas>
+        </div>
+    </div>
+    <!-- Row end -->
+    <!-- Row 2 start -->
+    <div class="row gutters" style="margin-bottom: 3rem">
+        <div class="col-md-4 col-sm-12" style="gap : 1rem;">
+            <div style="gap:1rem; display: flex">
+                <div class="left" style="display: flex; flex-direction : column">
+                    <div id="data" style="display: flex; ">
+                        <div class="icon" style="padding : 1rem"><i class="fa-solid fa-droplet icon" style="color: #bc202d;"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; display:flex; flex-direction:column">DISTRIBUSI AIR </br>BERSIH</br><span style="color:#bc202d;"></br>{{ $jumlahLayananAirBersih->jumlah_distribusi_layanan ?? 0 }}</span></div>
                     </div>
-                </td>
-			</tr>
+                    <div id="data" style="display: flex; ">
+                        <div class="icon"  style="padding : 1rem"><i class="fa-solid fa-kitchen-set icon" style="color: #bc202d;"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; display:flex; flex-direction:column">FOOD ITEM<span style="color:#bc202d;"></br>{{ $jumlahFoodItem->jumlah_distribusi_layanan ?? 0 }}</span></div>
+                    </div>
+                </div>
+                <div class="right" style="display: flex; flex-direction : column">
+                    <div id="data"  style="display: flex; ">
+                        <div class="icon" style="padding : 1rem"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></div>
+                        <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; display:flex; flex-direction:column">RELAWAN<span style="color:#bc202d;"></br>{{$laporan->mobilisasi->personil->pengurus + $laporan->mobilisasi->personil->relawan_pmi + $laporan->mobilisasi->personil->staf_markas + $laporan->mobilisasi->personil->sukarelawan_spesialis}} ORANG</span></div>
+                    </div>
+                        <div id="data" style="display: flex; ">
+                            <div class="icon" style="padding : 1rem"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></div>
+                            <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; display:flex; flex-direction:column">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>{{$jumlahTenagaMedis->medis + $jumlahTenagaMedis->paramedis}} ORANG</span></div>
+                        </div>
+                </div>
+            </div>
 
-            <tr>
-			</tr>
-            
-            <tr>
-                
-            </tr>
+            <div style="margin-top: 2rem;font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d; font-size:2rem"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <br><span style="font-weight:800">big opportunity</span> to us</span></div>
+            <div class="bank" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
+                <div class="bank-item" style="flex: 1 1 calc(50% - 1rem); font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 1rem;">
+                    Bank Mandiri<br><span style="color:#bc202d;">070-00-0011601-7</span><br><span style="font-size: 10px;">a/n Palang Merah Indonesia</span>
+                </div>
+                <div class="bank-item" style="flex: 1 1 calc(50% - 1rem); font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 1rem;">
+                    Bank BCA<br><span style="color:#bc202d;">206.300668.8</span><br><span style="font-size: 10px;">a/n Kantor PMI Pusat</span>
+                </div>
+                <div class="bank-item" style="flex: 1 1 calc(50% - 1rem); font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 1rem;">
+                    Bank BRI<br><span style="color:#bc202d;">070-00-0011601-7</span><br><span style="font-size: 10px;">a/n Palang Merah Indonesia</span>
+                </div>
+                <div class="bank-item" style="flex: 1 1 calc(50% - 1rem); font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 1rem;">
+                    Bank BSI<br><span style="color:#bc202d;">070-00-0011601-7</span><br><span style="font-size: 10px;">a/n Palang Merah Indonesia</span>
+                </div>
+            </div>
 
-            <tr>
-				<td rowspan="2" style="writing-mode: vertical-rl; text-orientation: sideways; white-space: nowrap; text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;"></td>
-				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-handshake-angle icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">RELAWAN</br><span style="color:#bc202d;"></br>{{$laporan->mobilisasi->personil->pengurus + $laporan->mobilisasi->personil->relawan_pmi + $laporan->mobilisasi->personil->staf_markas + $laporan->mobilisasi->personil->sukarelawan_spesialis}} ORANG</span></td>
-				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-user-doctor icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">TENAGA</br>KESEHATAN</br><span style="color:#bc202d;"></br>{{$jumlahTenagaMedis->medis + $jumlahTenagaMedis->paramedis}} ORANG</span></td>
-				<td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
-			</tr>
-
-            <tr>
-                <!-- <td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-suitcase-medical icon" style="color: #bc202d;"></i></td>
-				<td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">PERTOLONGAN</br>PERTAMA</br>DARURAT DAN</br>EVAKUASI</BR>BENCANA</td>
-				<td style="width: 20px;height: 40px; text-align: center"><i class="fa-solid fa-tents icon" style="color: #bc202d;"></i></td>
-                <td style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap;">
-                    @if ($jumlahShelter != 0)
-                        HUNIAN DARURAT
-                    @endif
-                </td> -->
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="4" rowspan="3" style="padding-bottom: 70px;">
-                    <div class="chart-container">
+        </div>
+        <div class="col-md-4 col-sm-12">
+                <div style="margin-top : 2rem; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; white-space: nowrap; color:#bc202d;">KEBUTUHAN MENDESAK <br><span style="color: #000000">
+                {{$laporan->kebutuhan}}</span>
+                </div>
+                <div style="margin-top: 4rem">
+                    <td colspan="4" style=""><span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width: 100%;">PENERIMA MANFAAT</span></td>
+                    <div class="chart-container" style="margin-top: 3rem">
                         <canvas id="genderChart" width="300" height="300"></canvas>
                     </div>
-                </td>
-                <td colspan="3" rowspan="3"><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="height: 300px; width :400px; object-fit:cover;"></td>
-				
-			</tr>
-
-            <tr>
-            <td colspan="5" style="padding-top: 15px;">
-                    <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">JUMLAH LAYANAN PER LOKASI</span>
-                </td>
-                
-			</tr>
-            <tr>
-                <td colspan="5">
-                    <div class="graph-container" id="graph-container" ></div>
-                    <div style="display: flex;">
-                        
-                        
-                        
-                        
-                    </div>
-                </td>
-                
-            </tr>
-            <tr>
-                <td></td>
-                <td rowspan="2">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar1" style="width: 20px; margin-right: 5px"></div>
-                        <div>Food Item</div>
-                    </div>
-                </td>
-                <td rowspan="2">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar2" style="width: 20px; margin-right: 5px"></div>
-                        <div>Non-Food Item</div>
-                    </div>
-                </td>
-                <td rowspan="2">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar3" style="width: 20px; margin-right: 5px"></div>
-                        <div>Layanan Kesehatan</div>
-                    </div>
-                </td>
-                <td rowspan="2">
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <div class="bar bar4" style="width: 20px; margin-right: 5px"></div>
-                        <div>Layanan Air Bersih</div>
-                    </div>
-                </td>
-                <td colspan="2" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">
-                    <div style="margin-bottom: 30px;">
-                    Bank Mandiri<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span>
-                    </div>
-                    <div>
-                        Bank BCA<span style="color:#bc202d;"></br>206.300668.8</span></br><span style="font-size: 10px"></br>a/n Kantor PMI Pusat</span>
-                    </div>
-                </td>
-                <td colspan="2" rowspan="2" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800;">Bank BRI<span style="color:#bc202d;"></br>070-00-0011601-7</span></br><span style="font-size: 10px"></br>a/n Palang Merah Indonesia</span></td>
-                <td colspan="3" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 300; white-space: nowrap; color:#bc202d;font-size:28px"><span style="color:black">klik </span><span style="text-decoration: underline; font-weight:800">donasi.pmi.or.id</span><br><span style="color: black">your <span style="font-weight:800">small donation</span> is a <br><span style="font-weight:800">big opportunity</span> to us</span></td>
-            </tr>
-            <tr>
-                <!-- <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td> -->
-                
-            </tr>
-		</tbody>
-
-	</table>
-</div>
-<div class="button-wrapper">
-    <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" onclick="downloadContentAsImage()">Download as Image</button>
-    <!-- <button style="border-radius: 5px;border:none;font-size: 17px;margin-top: 20px;background-color: #bc202d;color: #fff;padding: 8px 14px; margin-left: 10px;" id="send-to-whatsapp">Send to Whatsapp</button> -->
-</div>
-<div id="sendMessageModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h4>Send WhatsApp Message</h4>
-        <form id="sendMessageForm" enctype="multipart/form-data">
-            @csrf
-            <div>
-                <label for="nowa">Upload CSV File (with phone numbers)</label>
-                <input type="file" name="nowa" id="nowa" accept=".csv" />
+                </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <td colspan="3" style="padding-top: 15px;">
+                <span style="background-color: #E91A20;color: #FFFFFF; font-family: 'Bebas Neue', sans-serif; font-style: normal; font-weight: 300; font-size: 28px; padding: 5px 20px; display: inline-block; width:100%">DATA FLUKTUASI LAYANAN</span>
+            </td>
+            <div class="graph-container" >
+                <canvas id="graph-container-layanan"></canvas>
             </div>
-            <div>
-                <label for="pesan">Message</label>
-                <textarea name="pesan" id="pesan"></textarea>
+            <div style="margin: 1rem">
+                <div><img src="{{ asset('/dokumentasi/' . $laporan->dokumentasis->first()->file_path) }}" style="width: 400px; height:auto; object-fit:cover;"></div>
             </div>
-            <div>
-                <label for="gambar">Upload Image</label><br>
-                <input type="file" name="gambar" id="gambar" accept=".jpg,.jpeg,.png" />
-            </div>
-            <div>
-                <input type="submit" value="Send Message" />
-            </div>
-        </form>
+        </div>
+    </div>
+    <footer>
+        <div colspan="12" style="background-color: #860200;color: white; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 800; font-size: 18px;white-space: nowrap;">&nbsp&nbsp© Posko PMI Surakarta, Jawa Tengah</div>
+    </footer>
+    </div>
+    
+    <div id="sendMessageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h4>Send WhatsApp Message</h4>
+            <form id="sendMessageForm" enctype="multipart/form-data">
+                @csrf
+                <div>
+                    <label for="nowa">Upload CSV File (with phone numbers)</label>
+                    <input type="file" name="nowa" id="nowa" accept=".csv" />
+                </div>
+                <div>
+                    <label for="pesan">Message</label>
+                    <textarea name="pesan" id="pesan"></textarea>
+                </div>
+                <div>
+                    <label for="gambar">Upload Image</label><br>
+                    <input type="file" name="gambar" id="gambar" accept=".jpg,.jpeg,.png" />
+                </div>
+                <div>
+                    <input type="submit" value="Send Message" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
+<div class="button-wrapper">
+        <button style="border-radius: 5px; border:none; font-size: 17px; margin-top: 20px; background-color: #bc202d; color: #fff; padding: 8px 14px;" onclick="downloadContentAsImage()">Download as Image</button>
+        <!-- <button style="border-radius: 5px;border:none;font-size: 17px;margin-top: 20px;background-color: #bc202d;color: #fff;padding: 8px 14px; margin-left: 10px;" id="send-to-whatsapp">Send to Whatsapp</button> -->
+    </div>
+
+<!-- END: .main-content -->
 
 <script>
     function downloadContentAsImage() {
@@ -625,7 +579,7 @@
         ]
     }
     var korbanChart = new Chart(ctxKorban, {
-        type: 'line', // Jenis grafik lingkaran
+        type: 'bar', // Jenis grafik lingkaran
         data: dataKorban,
     });
 
@@ -721,7 +675,17 @@
             graphContainer.appendChild(barContainer);
         }
 
-        
+
 </script>
 
+
+
+
+
+
 @endsection
+
+
+
+
+
