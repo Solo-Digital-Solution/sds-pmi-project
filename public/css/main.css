@@ -80,9 +80,9 @@ body.full-screen .app-main {
   }
 }
 body.login-bg {
-  background: url("../img/bg-1.png") no-repeat;
+  background: url("../img/bg-1.png") no-repeat center center fixed;
   background-size: cover;
-  background-position: center center;
+  min-height: 100vh;
 }
 body.error-bg {
   /* background: url("../img/login-slider.jpg") no-repeat; */
@@ -1942,7 +1942,7 @@ ul.order-list li:last-child {
 }
 .or:before {
   position: absolute;
-  content: "or";
+  content: "atau";
   background: #ffffff;
   width: 20px;
   height: 20px;
@@ -2604,9 +2604,9 @@ ul#newsticker li:hover {
 
 /*************** Profile Page ***************/
 .rounded-image {
-  width: 32px;
-  height: 32px;
-  margin: 0.5px;
+  width: 33px;
+  height: 33px;
+  margin: 0px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -2875,7 +2875,7 @@ a.blog-sm p.blog-date:after {
   position: relative;
   box-shadow: 0px 25px 15px -15px #d3d7e9;
   background: #ffffff;
-  margin: 0 auto;
+  margin: 0 0 100px 0;
 }
 .login-container .login-box {
   padding: 50px 50px;

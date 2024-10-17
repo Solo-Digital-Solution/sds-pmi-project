@@ -16,7 +16,7 @@
     <meta property="og:type" content="Website">
     <meta property="og:site_name" content="Bootstrap Gallery">
     <link rel="shortcut icon" href="{{ asset('img/logo-pmi-full.png') }}" />
-    <title>Sistem Penanggulangan Bencana PMI Solo</title>
+    <title>Sistem Informasi Pelaporan Penanggulangan Bencana PMI Surakarta</title>
 
     <!-- Common CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
@@ -49,9 +49,12 @@
                         <div class="row no-gutters">
                             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                                 <div class="login-box">
-                                    <a href="#" class="login-logo">
+                                    <a href="/" class="login-logo">
                                         <img src="{{ asset('img/logo-pmi-min.png') }}" alt="Logo PMI" />
                                     </a>
+
+                                    <h5 class="mb-3 text-dark">LOGIN</h5>
+
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="email">
@@ -72,23 +75,23 @@
                                     </div>
                                     <x-input-error :messages="$errors->get('password')" class="text-danger mt-2" />
 
-                                    <div class="block mt-4">
+                                    <!-- <div class="block mt-4">
                                         <label for="remember_me" class="inline-flex items-center">
                                             <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                                            <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                            <span class="ms-2 text-sm text-gray-600">{{ __('Ingat saya') }}</span>
                                         </label>
-                                    </div>
+                                    </div> -->
 
                                     <div class="actions clearfix">
-                                        @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
-                                        @endif
+                                        <!-- @if (Route::has('password.request'))
+                                            <a href="{{ route('password.request') }}">{{ __('Lupa Password?') }}</a>
+                                        @endif -->
                                         <button type="submit" class="btn btn-primary">Login</button>
                                     </div>
 
                                     <div class="or"></div>
                                     <div class="mt-4">
-                                        <a href="{{ route('register') }}" class="additional-link">Belum Punya Akun? Silakan <span>Buat Akun</span></a>
+                                        <a href="{{ route('register') }}" class="additional-link">Belum Punya Akun? Silakan <span>Register</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +106,7 @@
     </div>
     <footer class="main-footer no-bdr fixed-btm">
         <div class="container">
-            © Solo Digital Solution 2024
+            © PMI Kota Surakarta 2024
         </div>
     </footer>
 </body>

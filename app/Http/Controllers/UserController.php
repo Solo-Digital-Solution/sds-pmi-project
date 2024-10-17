@@ -21,9 +21,29 @@ class UserController extends Controller
         return view('user.user-management', compact('users'));
     }
 
+    public function viewProfil()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->back()->withErrors(['User not found']);
+        }
+
+        $roles = $user->roles->pluck('role_name')->toArray();
+
+        $kecamatan = DB::table('kecamatan')->where('id_kecamatan', $user->kecamatan)->first();
+
+        if (!$kecamatan) {
+            return redirect()->back()->withErrors(['Kecamatan not found']);
+        }
+
+        return view('profile.index', compact('kecamatan', 'user', 'roles'));
+    }
+
     public function editProfil()
     {
         $user = Auth::user();
+
         $kecamatans = DB::table('kecamatan')->get();
         // passing data pegawai yang didapat ke view edit.blade.php
         //return view('kejadian.edit-kejadian',['kejadian' => $kejadian]);
@@ -56,9 +76,17 @@ class UserController extends Controller
 
             // Update data user
             $user->update($request->only([
-                'name', 'email', 'tempat_lahir', 'tanggal_lahir',
-                'kecamatan', 'kelurahan', 'alamat', 'goldar',
-                'no_telp', 'username', 'gender'
+                'name',
+                'email',
+                'tempat_lahir',
+                'tanggal_lahir',
+                'kecamatan',
+                'kelurahan',
+                'alamat',
+                'goldar',
+                'no_telp',
+                'username',
+                'gender'
             ]));
 
             // Simpan foto profil jika ada
@@ -93,6 +121,47 @@ class UserController extends Controller
         return view('user.create', compact('roles', 'kecamatans'));
     }
 
+    public function showChangePasswordForm()
+    {
+        $user = Auth::user();
+        return view('profile.ganti-password', compact('user'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        // Log input untuk debugging
+        \Log::info('Password Change Request:', [
+            'user_id' => $user->id,
+            'current_password' => $request->current_password,
+            'new_password' => $request->new_password,
+        ]);
+
+        // Mulai transaksi database
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'current_password' => 'required',
+                'new_password' => 'required|min:8|confirmed',
+            ]);
+
+            // Cek apakah password lama sesuai
+            if (!Hash::check($request->current_password, $user->password)) {
+                return redirect()->route('password.change')->with('error', 'Password lama tidak sesuai.');
+            }
+
+            // Update password user
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            DB::commit();
+            return redirect('profile')->with('success', 'Password berhasil diubah');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('password.change')->with('error', 'Password gagal diubah: ' . $e->getMessage());
+        }
+    }
 
     // public function create()
     // {

@@ -43,15 +43,15 @@
             <ul class="unifyMenu" id="unifyMenu">
 
                 <li>
-                    <a href="#" class="has-arrow">
+                    <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
                             <i class="icon-laptop_windows"></i>
                         </span>
                         <span class="nav-title">Dashboards</span>
                     </a>
-                    <ul>
+                    <ul class="collapse">
                         <li>
-                            <a href='{{ url('/dashboard')  }}'>Dashboard</a>
+                            <a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                     </ul>
                 </li>
@@ -64,9 +64,9 @@
                         </span>
                         <span class="nav-title">Manajemen Akun</span>
                     </a>
-                    <ul aria-expanded="false">
+                    <ul class="collapse">
                         <li>
-                            <a href='{{ url('/user-management')  }}'>Manajemen Akun</a>
+                            <a href="{{ url('/user-management') }}">Manajemen Akun</a>
                         </li>
                     </ul>
                 </li>
@@ -80,20 +80,21 @@
                         </span>
                         <span class="nav-title">Laporan</span>
                     </a>
-                    <ul aria-expanded="false">
+                    <ul class="collapse">
                         @if(Auth::user()->can('adm') || Auth::user()->can('skr'))
                         <li>
-                            <a href='{{ url('/kejadian')  }}'>Kejadian</a>
+                            <a href="{{ url('/kejadian') }}">Kejadian</a>
                         </li>
                         @endif
                         @if(Auth::user()->can('adm') || Auth::user()->can('exc'))
                         <li>
-                            <a href='{{ url('/executive-summary')  }}'>Executive Summary</a>
+                            <a href="{{ url('/executive-summary') }}">Executive Summary</a>
                         </li>
                         @endif
                     </ul>
                 </li>
                 @endif
+
             </ul>
             <!-- END: side-nav-content -->
         </nav>

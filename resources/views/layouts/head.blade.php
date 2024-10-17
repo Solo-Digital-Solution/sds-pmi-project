@@ -17,7 +17,7 @@
     <meta property="og:type" content="Website">
     <meta property="og:site_name" content="Bootstrap Gallery">
     <link rel="shortcut icon" href="{{ asset('img/logo-pmi-full.png') }}" />
-    <title>Sistem Penanggulangan Bencana PMI Solo</title>
+    <title>Sistem Informasi Pelaporan Penanggulangan Bencana PMI Surakarta</title>
 
     <!-- Common CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />

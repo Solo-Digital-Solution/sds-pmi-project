@@ -17,7 +17,7 @@
     <meta property="og:type" content="Website">
     <meta property="og:site_name" content="Bootstrap Gallery">
     <link rel="shortcut icon" href="{{ asset('img/logo-pmi-full.png') }}" />
-    <title>Sistem Penanggulangan Bencana PMI Solo</title>
+    <title>Sistem Informasi Pelaporan Penanggulangan Bencana PMI Surakarta</title>
 
     <!-- Common CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
@@ -30,16 +30,18 @@
 <body class="login-bg">
     <div class="container">
         <div class="login-screen row align-items-center">
-            <div class="col-sm-12">
+            <div class="col-lg-12">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="login-container">
                         <div class="row no-gutters">
                             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                                 <div class="login-box">
-                                    <a href="#" class="login-logo">
+                                    <a href="/" class="login-logo">
                                         <img src="{{ asset('img/logo-pmi-min.png') }}" alt="Logo PMI" />
                                     </a>
+
+                                    <h5 class="mb-3 text-dark">REGISTER</h5>
 
                                     <!-- Name -->
                                     <div class="input-group mb-2">
@@ -87,7 +89,7 @@
                                                 <i class="icon-calendar"></i>
                                             </span>
                                         </div>
-                                        <input type="date" id="tanggal_lahir" style="color: #aab3c3;" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir" aria-label="tanggal_lahir" aria-describedby="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required>
+                                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir" aria-label="tanggal_lahir" aria-describedby="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required>
                                         @error('tanggal_lahir')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -142,7 +144,7 @@
                                                 <i class="icon-plus"></i>
                                             </span>
                                         </div>
-                                        <select class="form-control" style="color:#aab3c3" id="goldar" name="goldar" required>
+                                        <select class="form-control" id="goldar" name="goldar" required>
                                             <option selected>-- Pilih Golongan Darah --</option>
                                             <option value="Belum Tahu">Belum Tahu</option>
                                             <option value="O">O</option>
@@ -188,7 +190,7 @@
                                                 <i class="icon-people"></i>
                                             </span>
                                         </div>
-                                        <select class="form-control" style="color:#aab3c3" id="gender" name="gender" required>
+                                        <select class="form-control" id="gender" name="gender" required>
                                             <option selected>-- Pilih Jenis Kelamin --</option>
                                             <option value="Laki-Laki">Laki-Laki</option>
                                             <option value="Perempuan">Perempuan</option>
@@ -281,7 +283,7 @@
 
     <footer class="main-footer no-bdr fixed-btm">
         <div class="container">
-            © Solo Digital Solution 2024
+            © PMI Kota Surakarta 2024
         </div>
     </footer>
 </body>
